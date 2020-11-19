@@ -8,6 +8,7 @@
 	[preguntaRecuperacion] [nvarchar](max),
 	[pinConfirmacion] [nvarchar](max),
 	[idCreador] [int] NOT NULL,
+	[idioma] [int] NOT NULL,
         CONSTRAINT [PK_dbo.Jugador] PRIMARY KEY ([idJugador])
     )
 

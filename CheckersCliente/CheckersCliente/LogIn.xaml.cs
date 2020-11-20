@@ -18,11 +18,16 @@ namespace CheckersCliente
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LogIn : Window
     {
-        public MainWindow()
+        public LogIn()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

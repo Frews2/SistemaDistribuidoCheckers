@@ -121,12 +121,12 @@
     <value>E-mail</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>Log in</value>
+    <value>Accesso</value>
   </data>
   <data name="Nickname" xml:space="preserve">
-    <value>Nickname</value>
+    <value>Soprannome</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Parola d'ordine</value>
   </data>
 </root>

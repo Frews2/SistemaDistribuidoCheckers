@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CheckersCliente
+namespace CheckersCliente.MenuPages
 {
     /// <summary>
-    /// Lógica de interacción para Menu.xaml
+    /// Lógica de interacción para UserConfiguration.xaml
     /// </summary>
-    public partial class Menu : NavigationWindow
+    public partial class UserConfiguration : Page
     {
-        public Menu()
+        public UserConfiguration()
         {
             InitializeComponent();
         }

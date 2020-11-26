@@ -67,17 +67,19 @@ namespace Contratos
     public partial class MainService:IRankingManager
     {
         private readonly Dictionary<string, IRankingManagerCallback> interestedPlayers = new Dictionary<string, IRankingManagerCallback>();
+        private List<DataAccess.Ranking> message;
 
         public void GetRankingCallback()
         {
             interestedPlayers.Add(currentPlayer.Apodo, RankingCallback);
         }
 
-        public void GetRankingData(Jugador player)
+        public void GetRankingData()
         {
             RankingResult result;
 
             RankingDataManager dataManager = new RankingDataManager();
+            List<DataAccess.Ranking> rankingList = dataManager.GetRankingList();
 
             if (dataManager.GetRankingList() == null)
             {
@@ -87,12 +89,17 @@ namespace Contratos
             else
             {
                 result = RankingResult.RANKING_EXISTS;
-                interestedPlayers.Add(player.Apodo, RankingCallback);
-                currentPlayer = player;
+                message = rankingList;
+
             }
 
             RankingCallback.GetRankingResult(result);
 
+        }
+
+        public void SendRankingData()
+        {
+            interestedPlayers[currentPlayer.Apodo].ReceiveRankingData(message);
         }
 
         IRankingManagerCallback RankingCallback
@@ -108,25 +115,25 @@ namespace Contratos
     {
         private readonly Dictionary<string, IMatchmakingManagerCallback> playersInMatchmaking = new Dictionary<string, IMatchmakingManagerCallback>();
 
-        public void EnterMatchmaking(Jugador player)
+        public void EnterMatchmaking()
         {
             MatchmakingResult result;
+            currentlyQueuedPlayer = currentPlayer;
 
 
-            if (playersReady.Any(playerWaiting => playerWaiting.Equals(player.Apodo)))
+            if (playersReady.Any(playerWaiting => playerWaiting.Equals(currentlyQueuedPlayer.Apodo)))
             {
                 
-                playersInMatchmaking.Add(player.Apodo, MatchmakingCallback);
+                playersInMatchmaking.Add(currentlyQueuedPlayer.Apodo, MatchmakingCallback);
                 
-                currentlyQueuedPlayer = player;
                 UpdatePlayersInMatchmakingList();
 
                 if (playersInMatchmaking.Count > 1)
                 {
                     string partner = "";
-                    partner = GetPlayerQueued(player);
+                    partner = GetPlayerQueued(currentlyQueuedPlayer);
                     
-                    playerChat.Add(player.Apodo);
+                    playerChat.Add(currentlyQueuedPlayer.Apodo);
                     playerChat.Add(partner);
 
                     playersReady.Remove(currentlyQueuedPlayer.Apodo);

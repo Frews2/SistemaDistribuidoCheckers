@@ -1,9 +1,10 @@
-﻿using CheckersCliente.MainService;
-using System;
-using System.Collections.Generic;
+﻿/*
+ Date: 25/11/2020
+ Author(s): Ricardo Moguel Sanchez
+*/
+using CheckersCliente.MainService;
+using CheckersCliente.MenuPages;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CheckersCliente.CallbackHandlers
 {
@@ -11,8 +12,8 @@ namespace CheckersCliente.CallbackHandlers
     {
         public void ReceiveText(string source, string message)
         {
-            Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
-            (menu.Navigate.Content as Message);
+            Game gameWindow = App.Current.Windows.OfType<Game>().FirstOrDefault();
+            (gameWindow.refreshChat.Content as GameChat).AddMessageToChat(source,message);
         }
     }
 }

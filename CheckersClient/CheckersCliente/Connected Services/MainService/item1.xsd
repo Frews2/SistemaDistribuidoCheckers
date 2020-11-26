@@ -1,9 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfstring">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DataAccess" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataAccess" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfRanking">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ranking" nillable="true" type="tns:Ranking" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+  <xs:element name="ArrayOfRanking" nillable="true" type="tns:ArrayOfRanking" />
+  <xs:complexType name="Ranking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Jugador" nillable="true" type="tns:Jugador" />
+      <xs:element minOccurs="0" name="fechaRegistracion" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="idDuenio" type="xs:int" />
+      <xs:element minOccurs="0" name="idRanking" type="xs:int" />
+      <xs:element minOccurs="0" name="numeroPerdidas" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="numeroVictorias" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="partidasJugadas" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="rank" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ranking" nillable="true" type="tns:Ranking" />
+  <xs:complexType name="Jugador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Administrador" nillable="true" type="tns:Administrador" />
+      <xs:element minOccurs="0" name="Partida" nillable="true" type="tns:ArrayOfPartida" />
+      <xs:element minOccurs="0" name="Partida1" nillable="true" type="tns:ArrayOfPartida" />
+      <xs:element minOccurs="0" name="Ranking" nillable="true" type="tns:ArrayOfRanking" />
+      <xs:element minOccurs="0" name="Reporte" nillable="true" type="tns:ArrayOfReporte" />
+      <xs:element minOccurs="0" name="Reporte1" nillable="true" type="tns:ArrayOfReporte" />
+      <xs:element minOccurs="0" name="Reputacion" nillable="true" type="tns:ArrayOfReputacion" />
+      <xs:element minOccurs="0" name="apodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="contrasenia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="correoElectronico" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idCreador" type="xs:int" />
+      <xs:element minOccurs="0" name="idJugador" type="xs:int" />
+      <xs:element minOccurs="0" name="idioma" type="xs:int" />
+      <xs:element minOccurs="0" name="pinConfirmacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="preguntaRecuperacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="respuestaConfirmacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Jugador" nillable="true" type="tns:Jugador" />
+  <xs:complexType name="Administrador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Jugador" nillable="true" type="tns:ArrayOfJugador" />
+      <xs:element minOccurs="0" name="apodoAdmin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="contrasenia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="correoElectronico" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idAdministrador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Administrador" nillable="true" type="tns:Administrador" />
+  <xs:complexType name="ArrayOfJugador">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Jugador" nillable="true" type="tns:Jugador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJugador" nillable="true" type="tns:ArrayOfJugador" />
+  <xs:complexType name="ArrayOfPartida">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Partida" nillable="true" type="tns:Partida" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPartida" nillable="true" type="tns:ArrayOfPartida" />
+  <xs:complexType name="Partida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Jugador" nillable="true" type="tns:Jugador" />
+      <xs:element minOccurs="0" name="Jugador1" nillable="true" type="tns:Jugador" />
+      <xs:element minOccurs="0" name="idGanador" type="xs:int" />
+      <xs:element minOccurs="0" name="idPartida" type="xs:int" />
+      <xs:element minOccurs="0" name="idPerdedor" type="xs:int" />
+      <xs:element minOccurs="0" name="modoJuego" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tiempo" nillable="true" type="ser:duration" />
+      <xs:element minOccurs="0" name="turno" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Partida" nillable="true" type="tns:Partida" />
+  <xs:complexType name="ArrayOfReporte">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reporte" nillable="true" type="tns:Reporte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReporte" nillable="true" type="tns:ArrayOfReporte" />
+  <xs:complexType name="Reporte">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Jugador" nillable="true" type="tns:Jugador" />
+      <xs:element minOccurs="0" name="Jugador1" nillable="true" type="tns:Jugador" />
+      <xs:element minOccurs="0" name="descripcionAcuso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idAcusador" type="xs:int" />
+      <xs:element minOccurs="0" name="idReportado" type="xs:int" />
+      <xs:element minOccurs="0" name="idReporte" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reporte" nillable="true" type="tns:Reporte" />
+  <xs:complexType name="ArrayOfReputacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reputacion" nillable="true" type="tns:Reputacion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReputacion" nillable="true" type="tns:ArrayOfReputacion" />
+  <xs:complexType name="Reputacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Jugador" nillable="true" type="tns:Jugador" />
+      <xs:element minOccurs="0" name="idDuenio" type="xs:int" />
+      <xs:element minOccurs="0" name="idReputacion" type="xs:int" />
+      <xs:element minOccurs="0" name="numeroReportes" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="numeroVecesReportado" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reputacion" nillable="true" type="tns:Reputacion" />
 </xs:schema>

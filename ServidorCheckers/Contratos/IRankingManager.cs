@@ -3,6 +3,7 @@
  Author(s): Ricardo Moguel Sanchez
 */
 using Dominio;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace Contratos
@@ -11,7 +12,7 @@ namespace Contratos
     public interface IRankingManager
     {
         [OperationContract(IsOneWay = true)]
-        void GetRankingData(Jugador interestedPlayer);
+        void GetRankingCallback();
     }
 
     [ServiceContract]
@@ -19,5 +20,8 @@ namespace Contratos
     {
         [OperationContract(IsOneWay = true)]
         void GetRankingResult(RankingResult resultado);
+
+        [OperationContract(IsOneWay = true)]
+        void ReceiveRankingData(List<DataAccess.Ranking> rankingList);
     }
 }

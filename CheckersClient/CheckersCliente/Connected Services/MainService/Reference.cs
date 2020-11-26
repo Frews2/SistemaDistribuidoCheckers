@@ -211,6 +211,964 @@ namespace CheckersCliente.MainService {
         RANKING_EXISTS = 2,
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Ranking", Namespace="http://schemas.datacontract.org/2004/07/DataAccess")]
+    [System.SerializableAttribute()]
+    public partial class Ranking : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador1 JugadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> fechaRegistracionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idDuenioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idRankingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> numeroPerdidasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> numeroVictoriasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> partidasJugadasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> rankField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador1 Jugador {
+            get {
+                return this.JugadorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JugadorField, value) != true)) {
+                    this.JugadorField = value;
+                    this.RaisePropertyChanged("Jugador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> fechaRegistracion {
+            get {
+                return this.fechaRegistracionField;
+            }
+            set {
+                if ((this.fechaRegistracionField.Equals(value) != true)) {
+                    this.fechaRegistracionField = value;
+                    this.RaisePropertyChanged("fechaRegistracion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idDuenio {
+            get {
+                return this.idDuenioField;
+            }
+            set {
+                if ((this.idDuenioField.Equals(value) != true)) {
+                    this.idDuenioField = value;
+                    this.RaisePropertyChanged("idDuenio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idRanking {
+            get {
+                return this.idRankingField;
+            }
+            set {
+                if ((this.idRankingField.Equals(value) != true)) {
+                    this.idRankingField = value;
+                    this.RaisePropertyChanged("idRanking");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> numeroPerdidas {
+            get {
+                return this.numeroPerdidasField;
+            }
+            set {
+                if ((this.numeroPerdidasField.Equals(value) != true)) {
+                    this.numeroPerdidasField = value;
+                    this.RaisePropertyChanged("numeroPerdidas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> numeroVictorias {
+            get {
+                return this.numeroVictoriasField;
+            }
+            set {
+                if ((this.numeroVictoriasField.Equals(value) != true)) {
+                    this.numeroVictoriasField = value;
+                    this.RaisePropertyChanged("numeroVictorias");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> partidasJugadas {
+            get {
+                return this.partidasJugadasField;
+            }
+            set {
+                if ((this.partidasJugadasField.Equals(value) != true)) {
+                    this.partidasJugadasField = value;
+                    this.RaisePropertyChanged("partidasJugadas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> rank {
+            get {
+                return this.rankField;
+            }
+            set {
+                if ((this.rankField.Equals(value) != true)) {
+                    this.rankField = value;
+                    this.RaisePropertyChanged("rank");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Jugador", Namespace="http://schemas.datacontract.org/2004/07/DataAccess")]
+    [System.SerializableAttribute()]
+    public partial class Jugador1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Administrador AdministradorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Partida[] PartidaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Partida[] Partida1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Ranking[] RankingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Reporte[] ReporteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Reporte[] Reporte1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Reputacion[] ReputacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string apodoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string contraseniaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string correoElectronicoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idCreadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idJugadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idiomaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string pinConfirmacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string preguntaRecuperacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string respuestaConfirmacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string statusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Administrador Administrador {
+            get {
+                return this.AdministradorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AdministradorField, value) != true)) {
+                    this.AdministradorField = value;
+                    this.RaisePropertyChanged("Administrador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Partida[] Partida {
+            get {
+                return this.PartidaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PartidaField, value) != true)) {
+                    this.PartidaField = value;
+                    this.RaisePropertyChanged("Partida");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Partida[] Partida1 {
+            get {
+                return this.Partida1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Partida1Field, value) != true)) {
+                    this.Partida1Field = value;
+                    this.RaisePropertyChanged("Partida1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Ranking[] Ranking {
+            get {
+                return this.RankingField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RankingField, value) != true)) {
+                    this.RankingField = value;
+                    this.RaisePropertyChanged("Ranking");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Reporte[] Reporte {
+            get {
+                return this.ReporteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReporteField, value) != true)) {
+                    this.ReporteField = value;
+                    this.RaisePropertyChanged("Reporte");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Reporte[] Reporte1 {
+            get {
+                return this.Reporte1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Reporte1Field, value) != true)) {
+                    this.Reporte1Field = value;
+                    this.RaisePropertyChanged("Reporte1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Reputacion[] Reputacion {
+            get {
+                return this.ReputacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReputacionField, value) != true)) {
+                    this.ReputacionField = value;
+                    this.RaisePropertyChanged("Reputacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string apodo {
+            get {
+                return this.apodoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.apodoField, value) != true)) {
+                    this.apodoField = value;
+                    this.RaisePropertyChanged("apodo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string contrasenia {
+            get {
+                return this.contraseniaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.contraseniaField, value) != true)) {
+                    this.contraseniaField = value;
+                    this.RaisePropertyChanged("contrasenia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string correoElectronico {
+            get {
+                return this.correoElectronicoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.correoElectronicoField, value) != true)) {
+                    this.correoElectronicoField = value;
+                    this.RaisePropertyChanged("correoElectronico");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idCreador {
+            get {
+                return this.idCreadorField;
+            }
+            set {
+                if ((this.idCreadorField.Equals(value) != true)) {
+                    this.idCreadorField = value;
+                    this.RaisePropertyChanged("idCreador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idJugador {
+            get {
+                return this.idJugadorField;
+            }
+            set {
+                if ((this.idJugadorField.Equals(value) != true)) {
+                    this.idJugadorField = value;
+                    this.RaisePropertyChanged("idJugador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idioma {
+            get {
+                return this.idiomaField;
+            }
+            set {
+                if ((this.idiomaField.Equals(value) != true)) {
+                    this.idiomaField = value;
+                    this.RaisePropertyChanged("idioma");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string pinConfirmacion {
+            get {
+                return this.pinConfirmacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.pinConfirmacionField, value) != true)) {
+                    this.pinConfirmacionField = value;
+                    this.RaisePropertyChanged("pinConfirmacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string preguntaRecuperacion {
+            get {
+                return this.preguntaRecuperacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.preguntaRecuperacionField, value) != true)) {
+                    this.preguntaRecuperacionField = value;
+                    this.RaisePropertyChanged("preguntaRecuperacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string respuestaConfirmacion {
+            get {
+                return this.respuestaConfirmacionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.respuestaConfirmacionField, value) != true)) {
+                    this.respuestaConfirmacionField = value;
+                    this.RaisePropertyChanged("respuestaConfirmacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string status {
+            get {
+                return this.statusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.statusField, value) != true)) {
+                    this.statusField = value;
+                    this.RaisePropertyChanged("status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Administrador", Namespace="http://schemas.datacontract.org/2004/07/DataAccess")]
+    [System.SerializableAttribute()]
+    public partial class Administrador : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador1[] JugadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string apodoAdminField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string contraseniaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string correoElectronicoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idAdministradorField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador1[] Jugador {
+            get {
+                return this.JugadorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JugadorField, value) != true)) {
+                    this.JugadorField = value;
+                    this.RaisePropertyChanged("Jugador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string apodoAdmin {
+            get {
+                return this.apodoAdminField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.apodoAdminField, value) != true)) {
+                    this.apodoAdminField = value;
+                    this.RaisePropertyChanged("apodoAdmin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string contrasenia {
+            get {
+                return this.contraseniaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.contraseniaField, value) != true)) {
+                    this.contraseniaField = value;
+                    this.RaisePropertyChanged("contrasenia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string correoElectronico {
+            get {
+                return this.correoElectronicoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.correoElectronicoField, value) != true)) {
+                    this.correoElectronicoField = value;
+                    this.RaisePropertyChanged("correoElectronico");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idAdministrador {
+            get {
+                return this.idAdministradorField;
+            }
+            set {
+                if ((this.idAdministradorField.Equals(value) != true)) {
+                    this.idAdministradorField = value;
+                    this.RaisePropertyChanged("idAdministrador");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Partida", Namespace="http://schemas.datacontract.org/2004/07/DataAccess")]
+    [System.SerializableAttribute()]
+    public partial class Partida : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador1 JugadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador1 Jugador1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idGanadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idPartidaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idPerdedorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string modoJuegoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.TimeSpan> tiempoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> turnoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador1 Jugador {
+            get {
+                return this.JugadorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JugadorField, value) != true)) {
+                    this.JugadorField = value;
+                    this.RaisePropertyChanged("Jugador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador1 Jugador1 {
+            get {
+                return this.Jugador1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Jugador1Field, value) != true)) {
+                    this.Jugador1Field = value;
+                    this.RaisePropertyChanged("Jugador1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idGanador {
+            get {
+                return this.idGanadorField;
+            }
+            set {
+                if ((this.idGanadorField.Equals(value) != true)) {
+                    this.idGanadorField = value;
+                    this.RaisePropertyChanged("idGanador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idPartida {
+            get {
+                return this.idPartidaField;
+            }
+            set {
+                if ((this.idPartidaField.Equals(value) != true)) {
+                    this.idPartidaField = value;
+                    this.RaisePropertyChanged("idPartida");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idPerdedor {
+            get {
+                return this.idPerdedorField;
+            }
+            set {
+                if ((this.idPerdedorField.Equals(value) != true)) {
+                    this.idPerdedorField = value;
+                    this.RaisePropertyChanged("idPerdedor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string modoJuego {
+            get {
+                return this.modoJuegoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.modoJuegoField, value) != true)) {
+                    this.modoJuegoField = value;
+                    this.RaisePropertyChanged("modoJuego");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.TimeSpan> tiempo {
+            get {
+                return this.tiempoField;
+            }
+            set {
+                if ((this.tiempoField.Equals(value) != true)) {
+                    this.tiempoField = value;
+                    this.RaisePropertyChanged("tiempo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> turno {
+            get {
+                return this.turnoField;
+            }
+            set {
+                if ((this.turnoField.Equals(value) != true)) {
+                    this.turnoField = value;
+                    this.RaisePropertyChanged("turno");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Reporte", Namespace="http://schemas.datacontract.org/2004/07/DataAccess")]
+    [System.SerializableAttribute()]
+    public partial class Reporte : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador1 JugadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador1 Jugador1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionAcusoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idAcusadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idReportadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idReporteField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador1 Jugador {
+            get {
+                return this.JugadorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JugadorField, value) != true)) {
+                    this.JugadorField = value;
+                    this.RaisePropertyChanged("Jugador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador1 Jugador1 {
+            get {
+                return this.Jugador1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Jugador1Field, value) != true)) {
+                    this.Jugador1Field = value;
+                    this.RaisePropertyChanged("Jugador1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcionAcuso {
+            get {
+                return this.descripcionAcusoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionAcusoField, value) != true)) {
+                    this.descripcionAcusoField = value;
+                    this.RaisePropertyChanged("descripcionAcuso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idAcusador {
+            get {
+                return this.idAcusadorField;
+            }
+            set {
+                if ((this.idAcusadorField.Equals(value) != true)) {
+                    this.idAcusadorField = value;
+                    this.RaisePropertyChanged("idAcusador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idReportado {
+            get {
+                return this.idReportadoField;
+            }
+            set {
+                if ((this.idReportadoField.Equals(value) != true)) {
+                    this.idReportadoField = value;
+                    this.RaisePropertyChanged("idReportado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idReporte {
+            get {
+                return this.idReporteField;
+            }
+            set {
+                if ((this.idReporteField.Equals(value) != true)) {
+                    this.idReporteField = value;
+                    this.RaisePropertyChanged("idReporte");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Reputacion", Namespace="http://schemas.datacontract.org/2004/07/DataAccess")]
+    [System.SerializableAttribute()]
+    public partial class Reputacion : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador1 JugadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idDuenioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idReputacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> numeroReportesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> numeroVecesReportadoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador1 Jugador {
+            get {
+                return this.JugadorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.JugadorField, value) != true)) {
+                    this.JugadorField = value;
+                    this.RaisePropertyChanged("Jugador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idDuenio {
+            get {
+                return this.idDuenioField;
+            }
+            set {
+                if ((this.idDuenioField.Equals(value) != true)) {
+                    this.idDuenioField = value;
+                    this.RaisePropertyChanged("idDuenio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idReputacion {
+            get {
+                return this.idReputacionField;
+            }
+            set {
+                if ((this.idReputacionField.Equals(value) != true)) {
+                    this.idReputacionField = value;
+                    this.RaisePropertyChanged("idReputacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> numeroReportes {
+            get {
+                return this.numeroReportesField;
+            }
+            set {
+                if ((this.numeroReportesField.Equals(value) != true)) {
+                    this.numeroReportesField = value;
+                    this.RaisePropertyChanged("numeroReportes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> numeroVecesReportado {
+            get {
+                return this.numeroVecesReportadoField;
+            }
+            set {
+                if ((this.numeroVecesReportadoField.Equals(value) != true)) {
+                    this.numeroVecesReportadoField = value;
+                    this.RaisePropertyChanged("numeroVecesReportado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MatchmakingResult", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
     public enum MatchmakingResult : int {
@@ -284,11 +1242,11 @@ namespace CheckersCliente.MainService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MainService.IRankingManager", CallbackContract=typeof(CheckersCliente.MainService.IRankingManagerCallback))]
     public interface IRankingManager {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingManager/GetRankingData")]
-        void GetRankingData(CheckersCliente.MainService.Jugador interestedPlayer);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingManager/GetRankingCallback")]
+        void GetRankingCallback();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingManager/GetRankingData")]
-        System.Threading.Tasks.Task GetRankingDataAsync(CheckersCliente.MainService.Jugador interestedPlayer);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingManager/GetRankingCallback")]
+        System.Threading.Tasks.Task GetRankingCallbackAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -296,6 +1254,9 @@ namespace CheckersCliente.MainService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingManager/GetRankingResult")]
         void GetRankingResult(CheckersCliente.MainService.RankingResult resultado);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingManager/ReceiveRankingData")]
+        void ReceiveRankingData(CheckersCliente.MainService.Ranking[] rankingList);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -326,12 +1287,12 @@ namespace CheckersCliente.MainService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void GetRankingData(CheckersCliente.MainService.Jugador interestedPlayer) {
-            base.Channel.GetRankingData(interestedPlayer);
+        public void GetRankingCallback() {
+            base.Channel.GetRankingCallback();
         }
         
-        public System.Threading.Tasks.Task GetRankingDataAsync(CheckersCliente.MainService.Jugador interestedPlayer) {
-            return base.Channel.GetRankingDataAsync(interestedPlayer);
+        public System.Threading.Tasks.Task GetRankingCallbackAsync() {
+            return base.Channel.GetRankingCallbackAsync();
         }
     }
     
@@ -409,10 +1370,10 @@ namespace CheckersCliente.MainService {
     public interface IMatchmakingManager {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/EnterMatchmaking")]
-        void EnterMatchmaking(CheckersCliente.MainService.Jugador player);
+        void EnterMatchmaking();
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/EnterMatchmaking")]
-        System.Threading.Tasks.Task EnterMatchmakingAsync(CheckersCliente.MainService.Jugador player);
+        System.Threading.Tasks.Task EnterMatchmakingAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -453,12 +1414,12 @@ namespace CheckersCliente.MainService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void EnterMatchmaking(CheckersCliente.MainService.Jugador player) {
-            base.Channel.EnterMatchmaking(player);
+        public void EnterMatchmaking() {
+            base.Channel.EnterMatchmaking();
         }
         
-        public System.Threading.Tasks.Task EnterMatchmakingAsync(CheckersCliente.MainService.Jugador player) {
-            return base.Channel.EnterMatchmakingAsync(player);
+        public System.Threading.Tasks.Task EnterMatchmakingAsync() {
+            return base.Channel.EnterMatchmakingAsync();
         }
     }
 }

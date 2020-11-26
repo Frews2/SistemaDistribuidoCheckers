@@ -122,7 +122,8 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataAccess" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ILoginManager_Login_InputMessage">
@@ -131,11 +132,14 @@
   <wsdl:message name="ILoginManager_GetLoginResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetLoginResult" />
   </wsdl:message>
-  <wsdl:message name="IRankingManager_GetRankingData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRankingData" />
+  <wsdl:message name="IRankingManager_GetRankingCallback_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingCallback" />
   </wsdl:message>
   <wsdl:message name="IRankingManager_GetRankingResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetRankingResult" />
+  </wsdl:message>
+  <wsdl:message name="IRankingManager_ReceiveRankingData_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveRankingData" />
   </wsdl:message>
   <wsdl:message name="IChatManager_SendText_InputMessage">
     <wsdl:part name="parameters" element="tns:SendText" />
@@ -164,11 +168,14 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRankingManager">
-    <wsdl:operation name="GetRankingData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRankingManager/GetRankingData" message="tns:IRankingManager_GetRankingData_InputMessage" />
+    <wsdl:operation name="GetRankingCallback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRankingManager/GetRankingCallback" message="tns:IRankingManager_GetRankingCallback_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetRankingResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IRankingManager/GetRankingResult" message="tns:IRankingManager_GetRankingResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveRankingData">
+      <wsdl:output wsaw:Action="http://tempuri.org/IRankingManager/ReceiveRankingData" message="tns:IRankingManager_ReceiveRankingData_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChatManager">
@@ -212,14 +219,20 @@
   <wsdl:binding name="NetTcpBinding_IRankingManager" type="tns:IRankingManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IRankingManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="GetRankingData">
-      <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingData" style="document" />
+    <wsdl:operation name="GetRankingCallback">
+      <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingCallback" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="GetRankingResult">
       <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveRankingData">
+      <soap12:operation soapAction="http://tempuri.org/IRankingManager/ReceiveRankingData" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

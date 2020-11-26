@@ -1,18 +1,10 @@
-﻿using CheckersCliente.Managers;
-using System;
-using System.Collections.Generic;
+﻿/*
+ Date: 25/11/2020
+ Author(s): Ricardo Moguel Sanchez
+*/
+using CheckersCliente.MenuPages;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CheckersCliente
 {
@@ -28,18 +20,9 @@ namespace CheckersCliente
             InitializeComponent();
         }
 
-        private void SendMessage(object sender, RoutedEventArgs e)
+        public void RefreshMessageList()
         {
-            Game gameWindow = App.Current.Windows.OfType<Game>().FirstOrDefault();
-
-            string destination = gameWindow.listUsersLoggedIn.SelectedItem as string;
-            ChatManager.SendMessage(destination, message.Text);
-            messageList.Add("Yo: " + message.Text);
-        }
-
-        public void AgregarMensaje(string fuente, string mensaje)
-        {
-            messageList.Add(fuente + ": " + mensaje);
+            refreshChat.Navigate(new GameChat());
         }
     }
 }

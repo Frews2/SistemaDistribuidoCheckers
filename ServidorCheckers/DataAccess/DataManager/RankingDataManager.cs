@@ -2,11 +2,8 @@
  Date: 21/11/2020
  Author(s): Ricardo Moguel Sanchez
 */
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.DataManager
 {
@@ -14,9 +11,9 @@ namespace DataAccess.DataManager
     {
         private readonly JugadoresDBEntities context = new JugadoresDBEntities();
 
-        public List<Ranking> GetRankingList()
+        public List<DataAccess.Ranking> GetRankingList()
         {
-            List<Ranking> playerRankings = null;
+            List<DataAccess.Ranking> playerRankings = null;
 
             playerRankings = context.Ranking.OrderBy(position => position.rank).ToList();
 

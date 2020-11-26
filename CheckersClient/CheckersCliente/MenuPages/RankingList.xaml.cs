@@ -1,12 +1,11 @@
-﻿using CheckersCliente.MainService;
-using System;
+﻿/*
+ Date: 25/11/2020
+ Author(s): Ricardo Moguel Sanchez
+*/
+using CheckersCliente.MainService;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 
 namespace CheckersCliente.MenuPages
 {
@@ -15,12 +14,16 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class RankingList : Page
     {
-        private readonly ObservableCollection<Jugador> players = null;
-        private Jugador selectedPlayer;
 
-        public RankingList()
+        public RankingList(List<Ranking> rankings)
         {
             InitializeComponent();
+            tableOfRankings.ItemsSource = rankings;
+        }
+
+        private void Return(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

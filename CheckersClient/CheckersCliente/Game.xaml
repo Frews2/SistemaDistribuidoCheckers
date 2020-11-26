@@ -12,19 +12,15 @@
             <ColumnDefinition Width="550"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Frame x:Name="refreshChat" x:FieldModifier="public" Grid.Column="1" Source="Login.xaml" Background="AntiqueWhite" NavigationUIVisibility="Hidden" Margin="0,75,0,0"/>
+        
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Label Content="{x:Static p:Resources.User}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ListBox x:Name="listUsersLoggedIn" x:FieldModifier="public" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="200"/>
+            <ListBox x:Name="listUsersLoggedIn" x:FieldModifier="public" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="200"/>
         </StackPanel>
         <StackPanel>
             <ListView x:Name="messages" Background="DarkSalmon" HorizontalAlignment="Right" HorizontalContentAlignment="Left">
             </ListView>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <Label Content="{x:Static p:Resources.Message}" Margin="10"/>
-            <TextBox Width="200" Margin="10" Name="message"/>
-            <Button Content="{x:Static p:Resources.Send}" Margin="10" Width="50" Click="SendMessage"/>
         </StackPanel>
     </Grid>
 </Window>

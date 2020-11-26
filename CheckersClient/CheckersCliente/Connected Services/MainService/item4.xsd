@@ -2,7 +2,8 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio" />
   <xs:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
-  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataAccess" />
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="Login">
     <xs:complexType>
       <xs:sequence>
@@ -17,17 +18,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetRankingData">
+  <xs:element name="GetRankingCallback">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="interestedPlayer" nillable="true" type="q3:Jugador" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRankingResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="resultado" type="q4:RankingResult" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="resultado" type="q3:RankingResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveRankingData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DataAccess" minOccurs="0" name="rankingList" nillable="true" type="q4:ArrayOfRanking" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -54,22 +60,20 @@
   </xs:element>
   <xs:element name="EnterMatchmaking">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="player" nillable="true" type="q5:Jugador" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetMatchmakingResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q6:MatchmakingResult" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q5:MatchmakingResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUsersOnline">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="connectedUsers" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="connectedUsers" nillable="true" type="q6:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

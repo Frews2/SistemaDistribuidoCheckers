@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckersCliente.Managers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,12 +33,12 @@ namespace CheckersCliente.MenuPages
 
         private void DisplayRanking(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RankingList());
+            RankingManager.AddRankingPetitionCallback();
         }
 
         private void EnterGameLobby(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Game());
+            MatchmakingManager.EnterMatchmaking();
         }
     }
 }

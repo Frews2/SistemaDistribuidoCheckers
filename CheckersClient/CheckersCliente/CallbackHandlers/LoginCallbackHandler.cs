@@ -14,8 +14,6 @@ namespace CheckersCliente
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class LoginCallbackHandler : ILoginManagerCallback
     {
-        ObservableCollection<string> misUsuarios = new ObservableCollection<string>();
-
         public void GetLoginResult(LoginResult resultado)
         {
             if (resultado == LoginResult.ExisteJugador)
@@ -35,7 +33,6 @@ namespace CheckersCliente
             {
                 MessageBox.Show("Verifica tu contraseña");
             }
-        }
-            
+        }       
     }
 }

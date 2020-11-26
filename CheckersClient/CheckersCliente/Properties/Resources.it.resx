@@ -120,6 +120,15 @@
   <data name="E-mail" xml:space="preserve">
     <value>E-mail</value>
   </data>
+  <data name="GamesLost" xml:space="preserve">
+    <value>Partite Perse</value>
+  </data>
+  <data name="GamesPlayed" xml:space="preserve">
+    <value>Partite Giocate</value>
+  </data>
+  <data name="GamesWom" xml:space="preserve">
+    <value>Partite Vinti</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Accesso</value>
   </data>
@@ -138,8 +147,20 @@
   <data name="Play" xml:space="preserve">
     <value>Giocare</value>
   </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Posizione</value>
+  </data>
   <data name="Ranking" xml:space="preserve">
     <value>Classifica</value>
+  </data>
+  <data name="Rankings" xml:space="preserve">
+    <value>Classifiche</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Data di Registrazione</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Ritornare</value>
   </data>
   <data name="Rules" xml:space="preserve">
     <value>Regole</value>

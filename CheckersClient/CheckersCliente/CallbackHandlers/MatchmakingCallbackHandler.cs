@@ -1,23 +1,22 @@
-﻿using CheckersCliente.MainService;
-using CheckersCliente.Managers;
-using System;
-using System.Collections.Generic;
+﻿/*
+ Date: 25/11/2020
+ Author(s): Ricardo Moguel Sanchez
+*/
+using CheckersCliente.MainService;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CheckersCliente.CallbackHandlers
 {
-    class MatchmakingHandler : IMatchmakingManagerCallback
+    class MatchmakingCallbackHandler : IMatchmakingManagerCallback
     {
         public void GetMatchmakingResult(MatchmakingResult result)
         {
             if (result == MatchmakingResult.MATCH_FOUND)
             {
-                Menu matchedGame = App.Current.Windows.OfType<Menu>().FirstOrDefault();
-                ChatManager.AddMessageCallback();
+                Game gameWindow = new Game();
+                gameWindow.Show();
 
             }
             else if (result == MatchmakingResult.MATCH_NOT_FOUND)

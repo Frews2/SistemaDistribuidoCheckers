@@ -11,7 +11,7 @@ namespace Contratos
     public interface IMatchmakingManager
     {
         [OperationContract(IsOneWay = true)]
-        void EnterMatchmaking(Jugador player);
+        void EnterMatchmaking();
     }
 
     [ServiceContract]

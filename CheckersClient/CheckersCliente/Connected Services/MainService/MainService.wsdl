@@ -29,12 +29,100 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IRankingManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChatManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IMatchmakingManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ILoginManager_Login_InputMessage">
@@ -43,12 +131,66 @@
   <wsdl:message name="ILoginManager_GetLoginResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetLoginResult" />
   </wsdl:message>
+  <wsdl:message name="IRankingManager_GetRankingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingData" />
+  </wsdl:message>
+  <wsdl:message name="IRankingManager_GetRankingResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingResult" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_SendText_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendText" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_GetChatCallback_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChatCallback" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_ReceiveText_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveText" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_EnterMatchmaking_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnterMatchmaking" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_GetMatchmakingResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchmakingResult" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_GetUsersOnline_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersOnline" />
+  </wsdl:message>
   <wsdl:portType name="ILoginManager">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginManager/Login" message="tns:ILoginManager_Login_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginManager/GetLoginResult" message="tns:ILoginManager_GetLoginResult_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRankingManager">
+    <wsdl:operation name="GetRankingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRankingManager/GetRankingData" message="tns:IRankingManager_GetRankingData_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRankingResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IRankingManager/GetRankingResult" message="tns:IRankingManager_GetRankingResult_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatManager">
+    <wsdl:operation name="SendText">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/SendText" message="tns:IChatManager_SendText_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChatCallback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/GetChatCallback" message="tns:IChatManager_GetChatCallback_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveText">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/ReceiveText" message="tns:IChatManager_ReceiveText_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMatchmakingManager">
+    <wsdl:operation name="EnterMatchmaking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/EnterMatchmaking" message="tns:IMatchmakingManager_EnterMatchmaking_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchmakingResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult" message="tns:IMatchmakingManager_GetMatchmakingResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOnline">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/GetUsersOnline" message="tns:IMatchmakingManager_GetUsersOnline_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ILoginManager" type="tns:ILoginManager">
@@ -67,13 +209,100 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IRankingManager" type="tns:IRankingManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IRankingManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetRankingData">
+      <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetRankingResult">
+      <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChatManager" type="tns:IChatManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChatManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendText">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/SendText" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetChatCallback">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/GetChatCallback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveText">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/ReceiveText" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IMatchmakingManager" type="tns:IMatchmakingManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IMatchmakingManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="EnterMatchmaking">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/EnterMatchmaking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchmakingResult">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOnline">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/GetUsersOnline" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="MainService">
     <wsdl:port name="NetTcpBinding_ILoginManager" binding="tns:NetTcpBinding_ILoginManager">
       <soap12:address location="net.tcp://localhost:8090/Contratos" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IRankingManager" binding="tns:NetTcpBinding_IRankingManager">
+      <soap12:address location="net.tcp://localhost:8090/Contratos" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IChatManager" binding="tns:NetTcpBinding_IChatManager">
+      <soap12:address location="net.tcp://localhost:8090/Contratos" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IMatchmakingManager" binding="tns:NetTcpBinding_IMatchmakingManager">
+      <soap12:address location="net.tcp://localhost:8090/Contratos" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

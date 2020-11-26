@@ -126,6 +126,9 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
   <data name="Nickname" xml:space="preserve">
     <value>Apodo</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="Rule" xml:space="preserve">
     <value>Reglas</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Enviar</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Usuario</value>

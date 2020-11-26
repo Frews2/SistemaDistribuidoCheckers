@@ -29,5 +29,15 @@ namespace CheckersCliente.MenuPages
         {
             NavigationService.Navigate(new UserConfiguration());
         }
+
+        private void DisplayRanking(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RankingList());
+        }
+
+        private void EnterGameLobby(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Game());
+        }
     }
 }

@@ -36,6 +36,6 @@ namespace CheckersCliente
                 MessageBox.Show("Verifica tu contraseña");
             }
         }
-
+            
     }
 }

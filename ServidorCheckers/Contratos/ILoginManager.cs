@@ -21,5 +21,4 @@ namespace Contratos
         [OperationContract(IsOneWay = true)]
         void GetLoginResult(LoginResult resultado);
     }
-
 }

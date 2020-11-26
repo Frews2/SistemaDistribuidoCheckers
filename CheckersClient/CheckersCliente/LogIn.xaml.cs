@@ -20,6 +20,8 @@ namespace CheckersCliente
     /// </summary>
     public partial class LogIn : Window
     {
+        List<string> listUsersLoggedIn;
+
         public LogIn()
         {
             InitializeComponent();

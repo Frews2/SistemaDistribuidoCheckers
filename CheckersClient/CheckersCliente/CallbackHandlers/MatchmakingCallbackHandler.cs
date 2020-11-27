@@ -31,7 +31,7 @@ namespace CheckersCliente.CallbackHandlers
 
         public void GetUsersOnline(string[] connectedUsers)
         {
-            Game gameWindow = App.Current.Windows.OfType<Game>().FirstOrDefault();
+            Game gameWindow = new Game();
 
             ObservableCollection<string> usersLoggedIn = new ObservableCollection<string>(connectedUsers);
 

@@ -5,6 +5,7 @@
 using CheckersCliente.CallbackHandlers;
 using CheckersCliente.MainService;
 using System.ServiceModel;
+using System.Windows;
 
 namespace CheckersCliente.Managers
 {
@@ -15,7 +16,14 @@ namespace CheckersCliente.Managers
 
         public static void AddRankingPetitionCallback()
         {
-            server.GetRankingCallback();
+            try
+            {
+                server.GetRankingCallback();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+            }
         }
     }
 }

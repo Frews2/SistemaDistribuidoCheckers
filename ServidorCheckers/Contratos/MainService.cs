@@ -72,6 +72,7 @@ namespace Contratos
         public void GetRankingCallback()
         {
             interestedPlayers.Add(currentPlayer.Apodo, RankingCallback);
+            SendRankingData();
         }
 
         public void GetRankingData()

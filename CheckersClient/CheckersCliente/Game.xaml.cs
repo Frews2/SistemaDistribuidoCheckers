@@ -5,6 +5,7 @@
 using CheckersCliente.MenuPages;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace CheckersCliente
 {
@@ -23,6 +24,11 @@ namespace CheckersCliente
         public void RefreshMessageList()
         {
             refreshChat.Navigate(new GameChat());
+        }
+
+        private void Return(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

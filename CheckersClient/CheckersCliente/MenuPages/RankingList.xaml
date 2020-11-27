@@ -11,11 +11,11 @@
       Title="RankingList">
 
    <ScrollViewer >
-        <StackPanel Background="MediumVioletRed" Height="800">
+        <StackPanel Background="Red" Height="887">
             <Label Content="{x:Static p:Resources.Rankings}" Margin="320,30,320,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style"/>
 
             <StackPanel Margin="50">
-                <DataGrid x:Name="tableOfRankings" HorizontalAlignment="Center" Height="445"  VerticalAlignment="Top" Width="940" 
+                <DataGrid x:Name="tableOfRankings" HorizontalAlignment="Center" Height="520"  VerticalAlignment="Top" Width="1022" 
                           AutoGenerateColumns="False" Background="#FFFAFAFA" CanUserAddRows="false" 
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="55" AlternatingRowBackground="AliceBlue">
                     <DataGrid.Columns>
@@ -38,7 +38,7 @@
                         </DataGridTemplateColumn>
 
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.Nickname}"  Width ="250" CanUserResize="False" 
+                        <DataGridTemplateColumn Header="{x:Static p:Resources.Nickname}"  Width ="150" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                             <DataGridTemplateColumn.HeaderStyle>
                                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -55,7 +55,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.RegistrationDate}"  Width ="250" CanUserResize="False" 
+                        <DataGridTemplateColumn Header="{x:Static p:Resources.RegistrationDate}"  Width ="225" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                             <DataGridTemplateColumn.HeaderStyle>
                                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -72,7 +72,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesPlayed}"  Width ="250" CanUserResize="False" 
+                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesPlayed}"  Width ="200" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                             <DataGridTemplateColumn.HeaderStyle>
                                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -89,7 +89,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesWon}"  Width ="250" CanUserResize="False" 
+                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesWon}"  Width ="150" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                             <DataGridTemplateColumn.HeaderStyle>
                                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -106,7 +106,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesLost}"  Width ="250" CanUserResize="False" 
+                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesLost}"  Width ="150" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                             <DataGridTemplateColumn.HeaderStyle>
                                 <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -126,7 +126,7 @@
                 </DataGrid>
             </StackPanel>
 
-            <Button Content="{x:Static p:Resources.Return}" Margin="260,420,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="Return"/>
+            <Button Content="{x:Static p:Resources.Return}" Margin="260,20,260,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="Return" Width="380"/>
         </StackPanel>
    </ScrollViewer>
 </Page>

@@ -12,7 +12,7 @@ namespace CheckersCliente.CallbackHandlers
     {
         public void ReceiveText(string source, string message)
         {
-            Game gameWindow = App.Current.Windows.OfType<Game>().FirstOrDefault();
+            GameChat gameWindow = App.Current.Windows.OfType<GameChat>().FirstOrDefault();
             (gameWindow.refreshChat.Content as GameChat).AddMessageToChat(source,message);
         }
     }

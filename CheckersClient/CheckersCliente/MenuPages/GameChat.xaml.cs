@@ -17,19 +17,19 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class GameChat : Page
     {
-        ObservableCollection<string> messageList = new ObservableCollection<string>();
+
+        private ObservableCollection<string> messageList = new ObservableCollection<string>();
 
         public GameChat()
         {
             InitializeComponent();
             messages.ItemsSource = messageList;
         }
-
+        
         private void SendMessage(object sender, RoutedEventArgs e)
         {
-            Game gameWindow = App.Current.Windows.OfType<Game>().FirstOrDefault();
 
-            string destination = gameWindow.listUsersLoggedIn.SelectedItem as string;
+            string destination = listUsersLoggedIn.SelectedItem as string;
             ChatManager.SendMessage(destination, message.Text);
             messageList.Add("Yo: " + message.Text);
         }
@@ -37,6 +37,16 @@ namespace CheckersCliente.MenuPages
         public void AddMessageToChat(string fuente, string mensaje)
         {
             messageList.Add(fuente + ": " + mensaje);
+        }
+
+        public void RefreshMessageList()
+        {
+            refreshChat.Navigate(new GameChat());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

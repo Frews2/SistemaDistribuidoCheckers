@@ -52,7 +52,7 @@ namespace Contratos
                 result = LoginResult.NoExisteJugador;
             }
 
-            Callback.GetLoginResult(result);
+            Callback.GetLoginResult(result, player);
         }
 
         ILoginManagerCallback Callback

@@ -14,21 +14,9 @@ namespace CheckersCliente
     /// </summary>
     public partial class Game : NavigationWindow
     {
-        ObservableCollection<string> messageList = new ObservableCollection<string>();
-
         public Game()
         {
             InitializeComponent();
-        }
-
-        public void RefreshMessageList()
-        {
-            refreshChat.Navigate(new GameChat());
-        }
-
-        private void Return(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        } 
     }
 }

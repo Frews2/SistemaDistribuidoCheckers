@@ -14,13 +14,13 @@ namespace CheckersCliente
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class LoginCallbackHandler : ILoginManagerCallback
     {
-        public void GetLoginResult(LoginResult resultado)
+        public void GetLoginResult(LoginResult resultado, Jugador player)
         {
             if (resultado == LoginResult.ExisteJugador)
             {
                 
                 LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
-                Menu menu = new Menu(logIn.currentPlayer);
+                Menu menu = new Menu(player);
                 menu.Show();
                 logIn.Close();
 

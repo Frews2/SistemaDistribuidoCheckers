@@ -1,4 +1,4 @@
-﻿<Window x:Class="CheckersCliente.LogIn"
+﻿<NavigationWindow x:Class="CheckersCliente.LogIn"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,20 +7,9 @@
         xmlns:local="clr-namespace:CheckersCliente"
         mc:Ignorable="d"
         Title="LogIn" Height="800" Width="800"
-        ResizeMode="NoResize">
-    <Grid Margin="-12,-8,-6.4,-5.6">
-
-        <Grid.Background>
-            <ImageBrush ImageSource="Images/LogIn.jpg"/>
-        </Grid.Background>
-        <TextBox x:Name="Nickname" HorizontalAlignment="Left" Height="35" Margin="278,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" />
-        <Label Content="{x:Static p:Resources.Nickname}" HorizontalAlignment="Left" Margin="278,354,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" Width="257"/>
-        <Label Content="{x:Static p:Resources.Password}" Margin="278,460,259,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" />
-        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="35" Margin="278,509,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" />
-        <Label Content="{x:Static p:Resources.LogIn}" HorizontalAlignment="Left" Margin="278,286,0,0" VerticalAlignment="Top" Height="63" Width="257" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
-        <Button Content="{x:Static p:Resources.LogIn}" HorizontalAlignment="Left" Margin="328,562,0,0" VerticalAlignment="Top" Width="151" Height="30" BorderBrush="#FF230101" Foreground="Black" FontWeight="Bold" Background="#FFFAFAFA" FontStyle="Italic" FontSize="16" Click="LogInClick"/>
+        ResizeMode="NoResize" ShowsNavigationUI="False"
+        Source="LogInPages\LogInPage.xaml">
         
-    </Grid>
-
-</Window>
+    
+</NavigationWindow>
 

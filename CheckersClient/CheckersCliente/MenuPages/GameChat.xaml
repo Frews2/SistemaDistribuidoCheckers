@@ -10,12 +10,25 @@
       Title="GameChat">
 
     <Grid Background="#FFED1C1C">
-        <StackPanel>
-            <ListView x:Name="messages" Background="DarkSalmon" HorizontalAlignment="Right" HorizontalContentAlignment="Left">
-            </ListView>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="550"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Content="{x:Static p:Resources.Return}" Margin="13,382,377,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="Button_Click"/>
+
+            <Frame x:Name="refreshChat" x:FieldModifier="public" Grid.Column="1" Source="Login.xaml" Background="AntiqueWhite" NavigationUIVisibility="Hidden" Margin="0,75,0,0"/>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Label Content="{x:Static p:Resources.User}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ListBox x:Name="listUsersLoggedIn" x:FieldModifier="public" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="200"/>
+            </StackPanel>
+            <StackPanel>
+                <ListView x:Name="messages" Background="DarkSalmon" HorizontalAlignment="Right" HorizontalContentAlignment="Left">
+                </ListView>
+            </StackPanel>
+            
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,13">
             <Label Content="{x:Static p:Resources.Message}" Margin="10"/>
             <TextBox Width="200" Margin="10" Name="message"/>
             <Button Content="{x:Static p:Resources.Send}" Margin="10" Width="50" Click="SendMessage"/>

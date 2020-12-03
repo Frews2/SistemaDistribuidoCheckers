@@ -6,24 +6,7 @@
         xmlns:local="clr-namespace:CheckersCliente"
         xmlns:p="clr-namespace:CheckersCliente.Properties"
         mc:Ignorable="d"
-        Title="Game" Height="450" Width="800">
-    <Grid Background="OrangeRed">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="550"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <Button Content="{x:Static p:Resources.Return}" Margin="380,365,10,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="Return"/>
-
-        <Frame x:Name="refreshChat" x:FieldModifier="public" Grid.Column="1" Source="Login.xaml" Background="AntiqueWhite" NavigationUIVisibility="Hidden" Margin="0,75,0,0"/>
-
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <Label Content="{x:Static p:Resources.User}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ListBox x:Name="listUsersLoggedIn" x:FieldModifier="public" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="200"/>
-        </StackPanel>
-        <StackPanel>
-            <ListView x:Name="messages" Background="DarkSalmon" HorizontalAlignment="Right" HorizontalContentAlignment="Left">
-            </ListView>
-        </StackPanel>
-    </Grid>
+        Title="Game" Height="450" Width="800"
+        ResizeMode="NoResize" ShowsNavigationUI="False"
+        Source="MenuPages\GameChat.xaml">
 </NavigationWindow>

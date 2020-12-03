@@ -1198,7 +1198,7 @@ namespace CheckersCliente.MainService {
     public interface ILoginManagerCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoginManager/GetLoginResult")]
-        void GetLoginResult(CheckersCliente.MainService.LoginResult resultado);
+        void GetLoginResult(CheckersCliente.MainService.LoginResult resultado, CheckersCliente.MainService.Jugador player);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

@@ -3,6 +3,7 @@
  Author(s): Ricardo Moguel Sanchez
 */
 using CheckersCliente.MainService;
+using CheckersCliente.MenuPages;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -38,7 +39,7 @@ namespace CheckersCliente.CallbackHandlers
 
         public void GetUsersOnline(string[] connectedUsers)
         {
-            Game gameWindow = new Game();
+            GameChat gameWindow = new GameChat();
 
             ObservableCollection<string> usersLoggedIn = new ObservableCollection<string>(connectedUsers);
 

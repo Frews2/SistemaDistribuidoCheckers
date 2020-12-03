@@ -19,6 +19,6 @@ namespace Contratos
     public interface ILoginManagerCallback
     {
         [OperationContract(IsOneWay = true)]
-        void GetLoginResult(LoginResult resultado);
+        void GetLoginResult(LoginResult resultado,Dominio.Jugador player);
     }
 }

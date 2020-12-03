@@ -16,6 +16,7 @@ namespace Dominio
         public string RespuestaConfirmacion { get; set; }
         public string PreguntaRecuperacion { get; set; }
         public string PinConfirmacion { get; set; }
+        public int IdLenguaje { get; set; }
         public int IdCreador { get; set; }
     }
 }

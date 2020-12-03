@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    Date: 23/11/2020
+    Author(s): César Sergio Martinez Palacios
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

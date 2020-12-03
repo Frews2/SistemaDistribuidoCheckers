@@ -1,0 +1,37 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CheckersCliente.LogInPages"
+      xmlns:Properties="clr-namespace:CheckersCliente.Properties" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      x:Class="CheckersCliente.LogInPages.FinalizeRegister"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="800"
+      Title="FinalizeRegister">
+
+    <Grid>
+
+        <Grid >
+
+            <Grid.Background>
+                <ImageBrush ImageSource="D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersBackground.jpg"/>
+            </Grid.Background>
+
+            <Button x:Name="VerifyButton" Content="{x:Static Properties:Resources.VerifyAccount}" Margin="173,423,172,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="64" FontSize="24" FontStyle="Italic" IsEnabled="False" Click="VerifyAccount" />
+            <Button x:Name="CancelButton" Content="{x:Static Properties:Resources.Cancel}" Margin="280,699,280,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White"  FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic" Click="CancelClick"/>
+            <Button x:Name="ResendButton" Content="{x:Static Properties:Resources.ResendE_mail}" Margin="280,612,280,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic" IsEnabled="False" Click="ReSendMail"/>
+
+            <TextBlock Text="{x:Static Properties:Resources.VerifyAccount}" Margin="10,48,0,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock Text="PIN" Margin="80,222,450,0" VerticalAlignment="Top" Height="55" FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock Text="{x:Static Properties:Resources.WaitMessage}" x:Name="CountdownText" Margin="141,539,136,0" VerticalAlignment="Top" Height="23" FontWeight="Bold" FontSize="16" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock x:Name="CountdownNumber"  Margin="365,567,370,0" VerticalAlignment="Top" Height="23" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+
+            <TextBox x:Name="PINbox" HorizontalAlignment="Left" Height="50" Margin="365,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" FontSize="20" MaxLength="5" TextCompositionManager.PreviewTextInput="PINboxPreviewTextInput" TextChanged="PINboxTextChanged"/>
+
+
+        </Grid>
+
+
+    </Grid>
+</Page>

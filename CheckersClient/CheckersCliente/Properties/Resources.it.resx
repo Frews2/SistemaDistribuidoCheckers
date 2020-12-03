@@ -117,8 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerQuestion" xml:space="preserve">
+    <value>Rispondere</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Modifica della password</value>
+  </data>
+  <data name="ConfirmationQuestion" xml:space="preserve">
+    <value>Domanda di conferma</value>
+  </data>
   <data name="E-mail" xml:space="preserve">
     <value>E-mail</value>
+  </data>
+  <data name="EnterMail" xml:space="preserve">
+    <value>Inserisci il tuo indirizzo email</value>
+  </data>
+  <data name="EnterNickname" xml:space="preserve">
+    <value>Inserisci il tuo soprannome</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Hai dimenticato la password?</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Linguaggio</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Accesso</value>
@@ -126,8 +150,14 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="MinimunLength" xml:space="preserve">
+    <value>Una o più celle non contengono elementi minimi sufficienti</value>
+  </data>
   <data name="Nickname" xml:space="preserve">
     <value>Soprannome</value>
+  </data>
+  <data name="NicknameInstructions" xml:space="preserve">
+    <value>Inserisci il tuo nickname per ricevere un pin di conferma sulla tua posta collegata e cambiare la password</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Parola d'ordine</value>
@@ -138,10 +168,25 @@
   <data name="Ranking" xml:space="preserve">
     <value>Classifica</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrare l'account</value>
+  </data>
+  <data name="ResendE-mail" xml:space="preserve">
+    <value>Rinvia l'e-mail</value>
+  </data>
   <data name="Rules" xml:space="preserve">
     <value>Regole</value>
   </data>
-  <data name="Usuario" xml:space="preserve">
+  <data name="SendMail" xml:space="preserve">
+    <value>Inviare una mail</value>
+  </data>
+  <data name="User" xml:space="preserve">
     <value>Utente</value>
+  </data>
+  <data name="VerifyAccount" xml:space="preserve">
+    <value>Verifica account</value>
+  </data>
+  <data name="WaitMessage" xml:space="preserve">
+    <value>Attendi il termine del timer per inviare nuovamente la posta</value>
   </data>
 </root>

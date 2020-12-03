@@ -117,8 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerQuestion" xml:space="preserve">
+    <value>Respuesta</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambio de contraseña</value>
+  </data>
+  <data name="ConfirmationQuestion" xml:space="preserve">
+    <value>Pregunta de confirmación</value>
+  </data>
   <data name="E-mail" xml:space="preserve">
     <value>Correo</value>
+  </data>
+  <data name="EnterMail" xml:space="preserve">
+    <value>Introduce tu correo</value>
+  </data>
+  <data name="EnterNickname" xml:space="preserve">
+    <value>Introduce tu apodo</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>¿Olvido su contraseña?</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Lenguaje</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Inicio</value>
@@ -126,8 +150,14 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="MinimunLength" xml:space="preserve">
+    <value>Una o mas casillas no contienen los elementos minimos suficientes</value>
+  </data>
   <data name="Nickname" xml:space="preserve">
     <value>Apodo</value>
+  </data>
+  <data name="NicknameInstructions" xml:space="preserve">
+    <value>Ingrese su apodo para recibir un pin de confirmación en su correo vinculado y cambiar su contraseña</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
@@ -138,10 +168,25 @@
   <data name="Ranking" xml:space="preserve">
     <value>Clasificacion</value>
   </data>
-  <data name="Rule" xml:space="preserve">
+  <data name="Register" xml:space="preserve">
+    <value>Registrar nueva cuenta</value>
+  </data>
+  <data name="ResendE-mail" xml:space="preserve">
+    <value>Reenviar correo</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
     <value>Reglas</value>
+  </data>
+  <data name="SendMail" xml:space="preserve">
+    <value>Enviar correo</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Usuario</value>
+  </data>
+  <data name="VerifyAccount" xml:space="preserve">
+    <value>Verificar cuenta</value>
+  </data>
+  <data name="WaitMessage" xml:space="preserve">
+    <value>Espere hasta que termine el temporizador para reenviar el correo</value>
   </data>
 </root>

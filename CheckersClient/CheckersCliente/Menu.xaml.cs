@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+    Date: 23/11/2020
+    Author(s): César Sergio Martinez Palacios
+*/
+using CheckersCliente.MainService;
+using CheckersCliente.MenuPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +26,10 @@ namespace CheckersCliente
     /// </summary>
     public partial class Menu : NavigationWindow
     {
-        public Menu()
+        public Menu(Jugador jugadorAcual)
         {
             InitializeComponent();
+            NavigationService.Navigate(new PrincipalMenu(jugadorAcual));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckersCliente.MainService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class PrincipalMenu : Page
     {
-        public PrincipalMenu()
+        public PrincipalMenu(Jugador jugadorActual)
         {
             InitializeComponent();
+            userBox.Text = jugadorActual.Apodo;
         }
 
         private void UserConfiguration(object sender, RoutedEventArgs e)

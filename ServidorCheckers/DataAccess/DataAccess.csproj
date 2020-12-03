@@ -53,6 +53,7 @@
     <Compile Include="Administrador.cs">
       <DependentUpon>JugadoresDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataManager\HashManager.cs" />
     <Compile Include="DataManager\JugadorDataManager.cs" />
     <Compile Include="Jugador.cs">
       <DependentUpon>JugadoresDB.tt</DependentUpon>

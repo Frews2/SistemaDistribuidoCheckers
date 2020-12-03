@@ -38,6 +38,9 @@ namespace CheckersCliente.MainService {
         private int IdJugadorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdLenguajeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PinConfirmacionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -125,6 +128,19 @@ namespace CheckersCliente.MainService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdLenguaje {
+            get {
+                return this.IdLenguajeField;
+            }
+            set {
+                if ((this.IdLenguajeField.Equals(value) != true)) {
+                    this.IdLenguajeField = value;
+                    this.RaisePropertyChanged("IdLenguaje");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string PinConfirmacion {
             get {
                 return this.PinConfirmacionField;
@@ -197,61 +213,157 @@ namespace CheckersCliente.MainService {
         NoExisteJugador = 2,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ExisteJugador = 3,
+        ExisteJugadorVerificado = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ExisteJugadorNoVerificado = 4,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SaveResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum SaveResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        JugadorGuardado = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NicknameExistente = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CorreoExistente = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ErrorGuardado = 4,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VerificationResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum VerificationResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PinIncorrecto = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NoExisteJugador = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        VerificacionExistosa = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MailResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum MailResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CorreoEnviado = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ErrorEnvio = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MainService.ILoginManager", CallbackContract=typeof(CheckersCliente.MainService.ILoginManagerCallback))]
-    public interface ILoginManager {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MainService.IPlayerManager", CallbackContract=typeof(CheckersCliente.MainService.IPlayerManagerCallback))]
+    public interface IPlayerManager {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoginManager/Login")]
-        void Login(CheckersCliente.MainService.Jugador jugador);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/Login")]
+        void Login(CheckersCliente.MainService.Jugador player);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoginManager/Login")]
-        System.Threading.Tasks.Task LoginAsync(CheckersCliente.MainService.Jugador jugador);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/Login")]
+        System.Threading.Tasks.Task LoginAsync(CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SavePlayer")]
+        void SavePlayer(CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SavePlayer")]
+        System.Threading.Tasks.Task SavePlayerAsync(CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/VerifyPlayer")]
+        void VerifyPlayer(CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/VerifyPlayer")]
+        System.Threading.Tasks.Task VerifyPlayerAsync(CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SendMail")]
+        void SendMail(CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SendMail")]
+        System.Threading.Tasks.Task SendMailAsync(CheckersCliente.MainService.Jugador player);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ILoginManagerCallback {
+    public interface IPlayerManagerCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoginManager/GetLoginResult")]
-        void GetLoginResult(CheckersCliente.MainService.LoginResult resultado);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetLoginResult")]
+        void GetLoginResult(CheckersCliente.MainService.LoginResult resultadoLogin, CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetSaveResult")]
+        void GetSaveResult(CheckersCliente.MainService.SaveResult resultadoGuardado, CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetVerifyResult")]
+        void GetVerifyResult(CheckersCliente.MainService.VerificationResult resultadoVerificacion);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SendMailResult")]
+        void SendMailResult(CheckersCliente.MainService.MailResult resultadoCorreo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ILoginManagerChannel : CheckersCliente.MainService.ILoginManager, System.ServiceModel.IClientChannel {
+    public interface IPlayerManagerChannel : CheckersCliente.MainService.IPlayerManager, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LoginManagerClient : System.ServiceModel.DuplexClientBase<CheckersCliente.MainService.ILoginManager>, CheckersCliente.MainService.ILoginManager {
+    public partial class PlayerManagerClient : System.ServiceModel.DuplexClientBase<CheckersCliente.MainService.IPlayerManager>, CheckersCliente.MainService.IPlayerManager {
         
-        public LoginManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+        public PlayerManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
         }
         
-        public LoginManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+        public PlayerManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
                 base(callbackInstance, endpointConfigurationName) {
         }
         
-        public LoginManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+        public PlayerManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public LoginManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PlayerManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public LoginManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PlayerManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void Login(CheckersCliente.MainService.Jugador jugador) {
-            base.Channel.Login(jugador);
+        public void Login(CheckersCliente.MainService.Jugador player) {
+            base.Channel.Login(player);
         }
         
-        public System.Threading.Tasks.Task LoginAsync(CheckersCliente.MainService.Jugador jugador) {
-            return base.Channel.LoginAsync(jugador);
+        public System.Threading.Tasks.Task LoginAsync(CheckersCliente.MainService.Jugador player) {
+            return base.Channel.LoginAsync(player);
+        }
+        
+        public void SavePlayer(CheckersCliente.MainService.Jugador player) {
+            base.Channel.SavePlayer(player);
+        }
+        
+        public System.Threading.Tasks.Task SavePlayerAsync(CheckersCliente.MainService.Jugador player) {
+            return base.Channel.SavePlayerAsync(player);
+        }
+        
+        public void VerifyPlayer(CheckersCliente.MainService.Jugador player) {
+            base.Channel.VerifyPlayer(player);
+        }
+        
+        public System.Threading.Tasks.Task VerifyPlayerAsync(CheckersCliente.MainService.Jugador player) {
+            return base.Channel.VerifyPlayerAsync(player);
+        }
+        
+        public void SendMail(CheckersCliente.MainService.Jugador player) {
+            base.Channel.SendMail(player);
+        }
+        
+        public System.Threading.Tasks.Task SendMailAsync(CheckersCliente.MainService.Jugador player) {
+            return base.Channel.SendMailAsync(player);
         }
     }
 }

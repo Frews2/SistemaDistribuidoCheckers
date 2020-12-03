@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contratos
+namespace Dominio
 {
-    public enum LoginResult
+    public enum  StatusJugador
     {
-        PasswordIncorrecto = 1,
-        NoExisteJugador = 2,
-        ExisteJugador = 3
     }
 }

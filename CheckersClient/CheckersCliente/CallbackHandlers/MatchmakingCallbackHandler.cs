@@ -17,11 +17,18 @@ namespace CheckersCliente.CallbackHandlers
             {
                 Game gameWindow = new Game();
                 gameWindow.Show();
+                Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                menu.Close();
 
             }
             else if (result == MatchmakingResult.MATCH_NOT_FOUND)
             {
-                MessageBox.Show("Espere mientras se encuentra una partida");
+                // MessageBox.Show("Espere mientras se encuentra una partida");
+                Game gameWindow = new Game();
+                gameWindow.Show();
+                Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                menu.Close();
+                
             }
             else
             {

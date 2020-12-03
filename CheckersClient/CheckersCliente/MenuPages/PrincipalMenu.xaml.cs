@@ -1,4 +1,5 @@
-﻿using CheckersCliente.Managers;
+﻿using CheckersCliente.MainService;
+using CheckersCliente.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,12 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class PrincipalMenu : Page
     {
-        public PrincipalMenu()
+        private Jugador currentPlayer;
+
+        public PrincipalMenu(Jugador player)
         {
             InitializeComponent();
+            currentPlayer = player;
         }
 
         private void UserConfiguration(object sender, RoutedEventArgs e)
@@ -38,7 +42,7 @@ namespace CheckersCliente.MenuPages
 
         private void EnterGameLobby(object sender, RoutedEventArgs e)
         {
-            MatchmakingManager.EnterMatchmaking();
+            MatchmakingManager.EnterMatchmaking(currentPlayer);
         }
     }
 }

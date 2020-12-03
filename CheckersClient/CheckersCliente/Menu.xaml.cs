@@ -1,4 +1,5 @@
-﻿using CheckersCliente.MenuPages;
+﻿using CheckersCliente.MainService;
+using CheckersCliente.MenuPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,12 @@ namespace CheckersCliente
     /// </summary>
     public partial class Menu : NavigationWindow
     {
-        public Menu()
+        public Jugador currentPlayer;
+        public Menu(Jugador player)
         {
             InitializeComponent();
+            currentPlayer = player;
+            NavigationService.Navigate(new PrincipalMenu(currentPlayer));
         }
     }
 }

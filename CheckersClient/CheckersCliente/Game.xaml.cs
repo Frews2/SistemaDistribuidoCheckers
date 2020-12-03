@@ -12,7 +12,7 @@ namespace CheckersCliente
     /// <summary>
     /// Interaction logic for Game.xaml
     /// </summary>
-    public partial class Game : Window
+    public partial class Game : NavigationWindow
     {
         ObservableCollection<string> messageList = new ObservableCollection<string>();
 

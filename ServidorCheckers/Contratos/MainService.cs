@@ -22,8 +22,8 @@ namespace Contratos
         private Dictionary<string, ILoginManagerCallback> playersLoggedIn = new Dictionary<string, ILoginManagerCallback>();
         //private Dictionary<string, IMessageManagerCallback> usuariosEnLinea = new Dictionary<string, IMessageManagerCallback>();
         private List<string> playersReady = new List<string>();
-        private List<string> playerChat = new List<string>();
         private Jugador currentlyQueuedPlayer;
+
         private Jugador currentPlayer;
 
         public void Login(Jugador player)
@@ -114,48 +114,40 @@ namespace Contratos
 
     public partial class MainService : IMatchmakingManager
     {
-        private readonly Dictionary<string, IMatchmakingManagerCallback> playersInMatchmaking = new Dictionary<string, IMatchmakingManagerCallback>();
+        private Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> playersInMatchmaking = new Dictionary<IMatchmakingManagerCallback, Dominio.Jugador>();
+        Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> currentMatch;
+        //private readonly Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> currentMatch = new Dictionary<IMatchmakingManagerCallback, Dominio.Jugador>();
+        private List<string> playerChat = new List<string>();
 
-        public void EnterMatchmaking()
+        public void EnterMatchmaking(Dominio.Jugador currentPlayer)
         {
             MatchmakingResult result;
-            currentlyQueuedPlayer = currentPlayer;
-
-
-            if (playersReady.Any(playerWaiting => playerWaiting.Equals(currentlyQueuedPlayer.Apodo)))
+            playersInMatchmaking.Add(MatchmakingCallback, currentPlayer);
+            playerChat.Add(currentPlayer.Apodo);
+            /*
+            while(playersInMatchmaking.Count < 2)
             {
-                
-                playersInMatchmaking.Add(currentlyQueuedPlayer.Apodo, MatchmakingCallback);
-                
-                UpdatePlayersInMatchmakingList();
-
-                if (playersInMatchmaking.Count > 1)
+                if(playersInMatchmaking.Count > 1)
                 {
-                    string partner = "";
-                    partner = GetPlayerQueued(currentlyQueuedPlayer);
-                    
-                    playerChat.Add(currentlyQueuedPlayer.Apodo);
-                    playerChat.Add(partner);
-
-                    playersReady.Remove(currentlyQueuedPlayer.Apodo);
-                    playersReady.Remove(partner);
-
-                    result = MatchmakingResult.MATCH_FOUND;
+                    break;
                 }
-                else
-                {
-                    result = MatchmakingResult.MATCH_NOT_FOUND;
-                }
+            }*/
+
+            if (playersInMatchmaking.Count == 2)
+            {/*
+                currentMatch = playersInMatchmaking.ToDictionary(k => k.Key, k => k.Value);
+                playersInMatchmaking.Clear();*/
+                result = MatchmakingResult.MATCH_FOUND;
             }
             else
             {
-                result = MatchmakingResult.UNABLE_TO_ENTER_MATCH;
+                result = MatchmakingResult.MATCH_NOT_FOUND;
             }
 
             MatchmakingCallback.GetMatchmakingResult(result);
         }
 
-        private string GetPlayerQueued(Jugador playerHost)
+      /*  private string GetPlayerQueued(Jugador playerHost)
         {
             string queuedPlayer = "";
 
@@ -173,15 +165,8 @@ namespace Contratos
             }
 
             return queuedPlayer;
-        }
+        }*/
 
-        private void UpdatePlayersInMatchmakingList()
-        {
-            foreach (var player in playersInMatchmaking)
-            {
-                player.Value.GetUsersOnline(playersReady);
-            }
-        }
 
         IMatchmakingManagerCallback MatchmakingCallback
         {

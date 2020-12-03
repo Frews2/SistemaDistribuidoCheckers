@@ -14,11 +14,11 @@ namespace CheckersCliente.Managers
         private static readonly InstanceContext instanceContext = new InstanceContext(new MatchmakingCallbackHandler());
         private static readonly MatchmakingManagerClient server = new MatchmakingManagerClient(instanceContext);
 
-        public static void EnterMatchmaking()
+        public static void EnterMatchmaking(Jugador player)
         {
             try
             {
-                server.EnterMatchmaking();
+                server.EnterMatchmaking(player);
             }
             catch (EndpointNotFoundException)
             {

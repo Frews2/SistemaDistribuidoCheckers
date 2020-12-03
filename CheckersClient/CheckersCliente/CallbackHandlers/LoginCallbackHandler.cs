@@ -18,9 +18,10 @@ namespace CheckersCliente
         {
             if (resultado == LoginResult.ExisteJugador)
             {
-                Menu menu = new Menu();
-                menu.Show();
+                
                 LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                Menu menu = new Menu(logIn.currentPlayer);
+                menu.Show();
                 logIn.Close();
 
 

@@ -1370,10 +1370,10 @@ namespace CheckersCliente.MainService {
     public interface IMatchmakingManager {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/EnterMatchmaking")]
-        void EnterMatchmaking();
+        void EnterMatchmaking(CheckersCliente.MainService.Jugador currentPlayer);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/EnterMatchmaking")]
-        System.Threading.Tasks.Task EnterMatchmakingAsync();
+        System.Threading.Tasks.Task EnterMatchmakingAsync(CheckersCliente.MainService.Jugador currentPlayer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1414,12 +1414,12 @@ namespace CheckersCliente.MainService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void EnterMatchmaking() {
-            base.Channel.EnterMatchmaking();
+        public void EnterMatchmaking(CheckersCliente.MainService.Jugador currentPlayer) {
+            base.Channel.EnterMatchmaking(currentPlayer);
         }
         
-        public System.Threading.Tasks.Task EnterMatchmakingAsync() {
-            return base.Channel.EnterMatchmakingAsync();
+        public System.Threading.Tasks.Task EnterMatchmakingAsync(CheckersCliente.MainService.Jugador currentPlayer) {
+            return base.Channel.EnterMatchmakingAsync(currentPlayer);
         }
     }
 }

@@ -5,13 +5,20 @@
 using Dominio;
 using System.Collections.Generic;
 using System.ServiceModel;
+
 namespace Contratos
 {
     [ServiceContract(CallbackContract = typeof(IMatchmakingManagerCallback))]
     public interface IMatchmakingManager
     {
         [OperationContract(IsOneWay = true)]
-        void EnterMatchmaking(Dominio.Jugador currentPlayer);
+        void HostMatch(Dominio.Jugador currentPlayer);
+
+        [OperationContract(IsOneWay = true)]
+        void EnterMatch(Match gameMatch, Dominio.Jugador currentPlayer);
+
+        [OperationContract(IsOneWay = true)]
+        void LeaveMatch(Match gameMatch, Dominio.Jugador currentPlayer);
     }
 
     [ServiceContract]
@@ -22,5 +29,11 @@ namespace Contratos
 
         [OperationContract(IsOneWay = true)]
         void GetUsersOnline(List<string> connectedUsers);
+
+        [OperationContract(IsOneWay = true)]
+        void NotifyMatchReady(MatchmakingResult result);
+
+        [OperationContract(IsOneWay = true)]
+        void AddPlayerToMatch(Dominio.Jugador player);
     }
 }

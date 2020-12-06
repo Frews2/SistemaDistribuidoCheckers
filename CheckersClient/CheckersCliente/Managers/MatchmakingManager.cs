@@ -18,7 +18,7 @@ namespace CheckersCliente.Managers
         {
             try
             {
-                server.EnterMatchmaking(player);
+                server.HostMatch(player);
             }
             catch (EndpointNotFoundException)
             {

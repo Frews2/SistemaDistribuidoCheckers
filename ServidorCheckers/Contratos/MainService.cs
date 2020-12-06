@@ -114,59 +114,62 @@ namespace Contratos
 
     public partial class MainService : IMatchmakingManager
     {
-        private Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> playersInMatchmaking = new Dictionary<IMatchmakingManagerCallback, Dominio.Jugador>();
+        private Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> hosts = new Dictionary<IMatchmakingManagerCallback, Dominio.Jugador>();
         Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> currentMatch;
         //private readonly Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> currentMatch = new Dictionary<IMatchmakingManagerCallback, Dominio.Jugador>();
         private List<string> playerChat = new List<string>();
+        private List<Match> matchesCreated = new List<Match>();
 
-        public void EnterMatchmaking(Dominio.Jugador currentPlayer)
+        public void HostMatch(Jugador currentPlayer)
         {
-            MatchmakingResult result;
-            playersInMatchmaking.Add(MatchmakingCallback, currentPlayer);
-            playerChat.Add(currentPlayer.Apodo);
-            /*
-            while(playersInMatchmaking.Count < 2)
+            HostingResult result = HostingResult.MATCH_NOT_CREATED;
+            if (!hosts.Any(k => k.Value.Equals(currentPlayer)))
             {
-                if(playersInMatchmaking.Count > 1)
-                {
-                    break;
-                }
-            }*/
+                hosts.Add(MatchmakingCallback, currentPlayer);
+                Match match = new Match();
+                match.matchID = currentPlayer.Apodo;
+                match.matchPair.Add(MatchmakingCallback, currentPlayer);
+                matchesCreated.Add(match);
+                result = HostingResult.MATCH_CREATED;
+            }
+        }
 
-            if (playersInMatchmaking.Count == 2)
-            {/*
-                currentMatch = playersInMatchmaking.ToDictionary(k => k.Key, k => k.Value);
-                playersInMatchmaking.Clear();*/
+        public void EnterMatch(Match gameMatch, Dominio.Jugador currentPlayer)
+        {
+            MatchmakingResult result = MatchmakingResult.MATCH_NOT_FOUND;
+            IMatchmakingManagerCallback matchCallback = MatchmakingCallback;
+
+            var searchForMatch = matchesCreated.Find(match => match.matchID.Equals(gameMatch.matchID));
+
+            if (searchForMatch != null)
+            {
                 result = MatchmakingResult.MATCH_FOUND;
             }
             else
             {
-                result = MatchmakingResult.MATCH_NOT_FOUND;
+                result = MatchmakingResult.UNABLE_TO_ENTER_MATCH;
             }
 
+            matchCallback.NotifyMatchReady(result);
+
+            if(result == MatchmakingResult.MATCH_FOUND)
+            {
+                searchForMatch.matchPair.Add(matchCallback, currentPlayer);
+                AddPlayerToMatch(searchForMatch, currentPlayer);
+            }
             MatchmakingCallback.GetMatchmakingResult(result);
         }
 
-      /*  private string GetPlayerQueued(Jugador playerHost)
+        public void AddPlayerToMatch(Match currentMatch, Dominio.Jugador currentPlayer)
         {
-            string queuedPlayer = "";
+            currentMatch.Add(currentPlayer,)
 
-            foreach (var player in playersInMatchmaking)
-            {
-                if (player.Value == MatchmakingCallback)
-                {
-                    if(!player.Key.Equals(playerHost.Apodo))
-                    {
-                        queuedPlayer = player.Key;
-                        break;
-                    }
-                    
-                }
-            }
+        }
 
-            return queuedPlayer;
-        }*/
-
+        public void LeaveMatch(Match gameMatch, Jugador currentPlayer)
+        {
+            throw new NotImplementedException();
+        }
 
         IMatchmakingManagerCallback MatchmakingCallback
         {

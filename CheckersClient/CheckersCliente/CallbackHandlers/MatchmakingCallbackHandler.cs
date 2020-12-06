@@ -12,6 +12,12 @@ namespace CheckersCliente.CallbackHandlers
 {
     class MatchmakingCallbackHandler : IMatchmakingManagerCallback
     {
+        public void AddPlayerToMatch(Match gameMatch, Jugador player)
+        {/*
+            var match = Application.Current.Windows.OfType<Game>().SingleOrDefault();
+            */
+        }
+
         public void GetMatchmakingResult(MatchmakingResult result)
         {
             if (result == MatchmakingResult.MATCH_FOUND)
@@ -38,12 +44,17 @@ namespace CheckersCliente.CallbackHandlers
         }
 
         public void GetUsersOnline(string[] connectedUsers)
-        {
-            GameChat gameWindow = new GameChat();
+        {/*
+            GameChat gameWindow = App.Current.Windows.OfType<GameChat>().FirstOrDefault();
 
             ObservableCollection<string> usersLoggedIn = new ObservableCollection<string>(connectedUsers);
 
-            gameWindow.listUsersLoggedIn.ItemsSource = usersLoggedIn;
+            gameWindow.listUsersLoggedIn.ItemsSource = usersLoggedIn;*/
+        }
+
+        public void NotifyMatchReady(MatchmakingResult result)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

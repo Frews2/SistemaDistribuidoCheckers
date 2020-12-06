@@ -11,9 +11,9 @@ namespace CheckersCliente.CallbackHandlers
     public class ChatCallbackHandler :IChatManagerCallback
     {
         public void ReceiveText(string source, string message)
-        {
+        {/*
             GameChat gameWindow = App.Current.Windows.OfType<GameChat>().FirstOrDefault();
-            (gameWindow.refreshChat.Content as GameChat).AddMessageToChat(source,message);
+            (gameWindow.refreshChat.Content as GameChat).AddMessageToChat(source,message);*/
         }
     }
 }

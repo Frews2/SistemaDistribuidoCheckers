@@ -121,8 +121,8 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataAccess" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataAccess" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
@@ -150,14 +150,26 @@
   <wsdl:message name="IChatManager_ReceiveText_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveText" />
   </wsdl:message>
-  <wsdl:message name="IMatchmakingManager_EnterMatchmaking_InputMessage">
-    <wsdl:part name="parameters" element="tns:EnterMatchmaking" />
+  <wsdl:message name="IMatchmakingManager_HostMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:HostMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_EnterMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnterMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_LeaveMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveMatch" />
   </wsdl:message>
   <wsdl:message name="IMatchmakingManager_GetMatchmakingResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetMatchmakingResult" />
   </wsdl:message>
   <wsdl:message name="IMatchmakingManager_GetUsersOnline_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetUsersOnline" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_NotifyMatchReady_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyMatchReady" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_AddPlayerToMatch_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:AddPlayerToMatch" />
   </wsdl:message>
   <wsdl:portType name="ILoginManager">
     <wsdl:operation name="Login">
@@ -190,14 +202,26 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IMatchmakingManager">
-    <wsdl:operation name="EnterMatchmaking">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/EnterMatchmaking" message="tns:IMatchmakingManager_EnterMatchmaking_InputMessage" />
+    <wsdl:operation name="HostMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/HostMatch" message="tns:IMatchmakingManager_HostMatch_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnterMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/EnterMatch" message="tns:IMatchmakingManager_EnterMatch_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/LeaveMatch" message="tns:IMatchmakingManager_LeaveMatch_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMatchmakingResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult" message="tns:IMatchmakingManager_GetMatchmakingResult_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUsersOnline">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/GetUsersOnline" message="tns:IMatchmakingManager_GetUsersOnline_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyMatchReady">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/NotifyMatchReady" message="tns:IMatchmakingManager_NotifyMatchReady_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPlayerToMatch">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/AddPlayerToMatch" message="tns:IMatchmakingManager_AddPlayerToMatch_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ILoginManager" type="tns:ILoginManager">
@@ -263,8 +287,20 @@
   <wsdl:binding name="NetTcpBinding_IMatchmakingManager" type="tns:IMatchmakingManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IMatchmakingManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="EnterMatchmaking">
-      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/EnterMatchmaking" style="document" />
+    <wsdl:operation name="HostMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/HostMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EnterMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/EnterMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/LeaveMatch" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -277,6 +313,18 @@
     </wsdl:operation>
     <wsdl:operation name="GetUsersOnline">
       <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/GetUsersOnline" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyMatchReady">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/NotifyMatchReady" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPlayerToMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/AddPlayerToMatch" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

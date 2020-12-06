@@ -23,9 +23,9 @@ namespace CheckersCliente.MenuPages
         public GameChat()
         {
             InitializeComponent();
-            messages.ItemsSource = messageList;
+            //messages.ItemsSource = messageList;
         }
-        
+        /*
         private void SendMessage(object sender, RoutedEventArgs e)
         {
 
@@ -47,6 +47,6 @@ namespace CheckersCliente.MenuPages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
-        }
+        }*/
     }
 }

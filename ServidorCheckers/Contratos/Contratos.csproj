@@ -47,6 +47,7 @@
     <Compile Include="IRankingManager.cs" />
     <Compile Include="MainService.cs" />
     <Compile Include="IMatchmakingManager.cs" />
+    <Compile Include="Match.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

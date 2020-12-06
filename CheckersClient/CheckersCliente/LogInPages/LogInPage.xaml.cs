@@ -44,7 +44,8 @@ namespace CheckersCliente.LogInPages
 
         private void EnableLoginButton(object sender, RoutedEventArgs e)
         {
-            if (PasswordTextBox.SecurePassword.Length < 5 || NicknameTextBox.Text.Length < 5)
+            if (PasswordTextBox.SecurePassword.Length < 5 || NicknameTextBox.Text.Length < 5
+                || ChekWhiteSpaces() == false)
             {
                 LogInButton.IsEnabled = false;
             }
@@ -54,15 +55,30 @@ namespace CheckersCliente.LogInPages
             }
         }
 
+        private bool ChekWhiteSpaces()
+        {
+            if (String.IsNullOrEmpty(PasswordTextBox.Password) || String.IsNullOrEmpty(NicknameTextBox.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void GetPassword(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new ObtainPasswordNickname());
+            NavigationService.Navigate(new ObtainPasswordPinMail());
         }
         private void RegisterAccount(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new RegisterAccount());
         }
 
-       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ChangePassword("asasa"));
+        }
     }
 }

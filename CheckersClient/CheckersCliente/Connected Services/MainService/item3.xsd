@@ -95,14 +95,40 @@
   <xs:element name="VerificationResult" nillable="true" type="tns:VerificationResult" />
   <xs:simpleType name="MailResult">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="CorreoEnviado">
+      <xs:enumeration value="MailSend">
         <xs:annotation>
           <xs:appinfo>
             <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="ErrorEnvio">
+      <xs:enumeration value="SendError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnknownPlayer">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MailResult" nillable="true" type="tns:MailResult" />
+  <xs:simpleType name="PinResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VerifiedPin">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnknownPin">
         <xs:annotation>
           <xs:appinfo>
             <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
@@ -111,5 +137,5 @@
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="MailResult" nillable="true" type="tns:MailResult" />
+  <xs:element name="PinResult" nillable="true" type="tns:PinResult" />
 </xs:schema>

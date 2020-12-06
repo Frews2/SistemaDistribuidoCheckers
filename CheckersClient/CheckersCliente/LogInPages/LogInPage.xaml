@@ -26,7 +26,8 @@
 
         <TextBlock HorizontalAlignment="Left" Margin="278,597,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.ForgotPassword}" VerticalAlignment="Top" Width="257" Foreground="#FF53A0F4" TextDecorations="Underline" TextAlignment="Center" MouseLeftButtonDown="GetPassword"/>
         <TextBlock HorizontalAlignment="Left" Margin="316,618,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Register}" VerticalAlignment="Top" Width="181" Foreground="#FF53A0F4" TextDecorations="Underline" TextAlignment="Center" MouseLeftButtonDown="RegisterAccount"/>
-        
+        <Button Content="Button" HorizontalAlignment="Left" Margin="104,509,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
 
 </Page>

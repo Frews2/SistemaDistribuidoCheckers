@@ -59,14 +59,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LogInPages\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogInPages\FinalizeRegister.xaml.cs">
       <DependentUpon>FinalizeRegister.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LogInPages\ObtainPasswordNickname.xaml.cs">
-      <DependentUpon>ObtainPasswordNickname.xaml</DependentUpon>
+    <Compile Include="LogInPages\ObtainPasswordPinMail.xaml.cs">
+      <DependentUpon>ObtainPasswordPinMail.xaml</DependentUpon>
     </Compile>
     <Compile Include="LogInPages\RegisterAccount.xaml.cs">
       <DependentUpon>RegisterAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogInPages\VerificatePasswordPin.xaml.cs">
+      <DependentUpon>VerificatePasswordPin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DialogWindowManager.cs" />
     <Page Include="LogIn.xaml">
@@ -86,6 +92,10 @@
     <Compile Include="LogIn.xaml.cs">
       <DependentUpon>LogIn.xaml</DependentUpon>
     </Compile>
+    <Page Include="LogInPages\ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LogInPages\FinalizeRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,11 +104,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LogInPages\ObtainPasswordNickname.xaml">
+    <Page Include="LogInPages\ObtainPasswordPinMail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LogInPages\RegisterAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogInPages\VerificatePasswordPin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

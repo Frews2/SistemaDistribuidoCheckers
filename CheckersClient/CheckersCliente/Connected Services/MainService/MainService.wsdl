@@ -49,6 +49,12 @@
   <wsdl:message name="IPlayerManager_SendMail_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMail" />
   </wsdl:message>
+  <wsdl:message name="IPlayerManager_PasswordForgotMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:PasswordForgotMail" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_VerifyPin_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyPin" />
+  </wsdl:message>
   <wsdl:message name="IPlayerManager_GetLoginResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetLoginResult" />
   </wsdl:message>
@@ -58,8 +64,11 @@
   <wsdl:message name="IPlayerManager_GetVerifyResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetVerifyResult" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManager_SendMailResult_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:SendMailResult" />
+  <wsdl:message name="IPlayerManager_GetMailResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetMailResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetPinResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetPinResult" />
   </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="Login">
@@ -74,6 +83,12 @@
     <wsdl:operation name="SendMail">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/SendMail" message="tns:IPlayerManager_SendMail_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="PasswordForgotMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/PasswordForgotMail" message="tns:IPlayerManager_PasswordForgotMail_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyPin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPin" message="tns:IPlayerManager_VerifyPin_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetLoginResult" message="tns:IPlayerManager_GetLoginResult_OutputCallbackMessage" />
     </wsdl:operation>
@@ -83,8 +98,11 @@
     <wsdl:operation name="GetVerifyResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetVerifyResult" message="tns:IPlayerManager_GetVerifyResult_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SendMailResult">
-      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/SendMailResult" message="tns:IPlayerManager_SendMailResult_OutputCallbackMessage" />
+    <wsdl:operation name="GetMailResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetMailResult" message="tns:IPlayerManager_GetMailResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPinResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPinResult" message="tns:IPlayerManager_GetPinResult_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -114,6 +132,18 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="PasswordForgotMail">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/PasswordForgotMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyPin">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/VerifyPin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetLoginResult" style="document" />
       <wsdl:output>
@@ -132,8 +162,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SendMailResult">
-      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/SendMailResult" style="document" />
+    <wsdl:operation name="GetMailResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetMailResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPinResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetPinResult" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

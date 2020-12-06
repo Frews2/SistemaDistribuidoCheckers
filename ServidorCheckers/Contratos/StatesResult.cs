@@ -30,8 +30,21 @@ namespace Contratos
 
     public enum MailResult
     {
-        CorreoEnviado= 1,
-        ErrorEnvio = 2
+        MailSend= 1,
+        SendError = 2,
+        UnknownPlayer = 3
+    }
+
+    public enum PinResult
+    {
+        VerifiedPin = 1,
+        UnknownPin = 2
+    }
+
+    public enum PasswordChangeResult
+    {
+        ChangedPassword = 1,
+        ErrorChanging = 2
     }
 
 }

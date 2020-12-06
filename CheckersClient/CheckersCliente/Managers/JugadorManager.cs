@@ -52,7 +52,7 @@ namespace CheckersCliente
             {
                 server.VerifyPlayer(jugador);
             }
-            catch
+            catch (EndpointNotFoundException)
             {
                 MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
             }
@@ -67,21 +67,37 @@ namespace CheckersCliente
             {
                 server.SendMail(player);
             }
-            catch
+            catch (EndpointNotFoundException)
             {
                 MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
             }
         }
 
-        public static void ObtainMailPassword(Jugador player)
+        public static void ObtainMailPassword(string playerNickname)
         {
             InstanceContext instanceContext = new InstanceContext(new JugadorCallbackHandler());
             PlayerManagerClient server = new PlayerManagerClient(instanceContext);
+
             try
             {
-                server.VerifyPlayer(player);
+                server.PasswordForgotMail(playerNickname);
             }
-            catch
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+            }
+        }
+
+        public static void VerifyPin(string playerNickname, string playerPin)
+        {
+            InstanceContext instanceContext = new InstanceContext(new JugadorCallbackHandler());
+            PlayerManagerClient server = new PlayerManagerClient(instanceContext);
+
+            try
+            {
+                server.VerifyPin(playerNickname,playerPin);
+            }
+            catch (EndpointNotFoundException)
             {
                 MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
             }

@@ -255,10 +255,24 @@ namespace CheckersCliente.MainService {
     public enum MailResult : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        CorreoEnviado = 1,
+        MailSend = 1,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ErrorEnvio = 2,
+        SendError = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        UnknownPlayer = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PinResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum PinResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        VerifiedPin = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        UnknownPin = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -288,6 +302,18 @@ namespace CheckersCliente.MainService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SendMail")]
         System.Threading.Tasks.Task SendMailAsync(CheckersCliente.MainService.Jugador player);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/PasswordForgotMail")]
+        void PasswordForgotMail(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/PasswordForgotMail")]
+        System.Threading.Tasks.Task PasswordForgotMailAsync(string nickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/VerifyPin")]
+        void VerifyPin(string nickname, string pin);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/VerifyPin")]
+        System.Threading.Tasks.Task VerifyPinAsync(string nickname, string pin);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -302,8 +328,11 @@ namespace CheckersCliente.MainService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetVerifyResult")]
         void GetVerifyResult(CheckersCliente.MainService.VerificationResult resultadoVerificacion);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SendMailResult")]
-        void SendMailResult(CheckersCliente.MainService.MailResult resultadoCorreo);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetMailResult")]
+        void GetMailResult(CheckersCliente.MainService.MailResult resultadoCorreo, string actualNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetPinResult")]
+        void GetPinResult(CheckersCliente.MainService.PinResult verifiedPinResult, string playerNickname);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -364,6 +393,22 @@ namespace CheckersCliente.MainService {
         
         public System.Threading.Tasks.Task SendMailAsync(CheckersCliente.MainService.Jugador player) {
             return base.Channel.SendMailAsync(player);
+        }
+        
+        public void PasswordForgotMail(string nickname) {
+            base.Channel.PasswordForgotMail(nickname);
+        }
+        
+        public System.Threading.Tasks.Task PasswordForgotMailAsync(string nickname) {
+            return base.Channel.PasswordForgotMailAsync(nickname);
+        }
+        
+        public void VerifyPin(string nickname, string pin) {
+            base.Channel.VerifyPin(nickname, pin);
+        }
+        
+        public System.Threading.Tasks.Task VerifyPinAsync(string nickname, string pin) {
+            return base.Channel.VerifyPinAsync(nickname, pin);
         }
     }
 }

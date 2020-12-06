@@ -138,6 +138,9 @@
   <data name="EnterNickname" xml:space="preserve">
     <value>Enter your nickname</value>
   </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Enter your Pin</value>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Forgot password?</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="VerifyAccount" xml:space="preserve">
     <value>Verify account</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Confirm password</value>
   </data>
   <data name="WaitMessage" xml:space="preserve">
     <value>Please wait till the timer ends to resend the mail</value>

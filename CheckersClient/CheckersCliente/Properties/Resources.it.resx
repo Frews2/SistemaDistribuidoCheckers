@@ -138,6 +138,9 @@
   <data name="EnterNickname" xml:space="preserve">
     <value>Inserisci il tuo soprannome</value>
   </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Inserire il pin</value>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Hai dimenticato la password?</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="VerifyAccount" xml:space="preserve">
     <value>Verifica account</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Conferma password</value>
   </data>
   <data name="WaitMessage" xml:space="preserve">
     <value>Attendi il termine del timer per inviare nuovamente la posta</value>

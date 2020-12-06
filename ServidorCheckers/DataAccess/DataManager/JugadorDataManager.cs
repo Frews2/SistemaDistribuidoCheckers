@@ -54,7 +54,7 @@ namespace DataAccess.DataManager
             return esCorrecto;
         }
 
-        public int GuardarJugador(Jugador jugadorNuevo)
+        public int SaveNewPlayer(Jugador jugadorNuevo)
         {
             int guardado;
             context.Jugador.Add(jugadorNuevo);
@@ -70,13 +70,13 @@ namespace DataAccess.DataManager
             return guardado;
         }
 
-        public int VerifyNewPlayer(Jugador jugadorVerificar)
+        public int VerifyNewPlayer(Jugador verifyPlayer)
         {
             int saved = 0;
             try
             {
-                var jugador = context.Jugador.Where(jugador2 => jugadorVerificar.apodo == jugador2.apodo).FirstOrDefault<Jugador>();
-                jugador.status = ACTIVE_STATE;
+                var playerState = context.Jugador.Where(player => verifyPlayer.apodo == player.apodo).FirstOrDefault<Jugador>();
+                playerState.status = ACTIVE_STATE;
                 saved = context.SaveChanges();
 
             }
@@ -96,6 +96,24 @@ namespace DataAccess.DataManager
 
             return existsPlayer;
         }
+
+        public Jugador GetPlayerByNickname(string nickname)
+        {
+            Random random = new Random();
+            Jugador player = context.Jugador.Where(playerSearch => playerSearch.apodo == nickname).FirstOrDefault<Jugador>();
+
+            player.pinConfirmacion = random.Next(10000, 99999).ToString();
+            context.SaveChanges();
+
+            return player;
+        }
+
+        public bool ChangePassword(string newPassword, string nickname)
+        {
+
+            return false;
+        }
+
     }
 }
 

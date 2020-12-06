@@ -26,6 +26,7 @@ namespace LogicaCliente
 
                 return emailRegularExpresion.IsMatch(email);
             }
+
             public static bool IsQuestion(string question)
             {
             Regex questionRegularExpresion = new Regex(@"[\w \s]+[?]+$");
@@ -40,9 +41,9 @@ namespace LogicaCliente
                 return rightRegularExpression.IsMatch(text);
             }
 
-            public static bool IsPersonName(string name)
+            public static bool IsNickname(string name)
             {
-                Regex nameRegularExpression = new Regex(@"^[\p{L}\p{M}' \.\-]+$");
+                Regex nameRegularExpression = new Regex(@"([A-Z])\w+");
 
                 return nameRegularExpression.IsMatch(name);
             }

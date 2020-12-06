@@ -84,9 +84,39 @@ namespace CheckersCliente
             }
         }
 
-        public void SendMailResult(MailResult resultadoCorreo)
+        public void GetMailResult(MailResult emailResult, string playerNickname)
         {
-            throw new NotImplementedException();
+            if(emailResult == MailResult.MailSend)
+            {
+                DialogWindowManager.ShowSuccessWindow("Se ha enviado el correo exitosamente");
+                LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                login.NavigationService.Navigate(new VerificatePasswordPin(playerNickname));
+            }
+            else
+            {
+                if (emailResult == MailResult.UnknownPlayer)
+                {
+                    DialogWindowManager.ShowErrorWindow("No existe jugador");
+                }
+                else
+                {
+                    DialogWindowManager.ShowErrorWindow("Se ha tenido un error a la hora de enviar el correo, intente de nuevo");
+                }
+                
+            }
+        }
+    
+        public void GetPinResult(PinResult pinResult, string playerNickname)
+        {
+            if(pinResult == PinResult.VerifiedPin)
+            {
+                LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                login.NavigationService.Navigate(new ChangePassword(playerNickname));
+            }
+            else
+            {
+                DialogWindowManager.ShowErrorWindow("Ha ingresado un pin incorrecto");
+            }
         }
     }
 }

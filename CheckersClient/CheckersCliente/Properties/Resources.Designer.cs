@@ -124,6 +124,15 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Enter your Pin.
+        /// </summary>
+        public static string EnterPin {
+            get {
+                return ResourceManager.GetString("EnterPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Forgot password?.
         /// </summary>
         public static string ForgotPassword {
@@ -264,6 +273,15 @@ namespace CheckersCliente.Properties {
         public static string VerifyAccount {
             get {
                 return ResourceManager.GetString("VerifyAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirm password.
+        /// </summary>
+        public static string VerifyPassword {
+            get {
+                return ResourceManager.GetString("VerifyPassword", resourceCulture);
             }
         }
         

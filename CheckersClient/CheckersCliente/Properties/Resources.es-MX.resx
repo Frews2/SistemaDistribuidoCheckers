@@ -138,6 +138,9 @@
   <data name="EnterNickname" xml:space="preserve">
     <value>Introduce tu apodo</value>
   </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Introduce el pin</value>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>¿Olvido su contraseña?</value>
   </data>
@@ -185,6 +188,9 @@
   </data>
   <data name="VerifyAccount" xml:space="preserve">
     <value>Verificar cuenta</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Confirmar contraseña</value>
   </data>
   <data name="WaitMessage" xml:space="preserve">
     <value>Espere hasta que termine el temporizador para reenviar el correo</value>

@@ -30,6 +30,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PasswordForgotMail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyPin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetLoginResult">
     <xs:complexType>
       <xs:sequence>
@@ -53,10 +68,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendMailResult">
+  <xs:element name="GetMailResult">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="resultadoCorreo" type="q10:MailResult" />
+        <xs:element minOccurs="0" name="actualNickname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPinResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="verifiedPinResult" type="q11:PinResult" />
+        <xs:element minOccurs="0" name="playerNickname" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

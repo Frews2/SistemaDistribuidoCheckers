@@ -34,8 +34,8 @@ namespace CheckersCliente.LogInPages
         {
             if (NicknameTextBox.Text.Length < MINIMUN_LENGHT || EmailTextBox.Text.Length < MINIMUM_MAIL_LENGHT 
                 || PasswordTextBox.Password.Length < MINIMUN_LENGHT || LanguageBox.SelectionBoxItem == null 
-                ||QuestionTextBox.Text.Length < MINIMUN_LENGHT || AnswerTextBox.Text.Length < ANSWER_MINIMUM_LENGHT 
-                || IsEmail() == false || IsQuestion() == false)
+                || QuestionTextBox.Text.Length < MINIMUN_LENGHT || AnswerTextBox.Text.Length < ANSWER_MINIMUM_LENGHT 
+                || IsEmail() == false || IsQuestion() == false || CheckWhiteSpaces() == false)
             {
                 RegisterButton.IsEnabled = false;
                 LengthBlock.Visibility = Visibility.Visible;
@@ -47,9 +47,23 @@ namespace CheckersCliente.LogInPages
             }
         }
 
+        private bool CheckWhiteSpaces()
+        {
+            if (String.IsNullOrEmpty(NicknameTextBox.Text) || String.IsNullOrEmpty(PasswordTextBox.Password)
+                || String.IsNullOrEmpty(AnswerTextBox.Text))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private bool IsEmail()
         {
-            if (ValidatorText.IsEmail(EmailTextBox.Text) && EmailTextBox.Text.Length > MINIMUM_MAIL_LENGHT)
+            if (ValidatorText.IsEmail(EmailTextBox.Text) && EmailTextBox.Text.Length > MINIMUM_MAIL_LENGHT 
+                && !String.IsNullOrEmpty(EmailTextBox.Text))
             {
                 return true;
             }
@@ -60,7 +74,8 @@ namespace CheckersCliente.LogInPages
         }
         private bool IsQuestion()
         {
-            if (ValidatorText.IsQuestion(QuestionTextBox.Text) && QuestionTextBox.Text.Length > MINIMUN_LENGHT)
+            if (ValidatorText.IsQuestion(QuestionTextBox.Text) && QuestionTextBox.Text.Length > MINIMUN_LENGHT
+                && !String.IsNullOrEmpty(QuestionTextBox.Text))
             {
                 return true;
             }

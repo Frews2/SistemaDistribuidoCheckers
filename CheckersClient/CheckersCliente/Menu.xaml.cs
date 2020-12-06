@@ -1,4 +1,4 @@
-﻿/*
+/*
     Date: 23/11/2020
     Author(s): César Sergio Martinez Palacios
 */
@@ -26,10 +26,13 @@ namespace CheckersCliente
     /// </summary>
     public partial class Menu : NavigationWindow
     {
-        public Menu(Jugador jugadorAcual)
+        public Jugador currentPlayer;
+        public Menu(Jugador player)
         {
             InitializeComponent();
-            NavigationService.Navigate(new PrincipalMenu(jugadorAcual));
+            currentPlayer = player;
+            NavigationService.Navigate(new PrincipalMenu(currentPlayer));
+
         }
     }
 }

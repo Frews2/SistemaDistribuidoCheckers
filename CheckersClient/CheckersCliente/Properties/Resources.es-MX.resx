@@ -147,6 +147,15 @@
   <data name="Language" xml:space="preserve">
     <value>Lenguaje</value>
   </data>
+  <data name="GamesLost" xml:space="preserve">
+    <value>Partidas Perdidas</value>
+  </data>
+  <data name="GamesPlayed" xml:space="preserve">
+    <value>Partidas Jugadas</value>
+  </data>
+  <data name="GamesWon" xml:space="preserve">
+    <value>Partidas Ganadas</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Inicio</value>
   </data>
@@ -155,6 +164,9 @@
   </data>
   <data name="MinimunLength" xml:space="preserve">
     <value>Una o mas casillas no contienen los elementos minimos suficientes</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mensaje</value>
   </data>
   <data name="Nickname" xml:space="preserve">
     <value>Apodo</value>
@@ -167,6 +179,9 @@
   </data>
   <data name="Play" xml:space="preserve">
     <value>Jugar</value>
+  </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Posición</value>
   </data>
   <data name="Ranking" xml:space="preserve">
     <value>Clasificacion</value>
@@ -182,6 +197,21 @@
   </data>
   <data name="SendMail" xml:space="preserve">
     <value>Enviar correo</value>
+  </data>
+  <data name="Rankings" xml:space="preserve">
+    <value>Puntuaciones</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Fecha de Registración</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Regresar</value>
+  </data>
+  <data name="Rule" xml:space="preserve">
+    <value>Reglas</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Enviar</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>Usuario</value>

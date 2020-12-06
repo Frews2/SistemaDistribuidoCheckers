@@ -147,6 +147,15 @@
   <data name="Language" xml:space="preserve">
     <value>Linguaggio</value>
   </data>
+  <data name="GamesLost" xml:space="preserve">
+    <value>Partite Perse</value>
+  </data>
+  <data name="GamesPlayed" xml:space="preserve">
+    <value>Partite Giocate</value>
+  </data>
+  <data name="GamesWom" xml:space="preserve">
+    <value>Partite Vinti</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Accesso</value>
   </data>
@@ -155,6 +164,9 @@
   </data>
   <data name="MinimunLength" xml:space="preserve">
     <value>Una o più celle non contengono elementi minimi sufficienti</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Messaggio</value>
   </data>
   <data name="Nickname" xml:space="preserve">
     <value>Soprannome</value>
@@ -168,6 +180,9 @@
   <data name="Play" xml:space="preserve">
     <value>Giocare</value>
   </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Posizione</value>
+  </data>
   <data name="Ranking" xml:space="preserve">
     <value>Classifica</value>
   </data>
@@ -177,13 +192,25 @@
   <data name="ResendE-mail" xml:space="preserve">
     <value>Rinvia l'e-mail</value>
   </data>
+  <data name="Rankings" xml:space="preserve">
+    <value>Classifiche</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Data di Registrazione</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Ritornare</value>
+  </data>
   <data name="Rules" xml:space="preserve">
     <value>Regole</value>
   </data>
   <data name="SendMail" xml:space="preserve">
     <value>Inviare una mail</value>
   </data>
-  <data name="User" xml:space="preserve">
+  <data name="Send" xml:space="preserve">
+    <value>Inviare</value>
+  </data>
+  <data name="Usuario" xml:space="preserve">
     <value>Utente</value>
   </data>
   <data name="VerifyAccount" xml:space="preserve">

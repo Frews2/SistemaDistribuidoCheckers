@@ -147,6 +147,15 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="GamesLost" xml:space="preserve">
+    <value>Games Lost</value>
+  </data>
+  <data name="GamesPlayed" xml:space="preserve">
+    <value>Games Played</value>
+  </data>
+  <data name="GamesWon" xml:space="preserve">
+    <value>Games Won</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
   </data>
@@ -155,6 +164,9 @@
   </data>
   <data name="MinimunLength" xml:space="preserve">
     <value>One or more cells do not contain enough minimum elements</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
   </data>
   <data name="Nickname" xml:space="preserve">
     <value>Nickname</value>
@@ -168,6 +180,9 @@
   <data name="Play" xml:space="preserve">
     <value>Play</value>
   </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Rank</value>
+  </data>
   <data name="Ranking" xml:space="preserve">
     <value>Ranking</value>
   </data>
@@ -177,11 +192,23 @@
   <data name="ResendE-mail" xml:space="preserve">
     <value>Resend e-mail</value>
   </data>
+  <data name="Rankings" xml:space="preserve">
+    <value>Rankings Table</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
   <data name="Rules" xml:space="preserve">
     <value>Rules</value>
   </data>
   <data name="SendMail" xml:space="preserve">
     <value>Send mail</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>User</value>

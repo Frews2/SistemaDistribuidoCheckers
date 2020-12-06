@@ -25,6 +25,8 @@ namespace CheckersCliente
     /// </summary>
     public partial class LogIn : NavigationWindow
     {
+        public Jugador currentPlayer;
+
         public LogIn()
         {
             InitializeComponent();

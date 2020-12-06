@@ -21,15 +21,27 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class PrincipalMenu : Page
     {
-        public PrincipalMenu(Jugador jugadorActual)
+        private Jugador currentPlayer;
+
+        public PrincipalMenu(Jugador player)
         {
             InitializeComponent();
-            userBox.Text = jugadorActual.Apodo;
+            currentPlayer = player;
         }
 
         private void UserConfiguration(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new UserConfiguration());
+        }
+
+        private void DisplayRanking(object sender, RoutedEventArgs e)
+        {
+            RankingManager.AddRankingPetitionCallback();
+        }
+
+        private void EnterGameLobby(object sender, RoutedEventArgs e)
+        {
+            MatchmakingManager.EnterMatchmaking(currentPlayer);
         }
     }
 }

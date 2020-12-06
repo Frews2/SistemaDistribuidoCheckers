@@ -8,5 +8,4 @@
         Title="Menu" Height="600" Width="800"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         ShowsNavigationUI="False">
-    
 </NavigationWindow>

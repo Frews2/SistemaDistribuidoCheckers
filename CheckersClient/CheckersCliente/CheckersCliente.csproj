@@ -59,11 +59,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\MainService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="LogInPages\ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="LogInPages\FinalizeRegister.xaml.cs">
       <DependentUpon>FinalizeRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogInPages\LogInPage.xaml.cs">
+      <DependentUpon>LogInPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LogInPages\ObtainPasswordPinMail.xaml.cs">
       <DependentUpon>ObtainPasswordPinMail.xaml</DependentUpon>
@@ -87,15 +95,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CallbackHandlers\JugadorCallbackHandler.cs" />
+    <Compile Include="CallbackHandlers\PlayerrCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\ChatCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\MatchmakingCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\RankingCallbackHandler.cs" />
-    <Compile Include="Connected Services\MainService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
@@ -123,10 +126,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LogInPages\VerificatePasswordPin.xaml">
-		<SubType>Designer</SubType>
-		<Generator>MSBuild:Compile</Generator>
-	</Page>
-    <Page Include="LoginPages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,15 +151,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LogInPages\LogInPage.xaml.cs">
-      <DependentUpon>LogInPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Managers\JugadorManager.cs" />
-    <Compile Include="LoginPages\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Managers\ChatManager.cs" />
-    <Compile Include="Managers\LoginManager.cs" />
     <Compile Include="Managers\MatchmakingManager.cs" />
     <Compile Include="Managers\RankingManager.cs" />
     <Compile Include="Menu.xaml.cs">
@@ -256,6 +248,23 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes">
+      <Version>3.2.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogicaCliente\LogicaCliente.csproj">
+      <Project>{cbcfbe44-732c-4982-8852-293d94a9ab41}</Project>
+      <Name>LogicaCliente</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\checkersMenu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\checkersBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\MainService\" />
   </ItemGroup>
   <ItemGroup>
@@ -272,23 +281,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="MaterialDesignThemes">
-      <Version>3.2.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LogicaCliente\LogicaCliente.csproj">
-      <Project>{cbcfbe44-732c-4982-8852-293d94a9ab41}</Project>
-      <Name>LogicaCliente</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\checkersMenu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\checkersBackground.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

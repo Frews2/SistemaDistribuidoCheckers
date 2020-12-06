@@ -121,8 +121,8 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataAccess" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataAccess" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
@@ -144,6 +144,9 @@
   <wsdl:message name="IPlayerManager_VerifyPin_InputMessage">
     <wsdl:part name="parameters" element="tns:VerifyPin" />
   </wsdl:message>
+  <wsdl:message name="IPlayerManager_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
   <wsdl:message name="IPlayerManager_GetLoginResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetLoginResult" />
   </wsdl:message>
@@ -158,6 +161,9 @@
   </wsdl:message>
   <wsdl:message name="IPlayerManager_GetPinResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetPinResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetPasswordChangeResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetPasswordChangeResult" />
   </wsdl:message>
   <wsdl:message name="IRankingManager_GetRankingCallback_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRankingCallback" />
@@ -198,7 +204,7 @@
   <wsdl:message name="IMatchmakingManager_AddPlayerToMatch_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:AddPlayerToMatch" />
   </wsdl:message>
-  <wsdl:portType name="ILoginManager">
+  <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/Login" message="tns:IPlayerManager_Login_InputMessage" />
     </wsdl:operation>
@@ -217,6 +223,9 @@
     <wsdl:operation name="VerifyPin">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPin" message="tns:IPlayerManager_VerifyPin_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/ChangePassword" message="tns:IPlayerManager_ChangePassword_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetLoginResult" message="tns:IPlayerManager_GetLoginResult_OutputCallbackMessage" />
     </wsdl:operation>
@@ -232,8 +241,10 @@
     <wsdl:operation name="GetPinResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPinResult" message="tns:IPlayerManager_GetPinResult_OutputCallbackMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetPasswordChangeResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPasswordChangeResult" message="tns:IPlayerManager_GetPasswordChangeResult_OutputCallbackMessage" />
+    </wsdl:operation>
   </wsdl:portType>
-    <wsp:PolicyReference URI="#NetTcpBinding_IPlayerManager_policy" />
   <wsdl:portType name="IRankingManager">
     <wsdl:operation name="GetRankingCallback">
       <wsdl:input wsaw:Action="http://tempuri.org/IRankingManager/GetRankingCallback" message="tns:IRankingManager_GetRankingCallback_InputMessage" />
@@ -279,8 +290,8 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/AddPlayerToMatch" message="tns:IMatchmakingManager_AddPlayerToMatch_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="NetTcpBinding_ILoginManager" type="tns:ILoginManager">
-    <wsp:PolicyReference URI="#NetTcpBinding_ILoginManager_policy" />
+  <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPlayerManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="Login">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/Login" style="document" />
@@ -318,6 +329,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetLoginResult" style="document" />
       <wsdl:output>
@@ -344,6 +361,12 @@
     </wsdl:operation>
     <wsdl:operation name="GetPinResult">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetPinResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordChangeResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetPasswordChangeResult" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -445,7 +468,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -454,7 +477,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -463,7 +486,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -472,8 +495,9 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
+</wsdl:definitions>

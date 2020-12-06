@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="IPlayerManager.cs" />
     <Compile Include="IChatManager.cs" />
-    <Compile Include="ILoginManager.cs" />
     <Compile Include="IRankingManager.cs" />
     <Compile Include="MainService.cs" />
     <Compile Include="IMatchmakingManager.cs" />

@@ -20,7 +20,7 @@ using System.Windows.Navigation;
 namespace CheckersCliente
 {
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public class JugadorCallbackHandler : IPlayerManagerCallback
+    public class PlayerCallbackHandler : IPlayerManagerCallback
     {
         public void GetLoginResult(LoginResult resultado, Jugador playerLoged)
         {
@@ -117,6 +117,11 @@ namespace CheckersCliente
             {
                 DialogWindowManager.ShowErrorWindow("Ha ingresado un pin incorrecto");
             }
+        }
+
+        public void GetPasswordChangeResult(PinResult verifiedPinResult)
+        {
+            throw new NotImplementedException();
         }
     }
 }

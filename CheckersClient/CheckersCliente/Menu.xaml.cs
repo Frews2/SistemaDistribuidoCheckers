@@ -26,12 +26,10 @@ namespace CheckersCliente
     /// </summary>
     public partial class Menu : NavigationWindow
     {
-        public Jugador currentPlayer;
         public Menu(Jugador player)
         {
             InitializeComponent();
-            currentPlayer = player;
-            NavigationService.Navigate(new PrincipalMenu(currentPlayer));
+            NavigationService.Navigate(new PrincipalMenu(player));
 
         }
     }

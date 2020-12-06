@@ -301,8 +301,10 @@ namespace CheckersCliente.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Rules.
         /// </summary>
-        public static string Rules {
-            get {
+        public static string Rules 
+        {
+            get
+            {
                 return ResourceManager.GetString("Rules", resourceCulture);
             }
         }
@@ -310,9 +312,13 @@ namespace CheckersCliente.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Send mail.
         /// </summary>
-        public static string SendMail {
-            get {
+        public static string SendMail
+        {
+            get
+            {
                 return ResourceManager.GetString("SendMail", resourceCulture);
+            }
+        }
         ///   Looks up a localized string similar to Send.
         /// </summary>
         public static string Send {

@@ -18,6 +18,11 @@ namespace CheckersCliente.CallbackHandlers
             */
         }
 
+        public void AddPlayerToMatch(Jugador player)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void GetMatchmakingResult(MatchmakingResult result)
         {
             if (result == MatchmakingResult.MATCH_FOUND)

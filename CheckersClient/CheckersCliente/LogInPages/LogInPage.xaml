@@ -1,16 +1,18 @@
-﻿<Page  x:Class="CheckersCliente.LogInPages.LogInPage"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:p="clr-namespace:CheckersCliente.Properties"
-        xmlns:local="clr-namespace:CheckersCliente"
-        mc:Ignorable="d"
-        Title="LogIn" Height="800" Width="800">
+﻿<Page x:Class="CheckersCliente.LogInPages.LogInPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:p="clr-namespace:CheckersCliente.Properties"
+      xmlns:local="clr-namespace:CheckersCliente.LogInPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LogIn" Height="800" Width="800">
+    
     <Grid Margin="-12,-8,-6.4,-5.6">
 
         <Grid.Background>
-            <ImageBrush ImageSource="D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\LogIn.jpg"/>
+            <ImageBrush ImageSource="/Images\LogIn.jpg"/>
         </Grid.Background>
 
         <Label Content="{x:Static p:Resources.Nickname}" HorizontalAlignment="Left" Margin="278,354,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" Width="257"/>
@@ -26,7 +28,6 @@
 
         <TextBlock HorizontalAlignment="Left" Margin="278,597,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.ForgotPassword}" VerticalAlignment="Top" Width="257" Foreground="#FF53A0F4" TextDecorations="Underline" TextAlignment="Center" MouseLeftButtonDown="GetPassword"/>
         <TextBlock HorizontalAlignment="Left" Margin="316,618,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Register}" VerticalAlignment="Top" Width="181" Foreground="#FF53A0F4" TextDecorations="Underline" TextAlignment="Center" MouseLeftButtonDown="RegisterAccount"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="104,509,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>
 

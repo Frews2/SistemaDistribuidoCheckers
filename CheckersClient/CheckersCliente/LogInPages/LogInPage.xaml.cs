@@ -18,7 +18,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using LogicaCliente;
 
 namespace CheckersCliente.LogInPages
 {
@@ -59,11 +58,11 @@ namespace CheckersCliente.LogInPages
         {
             if (String.IsNullOrEmpty(PasswordTextBox.Password) || String.IsNullOrEmpty(NicknameTextBox.Text))
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
 

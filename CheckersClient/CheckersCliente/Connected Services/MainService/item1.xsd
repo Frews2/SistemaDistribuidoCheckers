@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Contratos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Contratos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:complexType name="Match">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Jugador">
     <xs:sequence>
-      <xs:element minOccurs="0" name="matchID" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="matchPair" nillable="true" type="q1:ArrayOfKeyValueOfanyTypeJugadorzCj2J3XS" />
+      <xs:element minOccurs="0" name="Apodo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contrasenia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorreoElectronico" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdCreador" type="xs:int" />
+      <xs:element minOccurs="0" name="IdJugador" type="xs:int" />
+      <xs:element minOccurs="0" name="IdLenguaje" type="xs:int" />
+      <xs:element minOccurs="0" name="PinConfirmacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreguntaRecuperacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RespuestaConfirmacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Match" nillable="true" type="tns:Match" />
+  <xs:element name="Jugador" nillable="true" type="tns:Jugador" />
+  <xs:simpleType name="RankingResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NO_RANKING">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RANKING_EXISTS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RankingResult" nillable="true" type="tns:RankingResult" />
+  <xs:simpleType name="MatchmakingResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MATCH_FOUND">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MATCH_NOT_FOUND">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UNABLE_TO_ENTER_MATCH">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MatchmakingResult" nillable="true" type="tns:MatchmakingResult" />
 </xs:schema>

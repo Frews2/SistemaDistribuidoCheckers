@@ -34,7 +34,7 @@ namespace CheckersCliente.LogInPages
         private void LogInClick(object sender, RoutedEventArgs e)
         {
 
-            LoginManager.Login(new Jugador
+            JugadorManager.Login(new Jugador
             {
                 Apodo = NicknameTextBox.Text,
                 Contrasenia = PasswordTextBox.Password
@@ -43,7 +43,8 @@ namespace CheckersCliente.LogInPages
 
         private void EnableLoginButton(object sender, RoutedEventArgs e)
         {
-            if (PasswordTextBox.SecurePassword.Length < 5 || NicknameTextBox.Text.Length < 5)
+            if (PasswordTextBox.SecurePassword.Length < 5 || NicknameTextBox.Text.Length < 5
+                || ChekWhiteSpaces() == false)
             {
                 LogInButton.IsEnabled = false;
             }
@@ -53,13 +54,30 @@ namespace CheckersCliente.LogInPages
             }
         }
 
+        private bool ChekWhiteSpaces()
+        {
+            if (String.IsNullOrEmpty(PasswordTextBox.Password) || String.IsNullOrEmpty(NicknameTextBox.Text))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private void GetPassword(object sender, MouseButtonEventArgs e)
         {
+            NavigationService.Navigate(new ObtainPasswordPinMail());
         }
         private void RegisterAccount(object sender, MouseButtonEventArgs e)
         {
+            NavigationService.Navigate(new RegisterAccount());
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ChangePassword("asasa"));
+        }
     }
 }

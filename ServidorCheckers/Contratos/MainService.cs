@@ -27,48 +27,31 @@ namespace Contratos
         JugadorDataManager jugadorDataManager = new JugadorDataManager();
         HashManager hashText = new HashManager();
 
-        public void Login(Jugador jugador)
-        private Dictionary<string, ILoginManagerCallback> playersLoggedIn = new Dictionary<string, ILoginManagerCallback>();
+        private Dictionary<string, IPlayerManagerCallback> playersLoggedIn = new Dictionary<string, IPlayerManagerCallback>();
         //private Dictionary<string, IMessageManagerCallback> usuariosEnLinea = new Dictionary<string, IMessageManagerCallback>();
-        private List<string> playersReady = new List<string>();
-        private Jugador currentlyQueuedPlayer;
 
-        private Jugador currentPlayer;
 
         public void Login(Jugador player)
         {
             LoginResult result;
 
             JugadorDataManager jugadorDataManager = new JugadorDataManager();
-            if (jugadorDataManager.CheckNickname(jugador.Apodo))
+            if (jugadorDataManager.CheckNickname(player.Apodo))
             {
-                if (jugadorDataManager.CheckState(jugador.Apodo))
+                if (jugadorDataManager.CheckState(player.Apodo))
                 {
-                    if (jugadorDataManager.EsPasswordCorrecto(hashText.TextToHash(jugador.Contrasenia), jugador.Apodo))
+                    if (jugadorDataManager.EsPasswordCorrecto(hashText.TextToHash(player.Contrasenia), player.Apodo))
                     {
-                        resultado = LoginResult.ExisteJugadorVerificado;
+                        result = LoginResult.ExisteJugadorVerificado;
                     }
                     else
                     {
-                        resultado = LoginResult.PasswordIncorrecto;
+                        result = LoginResult.PasswordIncorrecto;
                     }
                 }
                 else
                 {
-                    resultado = LoginResult.ExisteJugadorNoVerificado;
-            if (jugadorDataManager.ExisteNickname(player.Apodo))
-            {
-                if (jugadorDataManager.EsPasswordCorrecto(player.Contrasenia))
-                {
-                    result = LoginResult.ExisteJugador;
-                    playersLoggedIn.Add(player.Apodo, Callback);
-                    playersReady.Add(player.Apodo);
-                    currentPlayer = player;
-
-                }
-                else
-                {
-                    result = LoginResult.PasswordIncorrecto;
+                    result = LoginResult.ExisteJugadorNoVerificado;
                 }
             }
             else
@@ -76,36 +59,36 @@ namespace Contratos
                 result = LoginResult.NoExisteJugador;
             }
 
-            Callback.GetLoginResult(resultado, jugador);
+            Callback.GetLoginResult(result, player);
         }
 
-        public void SavePlayer(Dominio.Jugador jugador)
+        public void SavePlayer(Dominio.Jugador player)
         {
             JugadorDataManager playerDataManager = new JugadorDataManager();
 
             int columnasAfectadas = 0;
-            string eMail = jugador.CorreoElectronico;
-            SaveResult exitoGuardado = SaveResult.ErrorGuardado;
+            string eMail = player.CorreoElectronico;
+            SaveResult saveResult = SaveResult.ErrorGuardado;
 
-            bool nicknameExists = playerDataManager.CheckNickname(jugador.Apodo);
-            
+            bool nicknameExists = playerDataManager.CheckNickname(player.Apodo);
+
             if (nicknameExists == false)
             {
-                bool emailExists = playerDataManager.CheckEmail(jugador.CorreoElectronico);
+                bool emailExists = playerDataManager.CheckEmail(player.CorreoElectronico);
 
                 if (emailExists == false)
                 {
                     DataAccess.Jugador newPlayer = new DataAccess.Jugador
                     {
-                        apodo = jugador.Apodo,
-                        contrasenia = hashText.TextToHash(jugador.Contrasenia),
-                        correoElectronico = jugador.CorreoElectronico,
+                        apodo = player.Apodo,
+                        contrasenia = hashText.TextToHash(player.Contrasenia),
+                        correoElectronico = player.CorreoElectronico,
                         status = ACTIVATION_STATE,
-                        respuestaConfirmacion = jugador.RespuestaConfirmacion,
-                        preguntaRecuperacion = jugador.PreguntaRecuperacion,
-                        pinConfirmacion = jugador.PinConfirmacion,
+                        respuestaConfirmacion = player.RespuestaConfirmacion,
+                        preguntaRecuperacion = player.PreguntaRecuperacion,
+                        pinConfirmacion = player.PinConfirmacion,
                         idCreador = 1,
-                        idioma = jugador.IdLenguaje
+                        idioma = player.IdLenguaje
                     };
 
                     JugadorDataManager jugadorDataManager = new JugadorDataManager();
@@ -113,14 +96,14 @@ namespace Contratos
 
                     if (columnasAfectadas > 0)
                     {
-                        exitoGuardado = SaveResult.JugadorGuardado;
-                        Callback.GetSaveResult(exitoGuardado, jugador);
+                        saveResult = SaveResult.JugadorGuardado;
+                        Callback.GetSaveResult(saveResult, player);
 
                         System.Net.Mail.MailMessage mensaje = new System.Net.Mail.MailMessage();
 
                         mensaje.To.Add(newPlayer.correoElectronico);
-                        mensaje.Subject = "Confirmación de creación de cuenta " + jugador.Apodo;
-                        mensaje.Body = "Hola " + jugador.Apodo + " estas a un paso de verificar tu cuenta!, " +
+                        mensaje.Subject = "Confirmación de creación de cuenta " + player.Apodo;
+                        mensaje.Body = "Hola " + player.Apodo + " estas a un paso de verificar tu cuenta!, " +
                             "el código de verificación de cuenta es el siguiente: " + newPlayer.pinConfirmacion;
                         mensaje.From = new System.Net.Mail.MailAddress("checkersGame124@gmail.com", "Checkers Game Proyect");
 
@@ -142,42 +125,22 @@ namespace Contratos
                     }
                     else
                     {
-                        exitoGuardado = SaveResult.ErrorGuardado;
-                        Callback.GetSaveResult(exitoGuardado, jugador);
+                        saveResult = SaveResult.ErrorGuardado;
+                        Callback.GetSaveResult(saveResult, player);
                     }
                 }
                 else
                 {
-                    exitoGuardado = SaveResult.CorreoExistente;
-                    Callback.GetSaveResult(exitoGuardado, jugador);
+                    saveResult = SaveResult.CorreoExistente;
+                    Callback.GetSaveResult(saveResult, player);
                 }
             }
             else
             {
-                exitoGuardado = SaveResult.NicknameExistente;
-                Callback.GetSaveResult(exitoGuardado, jugador);
+                saveResult = SaveResult.NicknameExistente;
+                Callback.GetSaveResult(saveResult, player);
             }
-            Callback.GetLoginResult(result, player);
-        }
-
-        ILoginManagerCallback Callback
-        {
-            get
-            {
-                return OperationContext.Current.GetCallbackChannel<ILoginManagerCallback>();
-            }
-        }
-    }
-
-    public partial class MainService:IRankingManager
-    {
-        private readonly Dictionary<string, IRankingManagerCallback> interestedPlayers = new Dictionary<string, IRankingManagerCallback>();
-        private List<DataAccess.Ranking> message;
-
-        public void GetRankingCallback()
-        {
-            interestedPlayers.Add(currentPlayer.Apodo, RankingCallback);
-            SendRankingData();
+            Callback.GetSaveResult(saveResult, player);
         }
 
         public void VerifyPlayer(Dominio.Jugador player)
@@ -190,12 +153,13 @@ namespace Contratos
             {
                 if (jugadorDataManager.PinCorrecto(player.Apodo, player.PinConfirmacion))
                 {
-                    int result = jugadorDataManager.VerifyNewPlayer(new DataAccess.Jugador{
+                    int result = jugadorDataManager.VerifyNewPlayer(new DataAccess.Jugador
+                    {
                         apodo = player.Apodo,
                         pinConfirmacion = player.PinConfirmacion,
                     });
 
-                    if(result > 0)
+                    if (result > 0)
                     {
                         resultado = VerificationResult.VerificacionExistosa;
                     }
@@ -292,18 +256,18 @@ namespace Contratos
         public void VerifyPin(string actualNickname, string playerPin)
         {
             PinResult pinResult = PinResult.UnknownPin;
-            
-            if(jugadorDataManager.PinCorrecto(actualNickname, playerPin))
+
+            if (jugadorDataManager.PinCorrecto(actualNickname, playerPin))
             {
                 pinResult = PinResult.VerifiedPin;
             }
 
-            Callback.GetPinResult(pinResult,actualNickname);
+            Callback.GetPinResult(pinResult, actualNickname);
         }
 
         public void ChangePassword(string userNickname, string password)
         {
-            PasswordChangeResult passwordChangeResult = PasswordChangeResult.ErrorChanging;
+            //PasswordChangeResult passwordChangeResult = PasswordChangeResult.ErrorChanging;
 
         }
 
@@ -313,6 +277,19 @@ namespace Contratos
             {
                 return OperationContext.Current.GetCallbackChannel<IPlayerManagerCallback>();
             }
+        }
+    }
+    public partial class MainService : IRankingManager
+    {
+        private readonly Dictionary<string, IRankingManagerCallback> interestedPlayers = new Dictionary<string, IRankingManagerCallback>();
+        private List<DataAccess.Ranking> message;
+
+
+        public void GetRankingCallback()
+        {
+            //interestedPlayers.Add(currentPlayer.Apodo, RankingCallback);
+            SendRankingData();
+        }
         public void GetRankingData()
         {
             RankingResult result;
@@ -338,7 +315,7 @@ namespace Contratos
 
         public void SendRankingData()
         {
-            interestedPlayers[currentPlayer.Apodo].ReceiveRankingData(message);
+            //interestedPlayers[currentPlayer.Apodo].ReceiveRankingData(message);
         }
 
         IRankingManagerCallback RankingCallback
@@ -357,6 +334,8 @@ namespace Contratos
         //private readonly Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> currentMatch = new Dictionary<IMatchmakingManagerCallback, Dominio.Jugador>();
         private List<string> playerChat = new List<string>();
         private List<Match> matchesCreated = new List<Match>();
+        private List<string> playersReady = new List<string>();
+        private Jugador currentlyQueuedPlayer;
 
         public void HostMatch(Jugador currentPlayer)
         {
@@ -400,7 +379,7 @@ namespace Contratos
 
         public void AddPlayerToMatch(Match currentMatch, Dominio.Jugador currentPlayer)
         {
-            currentMatch.Add(currentPlayer,)
+            //currentMatch.Add(currentPlayer,)
 
         }
 

@@ -17,7 +17,7 @@ namespace CheckersCliente
     {
         public static void Login(Jugador jugador)
         {
-            InstanceContext instanceContext = new InstanceContext(new JugadorCallbackHandler());
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
             PlayerManagerClient server = new PlayerManagerClient(instanceContext);
             try
             {
@@ -31,7 +31,7 @@ namespace CheckersCliente
 
         public static void SaveNewPlayer(Jugador jugador)
         {
-            InstanceContext instanceContext = new InstanceContext(new JugadorCallbackHandler());
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
             PlayerManagerClient server = new PlayerManagerClient(instanceContext);
             try
             {
@@ -45,7 +45,7 @@ namespace CheckersCliente
 
         public static void VerifyPlayer(Jugador jugador)
         {
-            InstanceContext instanceContext = new InstanceContext(new JugadorCallbackHandler());
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
             PlayerManagerClient server = new PlayerManagerClient(instanceContext);
 
             try
@@ -60,7 +60,7 @@ namespace CheckersCliente
 
         public static void ResendEmail(Jugador player)
         {
-            InstanceContext instanceContext = new InstanceContext(new JugadorCallbackHandler());
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
             PlayerManagerClient server = new PlayerManagerClient(instanceContext);
 
             try
@@ -75,7 +75,7 @@ namespace CheckersCliente
 
         public static void ObtainMailPassword(string playerNickname)
         {
-            InstanceContext instanceContext = new InstanceContext(new JugadorCallbackHandler());
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
             PlayerManagerClient server = new PlayerManagerClient(instanceContext);
 
             try
@@ -90,7 +90,7 @@ namespace CheckersCliente
 
         public static void VerifyPin(string playerNickname, string playerPin)
         {
-            InstanceContext instanceContext = new InstanceContext(new JugadorCallbackHandler());
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
             PlayerManagerClient server = new PlayerManagerClient(instanceContext);
 
             try

@@ -122,8 +122,7 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataAccess" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPlayerManager_Login_InputMessage">
@@ -165,8 +164,8 @@
   <wsdl:message name="IPlayerManager_GetPasswordChangeResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetPasswordChangeResult" />
   </wsdl:message>
-  <wsdl:message name="IRankingManager_GetRankingCallback_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRankingCallback" />
+  <wsdl:message name="IRankingManager_GetRankingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingData" />
   </wsdl:message>
   <wsdl:message name="IRankingManager_GetRankingResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetRankingResult" />
@@ -246,8 +245,8 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRankingManager">
-    <wsdl:operation name="GetRankingCallback">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRankingManager/GetRankingCallback" message="tns:IRankingManager_GetRankingCallback_InputMessage" />
+    <wsdl:operation name="GetRankingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRankingManager/GetRankingData" message="tns:IRankingManager_GetRankingData_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetRankingResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IRankingManager/GetRankingResult" message="tns:IRankingManager_GetRankingResult_OutputCallbackMessage" />
@@ -375,8 +374,8 @@
   <wsdl:binding name="NetTcpBinding_IRankingManager" type="tns:IRankingManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IRankingManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="GetRankingCallback">
-      <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingCallback" style="document" />
+    <wsdl:operation name="GetRankingData">
+      <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingData" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -468,7 +467,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -477,7 +476,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -486,7 +485,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -495,7 +494,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

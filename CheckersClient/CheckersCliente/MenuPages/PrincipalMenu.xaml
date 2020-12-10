@@ -12,7 +12,7 @@
     <Grid>
       
         <Grid.Background>
-            <ImageBrush ImageSource="D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersMenu.jpg"/>
+            <ImageBrush ImageSource="C:\Users\parke\Desktop\SPP\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersMenu.jpg"/>
         </Grid.Background>
         
         <Button Content="{x:Static p:Resources.Play}" Margin="260,180,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="EnterGameLobby"/>

@@ -282,40 +282,50 @@ namespace Contratos
     public partial class MainService : IRankingManager
     {
         private readonly Dictionary<string, IRankingManagerCallback> interestedPlayers = new Dictionary<string, IRankingManagerCallback>();
-        private List<DataAccess.Ranking> message;
 
-
-        public void GetRankingCallback()
-        {
-            //interestedPlayers.Add(currentPlayer.Apodo, RankingCallback);
-            SendRankingData();
-        }
         public void GetRankingData()
         {
             RankingResult result;
+            List<Dominio.Ranking> rankings = QueryRankingData();
 
-            RankingDataManager dataManager = new RankingDataManager();
-            List<DataAccess.Ranking> rankingList = dataManager.GetRankingList();
-
-            if (dataManager.GetRankingList() == null)
+            if(rankings == null)
             {
-
                 result = RankingResult.NO_RANKING;
             }
             else
             {
                 result = RankingResult.RANKING_EXISTS;
-                message = rankingList;
 
+                RankingCallback.GetRankingResult(result);
+
+                RankingCallback.ReceiveRankingData(rankings);
             }
-
-            RankingCallback.GetRankingResult(result);
-
         }
 
-        public void SendRankingData()
+        public List<Dominio.Ranking> QueryRankingData()
         {
-            //interestedPlayers[currentPlayer.Apodo].ReceiveRankingData(message);
+            List<Dominio.Ranking> currentRankings = new List<Dominio.Ranking>();
+            RankingDataManager dataManager = new RankingDataManager();
+            List<DataAccess.Ranking> queriedRankingList = dataManager.GetRankingList();
+
+            if (dataManager.GetRankingList() != null)
+            {
+                foreach (DataAccess.Ranking playerRanking in queriedRankingList )
+                {
+                    currentRankings.Add(new Dominio.Ranking
+                    {
+                        IdRanking = playerRanking.idRanking,
+                        IdDuenio = playerRanking.idDuenio,
+                        FechaRegistracion = playerRanking.fechaRegistracion ?? default(DateTime),
+                        NumeroVictorias = playerRanking.numeroVictorias ?? default(int),
+                        PartidasJugadas = playerRanking.partidasJugadas ?? default(int),
+                        Rank = playerRanking.rank ?? default(int),
+                        NumeroPerdidas = playerRanking.numeroPerdidas ?? default(int)
+                    });
+                }
+            }
+
+            return currentRankings;
         }
 
         IRankingManagerCallback RankingCallback

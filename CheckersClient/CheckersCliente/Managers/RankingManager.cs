@@ -18,7 +18,7 @@ namespace CheckersCliente.Managers
         {
             try
             {
-                server.GetRankingCallback();
+                server.GetRankingData();
             }
             catch (EndpointNotFoundException)
             {

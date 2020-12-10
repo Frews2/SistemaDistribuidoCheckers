@@ -223,9 +223,6 @@
     <None Include="Connected Services\MainService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\MainService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\MainService\item4.xsd">
       <SubType>Designer</SubType>
     </None>

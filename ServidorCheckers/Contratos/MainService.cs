@@ -315,7 +315,7 @@ namespace Contratos
                     currentRankings.Add(new Dominio.Ranking
                     {
                         IdRanking = playerRanking.idRanking,
-                        IdDuenio = playerRanking.idDuenio,
+                        Duenio = dataManager.GetPlayerByID(playerRanking.idDuenio),
                         FechaRegistracion = playerRanking.fechaRegistracion ?? default(DateTime),
                         NumeroVictorias = playerRanking.numeroVictorias ?? default(int),
                         PartidasJugadas = playerRanking.partidasJugadas ?? default(int),

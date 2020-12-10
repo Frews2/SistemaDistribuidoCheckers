@@ -153,7 +153,7 @@
   <data name="GamesPlayed" xml:space="preserve">
     <value>Partite Giocate</value>
   </data>
-  <data name="GamesWom" xml:space="preserve">
+  <data name="GamesWon" xml:space="preserve">
     <value>Partite Vinti</value>
   </data>
   <data name="LogIn" xml:space="preserve">

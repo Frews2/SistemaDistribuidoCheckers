@@ -296,10 +296,10 @@ namespace CheckersCliente.MainService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FechaRegistracionField;
+        private CheckersCliente.MainService.Jugador DuenioField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdDuenioField;
+        private System.DateTime FechaRegistracionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdRankingField;
@@ -327,6 +327,19 @@ namespace CheckersCliente.MainService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador Duenio {
+            get {
+                return this.DuenioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DuenioField, value) != true)) {
+                    this.DuenioField = value;
+                    this.RaisePropertyChanged("Duenio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime FechaRegistracion {
             get {
                 return this.FechaRegistracionField;
@@ -335,19 +348,6 @@ namespace CheckersCliente.MainService {
                 if ((this.FechaRegistracionField.Equals(value) != true)) {
                     this.FechaRegistracionField = value;
                     this.RaisePropertyChanged("FechaRegistracion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdDuenio {
-            get {
-                return this.IdDuenioField;
-            }
-            set {
-                if ((this.IdDuenioField.Equals(value) != true)) {
-                    this.IdDuenioField = value;
-                    this.RaisePropertyChanged("IdDuenio");
                 }
             }
         }

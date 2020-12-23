@@ -61,7 +61,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Answer.
+        ///   Looks up a localized string similar to Answer.
         /// </summary>
         public static string AnswerQuestion {
             get {
@@ -70,7 +70,16 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cancel.
+        ///   Looks up a localized string similar to Canadian Checkers.
+        /// </summary>
+        public static string CanadianCheckers {
+            get {
+                return ResourceManager.GetString("CanadianCheckers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
@@ -79,7 +88,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Change your password.
+        ///   Looks up a localized string similar to Change your password.
         /// </summary>
         public static string ChangePassword {
             get {
@@ -88,13 +97,24 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Confirmation question.
+        ///   Looks up a localized string similar to Classic Checkers.
+        /// </summary>
+        public static string ClassicCheckers {
+            get {
+                return ResourceManager.GetString("ClassicCheckers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation question.
         /// </summary>
         public static string ConfirmationQuestion {
             get {
                 return ResourceManager.GetString("ConfirmationQuestion", resourceCulture);
             }
         }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail.
         /// </summary>
         public static string E_mail {
@@ -104,13 +124,51 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter your e-mail.
+        ///   Looks up a localized string similar to Enter your e-mail.
         /// </summary>
         public static string EnterMail {
             get {
                 return ResourceManager.GetString("EnterMail", resourceCulture);
-                }
             }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your nickname.
+        /// </summary>
+        public static string EnterNickname {
+            get {
+                return ResourceManager.GetString("EnterNickname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your Pin.
+        /// </summary>
+        public static string EnterPin {
+            get {
+                return ResourceManager.GetString("EnterPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forgot password?.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game Mode.
+        /// </summary>
+        public static string GameMode {
+            get {
+                return ResourceManager.GetString("GameMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Games Lost.
         /// </summary>
         public static string GamesLost {
@@ -120,13 +178,6 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter your nickname.
-        /// </summary>
-        public static string EnterNickname {
-            get {
-                return ResourceManager.GetString("EnterNickname", resourceCulture);
-                }
-            }
         ///   Looks up a localized string similar to Games Played.
         /// </summary>
         public static string GamesPlayed {
@@ -136,13 +187,6 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter your Pin.
-        /// </summary>
-        public static string EnterPin {
-            get {
-                return ResourceManager.GetString("EnterPin", resourceCulture);
-                }
-            }
         ///   Looks up a localized string similar to Games Won.
         /// </summary>
         public static string GamesWon {
@@ -152,16 +196,16 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Forgot password?.
+        ///   Looks up a localized string similar to Italian Checkers.
         /// </summary>
-        public static string ForgotPassword {
+        public static string ItalianCheckers {
             get {
-                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+                return ResourceManager.GetString("ItalianCheckers", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Language.
+        ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
             get {
@@ -188,13 +232,6 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Una o mas casillas no contienen los elementos minimos suficientes.
-        /// </summary>
-        public static string MinimunLength {
-            get {
-                return ResourceManager.GetString("MinimunLength", resourceCulture);
-                }
-            }
         ///   Looks up a localized string similar to Message.
         /// </summary>
         public static string Message {
@@ -204,7 +241,16 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nickname.
+        ///   Looks up a localized string similar to Una o mas casillas no contienen los elementos minimos suficientes.
+        /// </summary>
+        public static string MinimunLength {
+            get {
+                return ResourceManager.GetString("MinimunLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nickname.
         /// </summary>
         public static string Nickname {
             get {
@@ -213,7 +259,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enter your nickname to receive a confirmation pin on your linked mail and change your password.
+        ///   Looks up a localized string similar to Enter your nickname to receive a confirmation pin on your linked mail and change your password.
         /// </summary>
         public static string NicknameInstructions {
             get {
@@ -222,7 +268,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Password.
+        ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
@@ -258,13 +304,6 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Register new account.
-        /// </summary>
-        public static string Register {
-            get {
-                return ResourceManager.GetString("Register", resourceCulture);
-                }
-            }
         ///   Looks up a localized string similar to Rankings Table.
         /// </summary>
         public static string Rankings {
@@ -274,13 +313,15 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Resend e-mail.
+        ///   Looks up a localized string similar to Register new account.
         /// </summary>
-        public static string ResendE_mail {
+        public static string Register {
             get {
-                return ResourceManager.GetString("ResendE-mail", resourceCulture);
-                }
+                return ResourceManager.GetString("Register", resourceCulture);
             }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registration Date.
         /// </summary>
         public static string RegistrationDate {
@@ -290,7 +331,16 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Rules.
+        ///   Looks up a localized string similar to Resend e-mail.
+        /// </summary>
+        public static string ResendE_mail {
+            get {
+                return ResourceManager.GetString("ResendE-mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go Back.
         /// </summary>
         public static string Return {
             get {
@@ -301,24 +351,13 @@ namespace CheckersCliente.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Rules.
         /// </summary>
-        public static string Rules 
-        {
-            get
-            {
+        public static string Rules {
+            get {
                 return ResourceManager.GetString("Rules", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Send mail.
-        /// </summary>
-        public static string SendMail
-        {
-            get
-            {
-                return ResourceManager.GetString("SendMail", resourceCulture);
-            }
-        }
         ///   Looks up a localized string similar to Send.
         /// </summary>
         public static string Send {
@@ -328,7 +367,24 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a User.
+        ///   Looks up a localized string similar to Send mail.
+        /// </summary>
+        public static string SendMail {
+            get {
+                return ResourceManager.GetString("SendMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suicide Checkers.
+        /// </summary>
+        public static string SuicideCheckers {
+            get {
+                return ResourceManager.GetString("SuicideCheckers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User.
         /// </summary>
         public static string User {
@@ -338,7 +394,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Verify account.
+        ///   Looks up a localized string similar to Verify account.
         /// </summary>
         public static string VerifyAccount {
             get {
@@ -347,7 +403,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Confirm password.
+        ///   Looks up a localized string similar to Confirm password.
         /// </summary>
         public static string VerifyPassword {
             get {
@@ -356,7 +412,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Please wait till the timer ends to resend the mail.
+        ///   Looks up a localized string similar to Please wait till the timer ends to resend the mail.
         /// </summary>
         public static string WaitMessage {
             get {

@@ -225,4 +225,19 @@
   <data name="WaitMessage" xml:space="preserve">
     <value>Espere hasta que termine el temporizador para reenviar el correo</value>
   </data>
+  <data name="CanadianCheckers" xml:space="preserve">
+    <value>Checkers Canadienses</value>
+  </data>
+  <data name="ClassicCheckers" xml:space="preserve">
+    <value>Checkers Clásicos</value>
+  </data>
+  <data name="GameMode" xml:space="preserve">
+    <value>Modo de Juego</value>
+  </data>
+  <data name="ItalianCheckers" xml:space="preserve">
+    <value>Checkers Italianos</value>
+  </data>
+  <data name="SuicideCheckers" xml:space="preserve">
+    <value>Checkers Suicidas</value>
+  </data>
 </root>

@@ -25,7 +25,7 @@ namespace CheckersCliente.MenuPages
             InitializeComponent();
             //messages.ItemsSource = messageList;
         }
-        /*
+
         private void SendMessage(object sender, RoutedEventArgs e)
         {
 
@@ -44,9 +44,9 @@ namespace CheckersCliente.MenuPages
             refreshChat.Navigate(new GameChat());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RegresarAMenu(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
-        }*/
+        }
     }
 }

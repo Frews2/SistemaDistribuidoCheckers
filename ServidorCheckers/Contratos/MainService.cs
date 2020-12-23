@@ -281,8 +281,6 @@ namespace Contratos
     }
     public partial class MainService : IRankingManager
     {
-        private readonly Dictionary<string, IRankingManagerCallback> interestedPlayers = new Dictionary<string, IRankingManagerCallback>();
-
         public void GetRankingData()
         {
             RankingResult result;
@@ -347,18 +345,32 @@ namespace Contratos
         private List<string> playersReady = new List<string>();
         private Jugador currentlyQueuedPlayer;
 
+        public void GetMatchmakingCallback()
+        {
+
+        }
         public void HostMatch(Jugador currentPlayer)
         {
-            HostingResult result = HostingResult.MATCH_NOT_CREATED;
-            if (!hosts.Any(k => k.Value.Equals(currentPlayer)))
+            HostingResult hostingResult = HostingResult.MATCH_NOT_CREATED;
+            if (!hosts.Any(player => player.Value.Equals(currentPlayer)))
             {
                 hosts.Add(MatchmakingCallback, currentPlayer);
-                Match match = new Match();
-                match.matchID = currentPlayer.Apodo;
-                match.matchPair.Add(MatchmakingCallback, currentPlayer);
+                Match match = new Match
+                {
+                    MatchID = currentPlayer.Apodo,
+                    MatchPair = hosts
+                };
+
+                //match.MatchPair.Add(MatchmakingCallback, currentPlayer);
                 matchesCreated.Add(match);
-                result = HostingResult.MATCH_CREATED;
+                hostingResult = HostingResult.MATCH_CREATED;
             }
+            else if(!matchesCreated.Any(match => match.MatchPair.Any(player => player.Value.Equals(currentPlayer))))
+            {
+                
+                EnterMatch(matches)
+            }
+            MatchmakingCallback.GetHostingResult(hostingResult);
         }
 
         public void EnterMatch(Match gameMatch, Dominio.Jugador currentPlayer)
@@ -366,7 +378,7 @@ namespace Contratos
             MatchmakingResult result = MatchmakingResult.MATCH_NOT_FOUND;
             IMatchmakingManagerCallback matchCallback = MatchmakingCallback;
 
-            var searchForMatch = matchesCreated.Find(match => match.matchID.Equals(gameMatch.matchID));
+            var searchForMatch = matchesCreated.Find(match => match.MatchID.Equals(gameMatch.MatchID));
 
             if (searchForMatch != null)
             {
@@ -381,7 +393,7 @@ namespace Contratos
 
             if(result == MatchmakingResult.MATCH_FOUND)
             {
-                searchForMatch.matchPair.Add(matchCallback, currentPlayer);
+                searchForMatch.MatchPair.Add(matchCallback, currentPlayer);
                 AddPlayerToMatch(searchForMatch, currentPlayer);
             }
             MatchmakingCallback.GetMatchmakingResult(result);

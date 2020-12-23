@@ -222,4 +222,19 @@
   <data name="WaitMessage" xml:space="preserve">
     <value>Please wait till the timer ends to resend the mail</value>
   </data>
+  <data name="CanadianCheckers" xml:space="preserve">
+    <value>Canadian Checkers</value>
+  </data>
+  <data name="ClassicCheckers" xml:space="preserve">
+    <value>Classic Checkers</value>
+  </data>
+  <data name="GameMode" xml:space="preserve">
+    <value>Game Mode</value>
+  </data>
+  <data name="ItalianCheckers" xml:space="preserve">
+    <value>Italian Checkers</value>
+  </data>
+  <data name="SuicideCheckers" xml:space="preserve">
+    <value>Suicide Checkers</value>
+  </data>
 </root>

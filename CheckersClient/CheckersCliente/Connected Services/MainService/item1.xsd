@@ -53,6 +53,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Ranking" nillable="true" type="tns:Ranking" />
+  <xs:simpleType name="HostingResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MATCH_CREATED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MATCH_NOT_CREATED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="HostingResult" nillable="true" type="tns:HostingResult" />
   <xs:simpleType name="MatchmakingResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="MATCH_FOUND">

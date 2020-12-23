@@ -191,6 +191,9 @@
   <wsdl:message name="IMatchmakingManager_LeaveMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:LeaveMatch" />
   </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_GetHostingResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetHostingResult" />
+  </wsdl:message>
   <wsdl:message name="IMatchmakingManager_GetMatchmakingResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetMatchmakingResult" />
   </wsdl:message>
@@ -275,6 +278,9 @@
     </wsdl:operation>
     <wsdl:operation name="LeaveMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/LeaveMatch" message="tns:IMatchmakingManager_LeaveMatch_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHostingResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/GetHostingResult" message="tns:IMatchmakingManager_GetHostingResult_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMatchmakingResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult" message="tns:IMatchmakingManager_GetMatchmakingResult_OutputCallbackMessage" />
@@ -435,6 +441,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetHostingResult">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/GetHostingResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetMatchmakingResult">
       <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult" style="document" />

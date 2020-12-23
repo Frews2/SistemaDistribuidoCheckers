@@ -437,10 +437,10 @@ namespace CheckersCliente.MainService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string matchIDField;
+        private string MatchIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<object, CheckersCliente.MainService.Jugador> matchPairField;
+        private System.Collections.Generic.Dictionary<object, CheckersCliente.MainService.Jugador> MatchPairField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -453,27 +453,27 @@ namespace CheckersCliente.MainService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string matchID {
+        public string MatchID {
             get {
-                return this.matchIDField;
+                return this.MatchIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.matchIDField, value) != true)) {
-                    this.matchIDField = value;
-                    this.RaisePropertyChanged("matchID");
+                if ((object.ReferenceEquals(this.MatchIDField, value) != true)) {
+                    this.MatchIDField = value;
+                    this.RaisePropertyChanged("MatchID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<object, CheckersCliente.MainService.Jugador> matchPair {
+        public System.Collections.Generic.Dictionary<object, CheckersCliente.MainService.Jugador> MatchPair {
             get {
-                return this.matchPairField;
+                return this.MatchPairField;
             }
             set {
-                if ((object.ReferenceEquals(this.matchPairField, value) != true)) {
-                    this.matchPairField = value;
-                    this.RaisePropertyChanged("matchPair");
+                if ((object.ReferenceEquals(this.MatchPairField, value) != true)) {
+                    this.MatchPairField = value;
+                    this.RaisePropertyChanged("MatchPair");
                 }
             }
         }
@@ -486,6 +486,17 @@ namespace CheckersCliente.MainService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HostingResult", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
+    public enum HostingResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MATCH_CREATED = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MATCH_NOT_CREATED = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -809,6 +820,9 @@ namespace CheckersCliente.MainService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IMatchmakingManagerCallback {
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/GetHostingResult")]
+        void GetHostingResult(CheckersCliente.MainService.HostingResult result);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult")]
         void GetMatchmakingResult(CheckersCliente.MainService.MatchmakingResult result);
         
@@ -819,7 +833,7 @@ namespace CheckersCliente.MainService {
         void NotifyMatchReady(CheckersCliente.MainService.MatchmakingResult result);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/AddPlayerToMatch")]
-        void AddPlayerToMatch(CheckersCliente.MainService.Jugador player);
+        void AddPlayerToMatch(CheckersCliente.MainService.Match match, CheckersCliente.MainService.Jugador player);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

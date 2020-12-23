@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="C:\Users\parke\Desktop\SPP\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersMenu.jpg"/>
         </Grid.Background>
         
-        <Button Content="{x:Static p:Resources.Play}" Margin="260,180,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="EnterGameLobby"/>
+        <Button Content="{x:Static p:Resources.Play}" Margin="260,180,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="ChooseGameMode"/>
         <Button Content="{x:Static p:Resources.Ranking}" Margin="260,300,260,0" VerticalAlignment="Top" Background="Black" BorderBrush="Black" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="DisplayRanking"/>
         <Button Content="{x:Static p:Resources.Rules}" Margin="260,420,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic"/>
 

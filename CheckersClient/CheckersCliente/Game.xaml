@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CheckersCliente"
         xmlns:p="clr-namespace:CheckersCliente.Properties"
         mc:Ignorable="d"
-        Title="Game" Height="450" Width="800"
+        Title="Game" Height="600" Width="800"
         ResizeMode="NoResize" ShowsNavigationUI="False"
-        Source="MenuPages\GameChat.xaml">
+        Source="MenuPages\GameMode.xaml">
 </NavigationWindow>

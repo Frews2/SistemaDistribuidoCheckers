@@ -40,9 +40,9 @@ namespace CheckersCliente.MenuPages
             RankingManager.AddRankingPetitionCallback();
         }
 
-        private void EnterGameLobby(object sender, RoutedEventArgs e)
+        private void ChooseGameMode(object sender, RoutedEventArgs e)
         {
-            MatchmakingManager.EnterMatchmaking(currentPlayer);
+            NavigationService.Navigate(new GameMode(currentPlayer));
         }
     }
 }

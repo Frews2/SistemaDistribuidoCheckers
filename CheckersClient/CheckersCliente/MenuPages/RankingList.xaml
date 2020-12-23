@@ -10,124 +10,130 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="RankingList">
 
-    <ScrollViewer >
-        <StackPanel Background="Red" Height="600">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\parke\Desktop\SPP\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersBackground.jpg"/>
+        </Grid.Background>
 
-            <Label Content="{x:Static p:Resources.Rankings}" Margin="0,10" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="414" FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style"/>
+        <Label Content="{x:Static p:Resources.Rankings}" Margin="176,10,210,520" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="414" FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style"/>
+        
+        <DataGrid x:Name="tableOfRankings" HorizontalAlignment="Center" Height="358"  VerticalAlignment="Top" Width="680" 
+                  AutoGenerateColumns="False" Background="#FFFAFAFA" CanUserAddRows="false" RenderTransformOrigin="0.723,0.467"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="30" Margin="73,128,47,0" >
+            
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="{x:Static p:Resources.Rank}" Width ="70" MinWidth="90" MaxWidth="200"
+                                        CanUserResize="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="IndianRed"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
 
-            <StackPanel Margin="10" Width="1200">
-                <DataGrid x:Name="tableOfRankings" HorizontalAlignment="Center" Height="300"  VerticalAlignment="Top" Width="680" 
-                          AutoGenerateColumns="False" Background="#FFFAFAFA" CanUserAddRows="false" 
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="30" Margin="65,0,455,0" RenderTransformOrigin="0.723,0.467">
-                    <DataGrid.Columns>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Rank}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.Rank}" Width ="70" MinWidth="90" MaxWidth="200"
-                                                CanUserResize="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
-                            <DataGridTemplateColumn.HeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="Background" Value="IndianRed"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="FontSize" Value="18"/>
-                                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                                </Style>
-                            </DataGridTemplateColumn.HeaderStyle>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Rank}" TextWrapping="WrapWithOverflow"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.Nickname}"  Width ="120" CanUserResize="False" 
+                <DataGridTemplateColumn Header="{x:Static p:Resources.Nickname}"  Width ="120" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
-                            <DataGridTemplateColumn.HeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="Background" Value="IndianRed"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="FontSize" Value="18"/>
-                                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                                </Style>
-                            </DataGridTemplateColumn.HeaderStyle>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Duenio.Apodo}" TextWrapping="WrapWithOverflow"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="IndianRed"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Duenio.Apodo}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.RegistrationDate}"  Width ="160" CanUserResize="False" 
+                <DataGridTemplateColumn Header="{x:Static p:Resources.RegistrationDate}"  Width ="160" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
-                            <DataGridTemplateColumn.HeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="Background" Value="IndianRed"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="FontSize" Value="16"/>
-                                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                                </Style>
-                            </DataGridTemplateColumn.HeaderStyle>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding FechaRegistracion}" TextWrapping="WrapWithOverflow"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="IndianRed"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FechaRegistracion}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesPlayed}"  Width ="110" CanUserResize="False" 
+                <DataGridTemplateColumn Header="{x:Static p:Resources.GamesPlayed}"  Width ="110" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
-                            <DataGridTemplateColumn.HeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="Background" Value="IndianRed"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="FontSize" Value="16"/>
-                                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                                </Style>
-                            </DataGridTemplateColumn.HeaderStyle>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding PartidasJugadas}" TextWrapping="WrapWithOverflow"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="IndianRed"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding PartidasJugadas}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesWon}"  Width ="100" CanUserResize="False" 
+                <DataGridTemplateColumn Header="{x:Static p:Resources.GamesWon}"  Width ="100" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
-                            <DataGridTemplateColumn.HeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="Background" Value="IndianRed"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="FontSize" Value="16"/>
-                                    <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
-                                </Style>
-                            </DataGridTemplateColumn.HeaderStyle>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding NumeroVictorias}" TextWrapping="WrapWithOverflow"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="IndianRed"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NumeroVictorias}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Header="{x:Static p:Resources.GamesLost}"  Width ="100" CanUserResize="False" 
+                <DataGridTemplateColumn Header="{x:Static p:Resources.GamesLost}" Width ="100" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
-                            <DataGridTemplateColumn.HeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="Background" Value="IndianRed"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="FontSize" Value="16"/>
-                                    <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
-                                </Style>
-                            </DataGridTemplateColumn.HeaderStyle>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding NumeroPerdidas}" TextWrapping="WrapWithOverflow"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="IndianRed"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NumeroPerdidas}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
-            <Button Content="{x:Static p:Resources.Return}" Margin="260,20,260,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="Return" Width="380" HorizontalAlignment="Center"/>
-        </StackPanel>
-    </ScrollViewer>
+        <Button
+            Content="{x:Static p:Resources.Return}" Margin="286,508,282,0" VerticalAlignment="Top" Background="Black"
+            BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic"
+            Click="Return" Width="232" HorizontalAlignment="Center"/>
+    </Grid>
 </Page>

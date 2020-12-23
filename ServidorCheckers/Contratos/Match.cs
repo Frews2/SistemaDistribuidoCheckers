@@ -13,7 +13,7 @@ namespace Contratos
 {
     public class Match
     {
-        public string matchID { get; set; }
-        public Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> matchPair { get; set; }
+        public string MatchID { get; set; }
+        public Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> MatchPair { get; set; }
     }
 }

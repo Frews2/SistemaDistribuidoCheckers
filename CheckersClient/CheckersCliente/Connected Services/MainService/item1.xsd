@@ -53,6 +53,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Ranking" nillable="true" type="tns:Ranking" />
+  <xs:simpleType name="SendMessageResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MESSAGE_SENT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MESSAGE_NOT_SENT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SendMessageResult" nillable="true" type="tns:SendMessageResult" />
   <xs:simpleType name="HostingResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="MATCH_CREATED">

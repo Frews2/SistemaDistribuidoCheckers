@@ -140,10 +140,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetSentMessageResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q15:SendMessageResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="CreateMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q15:Jugador" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q16:Jugador" />
         <xs:element minOccurs="0" name="gameMode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -151,44 +158,44 @@
   <xs:element name="LeaveMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="gameMatch" nillable="true" type="q16:Match" />
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q17:Jugador" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="gameMatch" nillable="true" type="q17:Match" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q18:Jugador" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetHostingResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q18:HostingResult" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q19:HostingResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetMatchmakingResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q19:MatchmakingResult" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q20:MatchmakingResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUsersOnline">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="connectedUsers" nillable="true" type="q20:ArrayOfstring" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="connectedUsers" nillable="true" type="q21:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="NotifyMatchReady">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q21:MatchmakingResult" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q22:MatchmakingResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddPlayerToMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="match" nillable="true" type="q22:Match" />
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="player" nillable="true" type="q23:Jugador" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="match" nillable="true" type="q23:Match" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="player" nillable="true" type="q24:Jugador" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

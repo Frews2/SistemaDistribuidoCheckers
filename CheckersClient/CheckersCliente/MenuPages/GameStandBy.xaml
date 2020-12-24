@@ -16,7 +16,7 @@
         </Grid.Background>
 
         <TextBlock Text="{x:Static p:Resources.GameInProgessMessage}" Margin="152,111,148,126" VerticalAlignment="Center" HorizontalAlignment="Center" 
-               Height="213" Width="500" FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style" MaxWidth="500" TextWrapping="WrapWithOverflow"
+               MaxHeight="400"  FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style" MaxWidth="550" TextWrapping="WrapWithOverflow"
                RenderTransformOrigin="0.497,0.713"/>
 
     </Grid>

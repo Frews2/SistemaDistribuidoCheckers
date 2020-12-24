@@ -243,4 +243,10 @@
   <data name="GameInProgressMessage" xml:space="preserve">
     <value>Espere hasta que la partida en progreso termine</value>
   </data>
+  <data name="Game" xml:space="preserve">
+    <value>Juego</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Jugadores</value>
+  </data>
 </root>

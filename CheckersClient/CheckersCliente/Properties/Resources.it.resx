@@ -210,7 +210,7 @@
   <data name="Send" xml:space="preserve">
     <value>Inviare</value>
   </data>
-  <data name="Usuario" xml:space="preserve">
+  <data name="User" xml:space="preserve">
     <value>Utente</value>
   </data>
   <data name="VerifyAccount" xml:space="preserve">
@@ -239,5 +239,11 @@
   </data>
   <data name="GameInProgressMessage" xml:space="preserve">
     <value>Attendi il termine della partita in corso</value>
+  </data>
+  <data name="Game" xml:space="preserve">
+    <value>Gioco</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Giocatori</value>
   </data>
 </root>

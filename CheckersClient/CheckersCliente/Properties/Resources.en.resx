@@ -240,4 +240,10 @@
   <data name="GameInProgessMessage" xml:space="preserve">
     <value>Please wait while match in progress ends</value>
   </data>
+  <data name="Game" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Players</value>
+  </data>
 </root>

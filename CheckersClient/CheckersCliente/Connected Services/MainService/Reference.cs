@@ -427,6 +427,17 @@ namespace CheckersCliente.MainService {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SendMessageResult", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
+    public enum SendMessageResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MESSAGE_SENT = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MESSAGE_NOT_SENT = 2,
+    }
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Match", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
@@ -779,6 +790,9 @@ namespace CheckersCliente.MainService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/ReceiveText")]
         void ReceiveText(string source, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/GetSentMessageResult")]
+        void GetSentMessageResult(CheckersCliente.MainService.SendMessageResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

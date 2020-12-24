@@ -441,16 +441,26 @@ namespace Contratos
 
     public partial class MainService : IChatManager
     {
-        private readonly Dictionary<string, IChatManagerCallback> playersInChat = new Dictionary<string, IChatManagerCallback>();
+        private readonly Dictionary<IChatManagerCallback, string> playersInChat = new Dictionary<IChatManagerCallback, string>();
 
         public void GetChatCallback()
         {
-            playersInChat.Add(currentlyQueuedPlayer.Apodo, ChatCallback);
+            playersInChat.Add(ChatCallback, currentlyQueuedPlayer.Apodo);
         }
 
         public void SendText(string destination, string message)
         {
-            playersInChat[destination].ReceiveText(GetSender(), message);
+            SendMessageResult messageResult = SendMessageResult.MESSAGE_NOT_SENT;
+            IChatManagerCallback receiverPlayer = null;
+            receiverPlayer = playersInChat.Where(receiver => receiver.Value == destination).First().Key;
+
+            if (receiverPlayer != null)
+            {
+                receiverPlayer.ReceiveText(GetSender(), message);
+                messageResult = SendMessageResult.MESSAGE_SENT;
+            }
+
+            ChatCallback.GetSentMessageResult(messageResult);
         }
 
         private string GetSender()
@@ -459,9 +469,9 @@ namespace Contratos
 
             foreach (var player in playersInChat)
             {
-                if (player.Value == ChatCallback)
+                if (player.Key == ChatCallback)
                 {
-                    sender = player.Key;
+                    sender = player.Value;
                     break;
                 }
             }

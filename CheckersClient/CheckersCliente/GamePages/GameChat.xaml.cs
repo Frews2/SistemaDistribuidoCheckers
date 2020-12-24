@@ -28,7 +28,9 @@ namespace CheckersCliente.MenuPages
 
         private void SendMessage(object sender, RoutedEventArgs e)
         {
-            string destination = listUsersLoggedIn.SelectedItem as string;
+            Game gameWindow = App.Current.Windows.OfType<Game>().FirstOrDefault();
+
+            string destination = gameWindow.listUsersLoggedIn.SelectedItem as string;
             ChatManager.SendMessage(destination, message.Text);
             messageList.Add("Yo: " + message.Text);
         }
@@ -38,14 +40,9 @@ namespace CheckersCliente.MenuPages
             messageList.Add(fuente + ": " + mensaje);
         }
 
-        public void RefreshMessageList()
-        {
-            refreshChat.Navigate(new GameChat());
-        }
-
         private void RegresarAMenu(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            
         }
     }
 }

@@ -101,7 +101,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CallbackHandlers\PlayerrCallbackHandler.cs" />
+    <Compile Include="CallbackHandlers\PlayerCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\ChatCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\MatchmakingCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\RankingCallbackHandler.cs" />

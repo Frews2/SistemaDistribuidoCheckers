@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="C:\Users\parke\Desktop\SPP\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersBackground.jpg"/>
         </Grid.Background>
 
-        <Label Content="{x:Static p:Resources.Rankings}" Margin="176,10,210,520" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="414" FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style"/>
+        <Label Content="{x:Static p:Resources.Rankings}" Margin="194,32,192,498" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="414" FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style"/>
         
         <DataGrid x:Name="tableOfRankings" HorizontalAlignment="Center" Height="358"  VerticalAlignment="Top" Width="680" 
                   AutoGenerateColumns="False" Background="#FFFAFAFA" CanUserAddRows="false" RenderTransformOrigin="0.723,0.467"

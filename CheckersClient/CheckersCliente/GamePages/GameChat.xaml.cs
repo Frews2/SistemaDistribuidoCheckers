@@ -17,18 +17,17 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class GameChat : Page
     {
-
         private ObservableCollection<string> messageList = new ObservableCollection<string>();
 
         public GameChat()
         {
             InitializeComponent();
-            //messages.ItemsSource = messageList;
+
+            messages.ItemsSource = messageList;
         }
 
         private void SendMessage(object sender, RoutedEventArgs e)
         {
-
             string destination = listUsersLoggedIn.SelectedItem as string;
             ChatManager.SendMessage(destination, message.Text);
             messageList.Add("Yo: " + message.Text);

@@ -85,6 +85,9 @@
     <Compile Include="MenuPages\GameMode.xaml.cs">
       <DependentUpon>GameMode.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MenuPages\GameStandBy.xaml.cs">
+      <DependentUpon>GameStandBy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DialogWindowManager.cs" />
     <Page Include="Game.xaml">
       <SubType>Designer</SubType>
@@ -136,11 +139,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MenuPages\GameChat.xaml">
+    <Page Include="GamePages\GameChat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuPages\GameMode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuPages\GameStandBy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,7 +172,7 @@
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MenuPages\GameChat.xaml.cs">
+    <Compile Include="GamePages\GameChat.xaml.cs">
       <DependentUpon>GameChat.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuPages\PrincipalMenu.xaml.cs">

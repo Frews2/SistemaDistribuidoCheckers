@@ -182,11 +182,8 @@
   <wsdl:message name="IChatManager_ReceiveText_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveText" />
   </wsdl:message>
-  <wsdl:message name="IMatchmakingManager_HostMatch_InputMessage">
-    <wsdl:part name="parameters" element="tns:HostMatch" />
-  </wsdl:message>
-  <wsdl:message name="IMatchmakingManager_EnterMatch_InputMessage">
-    <wsdl:part name="parameters" element="tns:EnterMatch" />
+  <wsdl:message name="IMatchmakingManager_CreateMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateMatch" />
   </wsdl:message>
   <wsdl:message name="IMatchmakingManager_LeaveMatch_InputMessage">
     <wsdl:part name="parameters" element="tns:LeaveMatch" />
@@ -270,11 +267,8 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IMatchmakingManager">
-    <wsdl:operation name="HostMatch">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/HostMatch" message="tns:IMatchmakingManager_HostMatch_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EnterMatch">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/EnterMatch" message="tns:IMatchmakingManager_EnterMatch_InputMessage" />
+    <wsdl:operation name="CreateMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/CreateMatch" message="tns:IMatchmakingManager_CreateMatch_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LeaveMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/LeaveMatch" message="tns:IMatchmakingManager_LeaveMatch_InputMessage" />
@@ -424,14 +418,8 @@
   <wsdl:binding name="NetTcpBinding_IMatchmakingManager" type="tns:IMatchmakingManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IMatchmakingManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="HostMatch">
-      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/HostMatch" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="EnterMatch">
-      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/EnterMatch" style="document" />
+    <wsdl:operation name="CreateMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/CreateMatch" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

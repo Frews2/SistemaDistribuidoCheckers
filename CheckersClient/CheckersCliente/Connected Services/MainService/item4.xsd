@@ -141,8 +141,10 @@
   <xs:element name="PinResult" nillable="true" type="tns:PinResult" />
   <xs:complexType name="Match">
     <xs:sequence>
-      <xs:element minOccurs="0" name="MatchID" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MatchPair" nillable="true" type="q1:ArrayOfKeyValueOfanyTypeJugadorzCj2J3XS" />
+      <xs:element minOccurs="0" name="GameMode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Guest" nillable="true" type="q1:ArrayOfKeyValueOfanyTypeJugadorzCj2J3XS" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Host" nillable="true" type="q2:ArrayOfKeyValueOfanyTypeJugadorzCj2J3XS" />
+      <xs:element minOccurs="0" name="MatchHostName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Match" nillable="true" type="tns:Match" />

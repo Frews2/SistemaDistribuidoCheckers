@@ -12,10 +12,7 @@ namespace Contratos
     public interface IMatchmakingManager
     {
         [OperationContract(IsOneWay = true)]
-        void HostMatch(Dominio.Jugador currentPlayer);
-
-        [OperationContract(IsOneWay = true)]
-        void EnterMatch(Match gameMatch, Dominio.Jugador currentPlayer);
+        void CreateMatch(Dominio.Jugador currentPlayer, string gameMode);
 
         [OperationContract(IsOneWay = true)]
         void LeaveMatch(Match gameMatch, Dominio.Jugador currentPlayer);

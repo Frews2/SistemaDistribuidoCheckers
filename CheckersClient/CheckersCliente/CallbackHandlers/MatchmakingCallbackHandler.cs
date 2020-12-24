@@ -25,12 +25,11 @@ namespace CheckersCliente.CallbackHandlers
                 Game gameWindow = new Game();
                 gameWindow.Show();
                 Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
-                menu.Close();
-
+                menu.Navigate(new GameStandBy());
             }
             else
             {
-                MessageBox.Show("Error. No se logro crear partida. Intente de nuevo");
+                MessageBox.Show("Error. No se logro crear partida. Intente de nuevo mas tarde");
             }
         }
 

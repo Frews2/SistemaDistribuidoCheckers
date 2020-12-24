@@ -349,7 +349,23 @@ namespace Contratos
         {
 
         }
-        public void HostMatch(Jugador currentPlayer)
+
+        public void CreateMatch(Jugador currentPlayer, string gameMode)
+        {
+            if (!matchesCreated.Any(match => match.Host.Any(player => player.Value.Equals(currentPlayer))))
+            {
+                HostMatch(currentPlayer, gameMode);
+            }
+            else
+            {
+                Match availableMatch = null;
+                availableMatch = matchesCreated.Where(match => match.GameMode.Equals(gameMode) && match.Guest == null).First();
+                
+                EnterMatch(availableMatch, currentPlayer);
+            }
+        }
+
+        public void HostMatch(Jugador currentPlayer, string gameMode)
         {
             HostingResult hostingResult = HostingResult.MATCH_NOT_CREATED;
             if (!hosts.Any(player => player.Value.Equals(currentPlayer)))
@@ -357,18 +373,19 @@ namespace Contratos
                 hosts.Add(MatchmakingCallback, currentPlayer);
                 Match match = new Match
                 {
-                    MatchID = currentPlayer.Apodo,
-                    MatchPair = hosts
+                    MatchHostName = currentPlayer.Apodo,
+                    Host = hosts,
+                    GameMode = gameMode
                 };
 
                 //match.MatchPair.Add(MatchmakingCallback, currentPlayer);
                 matchesCreated.Add(match);
                 hostingResult = HostingResult.MATCH_CREATED;
             }
-            else if(!matchesCreated.Any(match => match.MatchPair.Any(player => player.Value.Equals(currentPlayer))))
+            else if(!matchesCreated.Any(match => match.Guest.Any(player => player.Value.Equals(currentPlayer))))
             {
-                
-                EnterMatch(matches)
+                Match vacantMatch = matchesCreated.First();
+                EnterMatch(vacantMatch, currentPlayer);
             }
             MatchmakingCallback.GetHostingResult(hostingResult);
         }
@@ -378,7 +395,7 @@ namespace Contratos
             MatchmakingResult result = MatchmakingResult.MATCH_NOT_FOUND;
             IMatchmakingManagerCallback matchCallback = MatchmakingCallback;
 
-            var searchForMatch = matchesCreated.Find(match => match.MatchID.Equals(gameMatch.MatchID));
+            var searchForMatch = matchesCreated.Find(match => match.MatchHostName.Equals(gameMatch.MatchHostName));
 
             if (searchForMatch != null)
             {
@@ -393,7 +410,7 @@ namespace Contratos
 
             if(result == MatchmakingResult.MATCH_FOUND)
             {
-                searchForMatch.MatchPair.Add(matchCallback, currentPlayer);
+                searchForMatch.Guest.Add(matchCallback, currentPlayer);
                 AddPlayerToMatch(searchForMatch, currentPlayer);
             }
             MatchmakingCallback.GetMatchmakingResult(result);
@@ -407,7 +424,10 @@ namespace Contratos
 
         public void LeaveMatch(Match gameMatch, Jugador currentPlayer)
         {
-            throw new NotImplementedException();
+           if(matchesCreated.Any(match => match.GameMode.Equals(gameMatch.GameMode)))
+            {
+
+            }
         }
 
         IMatchmakingManagerCallback MatchmakingCallback

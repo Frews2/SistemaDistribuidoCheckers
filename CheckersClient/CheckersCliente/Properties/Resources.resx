@@ -237,4 +237,7 @@
   <data name="SuicideCheckers" xml:space="preserve">
     <value>Suicide Checkers</value>
   </data>
+  <data name="GameInProgessMessage" xml:space="preserve">
+    <value>Please wait while match in progress ends</value>
+  </data>
 </root>

@@ -160,6 +160,15 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please wait while match in progress ends.
+        /// </summary>
+        public static string GameInProgessMessage {
+            get {
+                return ResourceManager.GetString("GameInProgessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Mode.
         /// </summary>
         public static string GameMode {

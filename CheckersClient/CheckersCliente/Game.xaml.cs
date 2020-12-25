@@ -33,11 +33,8 @@ namespace CheckersCliente
         private void RegresarAMenu(object sender, RoutedEventArgs e)
         {
             MatchmakingManager.LeaveMatchmaking(gameMatch, localPlayer);
+            this.Close();
         }
 
-        private void ListUsersLoggedIn_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

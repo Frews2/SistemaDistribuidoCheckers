@@ -424,9 +424,20 @@ namespace Contratos
 
         public void LeaveMatch(Match gameMatch, Jugador currentPlayer)
         {
-           if(matchesCreated.Any(match => match.GameMode.Equals(gameMatch.GameMode)))
-            {
+            bool isHost = false;
 
+            if (matchesCreated.Any(match => match.GameMode.Equals(gameMatch.GameMode) 
+                && (match.Host.Equals(currentPlayer) || match.Guest.Equals(currentPlayer))))
+            {
+                isHost = matchesCreated.Any(match => match.Equals(gameMatch) && match.Host.Equals(currentPlayer));
+
+                if (isHost)
+                {
+                    hosts.Remove(MatchmakingCallback);
+                }
+
+                matchesCreated.Remove(gameMatch);
+                
             }
         }
 

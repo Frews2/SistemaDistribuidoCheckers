@@ -39,10 +39,5 @@ namespace CheckersCliente.MenuPages
         {
             messageList.Add(fuente + ": " + mensaje);
         }
-
-        private void RegresarAMenu(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

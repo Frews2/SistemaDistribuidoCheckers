@@ -130,8 +130,7 @@
   <xs:element name="ReceiveRankingData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/DataAccess" minOccurs="0" name="rankingList" nillable="true" type="q17:ArrayOfRanking" />
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="rankingList" nillable="true" type="q14:ArrayOfRanking" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="rankingList" nillable="true" type="q17:ArrayOfRanking" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -159,17 +158,14 @@
   <xs:element name="GetSentMessageResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q18:Jugador" />
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q15:SendMessageResult" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q18:SendMessageResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="gameMatch" nillable="true" type="q19:Match" />
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q20:Jugador" />
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q16:Jugador" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q19:Jugador" />
         <xs:element minOccurs="0" name="gameMode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -177,17 +173,15 @@
   <xs:element name="LeaveMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="gameMatch" nillable="true" type="q21:Match" />
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q22:Jugador" />
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="gameMatch" nillable="true" type="q17:Match" />
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q18:Jugador" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="gameMatch" nillable="true" type="q20:Match" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q21:Jugador" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetHostingResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q19:HostingResult" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q22:HostingResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -215,9 +209,8 @@
   <xs:element name="AddPlayerToMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="player" nillable="true" type="q26:Jugador" />
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="match" nillable="true" type="q23:Match" />
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="player" nillable="true" type="q24:Jugador" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="match" nillable="true" type="q26:Match" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="player" nillable="true" type="q27:Jugador" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -146,7 +146,6 @@ namespace CheckersCliente.Properties {
         /// </summary>
         public static string EnterPin {
             get {
-                return ResourceManager.GetString("EnterNickname", resourceCulture);
                 return ResourceManager.GetString("EnterPin", resourceCulture);
             }
         }
@@ -165,7 +164,6 @@ namespace CheckersCliente.Properties {
         /// </summary>
         public static string Game {
             get {
-                return ResourceManager.GetString("EnterPin", resourceCulture);
                 return ResourceManager.GetString("Game", resourceCulture);
             }
         }
@@ -245,33 +243,6 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Games Lost.
-        /// </summary>
-        public static string GamesLost {
-            get {
-                return ResourceManager.GetString("GamesLost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Games Played.
-        /// </summary>
-        public static string GamesPlayed {
-            get {
-                return ResourceManager.GetString("GamesPlayed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Games Won.
-        /// </summary>
-        public static string GamesWon {
-            get {
-                return ResourceManager.GetString("GamesWon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Language.
         /// </summary>
         public static string Language {
@@ -309,15 +280,6 @@ namespace CheckersCliente.Properties {
         
         /// <summary>
         ///   Busca una cadena traducida similar a Una o mas casillas no contienen los elementos minimos suficientes.
-        /// </summary>
-        public static string MinimunLength {
-            get {
-                return ResourceManager.GetString("MinimunLength", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Una o mas casillas no contienen los elementos minimos suficientes.
         /// </summary>
         public static string MinimunLength {
             get {
@@ -423,25 +385,6 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Register new account.
-        /// </summary>
-        public static string Register {
-            get {
-                return ResourceManager.GetString("ResendE-mail", resourceCulture);
-                return ResourceManager.GetString("Register", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Registration Date.
-        /// </summary>
-        public static string RegistrationDate {
-            get {
-                return ResourceManager.GetString("RegistrationDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Go Back.
         /// </summary>
         public static string ResendE_mail {
@@ -476,13 +419,6 @@ namespace CheckersCliente.Properties {
                 return ResourceManager.GetString("Send", resourceCulture);
                 }
             }
-        ///   Looks up a localized string similar to Send.
-        /// </summary>
-        public static string Send {
-            get {
-                return ResourceManager.GetString("Send", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to Send mail.
@@ -492,15 +428,6 @@ namespace CheckersCliente.Properties {
                 return ResourceManager.GetString("SendMail", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Send mail.
-        /// </summary>
-        public static string SendMail {
-            get {
-                return ResourceManager.GetString("SendMail", resourceCulture);
-                }
-            }
         ///   Looks up a localized string similar to Suicide Checkers.
         /// </summary>
         public static string SuicideCheckers {

@@ -25,32 +25,42 @@ namespace CheckersCliente
     {
         public void GetLoginResult(LoginResult resultado, Jugador playerLoged)
         {
-            if (resultado == LoginResult.ExisteJugadorVerificado)
+            if (resultado == LoginResult.EsAdmin)
             {
-                Menu menu = new Menu(playerLoged);
-                menu.Show();
+                AdminPage adminPage = new AdminPage();
+                adminPage.Show();
                 LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
                 logIn.Close();
             }
-            else 
+            else
             {
-                if (resultado == LoginResult.ExisteJugadorNoVerificado)
+                if (resultado == LoginResult.ExisteJugadorVerificado)
                 {
-                    DialogWindowManager.ShowErrorWindow("No ha verificado su cuenta, porfavor verificarla");
-                    LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
-                    login.NavigationService.Navigate(new FinalizeRegister(playerLoged));
+                    Menu menu = new Menu(playerLoged);
+                    menu.Show();
+                    LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                    logIn.Close();
                 }
                 else
                 {
-                    if (resultado == LoginResult.NoExisteJugador)
+                    if (resultado == LoginResult.ExisteJugadorNoVerificado)
                     {
-                        DialogWindowManager.ShowErrorWindow("No existe jugador");
+                        DialogWindowManager.ShowErrorWindow("No ha verificado su cuenta, porfavor verificarla");
+                        LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                        login.NavigationService.Navigate(new FinalizeRegister(playerLoged));
                     }
                     else
                     {
-                        DialogWindowManager.ShowErrorWindow("Verifica tu contraseña");
+                        if (resultado == LoginResult.NoExisteJugador)
+                        {
+                            DialogWindowManager.ShowErrorWindow("No existe jugador");
+                        }
+                        else
+                        {
+                            DialogWindowManager.ShowErrorWindow("Verifica tu contraseña");
+                        }
                     }
-                } 
+                }
             }
             
         }

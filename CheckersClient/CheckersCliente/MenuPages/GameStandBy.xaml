@@ -12,7 +12,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\parke\Desktop\SPP\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersBackground.jpg"/>
+            <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
         <TextBlock Text="{x:Static p:Resources.GameInProgessMessage}" Margin="152,111,148,126" VerticalAlignment="Center" HorizontalAlignment="Center" 

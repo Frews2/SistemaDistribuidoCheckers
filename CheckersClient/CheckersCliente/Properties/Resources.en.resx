@@ -222,6 +222,43 @@
   <data name="WaitMessage" xml:space="preserve">
     <value>Please wait till the timer ends to resend the mail</value>
   </data>
+  <data name="GameRules" xml:space="preserve">
+    <value>Checkers is a two player game.
+Each player receives 12 colored discs at the start of the game, with black and red as the colors.
+
+The board consists of 64 squares, 32 dark and 32 light.
+Each of the pieces is placed on the 12 dark squares closest to the player.
+
+The black player always moves first, then each player takes turns.
+
+The only moves allowed are on the dark squares, which means that the pieces always move diagonally.
+Single pieces can only advance towards their opponent.
+
+Any player making a non-capturing move can only move one square at a time.
+
+A capture move or jump involves jumping over one of the opponent's pieces in a diagonal line.
+In a single jump, only one piece can be captured although multiple jumps
+or the catches can be made in one turn.
+
+Any captured pieces are removed from the board.
+
+Whenever the capture option is available, the player must make the leap.
+In cases where more than one capture is possible, the player can choose which jump to make.
+
+When a player's piece manages to reach the opponent's front row,
+he is crowned and made "king". The kings are distinguished from the other pieces by having a crown symbol at the top.
+
+While kings can still only move diagonally, they can move back and forth.
+
+Kings can jump in multiple directions within the same turn.
+Individual pieces on the other hand can change direction diagonally, although they are limited to one move forward.
+
+The game ends when a player can no longer make any moves.
+This can result from all of a player's pieces being captured or blocked from making further moves.</value>
+  </data>
+  <data name="PlayerData" xml:space="preserve">
+    <value>Player data</value>
+  </data>
   <data name="CanadianCheckers" xml:space="preserve">
     <value>Canadian Checkers</value>
   </data>

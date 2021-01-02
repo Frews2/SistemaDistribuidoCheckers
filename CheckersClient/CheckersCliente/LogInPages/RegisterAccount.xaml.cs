@@ -128,5 +128,9 @@ namespace CheckersCliente.LogInPages
             return languageNumber;
         }
 
+        private void CancelRegister(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

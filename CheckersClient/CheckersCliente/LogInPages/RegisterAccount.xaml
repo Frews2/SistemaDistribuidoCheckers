@@ -13,11 +13,11 @@
         <Grid >
             
             <Grid.Background>
-                <ImageBrush ImageSource="C:\Users\parke\Desktop\SPP\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersBackground.jpg"/>
+                <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
             </Grid.Background>
             
             <Button x:Name="RegisterButton" Content="{x:Static Properties:Resources.Register}" Margin="218,618,218,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" IsEnabled="False" Click="RegisterUser"/>
-            <Button x:Name="CancelButton" Content="{x:Static Properties:Resources.Cancel}" Margin="280,699,280,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic"/>
+            <Button x:Name="CancelButton" Content="{x:Static Properties:Resources.Cancel}" Margin="280,699,280,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic" Click="CancelRegister"/>
 
             <TextBlock Text="{x:Static Properties:Resources.Register}" Margin="10,30,0,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
             <TextBlock Text="{x:Static Properties:Resources.Nickname}" Margin="84,130,374,0" VerticalAlignment="Top" Height="29" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>

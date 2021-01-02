@@ -43,8 +43,7 @@ namespace CheckersCliente.LogInPages
 
         private void CancelClick(object sender, RoutedEventArgs e)
         {
-            LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
-            login.NavigationService.Navigate(new LogInPage());
+            NavigationService.GoBack();
         }
 
         

@@ -30,7 +30,10 @@ namespace Contratos
         void VerifyPin(string nickname, string pin);
 
         [OperationContract(IsOneWay = true)]
-        void ChangePassword(string nickname, string pin);
+        void ChangePassword(string nickname, string newPassword);
+
+        [OperationContract(IsOneWay = true)]
+        void GetActualPlayer(Jugador actualPlayer);
     }
 
     [ServiceContract]
@@ -52,7 +55,10 @@ namespace Contratos
         void GetPinResult(PinResult verifiedPinResult, string playerNickname);
 
         [OperationContract(IsOneWay = true)]
-        void GetPasswordChangeResult(PinResult verifiedPinResult);
+        void GetPasswordChangeResult(PasswordChangeResult passwordChangedResult);
+
+        [OperationContract(IsOneWay = true)]
+        void SendActualPlayer(DataObtainedResult dataObtainedResult, Dominio.Jugador actualPlayer);
     }
 
 

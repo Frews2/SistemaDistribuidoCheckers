@@ -82,6 +82,12 @@
     <Compile Include="LogInPages\VerificatePasswordPin.xaml.cs">
       <DependentUpon>VerificatePasswordPin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MenuPages\GameTest.xaml.cs">
+      <DependentUpon>GameTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPages\RulesPage.xaml.cs">
+      <DependentUpon>RulesPage.xaml</DependentUpon>
+	</Compile>
     <Compile Include="MenuPages\GameMode.xaml.cs">
       <DependentUpon>GameMode.xaml</DependentUpon>
     </Compile>
@@ -151,11 +157,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MenuPages\GameTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MenuPages\PrincipalMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuPages\RankingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuPages\RulesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

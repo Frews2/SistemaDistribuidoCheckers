@@ -1,8 +1,4 @@
-﻿/*
-    Date: 23/11/2020
-    Author(s): César Sergio Martinez Palacios
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,19 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CheckersCliente.MainService;
 
-namespace CheckersCliente
+namespace CheckersCliente.MenuPages
 {
     /// <summary>
-    /// Lógica de interacción para LogIn.xaml
+    /// Lógica de interacción para RulesPage.xaml
     /// </summary>
-    public partial class LogIn : NavigationWindow
+    public partial class RulesPage : Page
     {
-        public LogIn()
+        public RulesPage()
         {
             InitializeComponent();
         }
 
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

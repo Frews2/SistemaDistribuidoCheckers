@@ -2,6 +2,7 @@
     Date: 23/11/2020
     Author(s): César Sergio Martinez Palacios
 */
+using CheckersCliente.MainService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,27 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class UserConfiguration : Page
     {
-        public UserConfiguration()
+        public UserConfiguration(Jugador actualPlayer)
         {
             InitializeComponent();
+            DataContext = actualPlayer;
+
+            switch (actualPlayer.IdLenguaje)
+            {
+                case 0:
+                    LanguageTextBlock.Text = "English";
+                    break;
+                case 1:
+                    LanguageTextBlock.Text = "Español";
+                    break;
+                case 2:
+                    LanguageTextBlock.Text = "Italiano";
+                    break;
+            }
+        }
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

@@ -47,4 +47,9 @@ namespace Contratos
         ErrorChanging = 2
     }
 
+    public enum DataObtainedResult
+    {
+        DataObtained = 1,
+        ErrorObtainingData = 2
+    }
 }

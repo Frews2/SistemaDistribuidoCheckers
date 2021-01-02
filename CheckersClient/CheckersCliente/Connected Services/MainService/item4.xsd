@@ -139,6 +139,44 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="PinResult" nillable="true" type="tns:PinResult" />
+  <xs:simpleType name="PasswordChangeResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ChangedPassword">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ErrorChanging">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PasswordChangeResult" nillable="true" type="tns:PasswordChangeResult" />
+  <xs:simpleType name="DataObtainedResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DataObtained">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ErrorObtainingData">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataObtainedResult" nillable="true" type="tns:DataObtainedResult" />
   <xs:complexType name="Match">
     <xs:sequence>
       <xs:element minOccurs="0" name="GameMode" nillable="true" type="xs:string" />

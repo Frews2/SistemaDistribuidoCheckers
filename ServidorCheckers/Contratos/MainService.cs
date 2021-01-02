@@ -43,6 +43,8 @@ namespace Contratos
                     if (jugadorDataManager.EsPasswordCorrecto(hashText.TextToHash(player.Contrasenia), player.Apodo))
                     {
                         result = LoginResult.ExisteJugadorVerificado;
+                        DataAccess.Jugador searchedPlayer = jugadorDataManager.GetPlayerByNickname(player.Apodo);
+                        player.IdLenguaje = searchedPlayer.idioma;
                     }
                     else
                     {
@@ -217,7 +219,7 @@ namespace Contratos
             if (jugadorDataManager.CheckNickname(actualNickname))
             {
                 DataAccess.Jugador player = new DataAccess.Jugador();
-                player = jugadorDataManager.GetPlayerByNickname(actualNickname);
+                player = jugadorDataManager.ChangePinByNickname(actualNickname);
 
                 System.Net.Mail.MailMessage mailMesagge = new System.Net.Mail.MailMessage();
 
@@ -267,7 +269,50 @@ namespace Contratos
 
         public void ChangePassword(string userNickname, string password)
         {
-            //PasswordChangeResult passwordChangeResult = PasswordChangeResult.ErrorChanging;
+            PasswordChangeResult changeResult = PasswordChangeResult.ErrorChanging;
+
+            if (jugadorDataManager.CheckNickname(userNickname))
+            {
+                string newPassword = hashText.TextToHash(password);
+                int resultChange = jugadorDataManager.ChangePassword(userNickname, newPassword);
+
+                if (resultChange > 0)
+                {
+                    changeResult = PasswordChangeResult.ChangedPassword;
+                }
+
+            }
+
+            Callback.GetPasswordChangeResult(changeResult);
+
+        }
+
+        public void GetActualPlayer(Jugador actualPlayer)
+        {
+            DataObtainedResult dataObtainedResult = DataObtainedResult.ErrorObtainingData;
+            DataAccess.Jugador searchedPlayer = jugadorDataManager.GetPlayerByNickname(actualPlayer.Apodo);
+
+            if (searchedPlayer != null)
+            {
+                Dominio.Jugador domainSearchedPlayer = new Dominio.Jugador
+                {
+                    IdJugador = searchedPlayer.idJugador,
+                    Apodo = searchedPlayer.apodo,
+                    CorreoElectronico = searchedPlayer.correoElectronico,
+                    Status = searchedPlayer.status,
+                    PreguntaRecuperacion = searchedPlayer.preguntaRecuperacion,
+                    IdLenguaje = searchedPlayer.idioma
+
+                };
+                dataObtainedResult = DataObtainedResult.DataObtained;
+                Callback.SendActualPlayer(dataObtainedResult, domainSearchedPlayer);
+            }
+            else
+            {
+                Dominio.Jugador emptyPlayer = new Jugador();
+                Callback.SendActualPlayer(dataObtainedResult, emptyPlayer);
+            }
+             
 
         }
 

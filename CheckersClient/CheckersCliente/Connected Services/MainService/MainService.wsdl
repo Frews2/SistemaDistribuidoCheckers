@@ -146,6 +146,9 @@
   <wsdl:message name="IPlayerManager_ChangePassword_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangePassword" />
   </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetActualPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActualPlayer" />
+  </wsdl:message>
   <wsdl:message name="IPlayerManager_GetLoginResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetLoginResult" />
   </wsdl:message>
@@ -163,6 +166,12 @@
   </wsdl:message>
   <wsdl:message name="IPlayerManager_GetPasswordChangeResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetPasswordChangeResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_SendActualPlayer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendActualPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IRankingManager_GetRankingCallback_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingCallback" />
   </wsdl:message>
   <wsdl:message name="IRankingManager_GetRankingData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRankingData" />
@@ -228,6 +237,9 @@
     <wsdl:operation name="ChangePassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/ChangePassword" message="tns:IPlayerManager_ChangePassword_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetActualPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetActualPlayer" message="tns:IPlayerManager_GetActualPlayer_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetLoginResult" message="tns:IPlayerManager_GetLoginResult_OutputCallbackMessage" />
     </wsdl:operation>
@@ -245,6 +257,9 @@
     </wsdl:operation>
     <wsdl:operation name="GetPasswordChangeResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPasswordChangeResult" message="tns:IPlayerManager_GetPasswordChangeResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendActualPlayer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/SendActualPlayer" message="tns:IPlayerManager_SendActualPlayer_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRankingManager">
@@ -340,6 +355,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="GetActualPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetActualPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetLoginResult" style="document" />
       <wsdl:output>
@@ -372,6 +393,12 @@
     </wsdl:operation>
     <wsdl:operation name="GetPasswordChangeResult">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetPasswordChangeResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendActualPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/SendActualPlayer" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

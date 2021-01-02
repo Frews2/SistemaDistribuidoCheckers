@@ -170,9 +170,6 @@
   <wsdl:message name="IPlayerManager_SendActualPlayer_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:SendActualPlayer" />
   </wsdl:message>
-  <wsdl:message name="IRankingManager_GetRankingCallback_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRankingCallback" />
-  </wsdl:message>
   <wsdl:message name="IRankingManager_GetRankingData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRankingData" />
   </wsdl:message>
@@ -506,7 +503,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -515,7 +512,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -524,7 +521,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -533,7 +530,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

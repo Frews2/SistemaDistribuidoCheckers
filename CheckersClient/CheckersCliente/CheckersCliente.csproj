@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\MainService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,7 +90,7 @@
     </Compile>
     <Compile Include="MenuPages\RulesPage.xaml.cs">
       <DependentUpon>RulesPage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="MenuPages\GameMode.xaml.cs">
       <DependentUpon>GameMode.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <DependentUpon>GameStandBy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DialogWindowManager.cs" />
+    <Page Include="AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

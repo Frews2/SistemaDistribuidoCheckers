@@ -28,39 +28,52 @@ namespace Contratos
         HashManager hashText = new HashManager();
 
         private Dictionary<string, IPlayerManagerCallback> playersLoggedIn = new Dictionary<string, IPlayerManagerCallback>();
-        //private Dictionary<string, IMessageManagerCallback> usuariosEnLinea = new Dictionary<string, IMessageManagerCallback>();
 
 
         public void Login(Jugador player)
         {
-            LoginResult result;
-
-            JugadorDataManager jugadorDataManager = new JugadorDataManager();
-            if (jugadorDataManager.CheckNickname(player.Apodo))
+            LoginResult result = LoginResult.NoExisteJugador;
+            AdminDataManager adminDataManager = new AdminDataManager();
+            if (adminDataManager.CheckNickname(player.Apodo))
             {
-                if (jugadorDataManager.CheckState(player.Apodo))
+                if (adminDataManager.EsPasswordCorrecto(hashText.TextToHash(player.Contrasenia), player.Apodo))
                 {
-                    if (jugadorDataManager.EsPasswordCorrecto(hashText.TextToHash(player.Contrasenia), player.Apodo))
-                    {
-                        result = LoginResult.ExisteJugadorVerificado;
-                        DataAccess.Jugador searchedPlayer = jugadorDataManager.GetPlayerByNickname(player.Apodo);
-                        player.IdLenguaje = searchedPlayer.idioma;
-                    }
-                    else
-                    {
-                        result = LoginResult.PasswordIncorrecto;
-                    }
+                    result = LoginResult.EsAdmin;
                 }
                 else
                 {
-                    result = LoginResult.ExisteJugadorNoVerificado;
+                    result = LoginResult.PasswordIncorrecto;
                 }
             }
             else
             {
-                result = LoginResult.NoExisteJugador;
+                JugadorDataManager jugadorDataManager = new JugadorDataManager();
+                if (jugadorDataManager.CheckNickname(player.Apodo))
+                {
+                    if (jugadorDataManager.CheckState(player.Apodo))
+                    {
+                        if (jugadorDataManager.EsPasswordCorrecto(hashText.TextToHash(player.Contrasenia), player.Apodo))
+                        {
+                            result = LoginResult.ExisteJugadorVerificado;
+                            DataAccess.Jugador searchedPlayer = jugadorDataManager.GetPlayerByNickname(player.Apodo);
+                            player.IdLenguaje = searchedPlayer.idioma;
+                        }
+                        else
+                        {
+                            result = LoginResult.PasswordIncorrecto;
+                        }
+                    }
+                    else
+                    {
+                        result = LoginResult.ExisteJugadorNoVerificado;
+                    }
+                }
+                else
+                {
+                    result = LoginResult.NoExisteJugador;
+                }
             }
-
+            
             Callback.GetLoginResult(result, player);
         }
 

@@ -14,11 +14,15 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class RankingList : Page
     {
+        private List<Ranking> rankingList;
 
         public RankingList(List<Ranking> rankings)
         {
+            
             InitializeComponent();
-            tableOfRankings.ItemsSource = rankings;
+            rankingList = rankings;
+            tableOfRankings.ItemsSource = rankingList;
+
         }
 
         private void Return(object sender, System.Windows.RoutedEventArgs e)

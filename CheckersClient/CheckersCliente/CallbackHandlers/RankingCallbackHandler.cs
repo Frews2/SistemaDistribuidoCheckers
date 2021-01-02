@@ -17,17 +17,15 @@ namespace CheckersCliente.CallbackHandlers
         {
             if (result == RankingResult.RANKING_EXISTS)
             {
-                Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
-                ChatManager.AddMessageCallback();
-
+                MessageBox.Show("Espere mientras se consulta");
             }
             else if (result == RankingResult.NO_RANKING)
             {
-                MessageBox.Show("Espere mientras se encuentra una partida");
+                MessageBox.Show("No se encuentra informacion ");
             }
             else
             {
-                MessageBox.Show("Error no se establecio una conexion a base de datos");
+                MessageBox.Show("No se pudo conectarse a la base de datos");
             }
         }
 

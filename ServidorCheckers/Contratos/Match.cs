@@ -13,7 +13,9 @@ namespace Contratos
 {
     public class Match
     {
-        public string matchID { get; set; }
-        public Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> matchPair { get; set; }
+        public string MatchHostName { get; set; }
+        public Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> Host { get; set; }
+        public Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> Guest { get; set; }
+        public string GameMode;
     }
 }

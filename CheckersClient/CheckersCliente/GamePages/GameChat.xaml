@@ -1,0 +1,23 @@
+﻿<Page x:Class="CheckersCliente.MenuPages.GameChat"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:p="clr-namespace:CheckersCliente.Properties"
+      xmlns:local="clr-namespace:CheckersCliente.MenuPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="300"
+      Title="GameChat">
+    <Grid >
+        <StackPanel>
+            <ListView x:Name="messages" Background="DarkSalmon" HorizontalAlignment="Right" HorizontalContentAlignment="Left">
+            </ListView>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,13">
+            <Label Content="{x:Static p:Resources.Message}" Margin="10"/>
+            <TextBox Width="200" Margin="10" Name="message"/>
+            <Button Content="{x:Static p:Resources.Send}" Margin="10" Width="50" Click="SendMessage"/>
+        </StackPanel>
+    </Grid>
+</Page>

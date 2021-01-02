@@ -35,6 +35,62 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="RankingResult" nillable="true" type="tns:RankingResult" />
+  <xs:complexType name="ArrayOfRanking">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ranking" nillable="true" type="tns:Ranking" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRanking" nillable="true" type="tns:ArrayOfRanking" />
+  <xs:complexType name="Ranking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Duenio" nillable="true" type="tns:Jugador" />
+      <xs:element minOccurs="0" name="FechaRegistracion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdRanking" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroPerdidas" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroVictorias" type="xs:int" />
+      <xs:element minOccurs="0" name="PartidasJugadas" type="xs:int" />
+      <xs:element minOccurs="0" name="Rank" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ranking" nillable="true" type="tns:Ranking" />
+  <xs:simpleType name="SendMessageResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MESSAGE_SENT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MESSAGE_NOT_SENT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SendMessageResult" nillable="true" type="tns:SendMessageResult" />
+  <xs:simpleType name="HostingResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MATCH_CREATED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MATCH_NOT_CREATED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="HostingResult" nillable="true" type="tns:HostingResult" />
   <xs:simpleType name="MatchmakingResult">
     <xs:restriction base="xs:string">
       <xs:enumeration value="MATCH_FOUND">

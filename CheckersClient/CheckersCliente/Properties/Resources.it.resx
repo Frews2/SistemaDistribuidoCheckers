@@ -153,7 +153,7 @@
   <data name="GamesPlayed" xml:space="preserve">
     <value>Partite Giocate</value>
   </data>
-  <data name="GamesWom" xml:space="preserve">
+  <data name="GamesWon" xml:space="preserve">
     <value>Partite Vinti</value>
   </data>
   <data name="LogIn" xml:space="preserve">
@@ -210,7 +210,7 @@
   <data name="Send" xml:space="preserve">
     <value>Inviare</value>
   </data>
-  <data name="Usuario" xml:space="preserve">
+  <data name="User" xml:space="preserve">
     <value>Utente</value>
   </data>
   <data name="VerifyAccount" xml:space="preserve">
@@ -258,5 +258,29 @@ Questo può derivare da tutti i pezzi di un giocatore catturato o bloccato dall'
   </data>
   <data name="PlayerData" xml:space="preserve">
     <value>Dati del giocatore</value>
+ </data>
+  <data name="CanadianCheckers" xml:space="preserve">
+    <value>Checkers Canadese</value>
+  </data>
+  <data name="ClassicCheckers" xml:space="preserve">
+    <value>Checkers Classica</value>
+  </data>
+  <data name="GameMode" xml:space="preserve">
+    <value>Modalità di Gioco</value>
+  </data>
+  <data name="ItalianCheckers" xml:space="preserve">
+    <value>Checkers Italiana</value>
+  </data>
+  <data name="SuicideCheckers" xml:space="preserve">
+    <value>Checkers Suicida</value>
+  </data>
+  <data name="GameInProgressMessage" xml:space="preserve">
+    <value>Attendi il termine della partita in corso</value>
+  </data>
+  <data name="Game" xml:space="preserve">
+    <value>Gioco</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Giocatori</value>
   </data>
 </root>

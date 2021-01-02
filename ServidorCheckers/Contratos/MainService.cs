@@ -326,41 +326,49 @@ namespace Contratos
     }
     public partial class MainService : IRankingManager
     {
-        private readonly Dictionary<string, IRankingManagerCallback> interestedPlayers = new Dictionary<string, IRankingManagerCallback>();
-        private List<DataAccess.Ranking> message;
-
-
-        public void GetRankingCallback()
-        {
-            //interestedPlayers.Add(currentPlayer.Apodo, RankingCallback);
-            SendRankingData();
-        }
         public void GetRankingData()
         {
             RankingResult result;
+            List<Dominio.Ranking> rankings = QueryRankingData();
 
-            RankingDataManager dataManager = new RankingDataManager();
-            List<DataAccess.Ranking> rankingList = dataManager.GetRankingList();
-
-            if (dataManager.GetRankingList() == null)
+            if(rankings == null)
             {
-
                 result = RankingResult.NO_RANKING;
             }
             else
             {
                 result = RankingResult.RANKING_EXISTS;
-                message = rankingList;
 
+                RankingCallback.GetRankingResult(result);
+
+                RankingCallback.ReceiveRankingData(rankings);
             }
-
-            RankingCallback.GetRankingResult(result);
-
         }
 
-        public void SendRankingData()
+        public List<Dominio.Ranking> QueryRankingData()
         {
-            //interestedPlayers[currentPlayer.Apodo].ReceiveRankingData(message);
+            List<Dominio.Ranking> currentRankings = new List<Dominio.Ranking>();
+            RankingDataManager dataManager = new RankingDataManager();
+            List<DataAccess.Ranking> queriedRankingList = dataManager.GetRankingList();
+
+            if (dataManager.GetRankingList() != null)
+            {
+                foreach (DataAccess.Ranking playerRanking in queriedRankingList )
+                {
+                    currentRankings.Add(new Dominio.Ranking
+                    {
+                        IdRanking = playerRanking.idRanking,
+                        Duenio = dataManager.GetPlayerByID(playerRanking.idDuenio),
+                        FechaRegistracion = playerRanking.fechaRegistracion ?? default(DateTime),
+                        NumeroVictorias = playerRanking.numeroVictorias ?? default(int),
+                        PartidasJugadas = playerRanking.partidasJugadas ?? default(int),
+                        Rank = playerRanking.rank ?? default(int),
+                        NumeroPerdidas = playerRanking.numeroPerdidas ?? default(int)
+                    });
+                }
+            }
+
+            return currentRankings;
         }
 
         IRankingManagerCallback RankingCallback
@@ -382,18 +390,49 @@ namespace Contratos
         private List<string> playersReady = new List<string>();
         private Jugador currentlyQueuedPlayer;
 
-        public void HostMatch(Jugador currentPlayer)
+        public void GetMatchmakingCallback()
         {
-            HostingResult result = HostingResult.MATCH_NOT_CREATED;
-            if (!hosts.Any(k => k.Value.Equals(currentPlayer)))
+
+        }
+
+        public void CreateMatch(Jugador currentPlayer, string gameMode)
+        {
+            if (!matchesCreated.Any(match => match.Host.Any(player => player.Value.Equals(currentPlayer))))
+            {
+                HostMatch(currentPlayer, gameMode);
+            }
+            else
+            {
+                Match availableMatch = null;
+                availableMatch = matchesCreated.Where(match => match.GameMode.Equals(gameMode) && match.Guest == null).First();
+                
+                EnterMatch(availableMatch, currentPlayer);
+            }
+        }
+
+        public void HostMatch(Jugador currentPlayer, string gameMode)
+        {
+            HostingResult hostingResult = HostingResult.MATCH_NOT_CREATED;
+            if (!hosts.Any(player => player.Value.Equals(currentPlayer)))
             {
                 hosts.Add(MatchmakingCallback, currentPlayer);
-                Match match = new Match();
-                match.matchID = currentPlayer.Apodo;
-                match.matchPair.Add(MatchmakingCallback, currentPlayer);
+                Match match = new Match
+                {
+                    MatchHostName = currentPlayer.Apodo,
+                    Host = hosts,
+                    GameMode = gameMode
+                };
+
+                //match.MatchPair.Add(MatchmakingCallback, currentPlayer);
                 matchesCreated.Add(match);
-                result = HostingResult.MATCH_CREATED;
+                hostingResult = HostingResult.MATCH_CREATED;
             }
+            else if(!matchesCreated.Any(match => match.Guest.Any(player => player.Value.Equals(currentPlayer))))
+            {
+                Match vacantMatch = matchesCreated.First();
+                EnterMatch(vacantMatch, currentPlayer);
+            }
+            MatchmakingCallback.GetHostingResult(hostingResult);
         }
 
         public void EnterMatch(Match gameMatch, Dominio.Jugador currentPlayer)
@@ -401,7 +440,7 @@ namespace Contratos
             MatchmakingResult result = MatchmakingResult.MATCH_NOT_FOUND;
             IMatchmakingManagerCallback matchCallback = MatchmakingCallback;
 
-            var searchForMatch = matchesCreated.Find(match => match.matchID.Equals(gameMatch.matchID));
+            var searchForMatch = matchesCreated.Find(match => match.MatchHostName.Equals(gameMatch.MatchHostName));
 
             if (searchForMatch != null)
             {
@@ -416,7 +455,7 @@ namespace Contratos
 
             if(result == MatchmakingResult.MATCH_FOUND)
             {
-                searchForMatch.matchPair.Add(matchCallback, currentPlayer);
+                searchForMatch.Guest.Add(matchCallback, currentPlayer);
                 AddPlayerToMatch(searchForMatch, currentPlayer);
             }
             MatchmakingCallback.GetMatchmakingResult(result);
@@ -430,7 +469,10 @@ namespace Contratos
 
         public void LeaveMatch(Match gameMatch, Jugador currentPlayer)
         {
-            throw new NotImplementedException();
+           if(matchesCreated.Any(match => match.GameMode.Equals(gameMatch.GameMode)))
+            {
+
+            }
         }
 
         IMatchmakingManagerCallback MatchmakingCallback
@@ -444,16 +486,26 @@ namespace Contratos
 
     public partial class MainService : IChatManager
     {
-        private readonly Dictionary<string, IChatManagerCallback> playersInChat = new Dictionary<string, IChatManagerCallback>();
+        private readonly Dictionary<IChatManagerCallback, string> playersInChat = new Dictionary<IChatManagerCallback, string>();
 
         public void GetChatCallback()
         {
-            playersInChat.Add(currentlyQueuedPlayer.Apodo, ChatCallback);
+            playersInChat.Add(ChatCallback, currentlyQueuedPlayer.Apodo);
         }
 
         public void SendText(string destination, string message)
         {
-            playersInChat[destination].ReceiveText(GetSender(), message);
+            SendMessageResult messageResult = SendMessageResult.MESSAGE_NOT_SENT;
+            IChatManagerCallback receiverPlayer = null;
+            receiverPlayer = playersInChat.Where(receiver => receiver.Value == destination).First().Key;
+
+            if (receiverPlayer != null)
+            {
+                receiverPlayer.ReceiveText(GetSender(), message);
+                messageResult = SendMessageResult.MESSAGE_SENT;
+            }
+
+            ChatCallback.GetSentMessageResult(messageResult);
         }
 
         private string GetSender()
@@ -462,9 +514,9 @@ namespace Contratos
 
             foreach (var player in playersInChat)
             {
-                if (player.Value == ChatCallback)
+                if (player.Key == ChatCallback)
                 {
-                    sender = player.Key;
+                    sender = player.Value;
                     break;
                 }
             }

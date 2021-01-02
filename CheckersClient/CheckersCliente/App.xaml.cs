@@ -16,8 +16,8 @@ namespace CheckersCliente
         App()
         {
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es-MX");
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("it"); 
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("it"); 
         }
     }
 }

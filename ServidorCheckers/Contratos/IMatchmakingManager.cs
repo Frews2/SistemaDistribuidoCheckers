@@ -12,10 +12,7 @@ namespace Contratos
     public interface IMatchmakingManager
     {
         [OperationContract(IsOneWay = true)]
-        void HostMatch(Dominio.Jugador currentPlayer);
-
-        [OperationContract(IsOneWay = true)]
-        void EnterMatch(Match gameMatch, Dominio.Jugador currentPlayer);
+        void CreateMatch(Dominio.Jugador currentPlayer, string gameMode);
 
         [OperationContract(IsOneWay = true)]
         void LeaveMatch(Match gameMatch, Dominio.Jugador currentPlayer);
@@ -24,6 +21,9 @@ namespace Contratos
     [ServiceContract]
     public interface IMatchmakingManagerCallback
     {
+        [OperationContract(IsOneWay = true)]
+        void GetHostingResult(HostingResult result);
+
         [OperationContract(IsOneWay = true)]
         void GetMatchmakingResult(MatchmakingResult result);
 
@@ -34,6 +34,6 @@ namespace Contratos
         void NotifyMatchReady(MatchmakingResult result);
 
         [OperationContract(IsOneWay = true)]
-        void AddPlayerToMatch(Dominio.Jugador player);
+        void AddPlayerToMatch(Match match, Dominio.Jugador player);
     }
 }

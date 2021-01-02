@@ -18,9 +18,19 @@ namespace CheckersCliente.CallbackHandlers
             */
         }
 
-        public void AddPlayerToMatch(Jugador player)
+        public void GetHostingResult(HostingResult result)
         {
-            throw new System.NotImplementedException();
+            if (result == HostingResult.MATCH_CREATED)
+            {
+                Game gameWindow = new Game();
+                gameWindow.Show();
+                Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                menu.Navigate(new GameStandBy());
+            }
+            else
+            {
+                MessageBox.Show("Error. No se logro crear partida. Intente de nuevo mas tarde");
+            }
         }
 
         public void GetMatchmakingResult(MatchmakingResult result)

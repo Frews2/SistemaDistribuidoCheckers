@@ -45,7 +45,7 @@ namespace CheckersCliente.MenuPages
             NavigationService.Navigate(new RulesPage());
         }
 
-        private void EnterGameLobby(object sender, RoutedEventArgs e)
+        private void ChooseGameMode(object sender, RoutedEventArgs e)
         {
             MatchmakingManager.EnterMatchmaking(DataContext as Jugador);
         }
@@ -69,6 +69,7 @@ namespace CheckersCliente.MenuPages
             menu.Show();
             Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
             actualMenu.Close();
+            NavigationService.Navigate(new GameMode(currentPlayer));
         }
 
     }

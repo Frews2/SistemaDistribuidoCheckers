@@ -3,6 +3,7 @@
  Author(s): Ricardo Moguel Sanchez
 */
 
+using Dominio;
 using System.ServiceModel;
 
 namespace Contratos
@@ -22,5 +23,8 @@ namespace Contratos
     {
         [OperationContract(IsOneWay = true)]
         void ReceiveText(string source, string message);
+
+        [OperationContract(IsOneWay = true)]
+        void GetSentMessageResult(SendMessageResult result);
     }
 }

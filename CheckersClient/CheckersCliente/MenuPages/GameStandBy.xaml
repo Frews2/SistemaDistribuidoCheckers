@@ -1,0 +1,23 @@
+﻿<Page x:Class="CheckersCliente.MenuPages.GameStandBy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CheckersCliente.MenuPages"
+      xmlns:p="clr-namespace:CheckersCliente.Properties"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GameStandBy">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
+        </Grid.Background>
+
+        <TextBlock Text="{x:Static p:Resources.GameInProgessMessage}" Margin="152,111,148,126" VerticalAlignment="Center" HorizontalAlignment="Center" 
+               MaxHeight="400"  FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style" MaxWidth="550" TextWrapping="WrapWithOverflow"
+               RenderTransformOrigin="0.497,0.713"/>
+
+    </Grid>
+</Page>

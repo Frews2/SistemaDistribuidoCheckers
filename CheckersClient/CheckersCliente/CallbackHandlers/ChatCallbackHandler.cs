@@ -10,6 +10,11 @@ namespace CheckersCliente.CallbackHandlers
 {
     public class ChatCallbackHandler :IChatManagerCallback
     {
+        public void GetSentMessageResult(SendMessageResult result)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void ReceiveText(string source, string message)
         {/*
             GameChat gameWindow = App.Current.Windows.OfType<GameChat>().FirstOrDefault();

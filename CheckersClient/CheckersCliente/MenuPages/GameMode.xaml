@@ -13,7 +13,7 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\parke\Desktop\SPP\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersBackground.jpg"/>
+            <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
         <Label Content="{x:Static p:Resources.GameMode}" HorizontalAlignment="Center" Margin="260,35,242,0"

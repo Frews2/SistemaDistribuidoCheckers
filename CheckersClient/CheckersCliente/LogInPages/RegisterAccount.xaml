@@ -1,0 +1,46 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CheckersCliente.LogInPages"
+      xmlns:Properties="clr-namespace:CheckersCliente.Properties" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="CheckersCliente.LogInPages.RegisterAccount"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="800"
+      Title="RegisterAccount">
+
+    <Grid>
+        <Grid >
+            
+            <Grid.Background>
+                <ImageBrush ImageSource="D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersBackground.jpg"/>
+            </Grid.Background>
+            
+            <Button x:Name="RegisterButton" Content="{x:Static Properties:Resources.Register}" Margin="218,618,218,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" IsEnabled="False" Click="RegisterUser"/>
+            <Button x:Name="CancelButton" Content="{x:Static Properties:Resources.Cancel}" Margin="280,699,280,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic" Click="CancelRegister"/>
+
+            <TextBlock Text="{x:Static Properties:Resources.Register}" Margin="10,30,0,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock Text="{x:Static Properties:Resources.Nickname}" Margin="84,130,374,0" VerticalAlignment="Top" Height="29" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock Text="{x:Static Properties:Resources.Password}" Margin="84,192,374,0" VerticalAlignment="Top" Height="29" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock Text="{x:Static Properties:Resources.E_mail}" Margin="84,256,374,0" VerticalAlignment="Top" Height="29" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock Text="{x:Static Properties:Resources.ConfirmationQuestion}" Margin="150,380,150,0" VerticalAlignment="Top" Height="29" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock Text="{x:Static Properties:Resources.AnswerQuestion}" Margin="150,485,150,0" VerticalAlignment="Top" Height="29" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+            <TextBlock x:Name="LengthBlock" Margin="150,597,150,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Text="{x:Static Properties:Resources.MinimunLength}" Visibility="Hidden" Foreground="#FFF9F9F9" FontWeight="Bold"/>
+
+            <TextBox x:Name="NicknameTextBox" HorizontalAlignment="Left" Height="29" Margin="426,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="18" MaxLength="20" TextChanged="EnableRegisterButton"/>
+            <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="29" Margin="426,192,0,0" PasswordChar="*" PasswordChanged="EnableRegisterButton" VerticalAlignment="Top" Width="219" FontSize="18" MaxLength="20"/>
+            <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="29" Margin="388,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" FontSize="16" MaxLength="80" TextChanged="EnableRegisterButton" materialDesign:HintAssist.Hint="example@gmail.com"/>
+            <TextBox x:Name="QuestionTextBox" Height="29" Margin="155,433,155,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" MaxLength="50" TextChanged="EnableRegisterButton" />
+            <TextBox x:Name="AnswerTextBox" Height="29" Margin="160,530,150,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" MaxLength="50" TextChanged="EnableRegisterButton"/>
+            <TextBlock Text="{x:Static Properties:Resources.Language}" Margin="124,314,334,0" VerticalAlignment="Top" Height="29" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+
+            <ComboBox HorizontalAlignment="Left" Margin="471,314,0,0" VerticalAlignment="Top" Width="120" Height="29" x:Name="LanguageBox">
+                <ComboBoxItem>English</ComboBoxItem>
+                <ComboBoxItem>Español</ComboBoxItem>
+                <ComboBoxItem>Italiano</ComboBoxItem>
+            </ComboBox>
+
+        </Grid>
+
+    </Grid>
+</Page>

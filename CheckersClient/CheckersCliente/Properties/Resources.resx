@@ -117,8 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerQuestion" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change your password</value>
+  </data>
+  <data name="ConfirmationQuestion" xml:space="preserve">
+    <value>Confirmation question</value>
+  </data>
   <data name="E-mail" xml:space="preserve">
     <value>E-mail</value>
+  </data>
+  <data name="EnterMail" xml:space="preserve">
+    <value>Enter your e-mail</value>
+  </data>
+  <data name="EnterNickname" xml:space="preserve">
+    <value>Enter your nickname</value>
+  </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Enter your Pin</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot password?</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="GamesLost" xml:space="preserve">
+    <value>Games Lost</value>
+  </data>
+  <data name="GamesPlayed" xml:space="preserve">
+    <value>Games Played</value>
+  </data>
+  <data name="GamesWon" xml:space="preserve">
+    <value>Games Won</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
@@ -126,8 +162,17 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="MinimunLength" xml:space="preserve">
+    <value>Una o mas casillas no contienen los elementos minimos suficientes</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
   <data name="Nickname" xml:space="preserve">
     <value>Nickname</value>
+  </data>
+  <data name="NicknameInstructions" xml:space="preserve">
+    <value>Enter your nickname to receive a confirmation pin on your linked mail and change your password</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -135,13 +180,83 @@
   <data name="Play" xml:space="preserve">
     <value>Play</value>
   </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Rank</value>
+  </data>
   <data name="Ranking" xml:space="preserve">
     <value>Ranking</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register new account</value>
+  </data>
+  <data name="ResendE-mail" xml:space="preserve">
+    <value>Resend e-mail</value>
+  </data>
+  <data name="Rankings" xml:space="preserve">
+    <value>Rankings Table</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Go Back</value>
   </data>
   <data name="Rules" xml:space="preserve">
     <value>Rules</value>
   </data>
+  <data name="SendMail" xml:space="preserve">
+    <value>Send mail</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
   <data name="User" xml:space="preserve">
     <value>User</value>
+  </data>
+  <data name="VerifyAccount" xml:space="preserve">
+    <value>Verify account</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="WaitMessage" xml:space="preserve">
+    <value>Please wait till the timer ends to resend the mail</value>
+  </data>
+  <data name="GameRules" xml:space="preserve">
+    <value>Checkers is a two player game.
+Each player receives 12 colored discs at the start of the game, with black and red as the colors.
+
+The board consists of 64 squares, 32 dark and 32 light.
+Each of the pieces is placed on the 12 dark squares closest to the player.
+
+The black player always moves first, then each player takes turns.
+
+The only moves allowed are on the dark squares, which means that the pieces always move diagonally.
+Single pieces can only advance towards their opponent.
+
+Any player making a non-capturing move can only move one square at a time.
+
+A capture move or jump involves jumping over one of the opponent's pieces in a diagonal line.
+In a single jump, only one piece can be captured although multiple jumps
+or the catches can be made in one turn.
+
+Any captured pieces are removed from the board.
+
+Whenever the capture option is available, the player must make the leap.
+In cases where more than one capture is possible, the player can choose which jump to make.
+
+When a player's piece manages to reach the opponent's front row,
+he is crowned and made "king". The kings are distinguished from the other pieces by having a crown symbol at the top.
+
+While kings can still only move diagonally, they can move back and forth.
+
+Kings can jump in multiple directions within the same turn.
+Individual pieces on the other hand can change direction diagonally, although they are limited to one move forward.
+
+The game ends when a player can no longer make any moves.
+This can result from all of a player's pieces being captured or blocked from making further moves.</value>
+  </data>
+  <data name="PlayerData" xml:space="preserve">
+    <value>Player data</value>
   </data>
 </root>

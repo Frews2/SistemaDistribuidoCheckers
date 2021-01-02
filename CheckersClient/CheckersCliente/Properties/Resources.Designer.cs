@@ -61,11 +61,139 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Answer.
+        /// </summary>
+        public static string AnswerQuestion {
+            get {
+                return ResourceManager.GetString("AnswerQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Change your password.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirmation question.
+        /// </summary>
+        public static string ConfirmationQuestion {
+            get {
+                return ResourceManager.GetString("ConfirmationQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a E-mail.
         /// </summary>
         public static string E_mail {
             get {
                 return ResourceManager.GetString("E-mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your e-mail.
+        /// </summary>
+        public static string EnterMail {
+            get {
+                return ResourceManager.GetString("EnterMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your nickname.
+        /// </summary>
+        public static string EnterNickname {
+            get {
+                return ResourceManager.GetString("EnterNickname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your Pin.
+        /// </summary>
+        public static string EnterPin {
+            get {
+                return ResourceManager.GetString("EnterPin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Forgot password?.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Checkers is a two player game.
+        ///Each player receives 12 colored discs at the start of the game, with black and red as the colors.
+        ///
+        ///The board consists of 64 squares, 32 dark and 32 light.
+        ///Each of the pieces is placed on the 12 dark squares closest to the player.
+        ///
+        ///The black player always moves first, then each player takes turns.
+        ///
+        ///The only moves allowed are on the dark squares, which means that the pieces always move diagonally.
+        ///Single pieces can only advance towards their opponent.
+        ///
+        ///Any player maki [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        public static string GameRules {
+            get {
+                return ResourceManager.GetString("GameRules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Games Lost.
+        /// </summary>
+        public static string GamesLost {
+            get {
+                return ResourceManager.GetString("GamesLost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Games Played.
+        /// </summary>
+        public static string GamesPlayed {
+            get {
+                return ResourceManager.GetString("GamesPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Games Won.
+        /// </summary>
+        public static string GamesWon {
+            get {
+                return ResourceManager.GetString("GamesWon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
             }
         }
         
@@ -88,11 +216,38 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Message.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Una o mas casillas no contienen los elementos minimos suficientes.
+        /// </summary>
+        public static string MinimunLength {
+            get {
+                return ResourceManager.GetString("MinimunLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nickname.
         /// </summary>
         public static string Nickname {
             get {
                 return ResourceManager.GetString("Nickname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter your nickname to receive a confirmation pin on your linked mail and change your password.
+        /// </summary>
+        public static string NicknameInstructions {
+            get {
+                return ResourceManager.GetString("NicknameInstructions", resourceCulture);
             }
         }
         
@@ -115,11 +270,74 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Player data.
+        /// </summary>
+        public static string PlayerData {
+            get {
+                return ResourceManager.GetString("PlayerData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Rank.
+        /// </summary>
+        public static string Rank {
+            get {
+                return ResourceManager.GetString("Rank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ranking.
         /// </summary>
         public static string Ranking {
             get {
                 return ResourceManager.GetString("Ranking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Rankings Table.
+        /// </summary>
+        public static string Rankings {
+            get {
+                return ResourceManager.GetString("Rankings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Register new account.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Registration Date.
+        /// </summary>
+        public static string RegistrationDate {
+            get {
+                return ResourceManager.GetString("RegistrationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Resend e-mail.
+        /// </summary>
+        public static string ResendE_mail {
+            get {
+                return ResourceManager.GetString("ResendE-mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Go Back.
+        /// </summary>
+        public static string Return {
+            get {
+                return ResourceManager.GetString("Return", resourceCulture);
             }
         }
         
@@ -133,11 +351,56 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Send mail.
+        /// </summary>
+        public static string SendMail {
+            get {
+                return ResourceManager.GetString("SendMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User.
         /// </summary>
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Verify account.
+        /// </summary>
+        public static string VerifyAccount {
+            get {
+                return ResourceManager.GetString("VerifyAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirm password.
+        /// </summary>
+        public static string VerifyPassword {
+            get {
+                return ResourceManager.GetString("VerifyPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please wait till the timer ends to resend the mail.
+        /// </summary>
+        public static string WaitMessage {
+            get {
+                return ResourceManager.GetString("WaitMessage", resourceCulture);
             }
         }
     }

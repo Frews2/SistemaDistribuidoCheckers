@@ -117,8 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerQuestion" xml:space="preserve">
+    <value>Respuesta</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambio de contraseña</value>
+  </data>
+  <data name="ConfirmationQuestion" xml:space="preserve">
+    <value>Pregunta de confirmación</value>
+  </data>
   <data name="E-mail" xml:space="preserve">
     <value>Correo</value>
+  </data>
+  <data name="EnterMail" xml:space="preserve">
+    <value>Introduce tu correo</value>
+  </data>
+  <data name="EnterNickname" xml:space="preserve">
+    <value>Introduce tu apodo</value>
+  </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Introduce el pin</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>¿Olvido su contraseña?</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Lenguaje</value>
+  </data>
+  <data name="GamesLost" xml:space="preserve">
+    <value>Partidas Perdidas</value>
+  </data>
+  <data name="GamesPlayed" xml:space="preserve">
+    <value>Partidas Jugadas</value>
+  </data>
+  <data name="GamesWon" xml:space="preserve">
+    <value>Partidas Ganadas</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Inicio</value>
@@ -126,8 +162,17 @@
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="MinimunLength" xml:space="preserve">
+    <value>Una o mas casillas no contienen los elementos minimos suficientes</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
   <data name="Nickname" xml:space="preserve">
     <value>Apodo</value>
+  </data>
+  <data name="NicknameInstructions" xml:space="preserve">
+    <value>Ingrese su apodo para recibir un pin de confirmación en su correo vinculado y cambiar su contraseña</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
@@ -135,13 +180,85 @@
   <data name="Play" xml:space="preserve">
     <value>Jugar</value>
   </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Posición</value>
+  </data>
   <data name="Ranking" xml:space="preserve">
     <value>Clasificacion</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrar nueva cuenta</value>
+  </data>
+  <data name="ResendE-mail" xml:space="preserve">
+    <value>Reenviar correo</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
+    <value>Reglas</value>
+  </data>
+  <data name="SendMail" xml:space="preserve">
+    <value>Enviar correo</value>
+  </data>
+  <data name="Rankings" xml:space="preserve">
+    <value>Puntuaciones</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Fecha de Registración</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Regresar</value>
   </data>
   <data name="Rule" xml:space="preserve">
     <value>Reglas</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
   <data name="User" xml:space="preserve">
     <value>Usuario</value>
+  </data>
+  <data name="VerifyAccount" xml:space="preserve">
+    <value>Verificar cuenta</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="WaitMessage" xml:space="preserve">
+    <value>Espere hasta que termine el temporizador para reenviar el correo</value>
+  </data>
+  <data name="GameRules" xml:space="preserve">
+    <value>Checkers es un juego de dos jugadores.
+Cada jugador recibe 12 discos de colores al comienzo del juego, con negro y rojo como colores.
+
+El tablero consta de 64 casillas, 32 oscuras y 32 claras.
+Cada una de las piezas se coloca en los 12 cuadrados oscuros más cercanos al jugador.
+
+El jugador negro siempre se mueve primero, luego cada jugador se turna.
+
+Los únicos movimientos permitidos es que las piezas siempre se mueven en diagonal.
+Las piezas individuales solo pueden avanzar hacia su oponente.
+
+Cualquier jugador que haga un movimiento de no captura solo puede moverse un cuadrado a la vez.
+
+Un movimiento de captura o salto implica saltar sobre una de las piezas del oponente en línea diagonal.
+En un solo salto, solo se puede capturar una pieza aunque múltiples saltos
+o las capturas se pueden realizar en un turno.
+
+Todas las piezas capturadas se eliminan del tablero.
+
+Siempre que la opción de captura esté disponible, el jugador debe dar el salto.
+En los casos en que sea posible más de una captura, el jugador puede elegir qué salto realizar.
+
+Cuando la pieza de un jugador logra llegar a la primera fila del oponente, es coronado "rey". 
+Los reyes se distinguen de las otras piezas por tener un símbolo de corona en la parte superior.
+
+Si bien los reyes solo pueden moverse en diagonal, pueden moverse hacia adelante y hacia atrás.
+
+Los reyes pueden saltar en varias direcciones en el mismo turno.
+
+El juego termina cuando un jugador ya no le quedan fichas.
+Esto puede ser el resultado de que todas las piezas de un jugador sean capturadas.</value>
+  </data>
+  <data name="PlayerData" xml:space="preserve">
+    <value>Datos del jugador</value>
   </data>
 </root>

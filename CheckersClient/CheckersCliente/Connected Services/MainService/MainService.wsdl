@@ -1,6 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MainService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="NetTcpBinding_ILoginManager_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IPlayerManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IRankingManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChatManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IMatchmakingManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -35,40 +122,399 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Dominio" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Contratos" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataAccess" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="ILoginManager_Login_InputMessage">
+  <wsdl:message name="IPlayerManager_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
-  <wsdl:message name="ILoginManager_GetLoginResult_OutputCallbackMessage">
+  <wsdl:message name="IPlayerManager_SavePlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_VerifyPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_SendMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMail" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_PasswordForgotMail_InputMessage">
+    <wsdl:part name="parameters" element="tns:PasswordForgotMail" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_VerifyPin_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyPin" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetActualPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActualPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetLoginResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetLoginResult" />
   </wsdl:message>
-  <wsdl:portType name="ILoginManager">
+  <wsdl:message name="IPlayerManager_GetSaveResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetSaveResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetVerifyResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetVerifyResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetMailResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetMailResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetPinResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetPinResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetPasswordChangeResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetPasswordChangeResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_SendActualPlayer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SendActualPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IRankingManager_GetRankingCallback_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingCallback" />
+  </wsdl:message>
+  <wsdl:message name="IRankingManager_GetRankingResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetRankingResult" />
+  </wsdl:message>
+  <wsdl:message name="IRankingManager_ReceiveRankingData_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveRankingData" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_SendText_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendText" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_GetChatCallback_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChatCallback" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_ReceiveText_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveText" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_HostMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:HostMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_EnterMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnterMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_LeaveMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_GetMatchmakingResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetMatchmakingResult" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_GetUsersOnline_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersOnline" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_NotifyMatchReady_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyMatchReady" />
+  </wsdl:message>
+  <wsdl:message name="IMatchmakingManager_AddPlayerToMatch_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:AddPlayerToMatch" />
+  </wsdl:message>
+  <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="Login">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILoginManager/Login" message="tns:ILoginManager_Login_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/Login" message="tns:IPlayerManager_Login_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/SavePlayer" message="tns:IPlayerManager_SavePlayer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPlayer" message="tns:IPlayerManager_VerifyPlayer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/SendMail" message="tns:IPlayerManager_SendMail_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PasswordForgotMail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/PasswordForgotMail" message="tns:IPlayerManager_PasswordForgotMail_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyPin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/VerifyPin" message="tns:IPlayerManager_VerifyPin_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/ChangePassword" message="tns:IPlayerManager_ChangePassword_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActualPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetActualPlayer" message="tns:IPlayerManager_GetActualPlayer_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILoginManager/GetLoginResult" message="tns:ILoginManager_GetLoginResult_OutputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetLoginResult" message="tns:IPlayerManager_GetLoginResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaveResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetSaveResult" message="tns:IPlayerManager_GetSaveResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVerifyResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetVerifyResult" message="tns:IPlayerManager_GetVerifyResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMailResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetMailResult" message="tns:IPlayerManager_GetMailResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPinResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPinResult" message="tns:IPlayerManager_GetPinResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordChangeResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPasswordChangeResult" message="tns:IPlayerManager_GetPasswordChangeResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendActualPlayer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/SendActualPlayer" message="tns:IPlayerManager_SendActualPlayer_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="NetTcpBinding_ILoginManager" type="tns:ILoginManager">
-    <wsp:PolicyReference URI="#NetTcpBinding_ILoginManager_policy" />
+  <wsdl:portType name="IRankingManager">
+    <wsdl:operation name="GetRankingCallback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRankingManager/GetRankingCallback" message="tns:IRankingManager_GetRankingCallback_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRankingResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IRankingManager/GetRankingResult" message="tns:IRankingManager_GetRankingResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveRankingData">
+      <wsdl:output wsaw:Action="http://tempuri.org/IRankingManager/ReceiveRankingData" message="tns:IRankingManager_ReceiveRankingData_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatManager">
+    <wsdl:operation name="SendText">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/SendText" message="tns:IChatManager_SendText_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChatCallback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/GetChatCallback" message="tns:IChatManager_GetChatCallback_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveText">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/ReceiveText" message="tns:IChatManager_ReceiveText_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMatchmakingManager">
+    <wsdl:operation name="HostMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/HostMatch" message="tns:IMatchmakingManager_HostMatch_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnterMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/EnterMatch" message="tns:IMatchmakingManager_EnterMatch_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchmakingManager/LeaveMatch" message="tns:IMatchmakingManager_LeaveMatch_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchmakingResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult" message="tns:IMatchmakingManager_GetMatchmakingResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOnline">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/GetUsersOnline" message="tns:IMatchmakingManager_GetUsersOnline_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyMatchReady">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/NotifyMatchReady" message="tns:IMatchmakingManager_NotifyMatchReady_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPlayerToMatch">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/AddPlayerToMatch" message="tns:IMatchmakingManager_AddPlayerToMatch_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPlayerManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="Login">
-      <soap12:operation soapAction="http://tempuri.org/ILoginManager/Login" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SavePlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/SavePlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/VerifyPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="PasswordForgotMail">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/PasswordForgotMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyPin">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/VerifyPin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetActualPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetActualPlayer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="GetLoginResult">
-      <soap12:operation soapAction="http://tempuri.org/ILoginManager/GetLoginResult" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetLoginResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaveResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetSaveResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerifyResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetVerifyResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMailResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetMailResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPinResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetPinResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordChangeResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetPasswordChangeResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendActualPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/SendActualPlayer" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IRankingManager" type="tns:IRankingManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IRankingManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetRankingCallback">
+      <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingCallback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetRankingResult">
+      <soap12:operation soapAction="http://tempuri.org/IRankingManager/GetRankingResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveRankingData">
+      <soap12:operation soapAction="http://tempuri.org/IRankingManager/ReceiveRankingData" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChatManager" type="tns:IChatManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChatManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendText">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/SendText" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetChatCallback">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/GetChatCallback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveText">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/ReceiveText" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IMatchmakingManager" type="tns:IMatchmakingManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IMatchmakingManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="HostMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/HostMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EnterMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/EnterMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/LeaveMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatchmakingResult">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersOnline">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/GetUsersOnline" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyMatchReady">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/NotifyMatchReady" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPlayerToMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchmakingManager/AddPlayerToMatch" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="MainService">
-    <wsdl:port name="NetTcpBinding_ILoginManager" binding="tns:NetTcpBinding_ILoginManager">
+    <wsdl:port name="NetTcpBinding_IPlayerManager" binding="tns:NetTcpBinding_IPlayerManager">
+      <soap12:address location="net.tcp://localhost:8090/Contratos" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IRankingManager" binding="tns:NetTcpBinding_IRankingManager">
+      <soap12:address location="net.tcp://localhost:8090/Contratos" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IChatManager" binding="tns:NetTcpBinding_IChatManager">
+      <soap12:address location="net.tcp://localhost:8090/Contratos" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IMatchmakingManager" binding="tns:NetTcpBinding_IMatchmakingManager">
       <soap12:address location="net.tcp://localhost:8090/Contratos" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>

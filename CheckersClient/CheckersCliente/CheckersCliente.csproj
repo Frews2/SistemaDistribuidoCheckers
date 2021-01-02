@@ -82,6 +82,12 @@
     <Compile Include="LogInPages\VerificatePasswordPin.xaml.cs">
       <DependentUpon>VerificatePasswordPin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MenuPages\GameTest.xaml.cs">
+      <DependentUpon>GameTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPages\RulesPage.xaml.cs">
+      <DependentUpon>RulesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DialogWindowManager.cs" />
     <Page Include="Game.xaml">
       <SubType>Designer</SubType>
@@ -95,7 +101,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CallbackHandlers\PlayerrCallbackHandler.cs" />
+    <Compile Include="CallbackHandlers\PlayerCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\ChatCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\MatchmakingCallbackHandler.cs" />
     <Compile Include="CallbackHandlers\RankingCallbackHandler.cs" />
@@ -137,11 +143,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MenuPages\GameTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MenuPages\PrincipalMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuPages\RankingList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuPages\RulesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

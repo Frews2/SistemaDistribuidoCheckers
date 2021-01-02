@@ -225,4 +225,40 @@
   <data name="WaitMessage" xml:space="preserve">
     <value>Espere hasta que termine el temporizador para reenviar el correo</value>
   </data>
+  <data name="GameRules" xml:space="preserve">
+    <value>Checkers es un juego de dos jugadores.
+Cada jugador recibe 12 discos de colores al comienzo del juego, con negro y rojo como colores.
+
+El tablero consta de 64 casillas, 32 oscuras y 32 claras.
+Cada una de las piezas se coloca en los 12 cuadrados oscuros más cercanos al jugador.
+
+El jugador negro siempre se mueve primero, luego cada jugador se turna.
+
+Los únicos movimientos permitidos es que las piezas siempre se mueven en diagonal.
+Las piezas individuales solo pueden avanzar hacia su oponente.
+
+Cualquier jugador que haga un movimiento de no captura solo puede moverse un cuadrado a la vez.
+
+Un movimiento de captura o salto implica saltar sobre una de las piezas del oponente en línea diagonal.
+En un solo salto, solo se puede capturar una pieza aunque múltiples saltos
+o las capturas se pueden realizar en un turno.
+
+Todas las piezas capturadas se eliminan del tablero.
+
+Siempre que la opción de captura esté disponible, el jugador debe dar el salto.
+En los casos en que sea posible más de una captura, el jugador puede elegir qué salto realizar.
+
+Cuando la pieza de un jugador logra llegar a la primera fila del oponente, es coronado "rey". 
+Los reyes se distinguen de las otras piezas por tener un símbolo de corona en la parte superior.
+
+Si bien los reyes solo pueden moverse en diagonal, pueden moverse hacia adelante y hacia atrás.
+
+Los reyes pueden saltar en varias direcciones en el mismo turno.
+
+El juego termina cuando un jugador ya no le quedan fichas.
+Esto puede ser el resultado de que todas las piezas de un jugador sean capturadas.</value>
+  </data>
+  <data name="PlayerData" xml:space="preserve">
+    <value>Datos del jugador</value>
+  </data>
 </root>

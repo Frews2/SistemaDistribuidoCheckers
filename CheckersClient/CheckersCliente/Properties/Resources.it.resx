@@ -222,4 +222,41 @@
   <data name="WaitMessage" xml:space="preserve">
     <value>Attendi il termine del timer per inviare nuovamente la posta</value>
   </data>
+  <data name="GameRules" xml:space="preserve">
+    <value>Checkersa è un gioco per due giocatori.
+Ogni giocatore riceve 12 dischi colorati all'inizio del gioco, con il nero e il rosso come colori.
+
+Il tabellone è composto da 64 quadrati, 32 scuri e 32 chiari.
+Ciascuno dei pezzi viene posizionato sui 12 quadrati scuri più vicini al giocatore.
+
+Il giocatore nero si muove sempre per primo, poi ogni giocatore si alterna.
+
+Le uniche mosse consentite sono sui quadrati scuri, il che significa che i pezzi si muovono sempre in diagonale.
+I pezzi singoli possono solo avanzare verso il loro avversario.
+
+Qualsiasi giocatore che effettua una mossa non catturante può muovere solo una casella alla volta.
+
+Una mossa o un salto di cattura implica il salto sopra uno dei pezzi dell'avversario in linea diagonale.
+In un singolo salto, solo un pezzo può essere catturato sebbene più salti
+oppure le catture possono essere effettuate in un solo turno.
+
+Qualsiasi pezzo catturato viene rimosso dal tabellone.
+
+Ogni volta che è disponibile l'opzione per la cattura, il giocatore deve fare il salto.
+Nei casi in cui è possibile più di una cattura, il giocatore può scegliere quale salto effettuare.
+
+Quando il pezzo di un giocatore riesce a raggiungere la prima fila dell'avversario,
+viene incoronato e reso “re”. I re si distinguono dagli altri pezzi per avere un simbolo della corona in alto.
+
+Mentre i re possono ancora muoversi solo in diagonale,possono spostarsi avanti e indietro.
+
+I re possono saltare in più direzioni all'interno dello stesso turno.
+I singoli pezzi d'altra parte possono cambiare direzione in diagonale, sebbene siano limitati a un movimento in avanti.
+
+Il gioco termina quando un giocatore non può più fare mosse.
+Questo può derivare da tutti i pezzi di un giocatore catturato o bloccato dall'effettuare ulteriori mosse.</value>
+  </data>
+  <data name="PlayerData" xml:space="preserve">
+    <value>Dati del giocatore</value>
+  </data>
 </root>

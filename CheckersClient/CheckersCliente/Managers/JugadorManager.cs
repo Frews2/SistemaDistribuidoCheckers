@@ -102,5 +102,35 @@ namespace CheckersCliente
                 MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
             }
         }
+
+        public static void ChangePassword(Jugador player)
+        {
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
+            PlayerManagerClient server = new PlayerManagerClient(instanceContext);
+
+            try
+            {
+                server.ChangePassword(player.Apodo, player.Contrasenia);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+            }
+        }
+
+        public static void GetActualPlayer(Jugador actualPlayer)
+        {
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
+            PlayerManagerClient server = new PlayerManagerClient(instanceContext);
+
+            try
+            {
+                server.GetActualPlayer(actualPlayer);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+            }
+        }
     }
 }

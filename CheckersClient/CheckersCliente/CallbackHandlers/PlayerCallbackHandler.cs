@@ -16,6 +16,7 @@ using CheckersCliente.Windows;
 using System.Windows;
 using CheckersCliente.LogInPages;
 using System.Windows.Navigation;
+using CheckersCliente.MenuPages;
 
 namespace CheckersCliente
 {
@@ -119,9 +120,33 @@ namespace CheckersCliente
             }
         }
 
-        public void GetPasswordChangeResult(PinResult verifiedPinResult)
+        public void GetPasswordChangeResult(PasswordChangeResult passwordChangeResult)
         {
-            throw new NotImplementedException();
+            if (passwordChangeResult == PasswordChangeResult.ChangedPassword)
+            {
+                DialogWindowManager.ShowSuccessWindow("Se ha cambiado la contraseña correctamente");
+                LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                login.NavigationService.Navigate(new LogInPage());
+
+            }
+            else
+            {
+                DialogWindowManager.ShowErrorWindow("Ha ocurrido un error a la hora de cambiar contraseña intentar de nuevo porfavor");
+            }
+
+        }
+
+        public void SendActualPlayer(DataObtainedResult dataObtainedResult, Jugador actualPlayer)
+        {
+            if (dataObtainedResult == DataObtainedResult.DataObtained)
+            {
+                Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                menu.NavigationService.Navigate(new UserConfiguration(actualPlayer));
+            }
+            else
+            {
+                DialogWindowManager.ShowErrorWindow("Ha ocurrido un error de conexion a la base de datos, intentar mas tarde");
+            }
         }
     }
 }

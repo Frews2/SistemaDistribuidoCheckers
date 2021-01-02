@@ -97,7 +97,7 @@ namespace DataAccess.DataManager
             return existsPlayer;
         }
 
-        public Jugador GetPlayerByNickname(string nickname)
+        public Jugador ChangePinByNickname(string nickname)
         {
             Random random = new Random();
             Jugador player = context.Jugador.Where(playerSearch => playerSearch.apodo == nickname).FirstOrDefault<Jugador>();
@@ -108,12 +108,32 @@ namespace DataAccess.DataManager
             return player;
         }
 
-        public bool ChangePassword(string newPassword, string nickname)
+        public int ChangePassword(string nickname, string newPassword)
         {
 
-            return false;
+            int saved = 0;
+
+            try
+            {
+                var playerState = context.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
+                playerState.contrasenia = ACTIVE_STATE;
+                saved = context.SaveChanges();
+
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException();
+            }
+
+            return saved;
         }
 
+        public Jugador GetPlayerByNickname(string playerNickname)
+        {
+            Jugador searchedPlayer = context.Jugador.Where(playerSearch => playerSearch.apodo == playerNickname).FirstOrDefault<Jugador>();
+
+            return searchedPlayer;
+        }
     }
 }
 

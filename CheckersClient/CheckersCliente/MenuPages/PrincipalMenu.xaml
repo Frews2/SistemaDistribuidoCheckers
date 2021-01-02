@@ -10,20 +10,31 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="PrincipalMenu">
     <Grid>
-      
+
         <Grid.Background>
             <ImageBrush ImageSource="D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersMenu.jpg"/>
         </Grid.Background>
-        
+
         <Button Content="{x:Static p:Resources.Play}" Margin="260,180,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="EnterGameLobby"/>
         <Button Content="{x:Static p:Resources.Ranking}" Margin="260,300,260,0" VerticalAlignment="Top" Background="Black" BorderBrush="Black" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="DisplayRanking"/>
-        <Button Content="{x:Static p:Resources.Rules}" Margin="260,420,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic"/>
+        <Button Content="{x:Static p:Resources.Rules}" Margin="260,420,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="ShowRules"/>
 
         <Button Margin="10,65,601,460" Cursor="Hand" Background="Red" BorderBrush="Red" Click="UserConfiguration">
             <StackPanel Orientation="Horizontal" Width="174" HorizontalAlignment="Left">
                 <materialDesign:PackIcon Kind="User" Margin="5,3.5,0,0" Width="38" Height="24"/>
-                <TextBlock x:Name="userBox" Text="{Binding CurrentPlayer.Apodo}" Width="131" FontSize="18" Height="35"/>
+                <TextBlock x:Name="userBox" Text="{Binding Apodo}" Width="131" FontSize="18" Height="35"/>
             </StackPanel>
         </Button>
+
+        <Label Content="{x:Static p:Resources.Language}" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Height="30" 
+               Width="176" FontWeight="ExtraBold" FontSize="14" Foreground="White" FontFamily="Bookman Old Style" Background="Red"/>
+        
+        <ComboBox HorizontalAlignment="Left" Margin="99,162,0,0" VerticalAlignment="Top" Width="83" Height="23" x:Name="LanguageBox" SelectionChanged="LanguageSelect">
+            <ComboBoxItem Content="English"/>
+            <ComboBoxItem Content="Español"/>
+            <ComboBoxItem Content="Italiano"/>
+        </ComboBox>
+
+
     </Grid>
 </Page>

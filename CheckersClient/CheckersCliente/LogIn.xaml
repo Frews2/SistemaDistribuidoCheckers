@@ -6,7 +6,7 @@
         xmlns:p="clr-namespace:CheckersCliente.Properties"
         xmlns:local="clr-namespace:CheckersCliente"
         mc:Ignorable="d"
-        Title="LogIn" Height="800" Width="800"
+        Title="LogIn" Height="800" Width="1000"
         ResizeMode="NoResize" ShowsNavigationUI="False"
         Source="LogInPages\LogInPage.xaml">
 </NavigationWindow>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckersCliente.MainService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,15 +22,21 @@ namespace CheckersCliente.LogInPages
     public partial class ChangePassword : Page
     {
         public const int MINIMUN_LENGHT = 8;
+        private string playerNick;
 
         public ChangePassword(string playerNickname)
         {
             InitializeComponent();
+            playerNick = playerNickname;
         }
 
         private void ChangePlayerPassword(object sender, RoutedEventArgs e)
         {
-
+            JugadorManager.ChangePassword(new Jugador
+            {
+                Apodo = playerNick,
+                Contrasenia= PasswordTextBox.Password
+            });
         }
 
         private void EnableChangeButton(object sender, RoutedEventArgs e)

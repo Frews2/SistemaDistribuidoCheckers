@@ -276,6 +276,28 @@ namespace CheckersCliente.MainService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PasswordChangeResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum PasswordChangeResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ChangedPassword = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ErrorChanging = 2,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DataObtainedResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum DataObtainedResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        DataObtained = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ErrorObtainingData = 2,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="RankingResult", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
     public enum RankingResult : int {
         
@@ -1360,10 +1382,16 @@ namespace CheckersCliente.MainService {
         System.Threading.Tasks.Task VerifyPinAsync(string nickname, string pin);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/ChangePassword")]
-        void ChangePassword(string nickname, string pin);
+        void ChangePassword(string nickname, string newPassword);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/ChangePassword")]
-        System.Threading.Tasks.Task ChangePasswordAsync(string nickname, string pin);
+        System.Threading.Tasks.Task ChangePasswordAsync(string nickname, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetActualPlayer")]
+        void GetActualPlayer(CheckersCliente.MainService.Jugador actualPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetActualPlayer")]
+        System.Threading.Tasks.Task GetActualPlayerAsync(CheckersCliente.MainService.Jugador actualPlayer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1385,7 +1413,10 @@ namespace CheckersCliente.MainService {
         void GetPinResult(CheckersCliente.MainService.PinResult verifiedPinResult, string playerNickname);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetPasswordChangeResult")]
-        void GetPasswordChangeResult(CheckersCliente.MainService.PinResult verifiedPinResult);
+        void GetPasswordChangeResult(CheckersCliente.MainService.PasswordChangeResult passwordChangedResult);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SendActualPlayer")]
+        void SendActualPlayer(CheckersCliente.MainService.DataObtainedResult dataObtainedResult, CheckersCliente.MainService.Jugador actualPlayer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1464,12 +1495,20 @@ namespace CheckersCliente.MainService {
             return base.Channel.VerifyPinAsync(nickname, pin);
         }
         
-        public void ChangePassword(string nickname, string pin) {
-            base.Channel.ChangePassword(nickname, pin);
+        public void ChangePassword(string nickname, string newPassword) {
+            base.Channel.ChangePassword(nickname, newPassword);
         }
         
-        public System.Threading.Tasks.Task ChangePasswordAsync(string nickname, string pin) {
-            return base.Channel.ChangePasswordAsync(nickname, pin);
+        public System.Threading.Tasks.Task ChangePasswordAsync(string nickname, string newPassword) {
+            return base.Channel.ChangePasswordAsync(nickname, newPassword);
+        }
+        
+        public void GetActualPlayer(CheckersCliente.MainService.Jugador actualPlayer) {
+            base.Channel.GetActualPlayer(actualPlayer);
+        }
+        
+        public System.Threading.Tasks.Task GetActualPlayerAsync(CheckersCliente.MainService.Jugador actualPlayer) {
+            return base.Channel.GetActualPlayerAsync(actualPlayer);
         }
     }
     

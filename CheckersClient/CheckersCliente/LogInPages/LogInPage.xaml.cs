@@ -4,6 +4,7 @@
 */
 
 using CheckersCliente.MainService;
+using CheckersCliente.MenuPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,6 +79,11 @@ namespace CheckersCliente.LogInPages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ChangePassword("asasa"));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GameTest());
         }
     }
 }

@@ -522,6 +522,15 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to View Reports.
+        /// </summary>
+        public static string ViewReports {
+            get {
+                return ResourceManager.GetString("ViewReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please wait till the timer ends to resend the mail.
         /// </summary>
         public static string WaitMessage {

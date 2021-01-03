@@ -303,4 +303,7 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   <data name="Exit" xml:space="preserve">
     <value>Salir</value>
   </data>
+  <data name="ViewReports" xml:space="preserve">
+    <value>Ver Reportes</value>
+  </data>
 </root>

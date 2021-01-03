@@ -301,4 +301,7 @@ This can result from all of a player's pieces being captured or blocked from mak
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="ViewReports" xml:space="preserve">
+    <value>View Reports</value>
+  </data>
 </root>

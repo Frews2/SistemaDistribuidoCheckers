@@ -1,8 +1,11 @@
 ﻿using CheckersCliente.MainService;
+using CheckersCliente.Managers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,42 +16,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CheckersCliente.Managers;
-using System.Threading;
-using System.Globalization;
 
-namespace CheckersCliente.MenuPages
+namespace CheckersCliente.AdminPages
 {
     /// <summary>
-    /// Lógica de interacción para PrincipalMenu.xaml
+    /// Interaction logic for AdminMenu.xaml
     /// </summary>
-    public partial class PrincipalMenu : Page
+    public partial class AdminMenu : Page
     {
-
-        public PrincipalMenu(Jugador player)
+        public AdminMenu(Jugador admin)
         {
             InitializeComponent();
-            DataContext = player;
+            DataContext = admin;
         }
 
-        private void UserConfiguration(object sender, RoutedEventArgs e)
+        private void DisplayReports(object sender, RoutedEventArgs e)
         {
-            JugadorManager.GetActualPlayer(DataContext as Jugador);
-        }
-
-        private void DisplayRanking(object sender, RoutedEventArgs e)
-        {
-            RankingManager.AddRankingPetitionCallback();
-        }
-
-        private void ShowRules(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new RulesPage());
-        }
-
-        private void ChooseGameMode(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new GameStandBy());
+            BanManager.GetReportedList();
         }
 
         private void LanguageSelect(object sender, RoutedEventArgs e)
@@ -66,11 +50,10 @@ namespace CheckersCliente.MenuPages
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("it");
                     break;
             }
-            Menu menu = new Menu(DataContext as Jugador);
+            AdminPage menu = new AdminPage(DataContext as Jugador);
             menu.Show();
-            Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+            AdminPage actualMenu = App.Current.Windows.OfType<AdminPage>().FirstOrDefault();
             actualMenu.Close();
         }
-
     }
 }

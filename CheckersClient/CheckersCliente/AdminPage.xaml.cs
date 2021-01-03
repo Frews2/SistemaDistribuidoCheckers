@@ -2,35 +2,47 @@
  Date: 02/01/2020
  Author(s): Ricardo Moguel Sanchez
 */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using CheckersCliente.MainService;
+using System.Windows.Navigation;
+using CheckersCliente.AdminPages;
+using System.Threading;
+using System.Globalization;
 
 namespace CheckersCliente
 {
     /// <summary>
     /// Lógica de interacción para AdminPage.xaml
     /// </summary>
-    public partial class AdminPage : Window
+    public partial class AdminPage : NavigationWindow
     {
-        public AdminPage()
+
+        public AdminPage(Jugador admin)
         {
             InitializeComponent();
+            LookLanguage(admin.IdLenguaje);
+            NavigationService.Navigate(new AdminMenu(admin));
+
         }
 
-        private void Exit(object sender, RoutedEventArgs e)
+        public string LangSwitch { get; private set; } = null;
+
+        private void LookLanguage(int idLanguage)
         {
-            this.Close();
+            switch (idLanguage)
+            {
+                case 0:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                    break;
+                case 1:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-MX");
+                    break;
+                case 2:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("it");
+                    break;
+            }
         }
+
+
     }
 }

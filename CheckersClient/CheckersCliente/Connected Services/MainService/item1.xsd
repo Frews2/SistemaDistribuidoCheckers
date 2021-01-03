@@ -117,4 +117,38 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="MatchmakingResult" nillable="true" type="tns:MatchmakingResult" />
+  <xs:simpleType name="AdminReportResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NO_REPORTS_EXIST">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="REPORT_EXISTS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AdminReportResult" nillable="true" type="tns:AdminReportResult" />
+  <xs:complexType name="ArrayOfReporte">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reporte" nillable="true" type="tns:Reporte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReporte" nillable="true" type="tns:ArrayOfReporte" />
+  <xs:complexType name="Reporte">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Acusador" nillable="true" type="tns:Jugador" />
+      <xs:element minOccurs="0" name="DescripcionAcuso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdReporte" type="xs:int" />
+      <xs:element minOccurs="0" name="Reportado" nillable="true" type="tns:Jugador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reporte" nillable="true" type="tns:Reporte" />
 </xs:schema>

@@ -301,4 +301,7 @@ Questo può derivare da tutti i pezzi di un giocatore catturato o bloccato dall'
   <data name="Exit" xml:space="preserve">
     <value>Uscire</value>
   </data>
+  <data name="ViewReports" xml:space="preserve">
+    <value>visualizzare i rapporti</value>
+  </data>
 </root>

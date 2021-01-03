@@ -25,5 +25,17 @@ namespace CheckersCliente.Managers
                 MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
             }
         }
+
+        public static void BanPlayer(string playerName)
+        {
+            try
+            {
+                server.BanPlayer(playerName);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+            }
+        }
     }
 }

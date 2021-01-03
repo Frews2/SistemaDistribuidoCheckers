@@ -27,7 +27,7 @@ namespace CheckersCliente
         {
             if (resultado == LoginResult.EsAdmin)
             {
-                AdminPage adminPage = new AdminPage();
+                AdminPage adminPage = new AdminPage(playerLoged);
                 adminPage.Show();
                 LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
                 logIn.Close();

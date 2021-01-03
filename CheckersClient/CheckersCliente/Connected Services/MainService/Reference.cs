@@ -581,6 +581,121 @@ namespace CheckersCliente.MainService {
         UNABLE_TO_ENTER_MATCH = 3,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AdminReportResult", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
+    public enum AdminReportResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NO_REPORTS_EXIST = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        REPORT_EXISTS = 2,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Reporte", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Reporte : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador AcusadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionAcusoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdReporteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador ReportadoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador Acusador {
+            get {
+                return this.AcusadorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AcusadorField, value) != true)) {
+                    this.AcusadorField = value;
+                    this.RaisePropertyChanged("Acusador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DescripcionAcuso {
+            get {
+                return this.DescripcionAcusoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionAcusoField, value) != true)) {
+                    this.DescripcionAcusoField = value;
+                    this.RaisePropertyChanged("DescripcionAcuso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdReporte {
+            get {
+                return this.IdReporteField;
+            }
+            set {
+                if ((this.IdReporteField.Equals(value) != true)) {
+                    this.IdReporteField = value;
+                    this.RaisePropertyChanged("IdReporte");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador Reportado {
+            get {
+                return this.ReportadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportadoField, value) != true)) {
+                    this.ReportadoField = value;
+                    this.RaisePropertyChanged("Reportado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BanResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum BanResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PLAYER_BANNED = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ERROR_BANNING = 2,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MainService.IPlayerManager", CallbackContract=typeof(CheckersCliente.MainService.IPlayerManagerCallback))]
     public interface IPlayerManager {
@@ -960,6 +1075,81 @@ namespace CheckersCliente.MainService {
         
         public System.Threading.Tasks.Task LeaveMatchAsync(CheckersCliente.MainService.Match gameMatch, CheckersCliente.MainService.Jugador currentPlayer) {
             return base.Channel.LeaveMatchAsync(gameMatch, currentPlayer);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MainService.IBanManager", CallbackContract=typeof(CheckersCliente.MainService.IBanManagerCallback))]
+    public interface IBanManager {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBanManager/GetReportData")]
+        void GetReportData();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBanManager/GetReportData")]
+        System.Threading.Tasks.Task GetReportDataAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBanManager/BanPlayer")]
+        void BanPlayer(string reportedPlayerName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBanManager/BanPlayer")]
+        System.Threading.Tasks.Task BanPlayerAsync(string reportedPlayerName);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IBanManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBanManager/GetReportDataQueryResult")]
+        void GetReportDataQueryResult(CheckersCliente.MainService.AdminReportResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBanManager/ReceiveReportData")]
+        void ReceiveReportData(CheckersCliente.MainService.Reporte[] reportList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IBanManager/GetBanResult")]
+        void GetBanResult(CheckersCliente.MainService.BanResult result);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IBanManagerChannel : CheckersCliente.MainService.IBanManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class BanManagerClient : System.ServiceModel.DuplexClientBase<CheckersCliente.MainService.IBanManager>, CheckersCliente.MainService.IBanManager {
+        
+        public BanManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public BanManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public BanManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public BanManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public BanManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void GetReportData() {
+            base.Channel.GetReportData();
+        }
+        
+        public System.Threading.Tasks.Task GetReportDataAsync() {
+            return base.Channel.GetReportDataAsync();
+        }
+        
+        public void BanPlayer(string reportedPlayerName) {
+            base.Channel.BanPlayer(reportedPlayerName);
+        }
+        
+        public System.Threading.Tasks.Task BanPlayerAsync(string reportedPlayerName) {
+            return base.Channel.BanPlayerAsync(reportedPlayerName);
         }
     }
 }

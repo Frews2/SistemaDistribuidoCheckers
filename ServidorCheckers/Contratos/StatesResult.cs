@@ -53,4 +53,10 @@ namespace Contratos
         DataObtained = 1,
         ErrorObtainingData = 2
     }
+
+    public enum BanResult
+    {
+        PLAYER_BANNED = 1,
+        ERROR_BANNING = 2
+    }
 }

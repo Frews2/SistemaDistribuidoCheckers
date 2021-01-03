@@ -258,7 +258,7 @@ This can result from all of a player's pieces being captured or blocked from mak
   </data>
   <data name="PlayerData" xml:space="preserve">
     <value>Player data</value>
- </data>
+  </data>
   <data name="CanadianCheckers" xml:space="preserve">
     <value>Canadian Checkers</value>
   </data>
@@ -282,5 +282,23 @@ This can result from all of a player's pieces being captured or blocked from mak
   </data>
   <data name="Players" xml:space="preserve">
     <value>Players</value>
+  </data>
+  <data name="Accuser" xml:space="preserve">
+    <value>Accuser</value>
+  </data>
+  <data name="ReportAdministration" xml:space="preserve">
+    <value>Player Reports Administration</value>
+  </data>
+  <data name="ReportDescription" xml:space="preserve">
+    <value>Report Description</value>
+  </data>
+  <data name="Reported" xml:space="preserve">
+    <value>Reported</value>
+  </data>
+  <data name="ReportID" xml:space="preserve">
+    <value>Report ID</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
   </data>
 </root>

@@ -62,6 +62,7 @@
     <Compile Include="AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CallbackHandlers\BanCallbackHandler.cs" />
     <Compile Include="Connected Services\MainService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +86,7 @@
     <Compile Include="LogInPages\VerificatePasswordPin.xaml.cs">
       <DependentUpon>VerificatePasswordPin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Managers\BanManager.cs" />
     <Compile Include="MenuPages\GameTest.xaml.cs">
       <DependentUpon>GameTest.xaml</DependentUpon>
     </Compile>

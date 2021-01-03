@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Date: 02/01/2020
+ Author(s): Ricardo Moguel Sanchez
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +26,11 @@ namespace CheckersCliente
         public AdminPage()
         {
             InitializeComponent();
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

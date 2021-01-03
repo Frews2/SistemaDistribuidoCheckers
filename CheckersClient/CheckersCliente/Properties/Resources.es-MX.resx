@@ -260,7 +260,7 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   </data>
   <data name="PlayerData" xml:space="preserve">
     <value>Datos del jugador</value>
- </data>
+  </data>
   <data name="CanadianCheckers" xml:space="preserve">
     <value>Checkers Canadienses</value>
   </data>
@@ -284,5 +284,23 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   </data>
   <data name="Players" xml:space="preserve">
     <value>Jugadores</value>
+  </data>
+  <data name="Accuser" xml:space="preserve">
+    <value>Acusador</value>
+  </data>
+  <data name="ReportAdministration" xml:space="preserve">
+    <value>Gestión de Reportes de Jugadores</value>
+  </data>
+  <data name="ReportDescription" xml:space="preserve">
+    <value>Descripción de Acuso</value>
+  </data>
+  <data name="Reported" xml:space="preserve">
+    <value>Reportado</value>
+  </data>
+  <data name="ReportID" xml:space="preserve">
+    <value>ID Reporte</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Salir</value>
   </data>
 </root>

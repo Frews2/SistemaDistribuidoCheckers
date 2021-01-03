@@ -19,7 +19,7 @@ namespace Contratos
     public interface IRankingManagerCallback
     {
         [OperationContract(IsOneWay = true)]
-        void GetRankingResult(RankingResult resultado);
+        void GetRankingResult(RankingResult result);
 
         [OperationContract(IsOneWay = true)]
         void ReceiveRankingData(List<Dominio.Ranking> rankingList);

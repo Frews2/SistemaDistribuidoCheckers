@@ -123,7 +123,7 @@
   <xs:element name="GetRankingResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="resultado" type="q16:RankingResult" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="result" type="q16:RankingResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

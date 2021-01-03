@@ -128,11 +128,51 @@ namespace DataAccess.DataManager
             return saved;
         }
 
+        public int BanPlayer(string nickname)
+        {
+
+            int saved = 0;
+
+            try
+            {
+                var reportedPlayer = context.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
+                reportedPlayer.status = DOWN_STATE;
+                saved = context.SaveChanges();
+
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException();
+            }
+
+            return saved;
+        }
+
         public Jugador GetPlayerByNickname(string playerNickname)
         {
             Jugador searchedPlayer = context.Jugador.Where(playerSearch => playerSearch.apodo == playerNickname).FirstOrDefault<Jugador>();
 
             return searchedPlayer;
+        }
+
+        public Dominio.Jugador GetDomainPlayerByID(int playerID)
+        {
+            Jugador queriedPlayer = null;
+            queriedPlayer = context.Jugador.Find(playerID);
+            Dominio.Jugador matchedPlayer = new Dominio.Jugador
+            {
+                Apodo = queriedPlayer.apodo,
+                Contrasenia = queriedPlayer.contrasenia,
+                CorreoElectronico = queriedPlayer.correoElectronico,
+                Status = queriedPlayer.status,
+                RespuestaConfirmacion = queriedPlayer.respuestaConfirmacion,
+                PreguntaRecuperacion = queriedPlayer.preguntaRecuperacion,
+                PinConfirmacion = queriedPlayer.pinConfirmacion,
+                IdCreador = queriedPlayer.idCreador,
+                IdLenguaje = queriedPlayer.idioma
+            };
+
+            return matchedPlayer;
         }
     }
 }

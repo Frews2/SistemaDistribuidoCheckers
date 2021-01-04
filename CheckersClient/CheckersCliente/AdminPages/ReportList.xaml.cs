@@ -17,7 +17,8 @@ namespace CheckersCliente.AdminPages
     public partial class ReportList : Page
     {
         private List<Reporte> reportList;
-        private Jugador selectedPlayer;
+        private Reporte selectedReport;
+        private Jugador bannedPlayer;
 
         public ReportList(List<Reporte> reports)
         {
@@ -28,9 +29,10 @@ namespace CheckersCliente.AdminPages
 
         private void BanPlayer(object sender, RoutedEventArgs e)
         {
-            selectedPlayer = (Jugador)tableOfReports.SelectedItem;
+            selectedReport = (Reporte)tableOfReports.SelectedItem;
+            bannedPlayer = selectedReport.Reportado;
 
-            BanManager.BanPlayer(selectedPlayer.Apodo);
+            BanManager.BanPlayer(bannedPlayer.Apodo);
         }
 
         private void Exit(object sender, RoutedEventArgs e)

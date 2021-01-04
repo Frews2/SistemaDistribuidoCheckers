@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Mail;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -628,9 +629,11 @@ namespace Contratos
                 System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient
                 {
                     Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
-                    Port = 587,
                     EnableSsl = true,
+                    Port = 587,
+                    
                     Host = "smtp.gmail.com",
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
                 };
                 try
                 {
@@ -640,7 +643,6 @@ namespace Contratos
                 {
                     throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar el correo del jugador reportado");
                 }
-
             }
 
             BanCallback.GetBanResult(banResult);

@@ -220,6 +220,9 @@ namespace CheckersCliente.MainService {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         EsAdmin = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        EsBaneado = 6,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]

@@ -51,14 +51,22 @@ namespace CheckersCliente
                     }
                     else
                     {
-                        if (resultado == LoginResult.NoExisteJugador)
+                        if(resultado == LoginResult.EsBaneado)
                         {
-                            DialogWindowManager.ShowErrorWindow("No existe jugador");
+                            DialogWindowManager.ShowErrorWindow("Usted a sido baneado");
                         }
                         else
                         {
-                            DialogWindowManager.ShowErrorWindow("Verifica tu contraseña");
+                            if (resultado == LoginResult.NoExisteJugador)
+                            {
+                                DialogWindowManager.ShowErrorWindow("No existe jugador");
+                            }
+                            else
+                            {
+                                DialogWindowManager.ShowErrorWindow("Verifica tu contraseña");
+                            }
                         }
+                        
                     }
                 }
             }

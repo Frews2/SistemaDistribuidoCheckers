@@ -15,14 +15,14 @@
             <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
-        <Label Content="{x:Static p:Resources.ReportAdministration}" Margin="73,32,121,498" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="606" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
+        <Label Content="{x:Static p:Resources.ReportAdministration}" Margin="73,20,121,498" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="606" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
 
-        <DataGrid x:Name="tableOfReports" HorizontalAlignment="Center" Height="358"  VerticalAlignment="Top" Width="650" 
+        <DataGrid x:Name="tableOfReports" HorizontalAlignment="Center" Height="358"  VerticalAlignment="Top" Width="630" 
                   AutoGenerateColumns="False" Background="#FFFAFAFA" CanUserAddRows="false" RenderTransformOrigin="0.723,0.467"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="30" Margin="54,128,96,0" >
 
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="{x:Static p:Resources.ReportID}" Width ="70" MinWidth="90" MaxWidth="200"
+                <DataGridTemplateColumn Header="{x:Static p:Resources.ReportID}" Width ="90" MinWidth="90" MaxWidth="200"
                                         CanUserResize="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">

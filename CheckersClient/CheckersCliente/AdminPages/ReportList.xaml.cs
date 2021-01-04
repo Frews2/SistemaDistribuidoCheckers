@@ -20,6 +20,7 @@ namespace CheckersCliente.AdminPages
         private Reporte selectedReport;
         private Jugador bannedPlayer;
 
+
         public ReportList(List<Reporte> reports)
         {
             InitializeComponent();
@@ -31,7 +32,6 @@ namespace CheckersCliente.AdminPages
         {
             selectedReport = (Reporte)tableOfReports.SelectedItem;
             bannedPlayer = selectedReport.Reportado;
-
             BanManager.BanPlayer(bannedPlayer.Apodo);
         }
 

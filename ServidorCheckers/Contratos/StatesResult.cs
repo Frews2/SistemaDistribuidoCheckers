@@ -18,7 +18,8 @@ namespace Contratos
         NoExisteJugador = 2,
         ExisteJugadorVerificado = 3,
         ExisteJugadorNoVerificado = 4,
-        EsAdmin = 5
+        EsAdmin = 5,
+        EsBaneado = 6
     }
 
     public enum SaveResult

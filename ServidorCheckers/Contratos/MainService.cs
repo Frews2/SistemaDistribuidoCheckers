@@ -11,6 +11,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.DataManager;
+using System.Net.Mail;
 using Dominio;
 
 
@@ -66,7 +67,15 @@ namespace Contratos
                     }
                     else
                     {
-                        result = LoginResult.ExisteJugadorNoVerificado;
+                        if (jugadorDataManager.CheckBannedState(player.Apodo))
+                        {
+                            result = LoginResult.EsBaneado;
+                        }
+                        else
+                        {
+                            result = LoginResult.ExisteJugadorNoVerificado;
+                        }
+                        
                     }
                 }
                 else
@@ -126,7 +135,7 @@ namespace Contratos
                         System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient
                         {
                             Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
-                            Port = 587,
+                            Port = 135,
                             EnableSsl = true,
                             Host = "smtp.gmail.com",
                         };
@@ -566,7 +575,7 @@ namespace Contratos
             AdminReportResult result;
             List<Dominio.Reporte> reportList = QueryReportData();
 
-            if (reportList == null)
+            if (reportList.Count() < 1)
             {
                 result = AdminReportResult.NO_REPORTS_EXIST;
             }
@@ -609,10 +618,10 @@ namespace Contratos
             int isPlayerBanned = 0;
             DataAccess.Jugador reportedPlayer = new DataAccess.Jugador();
             JugadorDataManager playerDataManager = new JugadorDataManager();
-            
+
+            BanResult banResult = BanResult.ERROR_BANNING;
             reportedPlayer = playerDataManager.GetPlayerByNickname(reportedPlayerName);
             isPlayerBanned = playerDataManager.BanPlayer(reportedPlayer.apodo);
-            BanResult banResult = BanResult.ERROR_BANNING;
 
             if (isPlayerBanned != 0)
             {
@@ -631,10 +640,9 @@ namespace Contratos
                     Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
                     EnableSsl = true,
                     Port = 587,
-                    
                     Host = "smtp.gmail.com",
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
                 };
+
                 try
                 {
                     client.Send(emailContent);
@@ -643,7 +651,6 @@ namespace Contratos
                 {
                     throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar el correo del jugador reportado");
                 }
-            }
 
             BanCallback.GetBanResult(banResult);
         }

@@ -36,6 +36,15 @@ namespace DataAccess.DataManager
             return existe;
         }
 
+        public bool CheckBannedState(string nickname)
+        {
+            bool banned = false;
+
+            banned = context.Jugador.Any(jugador => jugador.apodo.Equals(nickname) && jugador.status.Equals(DOWN_STATE));
+
+            return banned;
+        }
+
         public bool EsPasswordCorrecto(string password, string nickname)
         {
             bool esCorrecto = false;

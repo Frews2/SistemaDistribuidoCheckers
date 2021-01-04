@@ -304,4 +304,10 @@ This can result from all of a player's pieces being captured or blocked from mak
   <data name="ViewReports" xml:space="preserve">
     <value>View Reports</value>
   </data>
+  <data name="Ban" xml:space="preserve">
+    <value>Ban</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
 </root>

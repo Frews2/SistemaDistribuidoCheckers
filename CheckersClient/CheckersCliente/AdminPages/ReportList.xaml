@@ -15,11 +15,11 @@
             <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
-        <Label Content="{x:Static p:Resources.ReportAdministration}" Margin="194,32,192,498" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="414" FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style"/>
+        <Label Content="{x:Static p:Resources.ReportAdministration}" Margin="73,32,121,498" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="606" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
 
-        <DataGrid x:Name="tableOfReports" HorizontalAlignment="Center" Height="358"  VerticalAlignment="Top" Width="680" 
+        <DataGrid x:Name="tableOfReports" HorizontalAlignment="Center" Height="358"  VerticalAlignment="Top" Width="650" 
                   AutoGenerateColumns="False" Background="#FFFAFAFA" CanUserAddRows="false" RenderTransformOrigin="0.723,0.467"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="30" Margin="73,128,47,0" >
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="30" Margin="54,128,96,0" >
 
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="{x:Static p:Resources.ReportID}" Width ="70" MinWidth="90" MaxWidth="200"
@@ -58,7 +58,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="{x:Static p:Resources.Reported}"  Width ="160" CanUserResize="False" 
+                <DataGridTemplateColumn Header="{x:Static p:Resources.Reported}"  Width ="120" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -76,7 +76,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="{x:Static p:Resources.ReportDescription}"  Width ="110" CanUserResize="False" 
+                <DataGridTemplateColumn Header="{x:Static p:Resources.ReportDescription}"  Width ="200" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -90,6 +90,25 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DescripcionAcuso}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn  Header="{x:Static p:Resources.Options}" Width ="120" CanUserResize="False" 
+                                                CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="IndianRed"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{x:Static p:Resources.Ban}" Name="suspendPlayer" Width ="100" MinWidth="100" 
+                                    VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White"
+                                    FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="BanPlayer"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -3,6 +3,7 @@
  Author(s): Ricardo Moguel Sanchez
 */
 using CheckersCliente.MainService;
+using CheckersCliente.Managers;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -16,12 +17,20 @@ namespace CheckersCliente.AdminPages
     public partial class ReportList : Page
     {
         private List<Reporte> reportList;
+        private Jugador selectedPlayer;
 
         public ReportList(List<Reporte> reports)
         {
             InitializeComponent();
             reportList = reports;
             tableOfReports.ItemsSource = reportList;
+        }
+
+        private void BanPlayer(object sender, RoutedEventArgs e)
+        {
+            selectedPlayer = (Jugador)tableOfReports.SelectedItem;
+
+            BanManager.BanPlayer(selectedPlayer.Apodo);
         }
 
         private void Exit(object sender, RoutedEventArgs e)

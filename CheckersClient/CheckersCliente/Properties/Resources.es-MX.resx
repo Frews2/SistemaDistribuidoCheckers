@@ -306,4 +306,10 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   <data name="ViewReports" xml:space="preserve">
     <value>Ver Reportes</value>
   </data>
+  <data name="Ban" xml:space="preserve">
+    <value>Suspendir</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
 </root>

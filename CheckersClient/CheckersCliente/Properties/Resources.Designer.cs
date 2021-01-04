@@ -79,6 +79,15 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ban.
+        /// </summary>
+        public static string Ban {
+            get {
+                return ResourceManager.GetString("Ban", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Canadian Checkers.
         /// </summary>
         public static string CanadianCheckers {
@@ -320,6 +329,15 @@ namespace CheckersCliente.Properties {
         public static string NicknameInstructions {
             get {
                 return ResourceManager.GetString("NicknameInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string Options {
+            get {
+                return ResourceManager.GetString("Options", resourceCulture);
             }
         }
         

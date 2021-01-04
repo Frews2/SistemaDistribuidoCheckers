@@ -304,4 +304,10 @@ Questo può derivare da tutti i pezzi di un giocatore catturato o bloccato dall'
   <data name="ViewReports" xml:space="preserve">
     <value>visualizzare i rapporti</value>
   </data>
+  <data name="Ban" xml:space="preserve">
+    <value>Interdire</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opzioni</value>
+  </data>
 </root>

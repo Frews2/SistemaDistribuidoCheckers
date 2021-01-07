@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -42,11 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IGameManager.cs" />
     <Compile Include="IPlayerManager.cs" />
-    <Compile Include="IChatManager.cs" />
     <Compile Include="IRankingManager.cs" />
     <Compile Include="MainService.cs" />
-    <Compile Include="IMatchmakingManager.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatesResult.cs" />
@@ -60,6 +60,9 @@
       <Project>{1514e354-f273-4f37-92e5-83c039501fe0}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

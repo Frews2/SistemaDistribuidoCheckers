@@ -6,12 +6,38 @@ using System.Threading.Tasks;
 
 namespace Contratos
 {
-    public enum VerificationResult
+    public enum Checker
+    {
+        freeSpace,
+        player1Checker,
+        player1King,
+        player2Checker,
+        player2King
+    }
+
+    public enum CheckersGameMode
+    {
+        ClassicCheckers = 1,
+        SuicidalCheckers = 2,
+        CanadianCheckers =3,
+        ItalianCheckers = 4,
+        NoGame = 5
+    }
+
+    public enum MatchmakingResult
+    {
+        MATCH_FOUND = 1,
+        MATCH_NOT_FOUND = 2,
+        UNABLE_TO_ENTER_MATCH = 3
+    }
+
+public enum VerificationResult
     {
         PinIncorrecto = 1,
         NoExisteJugador = 2,
         VerificacionExistosa = 3
     }
+
     public enum LoginResult
     {
         PasswordIncorrecto = 1,

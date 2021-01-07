@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,10 @@ namespace ServidorCheckers
             {
                 host.Open();
                 Console.WriteLine("Server is running");
+                var randomGenerator = RandomNumberGenerator.Create();
+                byte[] data = new byte[16];
+                randomGenerator.GetBytes(data);
+                Console.WriteLine(BitConverter.ToInt32(data, 1));
                 Console.ReadLine();
             }
         }

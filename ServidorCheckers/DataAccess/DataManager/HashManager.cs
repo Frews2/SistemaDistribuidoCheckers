@@ -9,30 +9,23 @@ namespace DataAccess.DataManager
 {
     public class HashManager
     {
-        byte[] transformSource;
-        byte[] transformHash;
-
         public HashManager()
         {
-            transformSource = null;
-            transformHash = null;
         }
 
         public String TextToHash(string sourceData)
         {
-            MD5 md5Code = MD5.Create();
+            return BCrypt.Net.BCrypt.HashPassword(sourceData);
+        }
 
-            transformSource = Encoding.ASCII.GetBytes(sourceData);
-            transformHash = md5Code.ComputeHash(transformSource);
-
-            StringBuilder hashChain = new StringBuilder();
-
-            foreach (var letter in transformHash)
+        public static bool CompareHash(string inputText, string hashText)
+        {
+            bool correctPassword = false;
+            if (BCrypt.Net.BCrypt.Verify(inputText, hashText))
             {
-                hashChain.Append(letter.ToString("X2"));
+                correctPassword = true;
             }
-
-            return hashChain.ToString();
+            return correctPassword;
         }
 
     }

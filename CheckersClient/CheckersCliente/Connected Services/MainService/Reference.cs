@@ -453,36 +453,101 @@ namespace CheckersCliente.MainService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SendMessageResult", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
-    public enum SendMessageResult : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="CheckersGameMode", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum CheckersGameMode : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        MESSAGE_SENT = 1,
+        ClassicCheckers = 1,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        MESSAGE_NOT_SENT = 2,
+        SuicidalCheckers = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CanadianCheckers = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ItalianCheckers = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NoGame = 5,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Checker", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum Checker : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        freeSpace = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        player1Checker = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        player1King = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        player2Checker = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        player2King = 4,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MatchmakingResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum MatchmakingResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MATCH_FOUND = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MATCH_NOT_FOUND = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        UNABLE_TO_ENTER_MATCH = 3,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Match", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.Jugador))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.RankingResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.Ranking[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.Ranking))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.LoginResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.SaveResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.VerificationResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.MailResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.PinResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.PasswordChangeResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.DataObtainedResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.CheckersGameMode))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.Checker[][]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.Checker[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.Checker))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.MatchmakingResult))]
     public partial class Match : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string GameModeField;
+        private int currentPlayerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<object, CheckersCliente.MainService.Jugador> GuestField;
+        private int matchActiveNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<object, CheckersCliente.MainService.Jugador> HostField;
+        private object playerOneCallbackField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MatchHostNameField;
+        private CheckersCliente.MainService.Jugador playerOneDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object playerTwoCallbackField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private CheckersCliente.MainService.Jugador playerTwoDataField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -495,53 +560,79 @@ namespace CheckersCliente.MainService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string GameMode {
+        public int currentPlayer {
             get {
-                return this.GameModeField;
+                return this.currentPlayerField;
             }
             set {
-                if ((object.ReferenceEquals(this.GameModeField, value) != true)) {
-                    this.GameModeField = value;
-                    this.RaisePropertyChanged("GameMode");
+                if ((this.currentPlayerField.Equals(value) != true)) {
+                    this.currentPlayerField = value;
+                    this.RaisePropertyChanged("currentPlayer");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<object, CheckersCliente.MainService.Jugador> Guest {
+        public int matchActiveNumber {
             get {
-                return this.GuestField;
+                return this.matchActiveNumberField;
             }
             set {
-                if ((object.ReferenceEquals(this.GuestField, value) != true)) {
-                    this.GuestField = value;
-                    this.RaisePropertyChanged("Guest");
+                if ((this.matchActiveNumberField.Equals(value) != true)) {
+                    this.matchActiveNumberField = value;
+                    this.RaisePropertyChanged("matchActiveNumber");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<object, CheckersCliente.MainService.Jugador> Host {
+        public object playerOneCallback {
             get {
-                return this.HostField;
+                return this.playerOneCallbackField;
             }
             set {
-                if ((object.ReferenceEquals(this.HostField, value) != true)) {
-                    this.HostField = value;
-                    this.RaisePropertyChanged("Host");
+                if ((object.ReferenceEquals(this.playerOneCallbackField, value) != true)) {
+                    this.playerOneCallbackField = value;
+                    this.RaisePropertyChanged("playerOneCallback");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MatchHostName {
+        public CheckersCliente.MainService.Jugador playerOneData {
             get {
-                return this.MatchHostNameField;
+                return this.playerOneDataField;
             }
             set {
-                if ((object.ReferenceEquals(this.MatchHostNameField, value) != true)) {
-                    this.MatchHostNameField = value;
-                    this.RaisePropertyChanged("MatchHostName");
+                if ((object.ReferenceEquals(this.playerOneDataField, value) != true)) {
+                    this.playerOneDataField = value;
+                    this.RaisePropertyChanged("playerOneData");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public object playerTwoCallback {
+            get {
+                return this.playerTwoCallbackField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.playerTwoCallbackField, value) != true)) {
+                    this.playerTwoCallbackField = value;
+                    this.RaisePropertyChanged("playerTwoCallback");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CheckersCliente.MainService.Jugador playerTwoData {
+            get {
+                return this.playerTwoDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.playerTwoDataField, value) != true)) {
+                    this.playerTwoDataField = value;
+                    this.RaisePropertyChanged("playerTwoData");
                 }
             }
         }
@@ -554,31 +645,6 @@ namespace CheckersCliente.MainService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="HostingResult", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
-    public enum HostingResult : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MATCH_CREATED = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MATCH_NOT_CREATED = 2,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MatchmakingResult", Namespace="http://schemas.datacontract.org/2004/07/Dominio")]
-    public enum MatchmakingResult : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MATCH_FOUND = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MATCH_NOT_FOUND = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        UNABLE_TO_ENTER_MATCH = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -811,155 +877,125 @@ namespace CheckersCliente.MainService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MainService.IChatManager", CallbackContract=typeof(CheckersCliente.MainService.IChatManagerCallback))]
-    public interface IChatManager {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MainService.IGameManager", CallbackContract=typeof(CheckersCliente.MainService.IGameManagerCallback))]
+    public interface IGameManager {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/SendText")]
-        void SendText(string destination, string message);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/CreateMatch")]
+        void CreateMatch(CheckersCliente.MainService.Jugador currentPlayer, CheckersCliente.MainService.CheckersGameMode gameMode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/SendText")]
-        System.Threading.Tasks.Task SendTextAsync(string destination, string message);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/CreateMatch")]
+        System.Threading.Tasks.Task CreateMatchAsync(CheckersCliente.MainService.Jugador currentPlayer, CheckersCliente.MainService.CheckersGameMode gameMode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/GetChatCallback")]
-        void GetChatCallback();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/Player1Turn")]
+        void Player1Turn(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/GetChatCallback")]
-        System.Threading.Tasks.Task GetChatCallbackAsync();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/Player1Turn")]
+        System.Threading.Tasks.Task Player1TurnAsync(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/Player2Turn")]
+        void Player2Turn(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/Player2Turn")]
+        System.Threading.Tasks.Task Player2TurnAsync(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/FinishPlayerGame")]
+        void FinishPlayerGame(int matchNumber, int playerNumber, int playerTwoCheckers, int playerOneCheckers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/FinishPlayerGame")]
+        System.Threading.Tasks.Task FinishPlayerGameAsync(int matchNumber, int playerNumber, int playerTwoCheckers, int playerOneCheckers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/SendGameMessage")]
+        void SendGameMessage(int playerNumber, string message, int matchNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/SendGameMessage")]
+        System.Threading.Tasks.Task SendGameMessageAsync(int playerNumber, string message, int matchNumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IChatManagerCallback {
+    public interface IGameManagerCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/ReceiveText")]
-        void ReceiveText(string source, string message);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/UpdateGameGUI")]
+        void UpdateGameGUI(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int playerTwoCheckers, int playerOneCheckers);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/GetSentMessageResult")]
-        void GetSentMessageResult(CheckersCliente.MainService.SendMessageResult result);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/FinishGame")]
+        void FinishGame(int playerTwoCheckers, int playerOneCheckers);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/GetMatchmakingResult")]
+        void GetMatchmakingResult(CheckersCliente.MainService.MatchmakingResult result, CheckersCliente.MainService.Match match, int playerNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/UpdateMatchNumber")]
+        void UpdateMatchNumber(int newMatchNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/RecieveGameMessage")]
+        void RecieveGameMessage(string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IChatManagerChannel : CheckersCliente.MainService.IChatManager, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ChatManagerClient : System.ServiceModel.DuplexClientBase<CheckersCliente.MainService.IChatManager>, CheckersCliente.MainService.IChatManager {
-        
-        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
-                base(callbackInstance) {
-        }
-        
-        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
-                base(callbackInstance, endpointConfigurationName) {
-        }
-        
-        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, binding, remoteAddress) {
-        }
-        
-        public void SendText(string destination, string message) {
-            base.Channel.SendText(destination, message);
-        }
-        
-        public System.Threading.Tasks.Task SendTextAsync(string destination, string message) {
-            return base.Channel.SendTextAsync(destination, message);
-        }
-        
-        public void GetChatCallback() {
-            base.Channel.GetChatCallback();
-        }
-        
-        public System.Threading.Tasks.Task GetChatCallbackAsync() {
-            return base.Channel.GetChatCallbackAsync();
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MainService.IMatchmakingManager", CallbackContract=typeof(CheckersCliente.MainService.IMatchmakingManagerCallback))]
-    public interface IMatchmakingManager {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/CreateMatch")]
-        void CreateMatch(CheckersCliente.MainService.Jugador currentPlayer, string gameMode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/CreateMatch")]
-        System.Threading.Tasks.Task CreateMatchAsync(CheckersCliente.MainService.Jugador currentPlayer, string gameMode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/LeaveMatch")]
-        void LeaveMatch(CheckersCliente.MainService.Match gameMatch, CheckersCliente.MainService.Jugador currentPlayer);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/LeaveMatch")]
-        System.Threading.Tasks.Task LeaveMatchAsync(CheckersCliente.MainService.Match gameMatch, CheckersCliente.MainService.Jugador currentPlayer);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMatchmakingManagerCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/GetHostingResult")]
-        void GetHostingResult(CheckersCliente.MainService.HostingResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/GetMatchmakingResult")]
-        void GetMatchmakingResult(CheckersCliente.MainService.MatchmakingResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/GetUsersOnline")]
-        void GetUsersOnline(string[] connectedUsers);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/NotifyMatchReady")]
-        void NotifyMatchReady(CheckersCliente.MainService.MatchmakingResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchmakingManager/AddPlayerToMatch")]
-        void AddPlayerToMatch(CheckersCliente.MainService.Match match, CheckersCliente.MainService.Jugador player);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMatchmakingManagerChannel : CheckersCliente.MainService.IMatchmakingManager, System.ServiceModel.IClientChannel {
+    public interface IGameManagerChannel : CheckersCliente.MainService.IGameManager, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MatchmakingManagerClient : System.ServiceModel.DuplexClientBase<CheckersCliente.MainService.IMatchmakingManager>, CheckersCliente.MainService.IMatchmakingManager {
+    public partial class GameManagerClient : System.ServiceModel.DuplexClientBase<CheckersCliente.MainService.IGameManager>, CheckersCliente.MainService.IGameManager {
         
-        public MatchmakingManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+        public GameManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
         }
         
-        public MatchmakingManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+        public GameManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
                 base(callbackInstance, endpointConfigurationName) {
         }
         
-        public MatchmakingManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+        public GameManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public MatchmakingManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GameManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public MatchmakingManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GameManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void CreateMatch(CheckersCliente.MainService.Jugador currentPlayer, string gameMode) {
+        public void CreateMatch(CheckersCliente.MainService.Jugador currentPlayer, CheckersCliente.MainService.CheckersGameMode gameMode) {
             base.Channel.CreateMatch(currentPlayer, gameMode);
         }
         
-        public System.Threading.Tasks.Task CreateMatchAsync(CheckersCliente.MainService.Jugador currentPlayer, string gameMode) {
+        public System.Threading.Tasks.Task CreateMatchAsync(CheckersCliente.MainService.Jugador currentPlayer, CheckersCliente.MainService.CheckersGameMode gameMode) {
             return base.Channel.CreateMatchAsync(currentPlayer, gameMode);
         }
         
-        public void LeaveMatch(CheckersCliente.MainService.Match gameMatch, CheckersCliente.MainService.Jugador currentPlayer) {
-            base.Channel.LeaveMatch(gameMatch, currentPlayer);
+        public void Player1Turn(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers) {
+            base.Channel.Player1Turn(updateBoardMatrix, matchNumber, playerTwoCheckers, playerOneCheckers);
         }
         
-        public System.Threading.Tasks.Task LeaveMatchAsync(CheckersCliente.MainService.Match gameMatch, CheckersCliente.MainService.Jugador currentPlayer) {
-            return base.Channel.LeaveMatchAsync(gameMatch, currentPlayer);
+        public System.Threading.Tasks.Task Player1TurnAsync(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers) {
+            return base.Channel.Player1TurnAsync(updateBoardMatrix, matchNumber, playerTwoCheckers, playerOneCheckers);
+        }
+        
+        public void Player2Turn(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers) {
+            base.Channel.Player2Turn(updateBoardMatrix, matchNumber, playerTwoCheckers, playerOneCheckers);
+        }
+        
+        public System.Threading.Tasks.Task Player2TurnAsync(CheckersCliente.MainService.Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers) {
+            return base.Channel.Player2TurnAsync(updateBoardMatrix, matchNumber, playerTwoCheckers, playerOneCheckers);
+        }
+        
+        public void FinishPlayerGame(int matchNumber, int playerNumber, int playerTwoCheckers, int playerOneCheckers) {
+            base.Channel.FinishPlayerGame(matchNumber, playerNumber, playerTwoCheckers, playerOneCheckers);
+        }
+        
+        public System.Threading.Tasks.Task FinishPlayerGameAsync(int matchNumber, int playerNumber, int playerTwoCheckers, int playerOneCheckers) {
+            return base.Channel.FinishPlayerGameAsync(matchNumber, playerNumber, playerTwoCheckers, playerOneCheckers);
+        }
+        
+        public void SendGameMessage(int playerNumber, string message, int matchNumber) {
+            base.Channel.SendGameMessage(playerNumber, message, matchNumber);
+        }
+        
+        public System.Threading.Tasks.Task SendGameMessageAsync(int playerNumber, string message, int matchNumber) {
+            return base.Channel.SendGameMessageAsync(playerNumber, message, matchNumber);
         }
     }
 }

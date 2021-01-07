@@ -40,6 +40,7 @@ namespace CheckersCliente.LogInPages
                 Apodo = NicknameTextBox.Text,
                 Contrasenia = PasswordTextBox.Password
             });
+            LogInButton.IsEnabled = false;
         }
 
         private void EnableLoginButton(object sender, RoutedEventArgs e)
@@ -74,16 +75,6 @@ namespace CheckersCliente.LogInPages
         private void RegisterAccount(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new RegisterAccount());
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ChangePassword("asasa"));
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new GameTest());
         }
     }
 }

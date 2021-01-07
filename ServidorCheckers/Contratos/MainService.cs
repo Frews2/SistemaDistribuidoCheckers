@@ -1,10 +1,11 @@
 ﻿/*
  Date: 20/11/2020
- Author(s): Cesar Sergio Martinez Palacios Ricardo Moguel Sanchez
+ Author(s): Cesar Sergio Martinez Palacios y Ricardo Moguel Sanchez
 */
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -23,6 +24,9 @@ namespace Contratos
         public static readonly string ACTIVE_STATE = "Activo";
         public static readonly string REPORTED_STATE = "En revision";
         public static readonly string DOWN_STATE = "Baja";
+        private readonly string mailUser = ConfigurationManager.AppSettings["UserMail"];
+        private readonly string mailPassword = ConfigurationManager.AppSettings["UserPassword"];
+
 
         JugadorDataManager jugadorDataManager = new JugadorDataManager();
         HashManager hashText = new HashManager();
@@ -36,7 +40,7 @@ namespace Contratos
             AdminDataManager adminDataManager = new AdminDataManager();
             if (adminDataManager.CheckNickname(player.Apodo))
             {
-                if (adminDataManager.EsPasswordCorrecto(hashText.TextToHash(player.Contrasenia), player.Apodo))
+                if (adminDataManager.EsPasswordCorrecto(player.Contrasenia, player.Apodo))
                 {
                     result = LoginResult.EsAdmin;
                 }
@@ -52,7 +56,7 @@ namespace Contratos
                 {
                     if (jugadorDataManager.CheckState(player.Apodo))
                     {
-                        if (jugadorDataManager.EsPasswordCorrecto(hashText.TextToHash(player.Contrasenia), player.Apodo))
+                        if (jugadorDataManager.EsPasswordCorrecto(player.Contrasenia, player.Apodo))
                         {
                             result = LoginResult.ExisteJugadorVerificado;
                             DataAccess.Jugador searchedPlayer = jugadorDataManager.GetPlayerByNickname(player.Apodo);
@@ -73,7 +77,7 @@ namespace Contratos
                     result = LoginResult.NoExisteJugador;
                 }
             }
-            
+
             Callback.GetLoginResult(result, player);
         }
 
@@ -84,6 +88,7 @@ namespace Contratos
             int columnasAfectadas = 0;
             string eMail = player.CorreoElectronico;
             SaveResult saveResult = SaveResult.ErrorGuardado;
+            MailResult mailResult = MailResult.SendError;
 
             bool nicknameExists = playerDataManager.CheckNickname(player.Apodo);
 
@@ -124,7 +129,7 @@ namespace Contratos
 
                         System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient
                         {
-                            Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
+                            Credentials = new System.Net.NetworkCredential(mailUser, mailPassword),
                             Port = 587,
                             EnableSsl = true,
                             Host = "smtp.gmail.com",
@@ -135,6 +140,7 @@ namespace Contratos
                         }
                         catch (System.Net.Mail.SmtpException)
                         {
+                            Callback.GetMailResult(mailResult, player.Apodo);
                             throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar su correo");
                         }
                     }
@@ -206,7 +212,7 @@ namespace Contratos
 
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient
             {
-                Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
+                Credentials = new System.Net.NetworkCredential(mailUser, mailPassword),
                 Port = 587,
                 EnableSsl = true,
                 Host = "smtp.gmail.com",
@@ -244,7 +250,7 @@ namespace Contratos
 
                 System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient
                 {
-                    Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
+                    Credentials = new System.Net.NetworkCredential(mailUser, mailPassword),
                     Port = 587,
                     EnableSsl = true,
                     Host = "smtp.gmail.com",
@@ -325,7 +331,7 @@ namespace Contratos
                 Dominio.Jugador emptyPlayer = new Jugador();
                 Callback.SendActualPlayer(dataObtainedResult, emptyPlayer);
             }
-             
+
 
         }
 
@@ -337,6 +343,7 @@ namespace Contratos
             }
         }
     }
+
     public partial class MainService : IRankingManager
     {
         public void GetRankingData()
@@ -344,7 +351,7 @@ namespace Contratos
             RankingResult result;
             List<Dominio.Ranking> rankings = QueryRankingData();
 
-            if(rankings == null)
+            if (rankings == null)
             {
                 result = RankingResult.NO_RANKING;
             }
@@ -366,7 +373,7 @@ namespace Contratos
 
             if (dataManager.GetRankingList() != null)
             {
-                foreach (DataAccess.Ranking playerRanking in queriedRankingList )
+                foreach (DataAccess.Ranking playerRanking in queriedRankingList)
                 {
                     currentRankings.Add(new Dominio.Ranking
                     {
@@ -393,156 +400,107 @@ namespace Contratos
         }
     }
 
-    public partial class MainService : IMatchmakingManager
+    public partial class MainService : IGameManager
     {
-        private Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> hosts = new Dictionary<IMatchmakingManagerCallback, Dominio.Jugador>();
-        Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> currentMatch;
-        //private readonly Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> currentMatch = new Dictionary<IMatchmakingManagerCallback, Dominio.Jugador>();
-        private List<string> playerChat = new List<string>();
-        private List<Match> matchesCreated = new List<Match>();
-        private List<string> playersReady = new List<string>();
-        private Jugador currentlyQueuedPlayer;
+        private List<Match> activeMatches = new List<Match>();
+        private int numberActiveMatches =0;
+        private List<Match> playersQueuedClassic = new List<Match>();
+        private const int PLAYER_ONE = 1;
+        private const int PLAYER_TWO = 2;
 
-        public void GetMatchmakingCallback()
+        IGameManagerCallback GameManagerCallback
         {
-
+            get
+            {
+                return OperationContext.Current.GetCallbackChannel<IGameManagerCallback>();
+            }
         }
 
-        public void CreateMatch(Jugador currentPlayer, string gameMode)
+        public void Player1Turn(Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers)
         {
-            if (!matchesCreated.Any(match => match.Host.Any(player => player.Value.Equals(currentPlayer))))
+            activeMatches[matchNumber].playerTwoCallback.UpdateGameGUI(updateBoardMatrix, playerTwoCheckers, playerOneCheckers);
+        }
+
+        public void CreateMatch(Jugador currentPlayer, CheckersGameMode gameMode)
+        {
+            MatchmakingResult matchmakingResult = MatchmakingResult.UNABLE_TO_ENTER_MATCH;
+
+            if (playersQueuedClassic.Count > 0)
             {
-                HostMatch(currentPlayer, gameMode);
+                Match newCompleteGame = new Match();
+                newCompleteGame = playersQueuedClassic.First();
+                playersQueuedClassic.Remove(newCompleteGame);
+                newCompleteGame.playerTwoCallback = GameManagerCallback as IGameManagerCallback;
+                newCompleteGame.playerTwoData = currentPlayer;
+                newCompleteGame.matchActiveNumber = numberActiveMatches;
+                playersQueuedClassic.Sort();
+                matchmakingResult = MatchmakingResult.MATCH_FOUND;
+                activeMatches.Add(newCompleteGame);
+                numberActiveMatches++;
+
+                //error de que no encontro al inutil
+                GameManagerCallback.GetMatchmakingResult(matchmakingResult, newCompleteGame, PLAYER_TWO);
+                newCompleteGame.playerOneCallback.GetMatchmakingResult(matchmakingResult, newCompleteGame, PLAYER_ONE);
+
             }
             else
             {
-                Match availableMatch = null;
-                availableMatch = matchesCreated.Where(match => match.GameMode.Equals(gameMode) && match.Guest == null).First();
-                
-                EnterMatch(availableMatch, currentPlayer);
-            }
-        }
-
-        public void HostMatch(Jugador currentPlayer, string gameMode)
-        {
-            HostingResult hostingResult = HostingResult.MATCH_NOT_CREATED;
-            if (!hosts.Any(player => player.Value.Equals(currentPlayer)))
-            {
-                hosts.Add(MatchmakingCallback, currentPlayer);
-                Match match = new Match
+                Match newGame = new Match()
                 {
-                    MatchHostName = currentPlayer.Apodo,
-                    Host = hosts,
-                    GameMode = gameMode
+                        currentPlayer = PLAYER_ONE,
+                        playerOneData = currentPlayer,
+                        playerOneCallback = GameManagerCallback as IGameManagerCallback,
                 };
 
-                //match.MatchPair.Add(MatchmakingCallback, currentPlayer);
-                matchesCreated.Add(match);
-                hostingResult = HostingResult.MATCH_CREATED;
+                playersQueuedClassic.Add(newGame);
+                matchmakingResult = MatchmakingResult.MATCH_NOT_FOUND;
+                GameManagerCallback.GetMatchmakingResult(matchmakingResult, newGame, PLAYER_ONE);
+
             }
-            else if(!matchesCreated.Any(match => match.Guest.Any(player => player.Value.Equals(currentPlayer))))
-            {
-                Match vacantMatch = matchesCreated.First();
-                EnterMatch(vacantMatch, currentPlayer);
-            }
-            MatchmakingCallback.GetHostingResult(hostingResult);
         }
 
-        public void EnterMatch(Match gameMatch, Dominio.Jugador currentPlayer)
+
+        public void Player2Turn(Checker[][] updateBoardMatrix,int matchNumber,int playerTwoCheckers, int playerOneCheckers)
         {
-            MatchmakingResult result = MatchmakingResult.MATCH_NOT_FOUND;
-            IMatchmakingManagerCallback matchCallback = MatchmakingCallback;
+            activeMatches[matchNumber].playerOneCallback.UpdateGameGUI(updateBoardMatrix, playerTwoCheckers, playerOneCheckers);
+        }
 
-            var searchForMatch = matchesCreated.Find(match => match.MatchHostName.Equals(gameMatch.MatchHostName));
-
-            if (searchForMatch != null)
+        public void FinishPlayerGame(int matchNumber, int playerNumber, int playerTwoCheckers, int playerOneCheckers)
+        {
+            if (playerNumber == PLAYER_ONE)
             {
-                result = MatchmakingResult.MATCH_FOUND;
+
+                activeMatches[matchNumber].playerTwoCallback.FinishGame(playerTwoCheckers, playerOneCheckers);
             }
             else
             {
-                result = MatchmakingResult.UNABLE_TO_ENTER_MATCH;
+
+                activeMatches[matchNumber].playerOneCallback.FinishGame(playerTwoCheckers, playerOneCheckers);
             }
-
-            matchCallback.NotifyMatchReady(result);
-
-            if(result == MatchmakingResult.MATCH_FOUND)
+            RankingDataManager rankingDataManager = new RankingDataManager();
+            rankingDataManager.UpdateMatchResults(activeMatches[matchNumber].playerOneData,playerOneCheckers,activeMatches[matchNumber].playerTwoData,playerTwoCheckers,playerNumber);
+            numberActiveMatches--;
+            activeMatches.RemoveAt(matchNumber);
+            int listPosition;
+            for (listPosition = matchNumber; listPosition< activeMatches.Count; listPosition++)
             {
-                searchForMatch.Guest.Add(matchCallback, currentPlayer);
-                AddPlayerToMatch(searchForMatch, currentPlayer);
-            }
-            MatchmakingCallback.GetMatchmakingResult(result);
-        }
-
-        public void AddPlayerToMatch(Match currentMatch, Dominio.Jugador currentPlayer)
-        {
-            //currentMatch.Add(currentPlayer,)
-
-        }
-
-        public void LeaveMatch(Match gameMatch, Jugador currentPlayer)
-        {
-           if(matchesCreated.Any(match => match.GameMode.Equals(gameMatch.GameMode)))
-            {
-
+                activeMatches[listPosition].matchActiveNumber--;
+                activeMatches[listPosition].playerOneCallback.UpdateMatchNumber(activeMatches[listPosition].matchActiveNumber);
+                activeMatches[listPosition].playerTwoCallback.UpdateMatchNumber(activeMatches[listPosition].matchActiveNumber);
             }
         }
 
-        IMatchmakingManagerCallback MatchmakingCallback
+        public void SendGameMessage(int playerNumber, string message, int matchNumber)
         {
-            get
+            if (playerNumber == PLAYER_ONE)
             {
-                return OperationContext.Current.GetCallbackChannel<IMatchmakingManagerCallback>();
+                activeMatches[matchNumber].playerTwoCallback.RecieveGameMessage(message);
+            }
+            else
+            {
+                activeMatches[matchNumber].playerOneCallback.RecieveGameMessage(message);
             }
         }
     }
 
-    public partial class MainService : IChatManager
-    {
-        private readonly Dictionary<IChatManagerCallback, string> playersInChat = new Dictionary<IChatManagerCallback, string>();
-
-        public void GetChatCallback()
-        {
-            playersInChat.Add(ChatCallback, currentlyQueuedPlayer.Apodo);
-        }
-
-        public void SendText(string destination, string message)
-        {
-            SendMessageResult messageResult = SendMessageResult.MESSAGE_NOT_SENT;
-            IChatManagerCallback receiverPlayer = null;
-            receiverPlayer = playersInChat.Where(receiver => receiver.Value == destination).First().Key;
-
-            if (receiverPlayer != null)
-            {
-                receiverPlayer.ReceiveText(GetSender(), message);
-                messageResult = SendMessageResult.MESSAGE_SENT;
-            }
-
-            ChatCallback.GetSentMessageResult(messageResult);
-        }
-
-        private string GetSender()
-        {
-            string sender = "";
-
-            foreach (var player in playersInChat)
-            {
-                if (player.Key == ChatCallback)
-                {
-                    sender = player.Value;
-                    break;
-                }
-            }
-
-            return sender;
-        }
-
-        IChatManagerCallback ChatCallback
-        {
-            get
-            {
-                return OperationContext.Current.GetCallbackChannel<IChatManagerCallback>();
-            }
-        }
-    }
 }

@@ -8,23 +8,27 @@ namespace DataAccess.DataManager
 {
     public class AdminDataManager
     {
-        private readonly JugadoresDBEntities context = new JugadoresDBEntities();
+        private readonly JugadoresDBEntities dataBase = new JugadoresDBEntities();
         public bool CheckNickname(string nickname)
         {
-            bool existe = false;
+            bool exist = false;
 
-            existe = context.Administrador.Any(admin => admin.apodoAdmin.Equals(nickname));
+            exist = dataBase.Administrador.Any(admin => admin.apodoAdmin.Equals(nickname));
 
-            return existe;
+            return exist;
         }
 
         public bool EsPasswordCorrecto(string password, string nickname)
         {
-            bool esCorrecto = false;
+            bool correctPassword = false;
 
-            esCorrecto = context.Administrador.Any(admin => admin.apodoAdmin.Equals(nickname) && admin.contrasenia.Equals(password));
+            var playerSearched = dataBase.Administrador.Where(admin => admin.apodoAdmin.Equals(nickname)).FirstOrDefault<Administrador>();
 
-            return esCorrecto;
+            if (HashManager.CompareHash(password, playerSearched.contrasenia))
+            {
+                correctPassword = true;
+            }
+            return correctPassword;
         }
     }
 }

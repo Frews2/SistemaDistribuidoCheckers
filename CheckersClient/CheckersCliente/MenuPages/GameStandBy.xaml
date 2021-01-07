@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
-        <TextBlock Text="{x:Static p:Resources.GameInProgessMessage}" Margin="152,111,148,126" VerticalAlignment="Center" HorizontalAlignment="Center" 
+        <TextBlock Text="{x:Static p:Resources.MatchmakingStandBy}" Margin="152,111,148,126" VerticalAlignment="Center" HorizontalAlignment="Center" 
                MaxHeight="400"  FontWeight="Bold" FontSize="48" Foreground="White" FontFamily="Bookman Old Style" MaxWidth="550" TextWrapping="WrapWithOverflow"
                RenderTransformOrigin="0.497,0.713"/>
 

@@ -24,11 +24,12 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class PrincipalMenu : Page
     {
-
+        Jugador actualPlayer;
         public PrincipalMenu(Jugador player)
         {
             InitializeComponent();
             DataContext = player;
+            this.actualPlayer = player;
         }
 
         private void UserConfiguration(object sender, RoutedEventArgs e)
@@ -47,7 +48,7 @@ namespace CheckersCliente.MenuPages
 
         private void ChooseGameMode(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new GameStandBy());
+            NavigationService.Navigate(new GameMode(actualPlayer));
         }
 
         private void LanguageSelect(object sender, RoutedEventArgs e)

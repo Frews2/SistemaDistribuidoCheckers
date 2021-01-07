@@ -22,6 +22,8 @@ namespace CheckersCliente.MenuPages
     public partial class GameMode : Page
     {
         private Jugador currentPlayer;
+        private CheckersGameMode selectedGameMode;
+
 
         public GameMode(Jugador player)
         {
@@ -31,22 +33,26 @@ namespace CheckersCliente.MenuPages
 
         private void EnterClassicGame(object sender, RoutedEventArgs e)
         {
-            MatchmakingManager.EnterMatchmaking(currentPlayer, "classic");
+            selectedGameMode = CheckersGameMode.ClassicCheckers;
+            GameManager.EnterMatchmaking(currentPlayer, selectedGameMode);
         }
 
         private void EnterCanadianGame(object sender, RoutedEventArgs e)
         {
-            MatchmakingManager.EnterMatchmaking(currentPlayer, "canadian");
+            selectedGameMode = CheckersGameMode.CanadianCheckers;
+            GameManager.EnterMatchmaking(currentPlayer, selectedGameMode);
         }
 
         private void EnterItalianGame(object sender, RoutedEventArgs e)
         {
-            MatchmakingManager.EnterMatchmaking(currentPlayer, "italian");
+            selectedGameMode = CheckersGameMode.ItalianCheckers;
+            GameManager.EnterMatchmaking(currentPlayer, selectedGameMode);
         }
 
         private void EnterSuicideGame(object sender, RoutedEventArgs e)
         {
-            MatchmakingManager.EnterMatchmaking(currentPlayer, "suicide");
+            selectedGameMode = CheckersGameMode.SuicidalCheckers;
+            GameManager.EnterMatchmaking(currentPlayer, selectedGameMode);
         }
         private void Return(object sender, System.Windows.RoutedEventArgs e)
         {

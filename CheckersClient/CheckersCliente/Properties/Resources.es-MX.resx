@@ -260,7 +260,7 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   </data>
   <data name="PlayerData" xml:space="preserve">
     <value>Datos del jugador</value>
- </data>
+  </data>
   <data name="CanadianCheckers" xml:space="preserve">
     <value>Checkers Canadienses</value>
   </data>
@@ -276,8 +276,8 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   <data name="SuicideCheckers" xml:space="preserve">
     <value>Checkers Suicidas</value>
   </data>
-  <data name="GameInProgressMessage" xml:space="preserve">
-    <value>Espere hasta que la partida en progreso termine</value>
+  <data name="MatchmakingStandBy" xml:space="preserve">
+    <value>Espere hasta que se encuentre una partida para usted</value>
   </data>
   <data name="Game" xml:space="preserve">
     <value>Juego</value>

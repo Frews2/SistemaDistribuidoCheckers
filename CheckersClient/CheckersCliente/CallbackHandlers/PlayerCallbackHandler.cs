@@ -4,18 +4,10 @@
 */
 
 using CheckersCliente.MainService;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using CheckersCliente.Windows;
-using System.Windows;
 using CheckersCliente.LogInPages;
-using System.Windows.Navigation;
 using CheckersCliente.MenuPages;
 
 namespace CheckersCliente
@@ -59,6 +51,7 @@ namespace CheckersCliente
                         {
                             DialogWindowManager.ShowErrorWindow("Verifica tu contraseña");
                         }
+                        
                     }
                 }
             }
@@ -75,7 +68,24 @@ namespace CheckersCliente
             }
             else
             {
-                DialogWindowManager.ShowErrorWindow("A ocurrido un error inesperado, vuelva a intentar");
+                if (saveResult == SaveResult.NicknameExistente)
+                {
+
+                    DialogWindowManager.ShowErrorWindow("El nickname ya existe, favor de utilizar otro");
+                }
+                else
+                {
+                    if (saveResult == SaveResult.CorreoExistente)
+                    {
+
+                        DialogWindowManager.ShowErrorWindow("Ese correo ya esta registrado favor de utilizar otro");
+                    }
+                    else
+                    {
+
+                        DialogWindowManager.ShowErrorWindow("A ocurrido un error inesperado, vuelva a intentar");
+                    }
+                }
             }
         }
 
@@ -84,6 +94,8 @@ namespace CheckersCliente
             if(resultadoVerificacion == VerificationResult.VerificacionExistosa)
             {
                 DialogWindowManager.ShowSuccessWindow("Se ha verificado correctamente tu cuenta");
+                LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                logIn.NavigationService.Navigate(new LogInPage());
             }
             else if (resultadoVerificacion == VerificationResult.NoExisteJugador)
             {
@@ -111,7 +123,7 @@ namespace CheckersCliente
                 }
                 else
                 {
-                    DialogWindowManager.ShowErrorWindow("Se ha tenido un error a la hora de enviar el correo, intente de nuevo");
+                    DialogWindowManager.ShowErrorWindow("Se ha tenido un error a la hora de enviar el correo, intente mas tarde");
                 }
                 
             }
@@ -158,5 +170,6 @@ namespace CheckersCliente
                 DialogWindowManager.ShowErrorWindow("Ha ocurrido un error de conexion a la base de datos, intentar mas tarde");
             }
         }
+
     }
 }

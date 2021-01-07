@@ -23,6 +23,11 @@ namespace CheckersCliente
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class PlayerCallbackHandler : IPlayerManagerCallback
     {
+        /// <summary>
+        /// Obtiene el resultado del inicio de sesion del servidor
+        /// </summary>
+        /// <param name="resultado"></param>
+        /// <param name="playerLoged"></param>
         public void GetLoginResult(LoginResult resultado, Jugador playerLoged)
         {
             if (resultado == LoginResult.EsAdmin)
@@ -73,6 +78,11 @@ namespace CheckersCliente
             
         }
 
+        /// <summary>
+        /// Obtiene el resultado de un intento a guardar un Jugador y sus datos a la base de datos.
+        /// </summary>
+        /// <param name="saveResult"></param>
+        /// <param name="newPlayer"></param>
         public void GetSaveResult(SaveResult saveResult, Jugador newPlayer)
         {
             if(saveResult == SaveResult.JugadorGuardado)

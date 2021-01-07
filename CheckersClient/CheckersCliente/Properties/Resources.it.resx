@@ -258,7 +258,7 @@ Questo può derivare da tutti i pezzi di un giocatore catturato o bloccato dall'
   </data>
   <data name="PlayerData" xml:space="preserve">
     <value>Dati del giocatore</value>
- </data>
+  </data>
   <data name="CanadianCheckers" xml:space="preserve">
     <value>Checkers Canadese</value>
   </data>
@@ -282,5 +282,32 @@ Questo può derivare da tutti i pezzi di un giocatore catturato o bloccato dall'
   </data>
   <data name="Players" xml:space="preserve">
     <value>Giocatori</value>
+  </data>
+  <data name="Accuser" xml:space="preserve">
+    <value>Accusatore</value>
+  </data>
+  <data name="ReportAdministration" xml:space="preserve">
+    <value>Amministrazione resoconto giocatore</value>
+  </data>
+  <data name="ReportDescription" xml:space="preserve">
+    <value>Descrizione del Resoconto</value>
+  </data>
+  <data name="Reported" xml:space="preserve">
+    <value>Segnalato</value>
+  </data>
+  <data name="ReportID" xml:space="preserve">
+    <value>ID Resoconto</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Uscire</value>
+  </data>
+  <data name="ViewReports" xml:space="preserve">
+    <value>visualizzare i rapporti</value>
+  </data>
+  <data name="Ban" xml:space="preserve">
+    <value>Interdire</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Opzioni</value>
   </data>
 </root>

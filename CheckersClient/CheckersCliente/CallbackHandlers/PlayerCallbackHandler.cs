@@ -23,11 +23,16 @@ namespace CheckersCliente
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class PlayerCallbackHandler : IPlayerManagerCallback
     {
+        /// <summary>
+        /// Obtiene el resultado del inicio de sesion del servidor
+        /// </summary>
+        /// <param name="resultado"></param>
+        /// <param name="playerLoged"></param>
         public void GetLoginResult(LoginResult resultado, Jugador playerLoged)
         {
             if (resultado == LoginResult.EsAdmin)
             {
-                AdminPage adminPage = new AdminPage();
+                AdminPage adminPage = new AdminPage(playerLoged);
                 adminPage.Show();
                 LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
                 logIn.Close();
@@ -51,20 +56,33 @@ namespace CheckersCliente
                     }
                     else
                     {
-                        if (resultado == LoginResult.NoExisteJugador)
+                        if(resultado == LoginResult.EsBaneado)
                         {
-                            DialogWindowManager.ShowErrorWindow("No existe jugador");
+                            DialogWindowManager.ShowErrorWindow("Usted a sido baneado");
                         }
                         else
                         {
-                            DialogWindowManager.ShowErrorWindow("Verifica tu contraseña");
+                            if (resultado == LoginResult.NoExisteJugador)
+                            {
+                                DialogWindowManager.ShowErrorWindow("No existe jugador");
+                            }
+                            else
+                            {
+                                DialogWindowManager.ShowErrorWindow("Verifica tu contraseña");
+                            }
                         }
+                        
                     }
                 }
             }
             
         }
 
+        /// <summary>
+        /// Obtiene el resultado de un intento a guardar un Jugador y sus datos a la base de datos.
+        /// </summary>
+        /// <param name="saveResult"></param>
+        /// <param name="newPlayer"></param>
         public void GetSaveResult(SaveResult saveResult, Jugador newPlayer)
         {
             if(saveResult == SaveResult.JugadorGuardado)

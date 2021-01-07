@@ -6,10 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Mail;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.DataManager;
+using System.Net.Mail;
 using Dominio;
 
 
@@ -65,7 +67,15 @@ namespace Contratos
                     }
                     else
                     {
-                        result = LoginResult.ExisteJugadorNoVerificado;
+                        if (jugadorDataManager.CheckBannedState(player.Apodo))
+                        {
+                            result = LoginResult.EsBaneado;
+                        }
+                        else
+                        {
+                            result = LoginResult.ExisteJugadorNoVerificado;
+                        }
+                        
                     }
                 }
                 else
@@ -125,7 +135,7 @@ namespace Contratos
                         System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient
                         {
                             Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
-                            Port = 587,
+                            Port = 135,
                             EnableSsl = true,
                             Host = "smtp.gmail.com",
                         };
@@ -362,6 +372,7 @@ namespace Contratos
         {
             List<Dominio.Ranking> currentRankings = new List<Dominio.Ranking>();
             RankingDataManager dataManager = new RankingDataManager();
+            JugadorDataManager playerManager = new JugadorDataManager();
             List<DataAccess.Ranking> queriedRankingList = dataManager.GetRankingList();
 
             if (dataManager.GetRankingList() != null)
@@ -371,7 +382,7 @@ namespace Contratos
                     currentRankings.Add(new Dominio.Ranking
                     {
                         IdRanking = playerRanking.idRanking,
-                        Duenio = dataManager.GetPlayerByID(playerRanking.idDuenio),
+                        Duenio = playerManager.GetDomainPlayerByID(playerRanking.idDuenio),
                         FechaRegistracion = playerRanking.fechaRegistracion ?? default(DateTime),
                         NumeroVictorias = playerRanking.numeroVictorias ?? default(int),
                         PartidasJugadas = playerRanking.partidasJugadas ?? default(int),
@@ -482,9 +493,20 @@ namespace Contratos
 
         public void LeaveMatch(Match gameMatch, Jugador currentPlayer)
         {
-           if(matchesCreated.Any(match => match.GameMode.Equals(gameMatch.GameMode)))
-            {
+            bool isHost = false;
 
+            if (matchesCreated.Any(match => match.GameMode.Equals(gameMatch.GameMode) 
+                && (match.Host.Equals(currentPlayer) || match.Guest.Equals(currentPlayer))))
+            {
+                isHost = matchesCreated.Any(match => match.Equals(gameMatch) && match.Host.Equals(currentPlayer));
+
+                if (isHost)
+                {
+                    hosts.Remove(MatchmakingCallback);
+                }
+
+                matchesCreated.Remove(gameMatch);
+                
             }
         }
 
@@ -542,6 +564,102 @@ namespace Contratos
             get
             {
                 return OperationContext.Current.GetCallbackChannel<IChatManagerCallback>();
+            }
+        }
+    }
+
+    public partial class MainService : IBanManager
+    {
+        public void GetReportData()
+        {
+            AdminReportResult result;
+            List<Dominio.Reporte> reportList = QueryReportData();
+
+            if (reportList.Count() < 1)
+            {
+                result = AdminReportResult.NO_REPORTS_EXIST;
+            }
+            else
+            {
+                result = AdminReportResult.REPORT_EXISTS;
+
+                BanCallback.GetReportDataQueryResult(result);
+
+                BanCallback.ReceiveReportData(reportList);
+            }
+        }
+
+        public List<Dominio.Reporte> QueryReportData()
+        {
+            List<Dominio.Reporte> currentPlayerReports = new List<Dominio.Reporte>();
+            ReportDataManager reportDataManager = new ReportDataManager();
+            JugadorDataManager playerManager = new JugadorDataManager();
+            List<DataAccess.Reporte> queriedReportList = reportDataManager.GetReportList();
+
+            if (reportDataManager.GetReportList() != null)
+            {
+                foreach (DataAccess.Reporte playerReport in queriedReportList)
+                {
+                    currentPlayerReports.Add(new Dominio.Reporte
+                    {
+                        IdReporte = playerReport.idReporte,
+                        Acusador = playerManager.GetDomainPlayerByID(playerReport.idAcusador),
+                        Reportado = playerManager.GetDomainPlayerByID(playerReport.idReportado),
+                        DescripcionAcuso = playerReport.descripcionAcuso ?? default(string)
+                    });
+                }
+            }
+
+            return currentPlayerReports;
+        }
+
+        public void BanPlayer(string reportedPlayerName)
+        {
+            int isPlayerBanned = 0;
+            DataAccess.Jugador reportedPlayer = new DataAccess.Jugador();
+            JugadorDataManager playerDataManager = new JugadorDataManager();
+
+            BanResult banResult = BanResult.ERROR_BANNING;
+            reportedPlayer = playerDataManager.GetPlayerByNickname(reportedPlayerName);
+            isPlayerBanned = playerDataManager.BanPlayer(reportedPlayer.apodo);
+
+            if (isPlayerBanned != 0)
+            {
+                banResult = BanResult.PLAYER_BANNED;
+
+                System.Net.Mail.MailMessage emailContent = new System.Net.Mail.MailMessage();
+
+                emailContent.To.Add(reportedPlayer.correoElectronico);
+                emailContent.Subject = "Aviso de baja de cuenta por reportado " + reportedPlayer.apodo;
+                emailContent.Body = "Hola " + reportedPlayer.apodo + " te avisamos que tu cuenta se ha sido dada de baja por " +
+                    "reportaje de mal comporamiento. ";
+                emailContent.From = new System.Net.Mail.MailAddress("checkersGame124@gmail.com", "Checkers Game Proyect");
+
+                System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient
+                {
+                    Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
+                    EnableSsl = true,
+                    Port = 587,
+                    Host = "smtp.gmail.com",
+                };
+
+                try
+                {
+                    client.Send(emailContent);
+                }
+                catch (System.Net.Mail.SmtpException)
+                {
+                    throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar el correo del jugador reportado");
+                }
+
+            BanCallback.GetBanResult(banResult);
+        }
+
+        IBanManagerCallback BanCallback
+        {
+            get
+            {
+                return OperationContext.Current.GetCallbackChannel<IBanManagerCallback>();
             }
         }
     }

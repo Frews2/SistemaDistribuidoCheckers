@@ -5,6 +5,7 @@
 using CheckersCliente.MainService;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CheckersCliente.MenuPages
@@ -25,7 +26,7 @@ namespace CheckersCliente.MenuPages
 
         }
 
-        private void Return(object sender, System.Windows.RoutedEventArgs e)
+        private void Return(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }

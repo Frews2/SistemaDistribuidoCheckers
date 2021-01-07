@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBanManager.cs" />
     <Compile Include="IPlayerManager.cs" />
     <Compile Include="IChatManager.cs" />
     <Compile Include="IRankingManager.cs" />

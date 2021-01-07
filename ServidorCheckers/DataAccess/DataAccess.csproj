@@ -57,6 +57,7 @@
     <Compile Include="DataManager\HashManager.cs" />
     <Compile Include="DataManager\JugadorDataManager.cs" />
     <Compile Include="DataManager\RankingDataManager.cs" />
+    <Compile Include="DataManager\ReportDataManager.cs" />
     <Compile Include="Jugador.cs">
       <DependentUpon>JugadoresDB.tt</DependentUpon>
     </Compile>

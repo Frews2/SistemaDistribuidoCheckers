@@ -18,7 +18,8 @@ namespace Contratos
         NoExisteJugador = 2,
         ExisteJugadorVerificado = 3,
         ExisteJugadorNoVerificado = 4,
-        EsAdmin = 5
+        EsAdmin = 5,
+        EsBaneado = 6
     }
 
     public enum SaveResult
@@ -52,5 +53,11 @@ namespace Contratos
     {
         DataObtained = 1,
         ErrorObtainingData = 2
+    }
+
+    public enum BanResult
+    {
+        PLAYER_BANNED = 1,
+        ERROR_BANNING = 2
     }
 }

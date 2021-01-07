@@ -62,6 +62,13 @@
     <Compile Include="AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminPages\AdminMenu.xaml.cs">
+      <DependentUpon>AdminMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPages\ReportList.xaml.cs">
+      <DependentUpon>ReportList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CallbackHandlers\BanCallbackHandler.cs" />
     <Compile Include="Connected Services\MainService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +92,7 @@
     <Compile Include="LogInPages\VerificatePasswordPin.xaml.cs">
       <DependentUpon>VerificatePasswordPin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Managers\BanManager.cs" />
     <Compile Include="MenuPages\GameTest.xaml.cs">
       <DependentUpon>GameTest.xaml</DependentUpon>
     </Compile>
@@ -99,6 +107,14 @@
     </Compile>
     <Compile Include="Windows\DialogWindowManager.cs" />
     <Page Include="AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPages\AdminMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPages\ReportList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

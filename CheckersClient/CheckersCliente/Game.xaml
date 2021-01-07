@@ -23,7 +23,7 @@
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Width="270" Height="100">
             <Label Content="{x:Static p:Resources.Players}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ListBox x:Name="listUsersLoggedIn" x:FieldModifier="public" HorizontalAlignment="Center" Height="49" VerticalAlignment="Top" Width="270" SelectionChanged="ListUsersLoggedIn_SelectionChanged"/>
+            <ListBox x:Name="listUsersLoggedIn" x:FieldModifier="public" HorizontalAlignment="Center" Height="49" VerticalAlignment="Top" Width="270"/>
         </StackPanel>
         
         <Button Content="{x:Static p:Resources.Return}" Margin="27,0,363,10" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="RegresarAMenu"/>

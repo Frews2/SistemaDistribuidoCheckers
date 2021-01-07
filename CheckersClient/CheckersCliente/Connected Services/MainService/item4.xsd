@@ -39,6 +39,13 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="EsBaneado">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="LoginResult" nillable="true" type="tns:LoginResult" />
@@ -193,4 +200,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Match" nillable="true" type="tns:Match" />
+  <xs:simpleType name="BanResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PLAYER_BANNED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ERROR_BANNING">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BanResult" nillable="true" type="tns:BanResult" />
 </xs:schema>

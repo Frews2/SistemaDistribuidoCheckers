@@ -116,6 +116,35 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IBanManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -212,6 +241,21 @@
   <wsdl:message name="IMatchmakingManager_AddPlayerToMatch_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:AddPlayerToMatch" />
   </wsdl:message>
+  <wsdl:message name="IBanManager_GetReportData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportData" />
+  </wsdl:message>
+  <wsdl:message name="IBanManager_BanPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:BanPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IBanManager_GetReportDataQueryResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetReportDataQueryResult" />
+  </wsdl:message>
+  <wsdl:message name="IBanManager_ReceiveReportData_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveReportData" />
+  </wsdl:message>
+  <wsdl:message name="IBanManager_GetBanResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetBanResult" />
+  </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/Login" message="tns:IPlayerManager_Login_InputMessage" />
@@ -305,6 +349,23 @@
     </wsdl:operation>
     <wsdl:operation name="AddPlayerToMatch">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchmakingManager/AddPlayerToMatch" message="tns:IMatchmakingManager_AddPlayerToMatch_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IBanManager">
+    <wsdl:operation name="GetReportData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBanManager/GetReportData" message="tns:IBanManager_GetReportData_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BanPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBanManager/BanPlayer" message="tns:IBanManager_BanPlayer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportDataQueryResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBanManager/GetReportDataQueryResult" message="tns:IBanManager_GetReportDataQueryResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveReportData">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBanManager/ReceiveReportData" message="tns:IBanManager_ReceiveReportData_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBanResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IBanManager/GetBanResult" message="tns:IBanManager_GetBanResult_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -497,13 +558,47 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IBanManager" type="tns:IBanManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IBanManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetReportData">
+      <soap12:operation soapAction="http://tempuri.org/IBanManager/GetReportData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="BanPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IBanManager/BanPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportDataQueryResult">
+      <soap12:operation soapAction="http://tempuri.org/IBanManager/GetReportDataQueryResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveReportData">
+      <soap12:operation soapAction="http://tempuri.org/IBanManager/ReceiveReportData" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBanResult">
+      <soap12:operation soapAction="http://tempuri.org/IBanManager/GetBanResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="MainService">
     <wsdl:port name="NetTcpBinding_IPlayerManager" binding="tns:NetTcpBinding_IPlayerManager">
       <soap12:address location="net.tcp://localhost:8090/Contratos" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -512,7 +607,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -521,7 +616,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -530,7 +625,16 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-B65PT5K5\delma</Upn>
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IBanManager" binding="tns:NetTcpBinding_IBanManager">
+      <soap12:address location="net.tcp://localhost:8090/Contratos" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/Contratos</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-GL5VFUC\parke</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

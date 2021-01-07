@@ -275,7 +275,10 @@ namespace CheckersCliente.MainService {
         VerifiedPin = 1,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        UnknownPin = 2,
+        WrongAnswer = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        UnknownPin = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -682,10 +685,10 @@ namespace CheckersCliente.MainService {
         System.Threading.Tasks.Task PasswordForgotMailAsync(string nickname);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/VerifyPin")]
-        void VerifyPin(string nickname, string pin);
+        void VerifyPin(string nickname, string pin, string answer);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/VerifyPin")]
-        System.Threading.Tasks.Task VerifyPinAsync(string nickname, string pin);
+        System.Threading.Tasks.Task VerifyPinAsync(string nickname, string pin, string answer);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/ChangePassword")]
         void ChangePassword(string nickname, string newPassword);
@@ -712,8 +715,11 @@ namespace CheckersCliente.MainService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetVerifyResult")]
         void GetVerifyResult(CheckersCliente.MainService.VerificationResult resultadoVerificacion);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetResendMailResult")]
+        void GetResendMailResult(CheckersCliente.MainService.MailResult resultadoCorreo, string actualNickname);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetMailResult")]
-        void GetMailResult(CheckersCliente.MainService.MailResult resultadoCorreo, string actualNickname);
+        void GetMailResult(CheckersCliente.MainService.MailResult resultadoCorreo, string actualNickname, string securityQuestion);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetPinResult")]
         void GetPinResult(CheckersCliente.MainService.PinResult verifiedPinResult, string playerNickname);
@@ -793,12 +799,12 @@ namespace CheckersCliente.MainService {
             return base.Channel.PasswordForgotMailAsync(nickname);
         }
         
-        public void VerifyPin(string nickname, string pin) {
-            base.Channel.VerifyPin(nickname, pin);
+        public void VerifyPin(string nickname, string pin, string answer) {
+            base.Channel.VerifyPin(nickname, pin, answer);
         }
         
-        public System.Threading.Tasks.Task VerifyPinAsync(string nickname, string pin) {
-            return base.Channel.VerifyPinAsync(nickname, pin);
+        public System.Threading.Tasks.Task VerifyPinAsync(string nickname, string pin, string answer) {
+            return base.Channel.VerifyPinAsync(nickname, pin, answer);
         }
         
         public void ChangePassword(string nickname, string newPassword) {

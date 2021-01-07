@@ -65,7 +65,8 @@ public enum VerificationResult
     public enum PinResult
     {
         VerifiedPin = 1,
-        UnknownPin = 2
+        WrongAnswer =2,
+        UnknownPin = 3
     }
 
     public enum PasswordChangeResult

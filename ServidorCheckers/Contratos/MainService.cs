@@ -140,7 +140,7 @@ namespace Contratos
                         }
                         catch (System.Net.Mail.SmtpException)
                         {
-                            Callback.GetMailResult(mailResult, player.Apodo);
+                            Callback.GetResendMailResult(mailResult, player.Apodo);
                             throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar su correo");
                         }
                     }
@@ -221,11 +221,11 @@ namespace Contratos
             {
                 client.Send(mailMesagge);
                 mailSuccesResult = MailResult.MailSend;
-                Callback.GetMailResult(mailSuccesResult, player.Apodo);
+                Callback.GetResendMailResult(mailSuccesResult, player.Apodo);
             }
             catch (System.Net.Mail.SmtpException)
             {
-                Callback.GetMailResult(mailSuccesResult, player.Apodo);
+                Callback.GetResendMailResult(mailSuccesResult, player.Apodo);
                 throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar su correo");
             }
         }
@@ -234,11 +234,13 @@ namespace Contratos
         {
             JugadorDataManager jugadorDataManager = new JugadorDataManager();
             MailResult mailSuccesResult = MailResult.SendError;
+            string securityQuestion = " ";
 
             if (jugadorDataManager.CheckNickname(actualNickname))
             {
                 DataAccess.Jugador player = new DataAccess.Jugador();
                 player = jugadorDataManager.ChangePinByNickname(actualNickname);
+                securityQuestion = player.preguntaRecuperacion;
 
                 System.Net.Mail.MailMessage mailMesagge = new System.Net.Mail.MailMessage();
 
@@ -259,27 +261,31 @@ namespace Contratos
                 {
                     client.Send(mailMesagge);
                     mailSuccesResult = MailResult.MailSend;
-                    Callback.GetMailResult(mailSuccesResult, actualNickname);
+                    Callback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
                 }
                 catch (System.Net.Mail.SmtpException)
                 {
-                    Callback.GetMailResult(mailSuccesResult, actualNickname);
+                    Callback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
                     throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar su correo");
                 }
             }
             else
             {
                 mailSuccesResult = MailResult.UnknownPlayer;
-                Callback.GetMailResult(mailSuccesResult, actualNickname);
+                Callback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
             }
         }
 
-        public void VerifyPin(string actualNickname, string playerPin)
+        public void VerifyPin(string actualNickname, string playerPin, string answerText)
         {
             PinResult pinResult = PinResult.UnknownPin;
 
             if (jugadorDataManager.PinCorrecto(actualNickname, playerPin))
             {
+                if (jugadorDataManager.CorrectAnswer(actualNickname, answerText))
+                {
+                    pinResult = PinResult.WrongAnswer;
+                }
                 pinResult = PinResult.VerifiedPin;
             }
 

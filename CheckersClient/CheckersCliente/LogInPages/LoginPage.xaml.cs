@@ -34,13 +34,13 @@ namespace CheckersCliente.LogInPages
 
         private void LogInClick(object sender, RoutedEventArgs e)
         {
+            LogInButton.IsEnabled = false;
 
             JugadorManager.Login(new Jugador
             {
                 Apodo = NicknameTextBox.Text,
                 Contrasenia = PasswordTextBox.Password
             });
-            LogInButton.IsEnabled = false;
         }
 
         private void EnableLoginButton(object sender, RoutedEventArgs e)

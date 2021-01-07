@@ -42,6 +42,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="nickname" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="pin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="answer" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -83,7 +84,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetMailResult">
+  <xs:element name="GetResendMailResult">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="resultadoCorreo" type="q11:MailResult" />
@@ -91,10 +92,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetMailResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="resultadoCorreo" type="q12:MailResult" />
+        <xs:element minOccurs="0" name="actualNickname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="securityQuestion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetPinResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="verifiedPinResult" type="q12:PinResult" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="verifiedPinResult" type="q13:PinResult" />
         <xs:element minOccurs="0" name="playerNickname" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -102,15 +112,15 @@
   <xs:element name="GetPasswordChangeResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="passwordChangedResult" type="q13:PasswordChangeResult" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="passwordChangedResult" type="q14:PasswordChangeResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SendActualPlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="dataObtainedResult" type="q14:DataObtainedResult" />
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="actualPlayer" nillable="true" type="q15:Jugador" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="dataObtainedResult" type="q15:DataObtainedResult" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="actualPlayer" nillable="true" type="q16:Jugador" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -122,29 +132,29 @@
   <xs:element name="GetRankingResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="resultado" type="q16:RankingResult" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="resultado" type="q17:RankingResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReceiveRankingData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="rankingList" nillable="true" type="q17:ArrayOfRanking" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="rankingList" nillable="true" type="q18:ArrayOfRanking" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateMatch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q18:Jugador" />
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="gameMode" type="q19:CheckersGameMode" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Dominio" minOccurs="0" name="currentPlayer" nillable="true" type="q19:Jugador" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="gameMode" type="q20:CheckersGameMode" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Player1Turn">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="updateBoardMatrix" nillable="true" type="q20:ArrayOfArrayOfChecker" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="updateBoardMatrix" nillable="true" type="q21:ArrayOfArrayOfChecker" />
         <xs:element minOccurs="0" name="matchNumber" type="xs:int" />
         <xs:element minOccurs="0" name="playerTwoCheckers" type="xs:int" />
         <xs:element minOccurs="0" name="playerOneCheckers" type="xs:int" />
@@ -154,7 +164,7 @@
   <xs:element name="Player2Turn">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="updateBoardMatrix" nillable="true" type="q21:ArrayOfArrayOfChecker" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="updateBoardMatrix" nillable="true" type="q22:ArrayOfArrayOfChecker" />
         <xs:element minOccurs="0" name="matchNumber" type="xs:int" />
         <xs:element minOccurs="0" name="playerTwoCheckers" type="xs:int" />
         <xs:element minOccurs="0" name="playerOneCheckers" type="xs:int" />
@@ -183,7 +193,7 @@
   <xs:element name="UpdateGameGUI">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="updateBoardMatrix" nillable="true" type="q22:ArrayOfArrayOfChecker" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="updateBoardMatrix" nillable="true" type="q23:ArrayOfArrayOfChecker" />
         <xs:element minOccurs="0" name="playerTwoCheckers" type="xs:int" />
         <xs:element minOccurs="0" name="playerOneCheckers" type="xs:int" />
       </xs:sequence>
@@ -200,8 +210,8 @@
   <xs:element name="GetMatchmakingResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="result" type="q23:MatchmakingResult" />
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="match" nillable="true" type="q24:Match" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="result" type="q24:MatchmakingResult" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="match" nillable="true" type="q25:Match" />
         <xs:element minOccurs="0" name="playerNumber" type="xs:int" />
       </xs:sequence>
     </xs:complexType>

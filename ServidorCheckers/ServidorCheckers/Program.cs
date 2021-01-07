@@ -16,10 +16,6 @@ namespace ServidorCheckers
             {
                 host.Open();
                 Console.WriteLine("Server is running");
-                var randomGenerator = RandomNumberGenerator.Create();
-                byte[] data = new byte[16];
-                randomGenerator.GetBytes(data);
-                Console.WriteLine(BitConverter.ToInt32(data, 1));
                 Console.ReadLine();
             }
         }

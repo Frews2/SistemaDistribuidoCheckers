@@ -70,19 +70,16 @@ namespace CheckersCliente
             {
                 if (saveResult == SaveResult.NicknameExistente)
                 {
-
                     DialogWindowManager.ShowErrorWindow("El nickname ya existe, favor de utilizar otro");
                 }
                 else
                 {
                     if (saveResult == SaveResult.CorreoExistente)
                     {
-
                         DialogWindowManager.ShowErrorWindow("Ese correo ya esta registrado favor de utilizar otro");
                     }
                     else
                     {
-
                         DialogWindowManager.ShowErrorWindow("A ocurrido un error inesperado, vuelva a intentar");
                     }
                 }
@@ -107,13 +104,11 @@ namespace CheckersCliente
             }
         }
 
-        public void GetMailResult(MailResult emailResult, string playerNickname)
+        public void GetResendMailResult(MailResult emailResult, string playerNickname)
         {
-            if(emailResult == MailResult.MailSend)
+            if (emailResult == MailResult.MailSend)
             {
                 DialogWindowManager.ShowSuccessWindow("Se ha enviado el correo exitosamente");
-                LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
-                login.NavigationService.Navigate(new VerificatePasswordPin(playerNickname));
             }
             else
             {
@@ -125,7 +120,28 @@ namespace CheckersCliente
                 {
                     DialogWindowManager.ShowErrorWindow("Se ha tenido un error a la hora de enviar el correo, intente mas tarde");
                 }
-                
+
+            }
+        }
+
+        public void GetMailResult(MailResult emailResult, string playerNickname, string securityQuestion)
+        {
+            if(emailResult == MailResult.MailSend)
+            {
+                DialogWindowManager.ShowSuccessWindow("Se ha enviado el correo exitosamente");
+                LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                login.NavigationService.Navigate(new VerificatePasswordPin(playerNickname,securityQuestion));
+            }
+            else
+            {
+                if (emailResult == MailResult.UnknownPlayer)
+                {
+                    DialogWindowManager.ShowErrorWindow("No existe jugador");
+                }
+                else
+                {
+                    DialogWindowManager.ShowErrorWindow("Se ha tenido un error a la hora de enviar el correo, intente mas tarde");
+                }
             }
         }
     
@@ -138,7 +154,14 @@ namespace CheckersCliente
             }
             else
             {
-                DialogWindowManager.ShowErrorWindow("Ha ingresado un pin incorrecto");
+                if (pinResult == PinResult.WrongAnswer)
+                {
+                    DialogWindowManager.ShowErrorWindow("Respuesta incorrecta");
+                }
+                else
+                {
+                    DialogWindowManager.ShowErrorWindow("Ha ingresado un pin incorrecto");
+                }
             }
         }
 
@@ -171,5 +194,6 @@ namespace CheckersCliente
             }
         }
 
+        
     }
 }

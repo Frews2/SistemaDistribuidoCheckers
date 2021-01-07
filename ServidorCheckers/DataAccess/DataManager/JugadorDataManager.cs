@@ -5,6 +5,7 @@ using System.Linq;
 using System.Data.Entity.Migrations;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace DataAccess.DataManager
 {
@@ -51,11 +52,20 @@ namespace DataAccess.DataManager
 
         public bool PinCorrecto(string nickname, string pinPlayer)
         {
-            bool esCorrecto = false;
+            bool isCorrect = false;
 
-            esCorrecto = dataBase.Jugador.Any(jugador => jugador.apodo == nickname && jugador.pinConfirmacion == pinPlayer);
+            isCorrect = dataBase.Jugador.Any(jugador => jugador.apodo == nickname && jugador.pinConfirmacion == pinPlayer);
 
-            return esCorrecto;
+            return isCorrect;
+        }
+
+        public bool CorrectAnswer(string nickname,string answer)
+        {
+            bool isCorrect = false;
+
+            isCorrect = dataBase.Jugador.Any(jugador => jugador.apodo == nickname && jugador.respuestaConfirmacion == answer);
+
+            return isCorrect;
         }
 
         public int SaveNewPlayer(Jugador jugadorNuevo)
@@ -105,10 +115,21 @@ namespace DataAccess.DataManager
 
         public Jugador ChangePinByNickname(string nickname)
         {
-            Random random = new Random();
+            var randomGenerator = RandomNumberGenerator.Create();
+            byte[] data = new byte[8];
+            randomGenerator.GetBytes(data);
+
+            int dataNumber = Math.Abs(BitConverter.ToInt32(data, 0));
+            int numberOfDigits = (int)Math.Floor(Math.Log10(dataNumber));
+            int pinNumber = 0;
+
+            if (numberOfDigits >= 4)
+            {
+                pinNumber = (int)Math.Truncate((dataNumber / Math.Pow(10, numberOfDigits - 4)));
+            }
             Jugador player = dataBase.Jugador.Where(playerSearch => playerSearch.apodo == nickname).FirstOrDefault<Jugador>();
 
-            player.pinConfirmacion = random.Next(10000, 99999).ToString();
+            player.pinConfirmacion = pinNumber.ToString();
             dataBase.SaveChanges();
 
             return player;
@@ -116,13 +137,12 @@ namespace DataAccess.DataManager
 
         public int ChangePassword(string nickname, string newPassword)
         {
-
             int saved = 0;
 
             try
             {
                 var playerState = dataBase.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
-                playerState.contrasenia = ACTIVE_STATE;
+                playerState.contrasenia = newPassword;
                 saved = dataBase.SaveChanges();
 
             }

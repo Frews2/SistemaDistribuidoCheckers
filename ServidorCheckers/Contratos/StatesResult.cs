@@ -96,6 +96,7 @@ public enum VerificationResult
     public enum BanResult
     {
         PLAYER_BANNED = 1,
-        ERROR_BANNING = 2
+        PLAYER_ALREADY_BANNED = 2,
+        ERROR_BANNING = 3
     }
 }

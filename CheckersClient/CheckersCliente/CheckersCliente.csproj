@@ -164,10 +164,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GamePages\GameChat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MenuPages\GameMode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,9 +195,6 @@
     <Compile Include="Managers\RankingManager.cs" />
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GamePages\GameChat.xaml.cs">
-      <DependentUpon>GameChat.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuPages\PrincipalMenu.xaml.cs">
       <DependentUpon>PrincipalMenu.xaml</DependentUpon>

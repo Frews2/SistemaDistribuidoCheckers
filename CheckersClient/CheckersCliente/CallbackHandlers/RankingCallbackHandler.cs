@@ -5,6 +5,7 @@
 using CheckersCliente.MainService;
 using CheckersCliente.Managers;
 using CheckersCliente.MenuPages;
+using CheckersCliente.Properties;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -17,15 +18,15 @@ namespace CheckersCliente.CallbackHandlers
         {
             if (result == RankingResult.RANKING_EXISTS)
             {
-                MessageBox.Show("Espere mientras se consulta");
+                MessageBox.Show(Resources.LoadMessage);
             }
             else if (result == RankingResult.NO_RANKING)
             {
-                MessageBox.Show("No se encuentra informacion ");
+                MessageBox.Show(Resources.NoInfoMessage);
             }
             else
             {
-                MessageBox.Show("No se pudo conectarse a la base de datos");
+                MessageBox.Show(Resources.NoConnectionMessage);
             }
         }
 

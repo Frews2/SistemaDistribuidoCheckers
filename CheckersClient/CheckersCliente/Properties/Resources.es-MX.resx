@@ -312,4 +312,70 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   <data name="Options" xml:space="preserve">
     <value>Opciones</value>
   </data>
+  <data name="BannedLoginMessage" xml:space="preserve">
+    <value>Usted a sido baneado. No tiene acceso al sistemo.</value>
+  </data>
+  <data name="DoesNotExistLoginMessage" xml:space="preserve">
+    <value>No existe jugador</value>
+  </data>
+  <data name="DuplicateEmailMessage" xml:space="preserve">
+    <value>Ese correo ya esta registrado favor de utilizar otro</value>
+  </data>
+  <data name="DuplicateNicknameMessage" xml:space="preserve">
+    <value>El nickname ya existe, favor de utilizar otro</value>
+  </data>
+  <data name="EmailNotSentMessage" xml:space="preserve">
+    <value>Se ha tenido un error a la hora de enviar el correo, intente mas tarde</value>
+  </data>
+  <data name="EmailSentMessage" xml:space="preserve">
+    <value>Se ha enviado el correo exitosamente</value>
+  </data>
+  <data name="IncorrectPasswordMessage" xml:space="preserve">
+    <value>Verifica tu contraseña ingresado</value>
+  </data>
+  <data name="LoadMessage" xml:space="preserve">
+    <value>Espere mientras se consulta</value>
+  </data>
+  <data name="NoConnectionMessage" xml:space="preserve">
+    <value>No se pudo conectarse a la base de datos</value>
+  </data>
+  <data name="NoInfoMessage" xml:space="preserve">
+    <value>No se encuentra informacion</value>
+  </data>
+  <data name="NoMatchFoundErrorMessage" xml:space="preserve">
+    <value>Error. No se logro buscar partida. Intente de nuevo</value>
+  </data>
+  <data name="NotVerifiedMessage" xml:space="preserve">
+    <value>No ha verificado su cuenta, porfavor verificarla</value>
+  </data>
+  <data name="PasswordChangeErrorMessage" xml:space="preserve">
+    <value>Ha ocurrido un error a la hora de cambiar contraseña intentar de nuevo porfavor</value>
+  </data>
+  <data name="PlayerAlreadyBannedErrorMessage" xml:space="preserve">
+    <value>ERROR: El Jugador ya se encuentra en estado de baja.</value>
+  </data>
+  <data name="PlayerBannedMessage" xml:space="preserve">
+    <value>Se ha dado de baja al jugador.</value>
+  </data>
+  <data name="SuccessfulPasswordChangeMessage" xml:space="preserve">
+    <value>Se ha cambiado la contraseña correctamente</value>
+  </data>
+  <data name="SuccessfulRegisterMessage" xml:space="preserve">
+    <value>Se ha registrado exitosamente, favor de confirmar correo</value>
+  </data>
+  <data name="SuccessfulVerificationMessage" xml:space="preserve">
+    <value>Se ha verificado correctamente tu cuenta</value>
+  </data>
+  <data name="UnableToBanErrorMessage" xml:space="preserve">
+    <value>ERROR: No se logro dar de baja al jugador reportado.</value>
+  </data>
+  <data name="UnexplainedErrorMessage" xml:space="preserve">
+    <value>A ocurrido un error inesperado, vuelva a intentar</value>
+  </data>
+  <data name="WrongAnswerMessage" xml:space="preserve">
+    <value>Respuesta incorrecta. Intente de nuevo.</value>
+  </data>
+  <data name="WrongPINMessage" xml:space="preserve">
+    <value>Verifica tu pin</value>
+  </data>
 </root>

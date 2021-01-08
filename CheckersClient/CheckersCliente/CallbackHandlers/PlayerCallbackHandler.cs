@@ -9,6 +9,7 @@ using System.ServiceModel;
 using CheckersCliente.Windows;
 using CheckersCliente.LogInPages;
 using CheckersCliente.MenuPages;
+using CheckersCliente.Properties;
 
 namespace CheckersCliente
 {
@@ -42,7 +43,7 @@ namespace CheckersCliente
                 {
                     if (resultado == LoginResult.ExisteJugadorNoVerificado)
                     {
-                        DialogWindowManager.ShowErrorWindow("No ha verificado su cuenta, porfavor verificarla");
+                        DialogWindowManager.ShowErrorWindow(Resources.NotVerifiedMessage);
                         LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
                         login.NavigationService.Navigate(new FinalizeRegister(playerLoged));
                     }
@@ -50,17 +51,17 @@ namespace CheckersCliente
                     {
                         if(resultado == LoginResult.EsBaneado)
                         {
-                            DialogWindowManager.ShowErrorWindow("Usted a sido baneado");
+                            DialogWindowManager.ShowErrorWindow(Resources.BannedLoginMessage);
                         }
                         else
                         {
                             if (resultado == LoginResult.NoExisteJugador)
                             {
-                                DialogWindowManager.ShowErrorWindow("No existe jugador");
+                                DialogWindowManager.ShowErrorWindow(Resources.DoesNotExistLoginMessage);
                             }
                             else
                             {
-                                DialogWindowManager.ShowErrorWindow("Verifica tu contraseña");
+                                DialogWindowManager.ShowErrorWindow(Resources.IncorrectPasswordMessage);
                             }
                         }
                         
@@ -79,7 +80,7 @@ namespace CheckersCliente
         {
             if(saveResult == SaveResult.JugadorGuardado)
             {
-                DialogWindowManager.ShowSuccessWindow("Se ha registrado exitosamente, favor de confirmar correo");
+                DialogWindowManager.ShowSuccessWindow(Resources.SuccessfulRegisterMessage);
                 LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
                 login.NavigationService.Navigate(new FinalizeRegister(newPlayer));
             }
@@ -87,17 +88,17 @@ namespace CheckersCliente
             {
                 if (saveResult == SaveResult.NicknameExistente)
                 {
-                    DialogWindowManager.ShowErrorWindow("El nickname ya existe, favor de utilizar otro");
+                    DialogWindowManager.ShowErrorWindow(Resources.DuplicateNicknameMessage);
                 }
                 else
                 {
                     if (saveResult == SaveResult.CorreoExistente)
                     {
-                        DialogWindowManager.ShowErrorWindow("Ese correo ya esta registrado favor de utilizar otro");
+                        DialogWindowManager.ShowErrorWindow(Resources.DuplicateEmailMessage);
                     }
                     else
                     {
-                        DialogWindowManager.ShowErrorWindow("A ocurrido un error inesperado, vuelva a intentar");
+                        DialogWindowManager.ShowErrorWindow(Resources.UnexplainedErrorMessage);
                     }
                 }
             }
@@ -107,17 +108,17 @@ namespace CheckersCliente
         {
             if(resultadoVerificacion == VerificationResult.VerificacionExistosa)
             {
-                DialogWindowManager.ShowSuccessWindow("Se ha verificado correctamente tu cuenta");
+                DialogWindowManager.ShowSuccessWindow(Resources.SuccessfulVerificationMessage);
                 LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
                 logIn.NavigationService.Navigate(new LogInPage());
             }
             else if (resultadoVerificacion == VerificationResult.NoExisteJugador)
             {
-                DialogWindowManager.ShowErrorWindow("No existe jugador");
+                DialogWindowManager.ShowErrorWindow(Resources.DoesNotExistLoginMessage);
             }
             else
             {
-                DialogWindowManager.ShowErrorWindow("Verifica tu pin");
+                DialogWindowManager.ShowErrorWindow(Resources.WrongPINMessage);
             }
         }
 
@@ -125,17 +126,17 @@ namespace CheckersCliente
         {
             if (emailResult == MailResult.MailSend)
             {
-                DialogWindowManager.ShowSuccessWindow("Se ha enviado el correo exitosamente");
+                DialogWindowManager.ShowSuccessWindow(Resources.EmailSentMessage);
             }
             else
             {
                 if (emailResult == MailResult.UnknownPlayer)
                 {
-                    DialogWindowManager.ShowErrorWindow("No existe jugador");
+                    DialogWindowManager.ShowErrorWindow(Resources.DoesNotExistLoginMessage);
                 }
                 else
                 {
-                    DialogWindowManager.ShowErrorWindow("Se ha tenido un error a la hora de enviar el correo, intente mas tarde");
+                    DialogWindowManager.ShowErrorWindow(Resources.EmailNotSentMessage);
                 }
 
             }
@@ -145,7 +146,7 @@ namespace CheckersCliente
         {
             if(emailResult == MailResult.MailSend)
             {
-                DialogWindowManager.ShowSuccessWindow("Se ha enviado el correo exitosamente");
+                DialogWindowManager.ShowSuccessWindow(Resources.EmailSentMessage);
                 LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
                 login.NavigationService.Navigate(new VerificatePasswordPin(playerNickname,securityQuestion));
             }
@@ -153,11 +154,11 @@ namespace CheckersCliente
             {
                 if (emailResult == MailResult.UnknownPlayer)
                 {
-                    DialogWindowManager.ShowErrorWindow("No existe jugador");
+                    DialogWindowManager.ShowErrorWindow(Resources.DoesNotExistLoginMessage);
                 }
                 else
                 {
-                    DialogWindowManager.ShowErrorWindow("Se ha tenido un error a la hora de enviar el correo, intente mas tarde");
+                    DialogWindowManager.ShowErrorWindow(Resources.EmailNotSentMessage);
                 }
             }
         }
@@ -173,11 +174,11 @@ namespace CheckersCliente
             {
                 if (pinResult == PinResult.WrongAnswer)
                 {
-                    DialogWindowManager.ShowErrorWindow("Respuesta incorrecta");
+                    DialogWindowManager.ShowErrorWindow(Resources.WrongAnswerMessage);
                 }
                 else
                 {
-                    DialogWindowManager.ShowErrorWindow("Ha ingresado un pin incorrecto");
+                    DialogWindowManager.ShowErrorWindow(Resources.WrongPINMessage);
                 }
             }
         }
@@ -186,14 +187,14 @@ namespace CheckersCliente
         {
             if (passwordChangeResult == PasswordChangeResult.ChangedPassword)
             {
-                DialogWindowManager.ShowSuccessWindow("Se ha cambiado la contraseña correctamente");
+                DialogWindowManager.ShowSuccessWindow(Resources.SuccessfulPasswordChangeMessage);
                 LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
                 login.NavigationService.Navigate(new LogInPage());
 
             }
             else
             {
-                DialogWindowManager.ShowErrorWindow("Ha ocurrido un error a la hora de cambiar contraseña intentar de nuevo porfavor");
+                DialogWindowManager.ShowErrorWindow(Resources.PasswordChangeErrorMessage);
             }
 
         }
@@ -207,7 +208,7 @@ namespace CheckersCliente
             }
             else
             {
-                DialogWindowManager.ShowErrorWindow("Ha ocurrido un error de conexion a la base de datos, intentar mas tarde");
+                DialogWindowManager.ShowErrorWindow(Resources.NoConnectionMessage);
             }
         }
 

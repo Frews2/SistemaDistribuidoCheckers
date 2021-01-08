@@ -46,6 +46,19 @@ namespace DataAccess.DataManager
             return banned;
         }
 
+        public bool EsPasswordCorrecto(string password, string nickname)
+        {
+            bool correctPassword = false;
+
+            var playerSearched = dataBase.Jugador.Where(player => player.apodo.Equals(nickname)).FirstOrDefault<Jugador>();
+
+            if (HashManager.CompareHash(password, playerSearched.contrasenia))
+            {
+                correctPassword = true;
+            }
+            return correctPassword;
+        }
+
         public bool CorrectAnswer(string nickname, string answer)
         {
             bool isCorrect = false;
@@ -102,7 +115,7 @@ namespace DataAccess.DataManager
         {
             bool existsPlayer = false;
 
-            existsPlayer = dataBase.Jugador.Any(jugador => jugador.apodo == email);
+            existsPlayer = dataBase.Jugador.Any(jugador => jugador.correoElectronico == email);
 
             return existsPlayer;
         }
@@ -120,13 +133,12 @@ namespace DataAccess.DataManager
 
         public int ChangePassword(string nickname, string newPassword)
         {
-
             int saved = 0;
 
             try
             {
                 var playerState = dataBase.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
-                playerState.contrasenia = ACTIVE_STATE;
+                playerState.contrasenia = newPassword;
                 saved = dataBase.SaveChanges();
 
             }
@@ -140,15 +152,21 @@ namespace DataAccess.DataManager
 
         public int BanPlayer(string nickname)
         {
-
+            const int PLAYER_ALREADY_BANNED = 2;
             int saved = 0;
 
             try
             {
                 var reportedPlayer = dataBase.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
-                reportedPlayer.status = DOWN_STATE;
-                saved = dataBase.SaveChanges();
-
+                if(reportedPlayer.status == DOWN_STATE)
+                {
+                    saved = PLAYER_ALREADY_BANNED;
+                }
+                else if (reportedPlayer.status != DOWN_STATE)
+                {
+                    reportedPlayer.status = DOWN_STATE;
+                    saved = dataBase.SaveChanges();
+                }
             }
             catch (DbUpdateException)
             {

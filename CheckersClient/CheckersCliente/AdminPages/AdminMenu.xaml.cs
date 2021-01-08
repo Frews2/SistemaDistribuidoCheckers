@@ -35,6 +35,12 @@ namespace CheckersCliente.AdminPages
             BanManager.GetReportedList();
         }
 
+        private void CloseMenu(object sender, RoutedEventArgs e)
+        {
+            AdminPage actualMenu = App.Current.Windows.OfType<AdminPage>().FirstOrDefault();
+            actualMenu.Close();
+        }
+
         private void LanguageSelect(object sender, RoutedEventArgs e)
         {
             (DataContext as Jugador).IdLenguaje = LanguageBox.SelectedIndex;

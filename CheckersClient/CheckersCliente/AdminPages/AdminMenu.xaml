@@ -18,6 +18,9 @@
 
         <Button Content="{x:Static p:Resources.ViewReports}" Margin="260,180,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="DisplayReports"/>
 
+        <Button Content="{x:Static p:Resources.Exit}" Margin="260,450,260,0" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="CloseMenu"/>
+
+        
         <Label Content="{x:Static p:Resources.Language}" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Height="30" 
                Width="176" FontWeight="ExtraBold" FontSize="14" Foreground="White" FontFamily="Bookman Old Style" Background="Red"/>
 

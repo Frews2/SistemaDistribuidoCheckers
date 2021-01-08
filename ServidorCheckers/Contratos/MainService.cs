@@ -170,7 +170,6 @@ namespace Contratos
                 saveResult = SaveResult.NicknameExistente;
                 Callback.GetSaveResult(saveResult, player);
             }
-            Callback.GetSaveResult(saveResult, player);
         }
 
         public void VerifyPlayer(Dominio.Jugador player)
@@ -576,6 +575,8 @@ namespace Contratos
         public void BanPlayer(string reportedPlayerName)
         {
             int isPlayerBanned = 0;
+            const int BAN_SAUCCESSFUL = 1;
+            const int BAN_ALREADY = 2;
             DataAccess.Jugador reportedPlayer = new DataAccess.Jugador();
             JugadorDataManager playerDataManager = new JugadorDataManager();
 
@@ -583,11 +584,9 @@ namespace Contratos
             reportedPlayer = playerDataManager.GetPlayerByNickname(reportedPlayerName);
             isPlayerBanned = playerDataManager.BanPlayer(reportedPlayer.apodo);
 
-            if (isPlayerBanned != 0)
+            if (isPlayerBanned == BAN_SAUCCESSFUL)
             {
-                banResult = BanResult.PLAYER_BANNED;
-
-                System.Net.Mail.MailMessage emailContent = new System.Net.Mail.MailMessage();
+                MailMessage emailContent = new MailMessage();
 
                 emailContent.To.Add(reportedPlayer.correoElectronico);
                 emailContent.Subject = "Aviso de baja de cuenta por reportado " + reportedPlayer.apodo;
@@ -595,7 +594,7 @@ namespace Contratos
                     "reportaje de mal comporamiento. ";
                 emailContent.From = new System.Net.Mail.MailAddress("checkersGame124@gmail.com", "Checkers Game Proyect");
 
-                System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient
+                SmtpClient client = new SmtpClient
                 {
                     Credentials = new System.Net.NetworkCredential("checkersGame124@gmail.com", "checkersJuego1."),
                     EnableSsl = true,
@@ -612,8 +611,14 @@ namespace Contratos
                     throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar el correo del jugador reportado");
                 }
 
-                BanCallback.GetBanResult(banResult);
+                banResult = BanResult.PLAYER_BANNED;
             }
+            else if(isPlayerBanned == BAN_ALREADY)
+            {
+                banResult = BanResult.PLAYER_ALREADY_BANNED;
+            }
+
+            BanCallback.GetBanResult(banResult);
 
         }
     }

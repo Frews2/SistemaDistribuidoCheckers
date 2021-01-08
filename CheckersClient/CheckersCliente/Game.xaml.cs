@@ -68,11 +68,6 @@ namespace CheckersCliente
 
         }
 
-        public void RefreshMessageList()
-        {
-            chatFrame.Navigate(new GameChat());
-        }
-
         private void RegresarAMenu(object sender, RoutedEventArgs e)
         {
             GameManager.LeaveMatchmaking(actualMatch, localPlayer);

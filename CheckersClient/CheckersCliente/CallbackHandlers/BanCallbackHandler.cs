@@ -4,6 +4,7 @@
 */
 using CheckersCliente.AdminPages;
 using CheckersCliente.MainService;
+using CheckersCliente.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +20,19 @@ namespace CheckersCliente.CallbackHandlers
         {
             if (result == BanResult.PLAYER_BANNED)
             {
-                MessageBox.Show("Se ha dado de baja al jugador.");
+                MessageBox.Show(Resources.PlayerBannedMessage);
+            }
+            else if (result == BanResult.PLAYER_ALREADY_BANNED)
+            {
+                MessageBox.Show(Resources.PlayerAlreadyBannedErrorMessage);
             }
             else if (result == BanResult.ERROR_BANNING)
             {
-                MessageBox.Show("ERROR: No se logro dar de baja al jugador reportado.");
+                MessageBox.Show(Resources.UnableToBanErrorMessage);
             }
             else
             {
-                MessageBox.Show("No se pudo conectarse a la base de datos. Intente de nuevo mas tarde.");
+                MessageBox.Show(Resources.NoConnectionMessage);
             }
         }
 
@@ -35,15 +40,15 @@ namespace CheckersCliente.CallbackHandlers
         {
             if (result == AdminReportResult.REPORT_EXISTS)
             {
-                MessageBox.Show("Espere mientras se obtienen reportes.");
+                MessageBox.Show(Resources.LoadMessage);
             }
             else if (result == AdminReportResult.NO_REPORTS_EXIST)
             {
-                MessageBox.Show("No se encuentran reportes de mala conducta para jugadores.");
+                MessageBox.Show(Resources.NoInfoMessage);
             }
             else
             {
-                MessageBox.Show("No se pudo conectarse a la base de datos. Intente de nuevo mas tarde.");
+                MessageBox.Show(Resources.NoConnectionMessage);
             }
         }
 

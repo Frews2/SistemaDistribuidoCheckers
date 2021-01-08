@@ -310,4 +310,70 @@ This can result from all of a player's pieces being captured or blocked from mak
   <data name="Options" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="BannedLoginMessage" xml:space="preserve">
+    <value>You have been banned. Access Denied.</value>
+  </data>
+  <data name="DoesNotExistLoginMessage" xml:space="preserve">
+    <value>The player you have entered does not exist</value>
+  </data>
+  <data name="DuplicateEmailMessage" xml:space="preserve">
+    <value>Entered email already exists. Please try another one.</value>
+  </data>
+  <data name="DuplicateNicknameMessage" xml:space="preserve">
+    <value>Nickname chosen already exists. Please try another one.</value>
+  </data>
+  <data name="EmailNotSentMessage" xml:space="preserve">
+    <value>Could not send email to your account due to an unforeseen error. Please try again.</value>
+  </data>
+  <data name="EmailSentMessage" xml:space="preserve">
+    <value>An email was sent to your provided email account. Please check it.</value>
+  </data>
+  <data name="IncorrectPasswordMessage" xml:space="preserve">
+    <value>Incorrect Password. Try Again.</value>
+  </data>
+  <data name="LoadMessage" xml:space="preserve">
+    <value>Please wait while info loads</value>
+  </data>
+  <data name="NoConnectionMessage" xml:space="preserve">
+    <value>Could not connect to database. Try again later.</value>
+  </data>
+  <data name="NoInfoMessage" xml:space="preserve">
+    <value>No information was found from database</value>
+  </data>
+  <data name="NoMatchFoundErrorMessage" xml:space="preserve">
+    <value>An error occurred and we could not find a match. Please try again.</value>
+  </data>
+  <data name="NotVerifiedMessage" xml:space="preserve">
+    <value>Account not verified. Please verify account.</value>
+  </data>
+  <data name="PasswordChangeErrorMessage" xml:space="preserve">
+    <value>An error occurred and we could not change your password. Please try again.</value>
+  </data>
+  <data name="PlayerAlreadyBannedErrorMessage" xml:space="preserve">
+    <value>Error. The player is already banned and cannot be banned again.</value>
+  </data>
+  <data name="PlayerBannedMessage" xml:space="preserve">
+    <value>Player banned successfuly</value>
+  </data>
+  <data name="SuccessfulPasswordChangeMessage" xml:space="preserve">
+    <value>Congratulations. Password changed successfuly.</value>
+  </data>
+  <data name="SuccessfulRegisterMessage" xml:space="preserve">
+    <value>You have been registered successfully but need to verify your account.</value>
+  </data>
+  <data name="SuccessfulVerificationMessage" xml:space="preserve">
+    <value>Congratulations. Account verification successful</value>
+  </data>
+  <data name="UnableToBanErrorMessage" xml:space="preserve">
+    <value>An error occurred and the player was unable to be banned. Try again.</value>
+  </data>
+  <data name="UnexplainedErrorMessage" xml:space="preserve">
+    <value>Something unexpected occurred. Try again.</value>
+  </data>
+  <data name="WrongAnswerMessage" xml:space="preserve">
+    <value>Wrong answer. Please try again.</value>
+  </data>
+  <data name="WrongPINMessage" xml:space="preserve">
+    <value>The entered PIN number is incorrect. Try Again.</value>
+  </data>
 </root>

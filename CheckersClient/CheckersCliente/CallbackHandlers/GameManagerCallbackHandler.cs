@@ -4,6 +4,7 @@
 */
 using CheckersCliente.MainService;
 using CheckersCliente.MenuPages;
+using CheckersCliente.Properties;
 using System.Linq;
 using System.Windows;
 
@@ -30,7 +31,7 @@ namespace CheckersCliente.CallbackHandlers
                 }
                 else
                 {
-                    MessageBox.Show("Error. No se logro buscar partida. Intente de nuevo");
+                    MessageBox.Show(Resources.NoMatchFoundErrorMessage);
                 }
             }
         }

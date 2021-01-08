@@ -7,12 +7,12 @@
       xmlns:local="clr-namespace:CheckersCliente.MenuPages"
       xmlns:Properties="clr-namespace:CheckersCliente.Properties" x:Class="CheckersCliente.MenuPages.UserConfiguration"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="UserConfiguration">
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\CheckersCliente\Images\checkersBackground.jpg"/>
+            <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
 
@@ -26,6 +26,7 @@
         <TextBlock Text="{x:Static p:Resources.ConfirmationQuestion}" Margin="104,300,111,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
         <TextBlock Text="{Binding PreguntaRecuperacion}" Margin="0,348,0,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center" RenderTransformOrigin="0.517,1.078"/>
 
-        <Button x:Name="CancelButton" Content="{x:Static p:Resources.Cancel}" Margin="280,695,280,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black"  FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic" Click="CancelClick"/>
+        <Button x:Name="CancelButton" Content="{x:Static p:Resources.Cancel}" Margin="280,480,318,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black"  FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic" Click="CancelClick"/>
+
     </Grid>
 </Page>

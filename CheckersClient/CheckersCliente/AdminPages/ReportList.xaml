@@ -19,7 +19,7 @@
 
         <DataGrid x:Name="tableOfReports" HorizontalAlignment="Center" Height="358"  VerticalAlignment="Top" Width="630" 
                   AutoGenerateColumns="False" Background="#FFFAFAFA" CanUserAddRows="false" RenderTransformOrigin="0.723,0.467"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="30" Margin="54,128,96,0" >
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="40" Margin="54,128,96,0" >
 
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="{x:Static p:Resources.ReportID}" Width ="90" MinWidth="90" MaxWidth="200"
@@ -35,7 +35,7 @@
 
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding IDReporte}" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Text="{Binding IdReporte}" TextWrapping="WrapWithOverflow"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -94,7 +94,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn  Header="{x:Static p:Resources.Options}" Width ="120" CanUserResize="False" 
+                <DataGridTemplateColumn  Header="{x:Static p:Resources.Options}" Width ="130" CanUserResize="False" 
                                                 CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -106,9 +106,9 @@
                     </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="{x:Static p:Resources.Ban}" Name="suspendPlayer" Width ="100" MinWidth="100" 
-                                    VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White"
-                                    FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="BanPlayer"/>
+                            <Button Content="{x:Static p:Resources.Ban}" Name="suspendPlayer" MinWidth="80" 
+                                    VerticalAlignment="Top"  HorizontalAlignment="Left" Background="Black" BorderBrush="#FF050404" Foreground="White"
+                                    FontWeight="Bold" Height="30" FontSize="16" FontStyle="Italic" Click="BanPlayer"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

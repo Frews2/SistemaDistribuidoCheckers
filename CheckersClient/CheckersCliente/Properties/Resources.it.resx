@@ -310,4 +310,71 @@ Questo può derivare da tutti i pezzi di un giocatore catturato o bloccato dall'
   <data name="Options" xml:space="preserve">
     <value>Opzioni</value>
   </data>
+  <data name="BannedLoginMessage" xml:space="preserve">
+    <value>Sei stato escluso. Accesso negato.</value>
+  </data>
+  <data name="DoesNotExistLoginMessage" xml:space="preserve">
+    <value>Il giocatore che hai inserito non esiste</value>
+  </data>
+  <data name="DuplicateEmailMessage" xml:space="preserve">
+    <value>L'email inserita esiste già. Per favore, provane un altro.</value>
+  </data>
+  <data name="DuplicateNicknameMessage" xml:space="preserve">
+    <value>Il nickname scelto esiste già. Per favore, provane un altro.</value>
+  </data>
+  <data name="EmailNotSentMessage" xml:space="preserve">
+    <value>Impossibile inviare e-mail al tuo account a causa di un errore imprevisto. Per favore riprova.</value>
+  </data>
+  <data name="EmailSentMessage" xml:space="preserve">
+    <value>È stata inviata un'e-mail al tuo account e-mail fornito. Per favore controllalo.</value>
+  </data>
+  <data name="IncorrectPasswordMessage" xml:space="preserve">
+    <value>Password errata. Riprova.</value>
+  </data>
+  <data name="LoadMessage" xml:space="preserve">
+    <value>Attendi durante il caricamento</value>
+  </data>
+  <data name="NoConnectionMessage" xml:space="preserve">
+    <value>Impossibile connettersi al banca dati</value>
+  </data>
+  <data name="NoInfoMessage" xml:space="preserve">
+    <value>Nessuna informazione è stata trovata</value>
+  </data>
+  <data name="NoMatchFoundErrorMessage" xml:space="preserve">
+    <value>Si è verificato un errore e non è stato possibile trovare una 
+partita di gioco. Per favore riprova.</value>
+  </data>
+  <data name="NotVerifiedMessage" xml:space="preserve">
+    <value>Account non verificato. Verifica l'account.</value>
+  </data>
+  <data name="PasswordChangeErrorMessage" xml:space="preserve">
+    <value>Si è verificato un errore e non è stato possibile modificare la password. Per favore riprova.</value>
+  </data>
+  <data name="PlayerAlreadyBannedErrorMessage" xml:space="preserve">
+    <value>Errore. Il giocatore è già stato bannato e non può essere nuovamente bannato</value>
+  </data>
+  <data name="PlayerBannedMessage" xml:space="preserve">
+    <value>Giocatore bandito con successo</value>
+  </data>
+  <data name="SuccessfulPasswordChangeMessage" xml:space="preserve">
+    <value>Congratulazioni. Password modificata con successo.</value>
+  </data>
+  <data name="SuccessfulRegisterMessage" xml:space="preserve">
+    <value>Sei stato registrato con successo ma devi verificare il tuo account.</value>
+  </data>
+  <data name="SuccessfulVerificationMessage" xml:space="preserve">
+    <value>Congratulazioni. Verifica dell'account riuscita</value>
+  </data>
+  <data name="UnableToBanErrorMessage" xml:space="preserve">
+    <value>Si è verificato un errore e il giocatore non è stato in grado di essere bannato. Riprova.</value>
+  </data>
+  <data name="UnexplainedErrorMessage" xml:space="preserve">
+    <value>È successo qualcosa di inaspettato. Riprova.</value>
+  </data>
+  <data name="WrongAnswerMessage" xml:space="preserve">
+    <value>Risposta sbagliata. Per favore riprova.</value>
+  </data>
+  <data name="WrongPINMessage" xml:space="preserve">
+    <value>Il numero PIN inserito non è corretto. Riprova.</value>
+  </data>
 </root>

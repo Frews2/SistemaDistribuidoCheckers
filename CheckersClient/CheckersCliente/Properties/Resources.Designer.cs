@@ -97,7 +97,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
+        ///   Busca una cadena traducida similar a Cancel.
         /// </summary>
         public static string Cancel {
             get {
@@ -106,7 +106,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change your password.
+        ///   Busca una cadena traducida similar a Change your password.
         /// </summary>
         public static string ChangePassword {
             get {
@@ -115,7 +115,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Classic Checkers.
+        ///   Busca una cadena traducida similar a Classic Checkers.
         /// </summary>
         public static string ClassicCheckers {
             get {
@@ -124,7 +124,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirmation question.
+        ///   Busca una cadena traducida similar a Confirmation question.
         /// </summary>
         public static string ConfirmationQuestion {
             get {
@@ -142,7 +142,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your e-mail.
+        ///   Busca una cadena traducida similar a Enter your e-mail.
         /// </summary>
         public static string EnterMail {
             get {
@@ -151,7 +151,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your nickname.
+        ///   Busca una cadena traducida similar a Enter your nickname.
         /// </summary>
         public static string EnterNickname {
             get {
@@ -160,7 +160,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your Pin.
+        ///   Busca una cadena traducida similar a Enter your Pin.
         /// </summary>
         public static string EnterPin {
             get {
@@ -187,7 +187,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Game.
+        ///   Busca una cadena traducida similar a Game.
         /// </summary>
         public static string Game {
             get {
@@ -196,20 +196,31 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please wait while match in progress ends.
-        /// </summary>
-        public static string GameInProgessMessage {
-            get {
-                return ResourceManager.GetString("GameInProgessMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Game Mode.
+        ///   Busca una cadena traducida similar a Game Mode.
         /// </summary>
         public static string GameMode {
             get {
                 return ResourceManager.GetString("GameMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Checkers is a two player game.
+        ///Each player receives 12 colored discs at the start of the game, with black and red as the colors.
+        ///
+        ///The board consists of 64 squares, 32 dark and 32 light.
+        ///Each of the pieces is placed on the 12 dark squares closest to the player.
+        ///
+        ///The black player always moves first, then each player takes turns.
+        ///
+        ///The only moves allowed are on the dark squares, which means that the pieces always move diagonally.
+        ///Single pieces can only advance towards their opponent.
+        ///
+        ///Any player maki [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        public static string GameRules {
+            get {
+                return ResourceManager.GetString("GameRules", resourceCulture);
             }
         }
         
@@ -243,7 +254,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Games Played.
+        ///   Busca una cadena traducida similar a Games Played.
         /// </summary>
         public static string GamesPlayed {
             get {
@@ -252,7 +263,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Games Won.
+        ///   Busca una cadena traducida similar a Games Won.
         /// </summary>
         public static string GamesWon {
             get {
@@ -261,7 +272,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Italian Checkers.
+        ///   Busca una cadena traducida similar a Italian Checkers.
         /// </summary>
         public static string ItalianCheckers {
             get {
@@ -290,6 +301,15 @@ namespace CheckersCliente.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Menu.
         /// </summary>
+        public static string MatchmakingStandBy {
+            get {
+                return ResourceManager.GetString("MatchmakingStandBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Menu.
+        /// </summary>
         public static string Menu {
             get {
                 return ResourceManager.GetString("Menu", resourceCulture);
@@ -315,7 +335,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nickname.
+        ///   Busca una cadena traducida similar a Nickname.
         /// </summary>
         public static string Nickname {
             get {
@@ -324,7 +344,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your nickname to receive a confirmation pin on your linked mail and change your password.
+        ///   Busca una cadena traducida similar a Enter your nickname to receive a confirmation pin on your linked mail and change your password.
         /// </summary>
         public static string NicknameInstructions {
             get {
@@ -468,7 +488,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go Back.
+        ///   Busca una cadena traducida similar a Go Back.
         /// </summary>
         public static string Return {
             get {
@@ -495,7 +515,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send mail.
+        ///   Busca una cadena traducida similar a Send mail.
         /// </summary>
         public static string SendMail {
             get {
@@ -522,7 +542,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verify account.
+        ///   Busca una cadena traducida similar a Verify account.
         /// </summary>
         public static string VerifyAccount {
             get {
@@ -531,7 +551,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm password.
+        ///   Busca una cadena traducida similar a Confirm password.
         /// </summary>
         public static string VerifyPassword {
             get {

@@ -27,7 +27,7 @@ namespace Contratos
         void PasswordForgotMail(string nickname);
 
         [OperationContract(IsOneWay = true)]
-        void VerifyPin(string nickname, string pin);
+        void VerifyPin(string nickname, string pin, string answer);
 
         [OperationContract(IsOneWay = true)]
         void ChangePassword(string nickname, string newPassword);
@@ -49,7 +49,10 @@ namespace Contratos
         void GetVerifyResult(VerificationResult resultadoVerificacion);
 
         [OperationContract(IsOneWay = true)]
-        void GetMailResult(MailResult resultadoCorreo, string actualNickname);
+        void GetResendMailResult(MailResult resultadoCorreo, string actualNickname);
+
+        [OperationContract(IsOneWay = true)]
+        void GetMailResult(MailResult resultadoCorreo, string actualNickname, string securityQuestion);
 
         [OperationContract(IsOneWay = true)]
         void GetPinResult(PinResult verifiedPinResult, string playerNickname);

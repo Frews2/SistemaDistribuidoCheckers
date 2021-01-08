@@ -24,6 +24,7 @@ namespace CheckersCliente.LogInPages
 
         private void SendMail(object sender, RoutedEventArgs e)
         {
+            SendButton.IsEnabled = false;
             playerNickname = Nicknamebox.Text;
             JugadorManager.ObtainMailPassword(playerNickname);
             

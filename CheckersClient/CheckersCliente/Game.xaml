@@ -9,23 +9,104 @@
         mc:Ignorable="d"
         Title="{x:Static p:Resources.Game}"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        
-        Width="Auto" Height="Auto"  d:DesignWidth="1300" d:DesignHeight="1000">
+        d:DesignWidth="1000" d:DesignHeight="1000">
 
     <Grid Background="#FFED1C1C">
+        <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="410" Margin="240,95,0,0" VerticalAlignment="Top" Width="410" />
+        
+        <Frame x:Name="chatFrame" x:FieldModifier="public" Grid.Column="1" Source="/GamePages/GameChat.xaml" Background="AntiqueWhite" NavigationUIVisibility="Hidden" Margin="90,75,0,0"/>
+        
+        <Button Content="{x:Static p:Resources.Return}" Margin="10,510,480,5" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="RegresarAMenu"/>
+        <Button Content="{x:Static p:Resources.Return}" Margin="400,510,80,5" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="EndTurnNoMovement"/>
+
+        <TextBlock x:Name ="player2Checker"  HorizontalAlignment="Left" Margin="0,46,0,0" TextWrapping="Wrap" Text="•" FontSize="70" TextAlignment="Center"  Width="96"/>
+        <TextBlock HorizontalAlignment="Left" Margin="70,120,0,0" TextWrapping="Wrap" Text="VS" FontSize="30" TextAlignment="Center"  Width="96" FontWeight="Bold"/>
+        <TextBlock x:Name ="player1Checker" HorizontalAlignment="Left"  Margin="0,126,0,0" TextWrapping="Wrap" Text="•" FontSize="70" TextAlignment="Center" Width="96"/>
+        
+        <Grid x:Name="playersPanel" Margin="-400,80,0,0">
+
+            <Label x:Name ="playerOne" Content="Player 2" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Height="50"  />
+            <Label x:Name ="playerTwo" Content="Player 1" HorizontalContentAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Height="55" />
+            <TextBlock x:Name="current_player" TextWrapping="Wrap" TextAlignment="Center" Margin="-50,200,0,0" />
+
+        </Grid>
+
+        <Grid x:Name ="Board" Margin="245,100,0,0"  >
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+
+            </Grid.RowDefinitions>
+
+            <Button Click="Movement" x:Name="blackSquare1" Background ="Black" Grid.Column ="0" Grid.Row ="0" />
+            <Button Click="Movement" x:Name="blackSquare2" Background ="Black" Grid.Column ="2" Grid.Row ="0" />
+            <Button Click="Movement" x:Name="blackSquare3" Background ="Black" Grid.Column ="4" Grid.Row ="0" />
+            <Button Click="Movement" x:Name="blackSquare4" Background ="Black" Grid.Column ="6" Grid.Row ="0" />
+
+            <Button Click="Movement" x:Name="blackSquare5" Background ="Black" Grid.Column ="1" Grid.Row ="1" />
+            <Button Click="Movement" x:Name="blackSquare6" Background ="Black" Grid.Column ="3" Grid.Row ="1" />
+            <Button Click="Movement" x:Name="blackSquare7" Background ="Black" Grid.Column ="5" Grid.Row ="1" />
+            <Button Click="Movement" x:Name="blackSquare8" Background ="Black" Grid.Column ="7" Grid.Row ="1" />
+
+            <Button Click="Movement" x:Name="blackSquare9" Background ="Black" Grid.Column ="0" Grid.Row ="2"  />
+            <Button Click="Movement" x:Name="blackSquare10" Background ="Black" Grid.Column ="2" Grid.Row ="2" />
+            <Button Click="Movement" x:Name="blackSquare11" Background ="Black" Grid.Column ="4" Grid.Row ="2" />
+            <Button Click="Movement" x:Name="blackSquare12" Background ="Black" Grid.Column ="6" Grid.Row ="2" />
+
+            <Button Click="Movement" x:Name="blackSquare13" Background ="black" Grid.Column ="1" Grid.Row ="3" />
+            <Button Click="Movement" x:Name="blackSquare14" Background ="black" Grid.Column ="3" Grid.Row ="3" />
+            <Button Click="Movement" x:Name="blackSquare15" Background ="black" Grid.Column ="5" Grid.Row ="3" />
+            <Button Click="Movement" x:Name="blackSquare16" Background ="black" Grid.Column ="7" Grid.Row ="3" />
+
+            <Button Click="Movement" x:Name="blackSquare17" Background ="black" Grid.Column ="2" Grid.Row ="4" />
+            <Button Click="Movement" x:Name="blackSquare18" Background ="black" Grid.Column ="4" Grid.Row ="4" />
+            <Button Click="Movement" x:Name="blackSquare19" Background ="black" Grid.Column ="6" Grid.Row ="4" />
+            <Button Click="Movement" x:Name="blackSquare20" Background ="black" Grid.Column ="0" Grid.Row ="4" />
+
+            <Button Click="Movement" x:Name="blackSquare21" Background ="Black" Grid.Column ="1" Grid.Row ="5" />
+            <Button Click="Movement" x:Name="blackSquare22" Background ="Black" Grid.Column ="3" Grid.Row ="5" />
+            <Button Click="Movement" x:Name="blackSquare23" Background ="Black" Grid.Column ="5" Grid.Row ="5" />
+            <Button Click="Movement" x:Name="blackSquare24" Background ="Black" Grid.Column ="7" Grid.Row ="5" />
+
+            <Button Click="Movement" x:Name="blackSquare25" Background ="Black" Grid.Column ="0" Grid.Row ="6" />
+            <Button Click="Movement" x:Name="blackSquare26" Background ="Black" Grid.Column ="2" Grid.Row ="6" />
+            <Button Click="Movement" x:Name="blackSquare27" Background ="Black" Grid.Column ="4" Grid.Row ="6" />
+            <Button Click="Movement" x:Name="blackSquare28" Background ="Black" Grid.Column ="6" Grid.Row ="6" />
+
+            <Button Click="Movement" x:Name="blackSquare29" Background ="Black" Grid.Column ="1" Grid.Row ="7" />
+            <Button Click="Movement" x:Name="blackSquare30" Background ="Black" Grid.Column ="3" Grid.Row ="7" />
+            <Button Click="Movement" x:Name="blackSquare31" Background ="Black" Grid.Column ="5" Grid.Row ="7" />
+            <Button Click="Movement" x:Name="blackSquare32" Background ="Black" Grid.Column ="7" Grid.Row ="7" />
+        </Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="550"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="650"/>
+            <ColumnDefinition Width="480"/>
         </Grid.ColumnDefinitions>
-
         <Frame x:Name="chatFrame" x:FieldModifier="public" Grid.Column="1" Source="/GamePages/GameChat.xaml" Background="AntiqueWhite" NavigationUIVisibility="Hidden" Margin="90,75,0,0"/>
-
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Width="270" Height="100">
-            <Label Content="{x:Static p:Resources.Players}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ListBox x:Name="listUsersLoggedIn" x:FieldModifier="public" HorizontalAlignment="Center" Height="49" VerticalAlignment="Top" Width="270"/>
-        </StackPanel>
         
         <Button Content="{x:Static p:Resources.Return}" Margin="27,0,363,10" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="RegresarAMenu"/>
+
     </Grid>
+
 </Window>

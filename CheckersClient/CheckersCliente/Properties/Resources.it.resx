@@ -274,8 +274,8 @@ Questo può derivare da tutti i pezzi di un giocatore catturato o bloccato dall'
   <data name="SuicideCheckers" xml:space="preserve">
     <value>Checkers Suicida</value>
   </data>
-  <data name="GameInProgressMessage" xml:space="preserve">
-    <value>Attendi il termine della partita in corso</value>
+  <data name="MatchmakingStandBy" xml:space="preserve">
+    <value>Aspetta che venga trovata una corrispondenza per te</value>
   </data>
   <data name="Game" xml:space="preserve">
     <value>Gioco</value>

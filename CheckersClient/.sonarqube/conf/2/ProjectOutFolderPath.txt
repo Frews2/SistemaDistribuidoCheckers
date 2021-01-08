@@ -1,0 +1,1 @@
+D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\.sonarqube\out\2

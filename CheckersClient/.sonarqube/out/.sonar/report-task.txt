@@ -1,0 +1,6 @@
+projectKey=checkerClient
+serverUrl=http://localhost:9000
+serverVersion=8.5.1.38104
+dashboardUrl=http://localhost:9000/dashboard?id=checkerClient
+ceTaskId=AXbbj5e2NN4VCmpQZour
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXbbj5e2NN4VCmpQZour

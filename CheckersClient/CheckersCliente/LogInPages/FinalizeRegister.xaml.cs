@@ -22,6 +22,7 @@ namespace CheckersCliente.LogInPages
         {
             pagePlayer = player;
             InitializeComponent();
+
             clockTimer = new DispatcherTimer();
             clockTimer.Interval = new TimeSpan(0, 0, 1);
             clockTimer.Tick += TimerTick;
@@ -46,6 +47,7 @@ namespace CheckersCliente.LogInPages
 
         private void VerifyAccount(object sender, RoutedEventArgs e)
         {
+            VerifyButton.IsEnabled = false;
             JugadorManager.VerifyPlayer(new Jugador
             {
                 Apodo = pagePlayer.Apodo,

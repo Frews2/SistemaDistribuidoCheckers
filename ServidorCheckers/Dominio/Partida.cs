@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Partida
+    public class Partida
     {
         public int IdPartida { get; set; }
         public TimeSpan Tiempo{ get; set; }

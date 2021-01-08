@@ -30,8 +30,6 @@ namespace CheckersCliente.MenuPages
         {
             Game gameWindow = App.Current.Windows.OfType<Game>().FirstOrDefault();
 
-            string destination = gameWindow.listUsersLoggedIn.SelectedItem as string;
-            ChatManager.SendMessage(destination, message.Text);
             messageList.Add("Yo: " + message.Text);
         }
 

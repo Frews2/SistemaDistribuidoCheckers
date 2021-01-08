@@ -1,6 +1,7 @@
 ﻿using CheckersCliente.MainService;
 using LogicaCliente;
 using System;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -88,7 +89,20 @@ namespace CheckersCliente.LogInPages
 
         private void RegisterUser(object sender, RoutedEventArgs e)
         {
-            Random random = new Random();
+            RegisterButton.IsEnabled = false;
+
+            var randomGenerator = RandomNumberGenerator.Create();
+            byte[] data = new byte[8];
+            randomGenerator.GetBytes(data);
+
+            int dataNumber = Math.Abs(BitConverter.ToInt32(data, 0));
+            int numberOfDigits = (int)Math.Floor(Math.Log10(dataNumber));
+            int pinNumber = 0;
+
+            if (numberOfDigits >= 4)
+            {
+                pinNumber = (int)Math.Truncate((dataNumber / Math.Pow(10, numberOfDigits - 4)));
+            }
 
             int selectedLanguage = CheckLanguage();
 
@@ -100,7 +114,7 @@ namespace CheckersCliente.LogInPages
                 Status = "",
                 RespuestaConfirmacion = AnswerTextBox.Text,
                 PreguntaRecuperacion = QuestionTextBox.Text,
-                PinConfirmacion = random.Next(10000, 99999).ToString(),
+                PinConfirmacion = pinNumber.ToString(),
                 IdLenguaje = selectedLanguage
             });
         }

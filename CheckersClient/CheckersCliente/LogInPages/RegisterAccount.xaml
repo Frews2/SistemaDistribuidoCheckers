@@ -32,6 +32,7 @@
             <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="29" Margin="388,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" FontSize="16" MaxLength="80" TextChanged="EnableRegisterButton" materialDesign:HintAssist.Hint="example@gmail.com"/>
             <TextBox x:Name="QuestionTextBox" Height="29" Margin="155,433,155,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" MaxLength="50" TextChanged="EnableRegisterButton" />
             <TextBox x:Name="AnswerTextBox" Height="29" Margin="160,530,150,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" MaxLength="50" TextChanged="EnableRegisterButton"/>
+            
             <TextBlock Text="{x:Static Properties:Resources.Language}" Margin="124,314,334,0" VerticalAlignment="Top" Height="29" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
 
             <ComboBox HorizontalAlignment="Left" Margin="471,314,0,0" VerticalAlignment="Top" Width="120" Height="29" x:Name="LanguageBox">

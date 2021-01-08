@@ -51,8 +51,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporte.cs" />
     <Compile Include="SendMessageResult.cs" />
-    <Compile Include="StatusJugador.cs" />
-    <Compile Include="MatchmakingResult.cs" />
     <Compile Include="RankingResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

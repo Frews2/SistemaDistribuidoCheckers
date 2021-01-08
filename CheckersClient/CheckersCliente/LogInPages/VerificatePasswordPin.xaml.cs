@@ -26,7 +26,8 @@ namespace CheckersCliente.LogInPages
         private int timeSeconds = 31;
         DispatcherTimer clockTimer;
         private string playerNickname;
-        public VerificatePasswordPin(string nickname)
+
+        public VerificatePasswordPin(string nickname, string securityQuestion)
         {
             playerNickname = nickname;
             clockTimer = new DispatcherTimer();
@@ -34,6 +35,7 @@ namespace CheckersCliente.LogInPages
             clockTimer.Tick += TimerTick;
             clockTimer.Start();
             InitializeComponent();
+            QuestionBlock.Text = securityQuestion;
         }
         void TimerTick(object sender, EventArgs e)
         {
@@ -76,7 +78,8 @@ namespace CheckersCliente.LogInPages
 
         private void PINboxTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (PINbox.Text.Length == 5 && ValidatorText.AreNumbers(PINbox.Text) && !String.IsNullOrWhiteSpace(PINbox.Text))
+            if (PINbox.Text.Length == 5 && ValidatorText.AreNumbers(PINbox.Text) && !String.IsNullOrWhiteSpace(PINbox.Text) 
+                && !String.IsNullOrWhiteSpace(AnswerTextBox.Text))
             {
                 VerifyButton.IsEnabled = true;
             }
@@ -88,7 +91,8 @@ namespace CheckersCliente.LogInPages
 
         private void VerifyClick(object sender, RoutedEventArgs e)
         {
-            JugadorManager.VerifyPin(playerNickname, PINbox.Text);
+            VerifyButton.IsEnabled = false;
+            JugadorManager.VerifyPin(playerNickname, PINbox.Text, AnswerTextBox.Text);
         }
 
         private void CancelClick(object sender, RoutedEventArgs e)

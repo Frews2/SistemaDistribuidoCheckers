@@ -5,6 +5,7 @@ using System.Linq;
 using System.Data.Entity.Migrations;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace DataAccess.DataManager
 {
@@ -16,13 +17,13 @@ namespace DataAccess.DataManager
         public static readonly string REPORTED_STATE = "En revision";
         public static readonly string DOWN_STATE = "Baja";
 
-        private readonly JugadoresDBEntities context = new JugadoresDBEntities();
+        private readonly JugadoresDBEntities dataBase = new JugadoresDBEntities();
 
         public bool CheckNickname(string nickname)
         {
             bool existe = false;
 
-            existe = context.Jugador.Any(jugador => jugador.apodo.Equals(nickname));
+            existe = dataBase.Jugador.Any(jugador => jugador.apodo.Equals(nickname));
 
             return existe;
         }
@@ -31,7 +32,7 @@ namespace DataAccess.DataManager
         {
             bool existe = false;
 
-            existe = context.Jugador.Any(jugador => jugador.apodo.Equals(nickname) && jugador.status.Equals(ACTIVE_STATE));
+            existe = dataBase.Jugador.Any(jugador => jugador.apodo.Equals(nickname) && jugador.status.Equals(ACTIVE_STATE));
 
             return existe;
         }
@@ -47,29 +48,44 @@ namespace DataAccess.DataManager
 
         public bool EsPasswordCorrecto(string password, string nickname)
         {
-            bool esCorrecto = false;
+            bool correctPassword = false;
 
-            esCorrecto = context.Jugador.Any(jugador => jugador.apodo.Equals(nickname) && jugador.contrasenia.Equals(password));
+            var playerSearched = dataBase.Jugador.Where(player => player.apodo.Equals(nickname)).FirstOrDefault<Jugador>();
 
-            return esCorrecto;
+            if (HashManager.CompareHash(password, playerSearched.contrasenia))
+            {
+                correctPassword = true;
+            }
+            return correctPassword;
         }
 
         public bool PinCorrecto(string nickname, string pinPlayer)
         {
-            bool esCorrecto = false;
+            bool isCorrect = false;
 
-            esCorrecto = context.Jugador.Any(jugador => jugador.apodo == nickname && jugador.pinConfirmacion == pinPlayer);
+            isCorrect = dataBase.Jugador.Any(jugador => jugador.apodo == nickname && jugador.pinConfirmacion == pinPlayer);
 
-            return esCorrecto;
+            return isCorrect;
+        }
+
+        public bool CorrectAnswer(string nickname,string answer)
+        {
+            bool isCorrect = false;
+
+            isCorrect = dataBase.Jugador.Any(jugador => jugador.apodo == nickname && jugador.respuestaConfirmacion == answer);
+
+            return isCorrect;
         }
 
         public int SaveNewPlayer(Jugador jugadorNuevo)
         {
             int guardado;
-            context.Jugador.Add(jugadorNuevo);
+
+            dataBase.Jugador.Add(jugadorNuevo);
+
             try
             {
-                guardado = context.SaveChanges();
+                guardado = dataBase.SaveChanges();
             }
             catch(DbUpdateException)
             {
@@ -84,9 +100,9 @@ namespace DataAccess.DataManager
             int saved = 0;
             try
             {
-                var playerState = context.Jugador.Where(player => verifyPlayer.apodo == player.apodo).FirstOrDefault<Jugador>();
+                var playerState = dataBase.Jugador.Where(player => verifyPlayer.apodo == player.apodo).FirstOrDefault<Jugador>();
                 playerState.status = ACTIVE_STATE;
-                saved = context.SaveChanges();
+                saved = dataBase.SaveChanges();
 
             }
             catch (DbUpdateException)
@@ -101,32 +117,42 @@ namespace DataAccess.DataManager
         {
             bool existsPlayer = false;
 
-            existsPlayer = context.Jugador.Any(jugador => jugador.apodo == email);
+            existsPlayer = dataBase.Jugador.Any(jugador => jugador.correoElectronico.Equals(email));
 
             return existsPlayer;
         }
 
         public Jugador ChangePinByNickname(string nickname)
         {
-            Random random = new Random();
-            Jugador player = context.Jugador.Where(playerSearch => playerSearch.apodo == nickname).FirstOrDefault<Jugador>();
+            var randomGenerator = RandomNumberGenerator.Create();
+            byte[] data = new byte[8];
+            randomGenerator.GetBytes(data);
 
-            player.pinConfirmacion = random.Next(10000, 99999).ToString();
-            context.SaveChanges();
+            int dataNumber = Math.Abs(BitConverter.ToInt32(data, 0));
+            int numberOfDigits = (int)Math.Floor(Math.Log10(dataNumber));
+            int pinNumber = 0;
+
+            if (numberOfDigits >= 4)
+            {
+                pinNumber = (int)Math.Truncate((dataNumber / Math.Pow(10, numberOfDigits - 4)));
+            }
+            Jugador player = dataBase.Jugador.Where(playerSearch => playerSearch.apodo == nickname).FirstOrDefault<Jugador>();
+
+            player.pinConfirmacion = pinNumber.ToString();
+            dataBase.SaveChanges();
 
             return player;
         }
 
         public int ChangePassword(string nickname, string newPassword)
         {
-
             int saved = 0;
 
             try
             {
-                var playerState = context.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
-                playerState.contrasenia = ACTIVE_STATE;
-                saved = context.SaveChanges();
+                var playerState = dataBase.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
+                playerState.contrasenia = newPassword;
+                saved = dataBase.SaveChanges();
 
             }
             catch (DbUpdateException)
@@ -159,7 +185,7 @@ namespace DataAccess.DataManager
 
         public Jugador GetPlayerByNickname(string playerNickname)
         {
-            Jugador searchedPlayer = context.Jugador.Where(playerSearch => playerSearch.apodo == playerNickname).FirstOrDefault<Jugador>();
+            Jugador searchedPlayer = dataBase.Jugador.Where(playerSearch => playerSearch.apodo == playerNickname).FirstOrDefault<Jugador>();
 
             return searchedPlayer;
         }

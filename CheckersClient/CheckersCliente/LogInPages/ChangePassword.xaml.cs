@@ -32,15 +32,15 @@ namespace CheckersCliente.LogInPages
 
         private void ChangePlayerPassword(object sender, RoutedEventArgs e)
         {
+            RegisterButton.IsEnabled = false;
             JugadorManager.ChangePassword(new Jugador
             {
                 Apodo = playerNick,
-                Contrasenia= PasswordTextBox.Password
+                Contrasenia = PasswordTextBox.Password
             });
         }
 
         private void EnableChangeButton(object sender, RoutedEventArgs e)
-
         {
             if (PasswordTextBox.Password.Length < MINIMUN_LENGHT || !PasswordVerificacionBox.Password.Equals(PasswordTextBox.Password)
                 || String.IsNullOrWhiteSpace(PasswordTextBox.Password))
@@ -65,6 +65,13 @@ namespace CheckersCliente.LogInPages
                 RegisterButton.IsEnabled = false;
             }
 
+        }
+
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+
+            LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+            login.NavigationService.Navigate(new LogInPage());
         }
     }
 }

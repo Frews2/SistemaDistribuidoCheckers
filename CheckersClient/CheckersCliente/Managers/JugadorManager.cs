@@ -88,14 +88,14 @@ namespace CheckersCliente
             }
         }
 
-        public static void VerifyPin(string playerNickname, string playerPin)
+        public static void VerifyPin(string playerNickname, string playerPin, string answerText)
         {
             InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
             PlayerManagerClient server = new PlayerManagerClient(instanceContext);
 
             try
             {
-                server.VerifyPin(playerNickname,playerPin);
+                server.VerifyPin(playerNickname,playerPin, answerText);
             }
             catch (EndpointNotFoundException)
             {

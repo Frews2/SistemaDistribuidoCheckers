@@ -6,16 +6,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Contratos
 {
     public class Match
     {
-        public string MatchHostName { get; set; }
-        public Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> Host { get; set; }
-        public Dictionary<IMatchmakingManagerCallback, Dominio.Jugador> Guest { get; set; }
-        public string GameMode;
+        public int matchActiveNumber;
+        public int currentPlayer;
+        public IGameManagerCallback playerOneCallback;
+        public IGameManagerCallback playerTwoCallback;
+        public Dominio.Jugador playerOneData;
+        public Dominio.Jugador playerTwoData;
     }
 }

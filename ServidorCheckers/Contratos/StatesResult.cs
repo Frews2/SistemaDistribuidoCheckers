@@ -56,6 +56,17 @@ public enum VerificationResult
         ErrorGuardado = 4,
     }
 
+    public enum AdminReportResult
+    {
+        NO_REPORTS_EXIST = 1,
+        REPORT_EXISTS = 2
+    }
+
+    public enum RankingResult
+    {
+        NO_RANKING = 1,
+        RANKING_EXISTS = 2
+    }
     public enum MailResult
     {
         MailSend= 1,

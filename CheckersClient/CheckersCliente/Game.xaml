@@ -103,7 +103,5 @@
             <ColumnDefinition Width="650"/>
             <ColumnDefinition Width="480"/>
         </Grid.ColumnDefinitions>
-       
     </Grid>
-
 </Window>

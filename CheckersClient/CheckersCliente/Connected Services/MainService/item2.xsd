@@ -198,6 +198,63 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="DataObtainedResult" nillable="true" type="tns:DataObtainedResult" />
+  <xs:simpleType name="RankingResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NO_RANKING">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RANKING_EXISTS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RankingResult" nillable="true" type="tns:RankingResult" />
+  <xs:simpleType name="AdminReportResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NO_REPORTS_EXIST">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="REPORT_EXISTS">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AdminReportResult" nillable="true" type="tns:AdminReportResult" />
+  <xs:simpleType name="BanResult">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PLAYER_BANNED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ERROR_BANNING">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BanResult" nillable="true" type="tns:BanResult" />
   <xs:simpleType name="CheckersGameMode">
     <xs:restriction base="xs:string">
       <xs:enumeration value="ClassicCheckers">
@@ -297,23 +354,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Match" nillable="true" type="tns:Match" />
-  <xs:simpleType name="BanResult">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="PLAYER_BANNED">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="ERROR_BANNING">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="BanResult" nillable="true" type="tns:BanResult" />
 </xs:schema>

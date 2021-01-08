@@ -225,26 +225,6 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Checkers is a two player game.
-        ///Each player receives 12 colored discs at the start of the game, with black and red as the colors.
-        ///
-        ///The board consists of 64 squares, 32 dark and 32 light.
-        ///Each of the pieces is placed on the 12 dark squares closest to the player.
-        ///
-        ///The black player always moves first, then each player takes turns.
-        ///
-        ///The only moves allowed are on the dark squares, which means that the pieces always move diagonally.
-        ///Single pieces can only advance towards their opponent.
-        ///
-        ///Any player maki [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string GameRules {
-            get {
-                return ResourceManager.GetString("GameRules", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Games Lost.
         /// </summary>
         public static string GamesLost {

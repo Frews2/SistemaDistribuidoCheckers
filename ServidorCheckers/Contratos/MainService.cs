@@ -12,7 +12,6 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.DataManager;
-using System.Net.Mail;
 using Dominio;
 
 
@@ -615,6 +614,7 @@ namespace Contratos
 
                 BanCallback.GetBanResult(banResult);
             }
+
         }
     }
 }

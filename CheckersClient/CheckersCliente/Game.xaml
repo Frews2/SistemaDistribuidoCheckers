@@ -103,10 +103,5 @@
             <ColumnDefinition Width="650"/>
             <ColumnDefinition Width="480"/>
         </Grid.ColumnDefinitions>
-        <Frame x:Name="chatFrame" x:FieldModifier="public" Grid.Column="1" Source="/GamePages/GameChat.xaml" Background="AntiqueWhite" NavigationUIVisibility="Hidden" Margin="90,75,0,0"/>
-        
-        <Button Content="{x:Static p:Resources.Return}" Margin="27,0,363,10" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="RegresarAMenu"/>
-
     </Grid>
-
 </Window>

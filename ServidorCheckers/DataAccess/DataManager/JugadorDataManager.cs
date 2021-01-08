@@ -41,7 +41,7 @@ namespace DataAccess.DataManager
         {
             bool banned = false;
 
-            banned = context.Jugador.Any(jugador => jugador.apodo.Equals(nickname) && jugador.status.Equals(DOWN_STATE));
+            banned = dataBase.Jugador.Any(jugador => jugador.apodo.Equals(nickname) && jugador.status.Equals(DOWN_STATE));
 
             return banned;
         }
@@ -170,9 +170,9 @@ namespace DataAccess.DataManager
 
             try
             {
-                var reportedPlayer = context.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
+                var reportedPlayer = dataBase.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
                 reportedPlayer.status = DOWN_STATE;
-                saved = context.SaveChanges();
+                saved = dataBase.SaveChanges();
 
             }
             catch (DbUpdateException)
@@ -193,7 +193,7 @@ namespace DataAccess.DataManager
         public Dominio.Jugador GetDomainPlayerByID(int playerID)
         {
             Jugador queriedPlayer = null;
-            queriedPlayer = context.Jugador.Find(playerID);
+            queriedPlayer = dataBase.Jugador.Find(playerID);
             Dominio.Jugador matchedPlayer = new Dominio.Jugador
             {
                 Apodo = queriedPlayer.apodo,

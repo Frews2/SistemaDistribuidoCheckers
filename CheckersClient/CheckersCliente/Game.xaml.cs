@@ -1,6 +1,6 @@
 ﻿/*
  Date: 25/11/2020
- Author(s): Ricardo Moguel Sanchez
+ Author(s): César Sergio Martinez Palacios
 */
 using CheckersCliente.MainService;
 using CheckersCliente.Managers;
@@ -53,7 +53,7 @@ namespace CheckersCliente
             current_player.Text = "Player 1 Turn";
 
             GenerateGame();
-            if(playerNumber == 2)
+            if (playerNumber == 2)
             {
                 foreach (Button blackSquare in buttonList)
                 {
@@ -75,9 +75,6 @@ namespace CheckersCliente
 
         private void RegresarAMenu(object sender, RoutedEventArgs e)
         {
-            MatchmakingManager.LeaveMatchmaking(gameMatch, localPlayer);
-            this.Close();
-        }
             GameManager.LeaveMatchmaking(actualMatch, localPlayer);
         }
 

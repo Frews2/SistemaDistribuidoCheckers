@@ -12,7 +12,6 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.DataManager;
-using System.Net.Mail;
 using Dominio;
 
 
@@ -79,7 +78,7 @@ namespace Contratos
                         {
                             result = LoginResult.ExisteJugadorNoVerificado;
                         }
-                        
+
                     }
                 }
                 else
@@ -420,7 +419,7 @@ namespace Contratos
     public partial class MainService : IGameManager
     {
         private List<Match> activeMatches = new List<Match>();
-        private int numberActiveMatches =0;
+        private int numberActiveMatches = 0;
         private List<Match> playersQueuedClassic = new List<Match>();
         private const int PLAYER_ONE = 1;
         private const int PLAYER_TWO = 2;
@@ -464,9 +463,9 @@ namespace Contratos
             {
                 Match newGame = new Match()
                 {
-                        currentPlayer = PLAYER_ONE,
-                        playerOneData = currentPlayer,
-                        playerOneCallback = GameManagerCallback as IGameManagerCallback,
+                    currentPlayer = PLAYER_ONE,
+                    playerOneData = currentPlayer,
+                    playerOneCallback = GameManagerCallback as IGameManagerCallback,
                 };
 
                 playersQueuedClassic.Add(newGame);
@@ -477,7 +476,7 @@ namespace Contratos
         }
 
 
-        public void Player2Turn(Checker[][] updateBoardMatrix,int matchNumber,int playerTwoCheckers, int playerOneCheckers)
+        public void Player2Turn(Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers)
         {
             activeMatches[matchNumber].playerOneCallback.UpdateGameGUI(updateBoardMatrix, playerTwoCheckers, playerOneCheckers);
         }
@@ -494,13 +493,13 @@ namespace Contratos
                 activeMatches[matchNumber].playerOneCallback.FinishGame(playerTwoCheckers, playerOneCheckers);
             }
             RankingDataManager rankingDataManager = new RankingDataManager();
-            rankingDataManager.UpdateMatchResults(activeMatches[matchNumber].playerOneData,playerOneCheckers,activeMatches[matchNumber].playerTwoData,playerTwoCheckers,playerNumber);
+            rankingDataManager.UpdateMatchResults(activeMatches[matchNumber].playerOneData, playerOneCheckers, activeMatches[matchNumber].playerTwoData, playerTwoCheckers, playerNumber);
             numberActiveMatches--;
             activeMatches.RemoveAt(matchNumber);
 
             int listPosition;
 
-            for (listPosition = matchNumber; listPosition< activeMatches.Count; listPosition++)
+            for (listPosition = matchNumber; listPosition < activeMatches.Count; listPosition++)
             {
                 activeMatches[listPosition].matchActiveNumber--;
                 activeMatches[listPosition].playerOneCallback.UpdateMatchNumber(activeMatches[listPosition].matchActiveNumber);
@@ -523,6 +522,14 @@ namespace Contratos
 
     public partial class MainService : IBanManager
     {
+        IBanManagerCallback BanCallback
+        {
+            get
+            {
+                return OperationContext.Current.GetCallbackChannel<IBanManagerCallback>();
+            }
+        }
+
         public void GetReportData()
         {
             AdminReportResult result;
@@ -605,15 +612,9 @@ namespace Contratos
                     throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar el correo del jugador reportado");
                 }
 
-            BanCallback.GetBanResult(banResult);
-        }
-
-        IBanManagerCallback BanCallback
-        {
-            get
-            {
-                return OperationContext.Current.GetCallbackChannel<IBanManagerCallback>();
+                BanCallback.GetBanResult(banResult);
             }
+
         }
     }
 }

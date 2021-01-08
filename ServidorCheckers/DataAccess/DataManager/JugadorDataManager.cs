@@ -1,11 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Data.Entity.Migrations;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Cryptography;
 
 namespace DataAccess.DataManager
 {
@@ -41,34 +41,12 @@ namespace DataAccess.DataManager
         {
             bool banned = false;
 
-            banned = context.Jugador.Any(jugador => jugador.apodo.Equals(nickname) && jugador.status.Equals(DOWN_STATE));
+            banned = dataBase.Jugador.Any(jugador => jugador.apodo.Equals(nickname) && jugador.status.Equals(DOWN_STATE));
 
             return banned;
         }
 
-        public bool EsPasswordCorrecto(string password, string nickname)
-        {
-            bool correctPassword = false;
-
-            var playerSearched = dataBase.Jugador.Where(player => player.apodo.Equals(nickname)).FirstOrDefault<Jugador>();
-
-            if (HashManager.CompareHash(password, playerSearched.contrasenia))
-            {
-                correctPassword = true;
-            }
-            return correctPassword;
-        }
-
-        public bool PinCorrecto(string nickname, string pinPlayer)
-        {
-            bool isCorrect = false;
-
-            isCorrect = dataBase.Jugador.Any(jugador => jugador.apodo == nickname && jugador.pinConfirmacion == pinPlayer);
-
-            return isCorrect;
-        }
-
-        public bool CorrectAnswer(string nickname,string answer)
+        public bool CorrectAnswer(string nickname, string answer)
         {
             bool isCorrect = false;
 
@@ -77,21 +55,28 @@ namespace DataAccess.DataManager
             return isCorrect;
         }
 
+        public bool PinCorrecto(string nickname, string pinPlayer)
+        {
+            bool esCorrecto = false;
+
+            esCorrecto = dataBase.Jugador.Any(jugador => jugador.apodo == nickname && jugador.pinConfirmacion == pinPlayer);
+
+            return esCorrecto;
+        }
+
         public int SaveNewPlayer(Jugador jugadorNuevo)
         {
             int guardado;
-
             dataBase.Jugador.Add(jugadorNuevo);
-
             try
             {
                 guardado = dataBase.SaveChanges();
             }
-            catch(DbUpdateException)
+            catch (DbUpdateException)
             {
                 throw new DbUpdateException();
             }
-            
+
             return guardado;
         }
 
@@ -117,28 +102,17 @@ namespace DataAccess.DataManager
         {
             bool existsPlayer = false;
 
-            existsPlayer = dataBase.Jugador.Any(jugador => jugador.correoElectronico.Equals(email));
+            existsPlayer = dataBase.Jugador.Any(jugador => jugador.apodo == email);
 
             return existsPlayer;
         }
 
         public Jugador ChangePinByNickname(string nickname)
         {
-            var randomGenerator = RandomNumberGenerator.Create();
-            byte[] data = new byte[8];
-            randomGenerator.GetBytes(data);
-
-            int dataNumber = Math.Abs(BitConverter.ToInt32(data, 0));
-            int numberOfDigits = (int)Math.Floor(Math.Log10(dataNumber));
-            int pinNumber = 0;
-
-            if (numberOfDigits >= 4)
-            {
-                pinNumber = (int)Math.Truncate((dataNumber / Math.Pow(10, numberOfDigits - 4)));
-            }
+            Random random = new Random();
             Jugador player = dataBase.Jugador.Where(playerSearch => playerSearch.apodo == nickname).FirstOrDefault<Jugador>();
 
-            player.pinConfirmacion = pinNumber.ToString();
+            player.pinConfirmacion = random.Next(10000, 99999).ToString();
             dataBase.SaveChanges();
 
             return player;
@@ -146,12 +120,13 @@ namespace DataAccess.DataManager
 
         public int ChangePassword(string nickname, string newPassword)
         {
+
             int saved = 0;
 
             try
             {
                 var playerState = dataBase.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
-                playerState.contrasenia = newPassword;
+                playerState.contrasenia = ACTIVE_STATE;
                 saved = dataBase.SaveChanges();
 
             }
@@ -170,9 +145,9 @@ namespace DataAccess.DataManager
 
             try
             {
-                var reportedPlayer = context.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
+                var reportedPlayer = dataBase.Jugador.Where(player => nickname == player.apodo).FirstOrDefault<Jugador>();
                 reportedPlayer.status = DOWN_STATE;
-                saved = context.SaveChanges();
+                saved = dataBase.SaveChanges();
 
             }
             catch (DbUpdateException)
@@ -193,7 +168,7 @@ namespace DataAccess.DataManager
         public Dominio.Jugador GetDomainPlayerByID(int playerID)
         {
             Jugador queriedPlayer = null;
-            queriedPlayer = context.Jugador.Find(playerID);
+            queriedPlayer = dataBase.Jugador.Find(playerID);
             Dominio.Jugador matchedPlayer = new Dominio.Jugador
             {
                 Apodo = queriedPlayer.apodo,
@@ -211,4 +186,3 @@ namespace DataAccess.DataManager
         }
     }
 }
-

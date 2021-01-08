@@ -75,9 +75,6 @@ namespace CheckersCliente
 
         private void RegresarAMenu(object sender, RoutedEventArgs e)
         {
-            MatchmakingManager.LeaveMatchmaking(gameMatch, localPlayer);
-            this.Close();
-        }
             GameManager.LeaveMatchmaking(actualMatch, localPlayer);
         }
 

@@ -217,7 +217,7 @@
     <value>Verify account</value>
   </data>
   <data name="VerifyPassword" xml:space="preserve">
-    <value>Confirm password</value>
+    <value>Confirm Password</value>
   </data>
   <data name="WaitMessage" xml:space="preserve">
     <value>Please wait till the timer ends to resend the mail</value>
@@ -375,5 +375,14 @@ This can result from all of a player's pieces being captured or blocked from mak
   </data>
   <data name="WrongPINMessage" xml:space="preserve">
     <value>The entered PIN number is incorrect. Try Again.</value>
+  </data>
+  <data name="ExplainReport" xml:space="preserve">
+    <value>Explain your reasons for report</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Pass" xml:space="preserve">
+    <value>Pass turn</value>
   </data>
 </root>

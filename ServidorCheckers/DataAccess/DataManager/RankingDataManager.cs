@@ -12,6 +12,7 @@ namespace DataAccess.DataManager
     public class RankingDataManager
     {
         private readonly JugadoresDBEntities context = new JugadoresDBEntities();
+        private const int CHECKER_POINT_VALUE = 10;
 
         public List<DataAccess.Ranking> GetRankingList()
         {
@@ -57,7 +58,7 @@ namespace DataAccess.DataManager
                     winnerRankingChange.numeroVictorias += 1;
                     winnerRankingChange.partidasJugadas++;
                     var loserRankingChange = context.Ranking.Where(ranking => playerTwo.IdJugador == ranking.idDuenio).FirstOrDefault<Ranking>();
-                    loserRankingChange.rank += 10;
+                    loserRankingChange.rank += CHECKER_POINT_VALUE;
                     loserRankingChange.numeroPerdidas += 1;
                     loserRankingChange.partidasJugadas++;
                     context.SaveChanges();
@@ -69,8 +70,8 @@ namespace DataAccess.DataManager
                     winnerRankingChange.numeroVictorias += 1;
                     winnerRankingChange.partidasJugadas++;
                     var loserRankingChange = context.Ranking.Where(ranking => playerOne.IdJugador == ranking.idDuenio).FirstOrDefault<Ranking>();
-                    loserRankingChange.rank += 10;
-                    loserRankingChange.rank += 10;
+                    loserRankingChange.rank += CHECKER_POINT_VALUE;
+                    loserRankingChange.rank += CHECKER_POINT_VALUE;
                     loserRankingChange.numeroPerdidas += 1;
                     loserRankingChange.partidasJugadas++;
                     context.SaveChanges();

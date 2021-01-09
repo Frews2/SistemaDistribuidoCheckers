@@ -12,26 +12,37 @@
         d:DesignWidth="1000" d:DesignHeight="1000">
 
     <Grid Background="#FFED1C1C">
-        <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="410" Margin="240,95,0,0" VerticalAlignment="Top" Width="410" />
-        
-        <Frame x:Name="chatFrame" x:FieldModifier="public" Grid.Column="1" Source="/GamePages/GameChat.xaml" Background="AntiqueWhite" NavigationUIVisibility="Hidden" Margin="90,75,0,0"/>
-        
-        <Button Content="{x:Static p:Resources.Return}" Margin="10,510,480,5" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="RegresarAMenu"/>
-        <Button Content="{x:Static p:Resources.Return}" Margin="400,510,80,5" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="EndTurnNoMovement"/>
+        <Button x:Name="returnButton"  Content="{x:Static p:Resources.Return}" Margin="10,510,480,5" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="RegresarAMenu" IsEnabled="True"/>
+        <Button x:Name="passButton" Content="{x:Static p:Resources.Pass}" Margin="400,510,80,5" VerticalAlignment="Top" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="EndTurnNoMovement" IsEnabled="True"/>
 
+        <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Left" Height="406" Margin="240,95,0,0" VerticalAlignment="Top" Width="410" />
+        <Button x:Name="reportButton" HorizontalAlignment="Left" Margin="111.4,10,0,0"  Content="{x:Static p:Resources.ReportAdministration}" VerticalAlignment="Top" Width="233" Foreground="Black" Click="ReportPlayer"  Grid.Column="1"/>
+
+        <StackPanel>
+            <ListView x:Name="messages" Background="DarkSalmon" HorizontalAlignment="Right" HorizontalContentAlignment="Left" Margin="140,40,-480,0" Height="510" Width="370" FontSize="20">
+            </ListView>
+        </StackPanel>
+
+        <StackPanel x:Name="messagePanel" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="400,0,-477,13" Background="AntiqueWhite">
+            <Label Content="{x:Static p:Resources.Message}" Margin="10"/>
+            <TextBox Width="200" Margin="10" x:Name="message" MaxLength="50" TextChanged="EnableMessageButton"/>
+            <Button x:Name="messageButton" Content="{x:Static p:Resources.Send}" Margin="10" Width="50" Click="SendMessage" IsEnabled="False"/>
+        </StackPanel>
+
+       
         <TextBlock x:Name ="player2Checker"  HorizontalAlignment="Left" Margin="0,46,0,0" TextWrapping="Wrap" Text="•" FontSize="70" TextAlignment="Center"  Width="96"/>
-        <TextBlock HorizontalAlignment="Left" Margin="70,120,0,0" TextWrapping="Wrap" Text="VS" FontSize="30" TextAlignment="Center"  Width="96" FontWeight="Bold"/>
-        <TextBlock x:Name ="player1Checker" HorizontalAlignment="Left"  Margin="0,126,0,0" TextWrapping="Wrap" Text="•" FontSize="70" TextAlignment="Center" Width="96"/>
-        
-        <Grid x:Name="playersPanel" Margin="-400,80,0,0">
+        <TextBlock HorizontalAlignment="Left" Margin="70,120,0,98.4" TextWrapping="Wrap" Text="VS" FontSize="30" TextAlignment="Center"  Width="96" FontWeight="Bold"/>
+        <TextBlock x:Name ="player1Checker" HorizontalAlignment="Left"  Margin="0,126,0,64.4" TextWrapping="Wrap" Text="•" FontSize="70" TextAlignment="Center" Width="96"/>
+
+        <Grid x:Name="playersPanel" Margin="-400,80,479.6,98.4" Grid.ColumnSpan="2">
 
             <Label x:Name ="playerOne" Content="Player 2" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Height="50"  />
             <Label x:Name ="playerTwo" Content="Player 1" HorizontalContentAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Height="55" />
-            <TextBlock x:Name="current_player" TextWrapping="Wrap" TextAlignment="Center" Margin="-50,200,0,0" />
+            <TextBlock x:Name="currentPlayer" TextWrapping="Wrap" TextAlignment="Center" Margin="00,150,10,0" />
 
         </Grid>
 
-        <Grid x:Name ="Board" Margin="245,100,0,0"  >
+        <Grid x:Name ="Board" Margin="245,100,479.6,64.4" Grid.ColumnSpan="2"  >
 
             <Grid.ColumnDefinitions>
 
@@ -104,4 +115,5 @@
             <ColumnDefinition Width="480"/>
         </Grid.ColumnDefinitions>
     </Grid>
+
 </Window>

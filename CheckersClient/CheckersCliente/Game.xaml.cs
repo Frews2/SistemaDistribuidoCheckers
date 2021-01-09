@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
@@ -22,7 +23,7 @@ namespace CheckersCliente
     public partial class Game : Window
     {
         private Jugador localPlayer;
-
+        ObservableCollection<string> messagesList = new ObservableCollection<string>();
         private List<Button> buttonList;
         private Button previousButton;
         private Checker[,] boardMatrix;
@@ -38,6 +39,7 @@ namespace CheckersCliente
         private Brush player1Color;
         private Brush player2Color;
         private Match actualMatch;
+        public bool reportWindowOpen = false;
 
         public Game(Match match, int playerNumber)
         {
@@ -48,17 +50,16 @@ namespace CheckersCliente
             this.player2Color = new SolidColorBrush(Color.FromRgb(180, 0, 0));
 
             localPlayerNumber = playerNumber;
+            messages.ItemsSource = messagesList;
             player1Checker.Foreground = player1Color;
             player2Checker.Foreground = player2Color;
-            current_player.Text = "Player 1 Turn";
+            currentPlayer.Text = "Player 1 Turn";
 
             GenerateGame();
             if (playerNumber == 2)
             {
-                foreach (Button blackSquare in buttonList)
-                {
-                    IsEnabled = false;
-                }
+
+                Board.IsEnabled = false;
                 localPlayer = match.playerTwoData;
             }
             else
@@ -407,7 +408,7 @@ namespace CheckersCliente
             }
             else
             {
-                current_player.Text = "Player 2 Turn";
+                currentPlayer.Text = "Player 2 Turn";
 
                 if (boardMatrix[rowNumber, columnNumber] == Checker.player2Checker || boardMatrix[rowNumber, columnNumber] == Checker.player2King)
                 {
@@ -510,10 +511,11 @@ namespace CheckersCliente
             buttonSelected.BorderBrush = Brushes.SlateGray;
         }
 
-        public void UpdateCheckersGuiPosition(Checker [,]boardMatrixUpdate)
+        public void UpdateCheckersGuiPosition(Checker[,] boardMatrixUpdate)
         {
             boardMatrix = boardMatrixUpdate;
-            buttonList.ForEach(button => {
+            buttonList.ForEach(button =>
+            {
 
                 int row = Grid.GetRow(button);
                 int col = Grid.GetColumn(button);
@@ -865,24 +867,21 @@ namespace CheckersCliente
             }
             else
             {
-                foreach (Button blackSquare in buttonList)
-                {
-                    IsEnabled = false;
-                }
 
+                Board.IsEnabled = false;
                 IsKingChecker();
 
                 checkPlayerSecondClick = !checkPlayerSecondClick;
 
                 if (player1Turn)
                 {
-                    current_player.Text = "Player 2 Turn";
+                    currentPlayer.Text = "Player 2 Turn";
                     GameManager.Player1TurnResult(boardMatrix, actualMatch.matchActiveNumber, player2CheckerCount, player1CheckerCount);
                 }
                 else
                 {
 
-                    current_player.Text = "Player 1 Turn";
+                    currentPlayer.Text = "Player 1 Turn";
                     GameManager.Player2TurnResult(boardMatrix, actualMatch.matchActiveNumber, player2CheckerCount, player1CheckerCount);
                 }
                 player1Turn = !player1Turn;
@@ -893,23 +892,17 @@ namespace CheckersCliente
         {
             if (player1Turn)
             {
-                foreach (Button blackSquare in buttonList)
-                {
-                    IsEnabled = true;
-                }
+                Board.IsEnabled = false;
                 player1Turn = !player1Turn;
-                current_player.Text = "Player 2 Turn";
+                currentPlayer.Text = "Player 2 Turn";
             }
             else
             {
-                foreach (Button blackSquare in buttonList)
-                {
-                    IsEnabled = true;
-                }
+                Board.IsEnabled = false;
                 player1Turn = true;
-                current_player.Text = "Player 1 Turn";
+                currentPlayer.Text = "Player 1 Turn";
             }
-               
+
 
         }
 
@@ -921,21 +914,21 @@ namespace CheckersCliente
 
         public void FinishGame(int playerTwoCheckers, int playerOneCheckers)
         {
-                if (playerOneCheckers == 0)
-                {
-                    MessageBoxResult result = MessageBox.Show("PLAYER TWO WINS!", "GAME OVER");
+            if (playerOneCheckers == 0)
+            {
+                MessageBoxResult result = MessageBox.Show("PLAYER TWO WINS!", "GAME OVER");
 
-                }
-                else
-                {
+            }
+            else
+            {
 
-                    MessageBoxResult result = MessageBox.Show("PLAYER ONE WINS!", "GAME OVER");
-                }
+                MessageBoxResult result = MessageBox.Show("PLAYER ONE WINS!", "GAME OVER");
+            }
 
-                Menu menu = new Menu(localPlayer);
-                menu.Show();
-                Game game = App.Current.Windows.OfType<Game>().FirstOrDefault();
-                game.Close();
+            Menu menu = new Menu(localPlayer);
+            menu.Show();
+            Game game = App.Current.Windows.OfType<Game>().FirstOrDefault();
+            game.Close();
         }
 
         public void UpdateCheckersCount(int playerTwoCheckers, int playerOneCheckers)
@@ -950,6 +943,41 @@ namespace CheckersCliente
             actualMatch.matchActiveNumber = newActiveNumber;
         }
 
+        public void SendMessage(object sender, RoutedEventArgs e)
+        {
+            GameManager.SendMessage(actualMatch.matchActiveNumber, localPlayerNumber, message.Text);
+            messagesList.Add("Player " + localPlayerNumber + ": " + message.Text);
+            message.Text = "";
+        }
+
+        public void RecieveMessage(string newMesage, string playerSource)
+        {
+            messagesList.Add(playerSource + newMesage);
+        }
+
+        private void ReportPlayer(object sender, RoutedEventArgs e)
+        {
+            if (reportWindowOpen == false)
+            {
+                Windows.ReportWindow reportWindow = new Windows.ReportWindow(localPlayerNumber, actualMatch.matchActiveNumber);
+                reportWindow.Show();
+                reportWindowOpen = true;
+            }
+        }
+
+        private void EnableMessageButton(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(message.Text))
+            {
+                messageButton.IsEnabled = true;
+            }
+        }
+
+        public void CloseReportWindow()
+        {
+            reportButton.IsEnabled = false;
+            reportButton.Visibility = Visibility.Hidden;
+        }
     }
 }
 

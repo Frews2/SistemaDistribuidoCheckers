@@ -282,4 +282,13 @@
   <data name="WrongPINMessage" xml:space="preserve">
     <value>The entered PIN number is incorrect. Try Again.</value>
   </data>
+  <data name="ExplainReport" xml:space="preserve">
+    <value>Explain your reasons for report</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Pass" xml:space="preserve">
+    <value>Pass turn</value>
+  </data>
 </root>

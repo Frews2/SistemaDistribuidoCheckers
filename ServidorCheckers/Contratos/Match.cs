@@ -3,19 +3,15 @@
  Author(s): Ricardo Moguel Sanchez
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Contratos
 {
     public class Match
     {
-        public int matchActiveNumber;
-        public int currentPlayer;
-        public IGameManagerCallback playerOneCallback;
-        public IGameManagerCallback playerTwoCallback;
-        public Dominio.Jugador playerOneData;
-        public Dominio.Jugador playerTwoData;
+        public int matchActiveNumber { get; set; }
+        public int currentPlayer { get; set; }
+        public IGameManagerCallback playerOneCallback { get; set; }
+        public IGameManagerCallback playerTwoCallback { get; set; }
+        public Dominio.Jugador playerOneData { get; set; }
+        public Dominio.Jugador playerTwoData { get; set; }
     }
 }

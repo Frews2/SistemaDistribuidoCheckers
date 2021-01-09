@@ -1,17 +1,17 @@
-Š
-cD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IGameMatchManager.csr!	
-!"$%'()*–
-`D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IPlayerManager.csr0	
- !#$%'()*+-.0134679:<=>Ay
-^D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IChatManager.csr	
-{
+{
+]D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IBanManager.csr	
+ !ˆ
+^D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IGameManager.csr$	
+ "#%&()+,./01•
+`D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IPlayerManager.csr/	
+!"#%&'()+,./124578:;=>?B{
 aD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IRankingManager.csr	
-‰	
-]D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\MainService.cs¢ 8/j¶rú	
-"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLNOQRSUVWXZ\]^`abcdefghijklmoprstuwyz{|}€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢¤¥¦¨ª«¬­®¯°±²´µ¶·¸¹º»¼½¾¿ÀÁÃÄÆÇÈÊÌÍÎÏĞÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäæçèéëìíîğòóôõöøùúûüışÿ€‚ƒ„…†‡ˆ‰Š‹Œ’“”–—˜™›œŸ ¢£¤¥§¨©ª¬®°²³´µ·¸¹º»¼½¾¿ÀÂÃÄÅÆÇÈÉÊÍÏĞÑÒÓÔÕÖØÙÚÛÜİßàáâãäåçéêëíîïğñóôõö÷øùúûüışÿ€‚„…‡ˆ‰Š‹Œ‘’“”•–˜™š›œ ¡¢£¥¦§©ª«¬­®¯°±²³´·¸º»¼½¾¿ÀÁÂÄÅÆÈÉÌÍÎÏÑÒÓÔÖ×ØÙÛÜİŞßàáâãäåæçèéëìîïğñòóôö÷øùûüışÿ‚x;‚š$&(*.468:;<@EJNVWXZ\^`defhijlprtuyz{|}ˆŒ’“˜™Ÿ¡¦ª¬®°±´¶»ÀÃÈÌÍÎÏĞÛÜİáâéëîòóôõö‚ƒ‡ˆ”–˜› ¢¤¥§©®´µ·»¼½¾¿ÀÃÄÉÓİßáåçéñóõ÷ùúûüışÿ„‹œ¢§©¬­®¯°±²³´·¸ÄÅÆÎÓÖÛŞßàâäåæòøıl
-WD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\Match.csr
-
-iD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\Properties\AssemblyInfo.csj !"r	
-#$ª
-^D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\StatesResult.csrH	
- "#$%&')*+,-./02345678:;<=>?ABCDEGHIJKMNOPQR
+ş
+]D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\MainService.csâ 8>r†	
+ $%&'()*+,./012456789:;=>?@ABCDEFGHIJKLMOPQRSUVWXYZ[\^_`abdeghijlmnpqrtuvxz{|~€‚ƒ„…†‡ˆ‰Š‹‘’“•—˜™š›Ÿ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÁÂÃÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖ×ØÙÚÛÜİŞàáãäåçéêëìíïğñòóôõö÷øùúûüışÿ€‚„…†‡ˆŠ‹Œ‘’“”•—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°²³´¶·¸¹º»¼½¾¿ÀÂÃÅÆÇÉÊËÌÎÏĞÑÓÕ×ÙÚÛÜŞßàáâãäåæçéêëìíîïğñôö÷øùúûüıÿ€‚ƒ„†‡ˆ‰Š‹Œ’“•–—˜™šœŸ ¡¢£¤¥¦§¨©ª«­®°±²³´µ¶·¹º»¼½¾¿ÁÂÃÄÅÆÇÉÊËÌÎÏĞÒÓÔÕÖ×ØÙÚÛÜŞßàãäåæçèêìíîïğñòóôö÷øúûşÿ€ƒ„…†‡ˆ‰ŠŒ‘“•–—˜™š›Ÿ ¡¢£¤¥¦§©ª«¬­¯°±²³´µ¶¸¹º»¼½¾ÀÁÂÃÄÅÆÇÈÊËÌÍÏĞÑÓÔÕÖØÙÚÛÜİßàáâãäåæçèéêëíîğñòóôõ÷øùûüıÿ€‚ƒ…†‡ˆ‰Š‹‘’“”–—˜™š›Ÿ ¡xN‚‡&(*,.249?ACEGHIJKLMOSUZ\^bdlvxz|~‚ƒ„†‡ˆŠ’“—˜™š›¦ª«°±¶·¼½ÃÇÉËÍÎÑÓØİàéêëìíøùúşÿ€ŠŒ‘’“”• ¡¢¦§¨­®´¶¸º¾ÂÇÉËÌÎĞÕÛÜŞâãäåæçêëğú„†ˆŒ’šœ ¢£¤¥¦§¨­´ÅËÒÔÕÖ×ØÙÚÛÜàãçèö÷ø€…‡Œ‘•—˜™Ÿ¡¥¬¯±µ¸º¼ÆÌÍÏÑÓÕİßáãåæçèí÷øùûÿ€ƒ“–˜šm
+WD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\Match.cs 8r	
+Œ
+iD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\Properties\AssemblyInfo.csj !r	
+"#¼
+^D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\StatesResult.csrZ	
+ !"#%&'()*+,-/012345789:;=>?@ACDEFGHIJKLMOPQRSTVWXYZ\]^_`bcdefgh

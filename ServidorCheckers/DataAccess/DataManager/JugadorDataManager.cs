@@ -1,11 +1,8 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Data.Entity.Migrations;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace DataAccess.DataManager
 {
@@ -122,10 +119,22 @@ namespace DataAccess.DataManager
 
         public Jugador ChangePinByNickname(string nickname)
         {
-            Random random = new Random();
+            var randomGenerator = RandomNumberGenerator.Create();
+            byte[] data = new byte[8];
+            randomGenerator.GetBytes(data);
+
+            int dataNumber = Math.Abs(BitConverter.ToInt32(data, 0));
+            int numberOfDigits = (int)Math.Floor(Math.Log10(dataNumber));
+            int pinNumber = 0;
+
+            if (numberOfDigits >= 4)
+            {
+                pinNumber = (int)Math.Truncate((dataNumber / Math.Pow(10, numberOfDigits - 4)));
+            }
+
             Jugador player = dataBase.Jugador.Where(playerSearch => playerSearch.apodo == nickname).FirstOrDefault<Jugador>();
 
-            player.pinConfirmacion = random.Next(10000, 99999).ToString();
+            player.pinConfirmacion = pinNumber.ToString();
             dataBase.SaveChanges();
 
             return player;

@@ -1,10 +1,5 @@
 ﻿using Dominio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Contratos
 {
@@ -13,6 +8,9 @@ namespace Contratos
     {
         [OperationContract(IsOneWay = true)]
         void Login(Jugador player);
+
+        [OperationContract(IsOneWay = true)]
+        void LoginPlayer(Jugador player);
 
         [OperationContract(IsOneWay = true)]
         void SavePlayer(Jugador player);
@@ -24,13 +22,13 @@ namespace Contratos
         void SendMail(Jugador player);
 
         [OperationContract(IsOneWay = true)]
-        void PasswordForgotMail(string nickname);
+        void PasswordForgotMail(string actualNickname);
 
         [OperationContract(IsOneWay = true)]
-        void VerifyPin(string nickname, string pin, string answer);
+        void VerifyPin(string actualNickname, string playerPin, string answerText);
 
         [OperationContract(IsOneWay = true)]
-        void ChangePassword(string nickname, string newPassword);
+        void ChangePassword(string userNickname, string password);
 
         [OperationContract(IsOneWay = true)]
         void GetActualPlayer(Jugador actualPlayer);

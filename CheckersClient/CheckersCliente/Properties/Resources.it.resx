@@ -376,6 +376,7 @@ partita di gioco. Per favore riprova.</value>
   </data>
   <data name="WrongPINMessage" xml:space="preserve">
     <value>Il numero PIN inserito non è corretto. Riprova.</value>
+  </data>
   <data name="ExplainReport" xml:space="preserve">
     <value>Spiega le ragioni del rapporto</value>
   </data>

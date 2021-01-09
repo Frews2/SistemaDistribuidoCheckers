@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 
 namespace Contratos
 {
@@ -24,7 +19,7 @@ namespace Contratos
         void FinishPlayerGame(int matchNumber, int playerNumber,int playerTwoCheckers, int playerOneCheckers);
 
         [OperationContract(IsOneWay = true)]
-        void SendGameMessage(int playerNumberRemitent, string message, int matchNumber);
+        void SendGameMessage(int playerNumber, string message, int matchNumber);
 
         [OperationContract(IsOneWay = true)]
         void ReportPlayer(int playerNumberReporting, int matchNumber, string reportText);

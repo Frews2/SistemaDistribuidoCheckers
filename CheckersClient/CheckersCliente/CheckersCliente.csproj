@@ -103,6 +103,9 @@
       <DependentUpon>GameStandBy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DialogWindowManager.cs" />
+    <Compile Include="Windows\ReportWindow.xaml.cs">
+      <DependentUpon>ReportWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="AdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,10 +167,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GamePages\GameChat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MenuPages\GameMode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +191,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\ReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\JugadorManager.cs" />
@@ -199,9 +202,6 @@
     <Compile Include="Managers\RankingManager.cs" />
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GamePages\GameChat.xaml.cs">
-      <DependentUpon>GameChat.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuPages\PrincipalMenu.xaml.cs">
       <DependentUpon>PrincipalMenu.xaml</DependentUpon>

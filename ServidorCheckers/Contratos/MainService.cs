@@ -62,6 +62,10 @@ namespace Contratos
                             result = LoginResult.ExisteJugadorVerificado;
                             DataAccess.Jugador searchedPlayer = jugadorDataManager.GetPlayerByNickname(player.Apodo);
                             player.IdLenguaje = searchedPlayer.idioma;
+                            player.IdJugador = searchedPlayer.idJugador;
+                            player.Contrasenia = searchedPlayer.contrasenia;
+                            player.CorreoElectronico = searchedPlayer.correoElectronico;
+                            player.PreguntaRecuperacion = searchedPlayer.preguntaRecuperacion;
                         }
                         else
                         {
@@ -170,7 +174,6 @@ namespace Contratos
                 saveResult = SaveResult.NicknameExistente;
                 Callback.GetSaveResult(saveResult, player);
             }
-            Callback.GetSaveResult(saveResult, player);
         }
 
         public void VerifyPlayer(Dominio.Jugador player)
@@ -511,12 +514,34 @@ namespace Contratos
         {
             if (playerNumber == PLAYER_ONE)
             {
-                activeMatches[matchNumber].playerTwoCallback.RecieveGameMessage(message);
+                activeMatches[matchNumber].playerTwoCallback.RecieveGameMessage(message, PLAYER_ONE);
             }
             else
             {
-                activeMatches[matchNumber].playerOneCallback.RecieveGameMessage(message);
+                activeMatches[matchNumber].playerOneCallback.RecieveGameMessage(message,PLAYER_TWO);
             }
+        }
+
+        public void ReportPlayer(int playerNumberReporting, int matchNumber, string reportText)
+        {
+            int reportResult;
+            ReportSaveResult reportSaveResult = ReportSaveResult.ERROR_SAVING;
+            ReportDataManager reportDataManager = new ReportDataManager();
+
+            if (playerNumberReporting == PLAYER_ONE)
+            {
+                reportResult = reportDataManager.ReportPlayer(activeMatches[matchNumber].playerTwoData.IdJugador, activeMatches[matchNumber].playerOneData.IdJugador, reportText);
+            }
+            else
+            {
+                reportResult = reportDataManager.ReportPlayer(activeMatches[matchNumber].playerOneData.IdJugador, activeMatches[matchNumber].playerTwoData.IdJugador, reportText);
+            }
+
+            if (reportResult > 0)
+            {
+                reportSaveResult = ReportSaveResult.SAVED_REPORT;
+            }
+            GameManagerCallback.ReportResult(reportSaveResult);
         }
     }
 

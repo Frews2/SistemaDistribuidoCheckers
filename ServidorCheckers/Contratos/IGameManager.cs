@@ -24,7 +24,10 @@ namespace Contratos
         void FinishPlayerGame(int matchNumber, int playerNumber,int playerTwoCheckers, int playerOneCheckers);
 
         [OperationContract(IsOneWay = true)]
-        void SendGameMessage(int playerNumber, string message, int matchNumber);
+        void SendGameMessage(int playerNumberRemitent, string message, int matchNumber);
+
+        [OperationContract(IsOneWay = true)]
+        void ReportPlayer(int playerNumberReporting, int matchNumber, string reportText);
     }
 
     [ServiceContract]
@@ -43,6 +46,9 @@ namespace Contratos
         void UpdateMatchNumber(int newMatchNumber);
 
         [OperationContract(IsOneWay = true)]
-        void RecieveGameMessage(string message);
+        void RecieveGameMessage(string message,int playerNumber);
+
+        [OperationContract(IsOneWay = true)]
+        void ReportResult(ReportSaveResult reportSaveResult);
     }
 }

@@ -312,4 +312,13 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   <data name="Options" xml:space="preserve">
     <value>Opciones</value>
   </data>
+  <data name="ExplainReport" xml:space="preserve">
+    <value>Explique las razones del reporte</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Reportar</value>
+  </data>
+  <data name="Pass" xml:space="preserve">
+    <value>Pasar turno</value>
+  </data>
 </root>

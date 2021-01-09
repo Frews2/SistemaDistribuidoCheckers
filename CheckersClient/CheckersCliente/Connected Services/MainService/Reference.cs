@@ -651,6 +651,7 @@ namespace CheckersCliente.MainService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.Checker[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.Checker))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.MatchmakingResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CheckersCliente.MainService.ReportSaveResult))]
     public partial class Match : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -770,6 +771,17 @@ namespace CheckersCliente.MainService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReportSaveResult", Namespace="http://schemas.datacontract.org/2004/07/Contratos")]
+    public enum ReportSaveResult : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SAVED_REPORT = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ERROR_SAVING = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1108,10 +1120,16 @@ namespace CheckersCliente.MainService {
         System.Threading.Tasks.Task FinishPlayerGameAsync(int matchNumber, int playerNumber, int playerTwoCheckers, int playerOneCheckers);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/SendGameMessage")]
-        void SendGameMessage(int playerNumber, string message, int matchNumber);
+        void SendGameMessage(int playerNumberRemitent, string message, int matchNumber);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/SendGameMessage")]
-        System.Threading.Tasks.Task SendGameMessageAsync(int playerNumber, string message, int matchNumber);
+        System.Threading.Tasks.Task SendGameMessageAsync(int playerNumberRemitent, string message, int matchNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ReportPlayer")]
+        void ReportPlayer(int playerNumberReporting, int matchNumber, string reportText);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ReportPlayer")]
+        System.Threading.Tasks.Task ReportPlayerAsync(int playerNumberReporting, int matchNumber, string reportText);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1130,7 +1148,10 @@ namespace CheckersCliente.MainService {
         void UpdateMatchNumber(int newMatchNumber);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/RecieveGameMessage")]
-        void RecieveGameMessage(string message);
+        void RecieveGameMessage(string message, int playerNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ReportResult")]
+        void ReportResult(CheckersCliente.MainService.ReportSaveResult reportSaveResult);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1193,12 +1214,20 @@ namespace CheckersCliente.MainService {
             return base.Channel.FinishPlayerGameAsync(matchNumber, playerNumber, playerTwoCheckers, playerOneCheckers);
         }
         
-        public void SendGameMessage(int playerNumber, string message, int matchNumber) {
-            base.Channel.SendGameMessage(playerNumber, message, matchNumber);
+        public void SendGameMessage(int playerNumberRemitent, string message, int matchNumber) {
+            base.Channel.SendGameMessage(playerNumberRemitent, message, matchNumber);
         }
         
-        public System.Threading.Tasks.Task SendGameMessageAsync(int playerNumber, string message, int matchNumber) {
-            return base.Channel.SendGameMessageAsync(playerNumber, message, matchNumber);
+        public System.Threading.Tasks.Task SendGameMessageAsync(int playerNumberRemitent, string message, int matchNumber) {
+            return base.Channel.SendGameMessageAsync(playerNumberRemitent, message, matchNumber);
+        }
+        
+        public void ReportPlayer(int playerNumberReporting, int matchNumber, string reportText) {
+            base.Channel.ReportPlayer(playerNumberReporting, matchNumber, reportText);
+        }
+        
+        public System.Threading.Tasks.Task ReportPlayerAsync(int playerNumberReporting, int matchNumber, string reportText) {
+            return base.Channel.ReportPlayerAsync(playerNumberReporting, matchNumber, reportText);
         }
     }
 }

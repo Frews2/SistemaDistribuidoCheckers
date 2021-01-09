@@ -217,9 +217,18 @@
   <xs:element name="SendGameMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="playerNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="playerNumberRemitent" type="xs:int" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="matchNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportPlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="playerNumberReporting" type="xs:int" />
+        <xs:element minOccurs="0" name="matchNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="reportText" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -260,6 +269,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="playerNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Contratos" minOccurs="0" name="reportSaveResult" type="q29:ReportSaveResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

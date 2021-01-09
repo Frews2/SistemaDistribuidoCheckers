@@ -67,10 +67,36 @@ namespace CheckersCliente.CallbackHandlers
             game.FinishGame(playerTwoCheckers,playerOneCheckers);
         }
 
-        public void RecieveGameMessage(string message)
+        public void RecieveGameMessage(string message, int playerNumberSource)
         {
             Game game = App.Current.Windows.OfType<Game>().FirstOrDefault();
+            string playerNumberText = "";
+
+            if (playerNumberSource == 1)
+            {
+                playerNumberText = "Player 1: ";
+            }
+            else
+            {
+                playerNumberText = "Player 2: ";
+            }
+
+            game.RecieveMessage(message,playerNumberText);
             
+        }
+
+        public void ReportResult(ReportSaveResult reportSaveResult)
+        {
+            if(reportSaveResult == ReportSaveResult.SAVED_REPORT)
+            {
+                Windows.DialogWindowManager.ShowSuccessWindow("se ha reportado exitosamente");
+                Windows.ReportWindow reportWindow = App.Current.Windows.OfType<Windows.ReportWindow>().FirstOrDefault();
+                reportWindow.ReportedPlayer();
+            }
+            else
+            {
+                Windows.DialogWindowManager.ShowErrorWindow("Error intente de nuevo");
+            }
         }
     }
 

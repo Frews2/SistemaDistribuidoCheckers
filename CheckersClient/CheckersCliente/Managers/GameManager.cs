@@ -103,5 +103,19 @@ namespace CheckersCliente.Managers
             GameManagerClient server = new GameManagerClient(instanceContext);
             server.FinishPlayerGame(matchNumber, localPlayer, playerTwoCheckers, playerOneCheckers);
         }
+
+        public static void SendMessage(int matchNumber, int localPlayer, string message)
+        {
+            InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
+            GameManagerClient server = new GameManagerClient(instanceContext);
+            server.SendGameMessage(localPlayer, message, matchNumber);
+        }
+
+        public static void ReportPlayer(int playerReporting, int matchNumber, string reportText)
+        {
+            InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
+            GameManagerClient server = new GameManagerClient(instanceContext);
+            server.ReportPlayer(playerReporting,matchNumber, reportText);
+        }
     }
 }

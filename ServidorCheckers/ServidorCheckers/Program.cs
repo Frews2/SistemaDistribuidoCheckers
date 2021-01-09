@@ -16,6 +16,7 @@ namespace ServidorCheckers
             {
                 host.Open();
                 Console.WriteLine("Server is running");
+                Console.WriteLine();
                 Console.ReadLine();
             }
         }

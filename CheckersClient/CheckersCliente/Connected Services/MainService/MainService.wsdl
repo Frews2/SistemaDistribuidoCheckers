@@ -211,6 +211,9 @@
   <wsdl:message name="IGameManager_SendGameMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendGameMessage" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_ReportPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportPlayer" />
+  </wsdl:message>
   <wsdl:message name="IGameManager_UpdateGameGUI_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateGameGUI" />
   </wsdl:message>
@@ -225,6 +228,9 @@
   </wsdl:message>
   <wsdl:message name="IGameManager_RecieveGameMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RecieveGameMessage" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_ReportResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReportResult" />
   </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="Login">
@@ -320,6 +326,9 @@
     <wsdl:operation name="SendGameMessage">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/SendGameMessage" message="tns:IGameManager_SendGameMessage_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReportPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ReportPlayer" message="tns:IGameManager_ReportPlayer_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateGameGUI">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/UpdateGameGUI" message="tns:IGameManager_UpdateGameGUI_OutputCallbackMessage" />
     </wsdl:operation>
@@ -334,6 +343,9 @@
     </wsdl:operation>
     <wsdl:operation name="RecieveGameMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RecieveGameMessage" message="tns:IGameManager_RecieveGameMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/ReportResult" message="tns:IGameManager_ReportResult_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -525,6 +537,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="ReportPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ReportPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="UpdateGameGUI">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/UpdateGameGUI" style="document" />
       <wsdl:output>
@@ -551,6 +569,12 @@
     </wsdl:operation>
     <wsdl:operation name="RecieveGameMessage">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/RecieveGameMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportResult">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/ReportResult" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

@@ -62,6 +62,12 @@ public enum VerificationResult
         REPORT_EXISTS = 2
     }
 
+    public enum ReportSaveResult
+    {
+        SAVED_REPORT = 1,
+        ERROR_SAVING = 2
+    }
+
     public enum RankingResult
     {
         NO_RANKING = 1,

@@ -310,4 +310,13 @@ This can result from all of a player's pieces being captured or blocked from mak
   <data name="Options" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="ExplainReport" xml:space="preserve">
+    <value>Explain your reasons for report</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Pass" xml:space="preserve">
+    <value>Pass turn</value>
+  </data>
 </root>

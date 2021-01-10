@@ -18,6 +18,7 @@ namespace DataAccess
         public int idAcusador { get; set; }
         public int idReportado { get; set; }
         public string descripcionAcuso { get; set; }
+    
         public virtual Jugador Jugador { get; set; }
         public virtual Jugador Jugador1 { get; set; }
     }

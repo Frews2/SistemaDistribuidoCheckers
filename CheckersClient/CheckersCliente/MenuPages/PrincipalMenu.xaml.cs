@@ -1,18 +1,8 @@
 ﻿using CheckersCliente.MainService;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using CheckersCliente.Managers;
 using System.Threading;
 using System.Globalization;
@@ -34,21 +24,29 @@ namespace CheckersCliente.MenuPages
 
         private void UserConfiguration(object sender, RoutedEventArgs e)
         {
+            Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+            actualMenu.EnableNavigation();
             JugadorManager.GetActualPlayer(DataContext as Jugador);
         }
 
         private void DisplayRanking(object sender, RoutedEventArgs e)
         {
+            Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+            actualMenu.EnableNavigation();
             RankingManager.AddRankingPetitionCallback();
         }
 
         private void ShowRules(object sender, RoutedEventArgs e)
         {
+            Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+            actualMenu.EnableNavigation();
             NavigationService.Navigate(new RulesPage());
         }
 
         private void ChooseGameMode(object sender, RoutedEventArgs e)
         {
+            Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+            actualMenu.EnableNavigation();
             NavigationService.Navigate(new GameMode(actualPlayer));
         }
 
@@ -70,6 +68,7 @@ namespace CheckersCliente.MenuPages
             Menu menu = new Menu(DataContext as Jugador);
             menu.Show();
             Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+            actualMenu.ChangeLanguage();
             actualMenu.Close();
         }
 

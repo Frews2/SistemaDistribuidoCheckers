@@ -23,6 +23,9 @@ namespace Contratos
 
         [OperationContract(IsOneWay = true)]
         void ReportPlayer(int playerNumberReporting, int matchNumber, string reportText);
+
+        [OperationContract(IsOneWay = true)]
+        void LeaveMatch(int matchNumber, int playerNumber);
     }
 
     [ServiceContract]
@@ -45,5 +48,8 @@ namespace Contratos
 
         [OperationContract(IsOneWay = true)]
         void ReportResult(ReportSaveResult reportSaveResult);
+
+        [OperationContract(IsOneWay = true)]
+        void EndAbandonedGame();
     }
 }

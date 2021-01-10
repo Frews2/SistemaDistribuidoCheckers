@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="LogIn" Height="800" Width="800"
         ResizeMode="NoResize" ShowsNavigationUI="False"
-        Source="LogInPages\LogInPage.xaml">
+        Source="LogInPages\LogInPage.xaml" Navigating="NavigationWindowNavigating">
 </NavigationWindow>
 

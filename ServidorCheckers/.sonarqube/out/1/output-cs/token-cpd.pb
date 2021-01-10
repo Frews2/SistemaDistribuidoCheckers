@@ -1582,508 +1582,544 @@ IdLenguaje
 ’’ 	
 }
 ÷÷ 
-}◊◊ ¥F
+}◊◊ åJ
 qD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\DataManager\RankingDataManager.cs
-	namespace
-
- 	
+	namespace 	
 
-DataAccess
-
-
+DataAccess
  
-.
-
- 
-DataManager
-
-  
-{ 
-public 
+. 
+DataManager  
+{ 
+public 
 
-class 
-RankingDataManager #
-{ 
-private 
-readonly 
-JugadoresDBEntities ,
-context- 4
-=5 6
-new7 :
-JugadoresDBEntities; N
-(N O
-)O P
-;P Q
-private 
-const 
-int 
-CHECKER_POINT_VALUE -
-=. /
-$num0 2
-;2 3
-public 
-List 
-< 
+class 
+RankingDataManager #
+{ 
+private 
+readonly 
+JugadoresDBEntities ,
+context- 4
+=5 6
+new7 :
+JugadoresDBEntities; N
+(N O
+)O P
+;P Q
+private 
+const 
+int 
+CHECKER_POINT_VALUE -
+=. /
+$num0 2
+;2 3
+public 
+void 
+NewPlayerRank !
+(! "
+Jugador" )
+	newPlayer* 3
+)3 4
+{ 	
+string 
+playerNickname !
+=" #
+	newPlayer$ -
+.- .
+apodo. 3
+;3 4
+	newPlayer 
+= 
+GetPlayerByNickname +
+(+ ,
+playerNickname, :
+): ;
+;; <
+DateTime 
 
-DataAccess 
-. 
-Ranking &
->& '
-GetRankingList( 6
-(6 7
-)7 8
-{ 	
-List 
-< 
+actualDate 
+=  !
+DateTime" *
+.* +
+Now+ .
+;. /
+string 
+sqlDate 
+= 
 
-DataAccess 
-. 
-Ranking #
-># $
-playerRankings% 3
-=4 5
-null6 :
-;: ;
-playerRankings 
-= 
-context $
-.$ %
-Ranking% ,
-., -
-OrderBy- 4
-(4 5
-position5 =
-=>> @
-positionA I
-.I J
-rankJ N
-)N O
-.O P
-ToListP V
-(V W
-)W X
-;X Y
-return 
-playerRankings !
-;! "
-} 	
-public 
-Dominio 
-. 
-Jugador 
-GetPlayerByID ,
-(, -
-int- 0
-playerID1 9
-)9 :
-{ 	
-Dominio 
-. 
-Jugador 
-searchedPlayer *
-=+ ,
-new- 0
-Dominio1 8
-.8 9
-Jugador9 @
-(@ A
-)A B
-;B C
-try 
-{ 
-Jugador 
-queriedPlayer %
-=& '
-null( ,
-;, -
-queriedPlayer   
-=   
-context    '
-.  ' (
-Jugador  ( /
-.  / 0
-Find  0 4
-(  4 5
-playerID  5 =
-)  = >
-;  > ?
-searchedPlayer!! 
-.!! 
-Apodo!! $
-=!!% &
-queriedPlayer!!' 4
-.!!4 5
-apodo!!5 :
-;!!: ;
-searchedPlayer"" 
-."" 
-Contrasenia"" *
-=""+ ,
-queriedPlayer""- :
-."": ;
-contrasenia""; F
-;""F G
-searchedPlayer## 
-.## 
-CorreoElectronico## 0
-=##1 2
-queriedPlayer##3 @
-.##@ A
-correoElectronico##A R
-;##R S
-searchedPlayer$$ 
-.$$ 
-Status$$ %
-=$$& '
-queriedPlayer$$( 5
-.$$5 6
-status$$6 <
-;$$< =
-searchedPlayer%% 
-.%% !
-RespuestaConfirmacion%% 4
-=%%5 6
-queriedPlayer%%7 D
-.%%D E!
-respuestaConfirmacion%%E Z
-;%%Z [
-searchedPlayer&& 
-.&&  
-PreguntaRecuperacion&& 3
-=&&4 5
-queriedPlayer&&6 C
-.&&C D 
-preguntaRecuperacion&&D X
-;&&X Y
-searchedPlayer'' 
-.'' 
-PinConfirmacion'' .
-=''/ 0
-queriedPlayer''1 >
-.''> ?
-pinConfirmacion''? N
-;''N O
-searchedPlayer(( 
-.(( 
-	IdCreador(( (
-=(() *
-queriedPlayer((+ 8
-.((8 9
-	idCreador((9 B
-;((B C
-searchedPlayer)) 
-.)) 
+actualDate '
+.' (
+ToString( 0
+(0 1
+$str1 J
+)J K
+;K L
 
-IdLenguaje)) )
-=))* +
-queriedPlayer)), 9
-.))9 :
-idioma)): @
-;))@ A
-}** 
-catch++ 
-(++ 
-DbUpdateException++ $
-)++$ %
-{,, 
-throw-- 
-new-- 
-DbUpdateException-- +
-(--+ ,
-)--, -
-;--- .
-}.. 
-return// 
-searchedPlayer// !
-;//! "
-}00 	
-public22 
-void22 
-UpdateMatchResults22 &
-(22& '
-Dominio22' .
-.22. /
-Jugador22/ 6
-	playerOne227 @
-,22@ A
-int22B E
-playerOneCheckers22F W
-,22W X
-Dominio22Y `
-.22` a
-Jugador22a h
-	playerTwo22i r
-,22r s
-int22t w
-playerTwoCheckers	22x â
+actualDate 
+= 
+Convert  
+.  !
+
+ToDateTime! +
+(+ ,
+sqlDate, 3
+)3 4
+;4 5
+Ranking 
+newRank 
+= 
+new !
+Ranking" )
+() *
+)* +
+{ 
+idDuenio 
+= 
+	newPlayer $
+.$ %
+	idJugador% .
+,. /
+fechaRegistracion !
+=" #
+
+actualDate$ .
+,. /
+numeroVictorias 
+=  !
+$num" #
+,# $
+numeroPerdidas 
+=  
+$num! "
+," #
+partidasJugadas 
+=  !
+$num" #
+,# $
+rank   
+=   
+$num   
+}!! 
+;!! 
+try"" 
+{## 
+context$$ 
+.$$ 
+Ranking$$ 
+.$$  
+Add$$  #
+($$# $
+newRank$$$ +
+)$$+ ,
+;$$, -
+}%% 
+catch&& 
+(&& 
+DbUpdateException&& $
+)&&$ %
+{'' 
+throw(( 
+new(( 
+DbUpdateException(( +
+(((+ ,
+)((, -
+;((- .
+})) 
+}++ 	
+public-- 
+List-- 
+<-- 
+
+DataAccess-- 
+.-- 
+Ranking-- &
+>--& '
+GetRankingList--( 6
+(--6 7
+)--7 8
+{.. 	
+List// 
+<// 
+
+DataAccess// 
+.// 
+Ranking// #
+>//# $
+playerRankings//% 3
+=//4 5
+null//6 :
+;//: ;
+playerRankings11 
+=11 
+context11 $
+.11$ %
+Ranking11% ,
+.11, -
+OrderBy11- 4
+(114 5
+position115 =
+=>11> @
+position11A I
+.11I J
+rank11J N
+)11N O
+.11O P
+ToList11P V
+(11V W
+)11W X
+;11X Y
+return33 
+playerRankings33 !
+;33! "
+}44 	
+public66 
+
+DataAccess66 
+.66 
+Jugador66 !
+GetPlayerByNickname66" 5
+(665 6
+string666 <
+playerNickname66= K
+)66K L
+{77 	
+try88 
+{99 
+Jugador:: 
+searchedPlayer:: &
+=::' (
+context::( /
+.::/ 0
+Jugador::0 7
+.::7 8
+Where::8 =
+(::= >
+playerSearch::> J
+=>::K M
+playerSearch::N Z
+.::Z [
+apodo::[ `
+==::a c
+playerNickname::d r
+)::r s
+.::s t
+FirstOrDefault	::t Ç
+<
+::Ç É
+Jugador
+::É ä
+>
+::ä ã
+(
+::ã å
+)
+::å ç
+;
+::ç é
+return<< 
+searchedPlayer<< %
+;<<% &
+}== 
+catch>> 
+(>> 
+DbUpdateException>> $
+)>>$ %
+{?? 
+throw@@ 
+new@@ 
+DbUpdateException@@ +
+(@@+ ,
+)@@, -
+;@@- .
+}AA 
+}BB 	
+publicDD 
+voidDD 
+UpdateMatchResultsDD &
+(DD& '
+DominioDD' .
+.DD. /
+JugadorDD/ 6
+	playerOneDD7 @
+,DD@ A
+intDDB E
+playerOneCheckersDDF W
+,DDW X
+DominioDDY `
+.DD` a
+JugadorDDa h
+	playerTwoDDi r
+,DDr s
+intDDt w
+playerTwoCheckers	DDx â
 ,
-22â ä
+DDâ ä
 int
-22ã é 
+DDã é 
 playerNumberWinner
-22è °
+DDè °
 )
-22° ¢
-{33 	
-try44 
-{55 
-if66 
-(66 
-playerNumberWinner66 &
-==66' )
-$num66* +
-)66+ ,
-{77 
-var88 
-winnerRankingChange88 +
-=88, -
-context88. 5
-.885 6
-Ranking886 =
-.88= >
-Where88> C
-(88C D
-ranking88D K
-=>88L N
-	playerOne88O X
-.88X Y
-	IdJugador88Y b
-==88c e
-ranking88f m
-.88m n
-idDuenio88n v
-)88v w
-.88w x
-FirstOrDefault	88x Ü
+DD° ¢
+{EE 	
+tryFF 
+{GG 
+ifHH 
+(HH 
+playerNumberWinnerHH &
+==HH' )
+$numHH* +
+)HH+ ,
+{II 
+varJJ 
+winnerRankingChangeJJ +
+=JJ, -
+contextJJ. 5
+.JJ5 6
+RankingJJ6 =
+.JJ= >
+WhereJJ> C
+(JJC D
+rankingJJD K
+=>JJL N
+	playerOneJJO X
+.JJX Y
+	IdJugadorJJY b
+==JJc e
+rankingJJf m
+.JJm n
+idDuenioJJn v
+)JJv w
+.JJw x
+FirstOrDefault	JJx Ü
 <
-88Ü á
+JJÜ á
 Ranking
-88á é
+JJá é
 >
-88é è
+JJé è
 (
-88è ê
+JJè ê
 )
-88ê ë
+JJê ë
 ;
-88ë í
-winnerRankingChange99 '
-.99' (
-rank99( ,
-+=99- /
-(990 1
-playerOneCheckers991 B
-*99C D
-$num99E G
-)99G H
-+99I J
-$num99K M
-;99M N
-winnerRankingChange:: '
-.::' (
-numeroVictorias::( 7
-+=::8 :
-$num::; <
-;::< =
-winnerRankingChange;; '
-.;;' (
-partidasJugadas;;( 7
-++;;7 9
-;;;9 :
-var<< 
-loserRankingChange<< *
-=<<+ ,
-context<<- 4
-.<<4 5
-Ranking<<5 <
-.<<< =
-Where<<= B
-(<<B C
-ranking<<C J
-=><<K M
-	playerTwo<<N W
-.<<W X
-	IdJugador<<X a
-==<<b d
-ranking<<e l
-.<<l m
-idDuenio<<m u
-)<<u v
-.<<v w
-FirstOrDefault	<<w Ö
+JJë í
+winnerRankingChangeKK '
+.KK' (
+rankKK( ,
++=KK- /
+(KK0 1
+playerOneCheckersKK1 B
+*KKC D
+$numKKE G
+)KKG H
++KKI J
+$numKKK M
+;KKM N
+winnerRankingChangeLL '
+.LL' (
+numeroVictoriasLL( 7
++=LL8 :
+$numLL; <
+;LL< =
+winnerRankingChangeMM '
+.MM' (
+partidasJugadasMM( 7
+++MM7 9
+;MM9 :
+varNN 
+loserRankingChangeNN *
+=NN+ ,
+contextNN- 4
+.NN4 5
+RankingNN5 <
+.NN< =
+WhereNN= B
+(NNB C
+rankingNNC J
+=>NNK M
+	playerTwoNNN W
+.NNW X
+	IdJugadorNNX a
+==NNb d
+rankingNNe l
+.NNl m
+idDuenioNNm u
+)NNu v
+.NNv w
+FirstOrDefault	NNw Ö
 <
-<<Ö Ü
+NNÖ Ü
 Ranking
-<<Ü ç
+NNÜ ç
 >
-<<ç é
+NNç é
 (
-<<é è
+NNé è
 )
-<<è ê
+NNè ê
 ;
-<<ê ë
-loserRankingChange== &
-.==& '
-rank==' +
-+===, .
-CHECKER_POINT_VALUE==/ B
-;==B C
-loserRankingChange>> &
-.>>& '
-numeroPerdidas>>' 5
-+=>>6 8
-$num>>9 :
-;>>: ;
-loserRankingChange?? &
-.??& '
-partidasJugadas??' 6
-++??6 8
-;??8 9
-context@@ 
-.@@ 
-SaveChanges@@ '
-(@@' (
-)@@( )
-;@@) *
-}AA 
-elseBB 
-{CC 
-varDD 
-winnerRankingChangeDD +
-=DD, -
-contextDD. 5
-.DD5 6
-RankingDD6 =
-.DD= >
-WhereDD> C
-(DDC D
-rankingDDD K
-=>DDL N
-	playerTwoDDO X
-.DDX Y
-	IdJugadorDDY b
-==DDc e
-rankingDDf m
-.DDm n
-idDuenioDDn v
-)DDv w
-.DDw x
-FirstOrDefault	DDx Ü
+NNê ë
+loserRankingChangeOO &
+.OO& '
+rankOO' +
++=OO, .
+CHECKER_POINT_VALUEOO/ B
+;OOB C
+loserRankingChangePP &
+.PP& '
+numeroPerdidasPP' 5
++=PP6 8
+$numPP9 :
+;PP: ;
+loserRankingChangeQQ &
+.QQ& '
+partidasJugadasQQ' 6
+++QQ6 8
+;QQ8 9
+contextRR 
+.RR 
+SaveChangesRR '
+(RR' (
+)RR( )
+;RR) *
+}SS 
+elseTT 
+{UU 
+varVV 
+winnerRankingChangeVV +
+=VV, -
+contextVV. 5
+.VV5 6
+RankingVV6 =
+.VV= >
+WhereVV> C
+(VVC D
+rankingVVD K
+=>VVL N
+	playerTwoVVO X
+.VVX Y
+	IdJugadorVVY b
+==VVc e
+rankingVVf m
+.VVm n
+idDuenioVVn v
+)VVv w
+.VVw x
+FirstOrDefault	VVx Ü
 <
-DDÜ á
+VVÜ á
 Ranking
-DDá é
+VVá é
 >
-DDé è
+VVé è
 (
-DDè ê
+VVè ê
 )
-DDê ë
+VVê ë
 ;
-DDë í
-winnerRankingChangeEE '
-.EE' (
-rankEE( ,
-+=EE- /
-(EE0 1
-playerTwoCheckersEE1 B
-*EEC D
-$numEEE G
-)EEG H
-+EEI J
-$numEEK M
-;EEM N
-winnerRankingChangeFF '
-.FF' (
-numeroVictoriasFF( 7
-+=FF8 :
-$numFF; <
-;FF< =
-winnerRankingChangeGG '
-.GG' (
-partidasJugadasGG( 7
-++GG7 9
-;GG9 :
-varHH 
-loserRankingChangeHH *
-=HH+ ,
-contextHH- 4
-.HH4 5
-RankingHH5 <
-.HH< =
-WhereHH= B
-(HHB C
-rankingHHC J
-=>HHK M
-	playerOneHHN W
-.HHW X
-	IdJugadorHHX a
-==HHb d
-rankingHHe l
-.HHl m
-idDuenioHHm u
-)HHu v
-.HHv w
-FirstOrDefault	HHw Ö
+VVë í
+winnerRankingChangeWW '
+.WW' (
+rankWW( ,
++=WW- /
+(WW0 1
+playerTwoCheckersWW1 B
+*WWC D
+$numWWE G
+)WWG H
++WWI J
+$numWWK M
+;WWM N
+winnerRankingChangeXX '
+.XX' (
+numeroVictoriasXX( 7
++=XX8 :
+$numXX; <
+;XX< =
+winnerRankingChangeYY '
+.YY' (
+partidasJugadasYY( 7
+++YY7 9
+;YY9 :
+varZZ 
+loserRankingChangeZZ *
+=ZZ+ ,
+contextZZ- 4
+.ZZ4 5
+RankingZZ5 <
+.ZZ< =
+WhereZZ= B
+(ZZB C
+rankingZZC J
+=>ZZK M
+	playerOneZZN W
+.ZZW X
+	IdJugadorZZX a
+==ZZb d
+rankingZZe l
+.ZZl m
+idDuenioZZm u
+)ZZu v
+.ZZv w
+FirstOrDefault	ZZw Ö
 <
-HHÖ Ü
+ZZÖ Ü
 Ranking
-HHÜ ç
+ZZÜ ç
 >
-HHç é
+ZZç é
 (
-HHé è
+ZZé è
 )
-HHè ê
+ZZè ê
 ;
-HHê ë
-loserRankingChangeII &
-.II& '
-rankII' +
-+=II, .
-CHECKER_POINT_VALUEII/ B
-;IIB C
-loserRankingChangeJJ &
-.JJ& '
-rankJJ' +
-+=JJ, .
-CHECKER_POINT_VALUEJJ/ B
-;JJB C
-loserRankingChangeKK &
-.KK& '
-numeroPerdidasKK' 5
-+=KK6 8
-$numKK9 :
-;KK: ;
-loserRankingChangeLL &
-.LL& '
-partidasJugadasLL' 6
-++LL6 8
-;LL8 9
-contextMM 
-.MM 
-SaveChangesMM '
-(MM' (
-)MM( )
-;MM) *
-}NN 
-}OO 
-catchPP 
-(PP 
-DbUpdateExceptionPP $
-)PP$ %
-{QQ 
-throwRR 
-newRR 
-DbUpdateExceptionRR +
-(RR+ ,
-)RR, -
-;RR- .
-}SS 
-}TT 	
-}UU 
-}VV „
+ZZê ë
+loserRankingChange[[ &
+.[[& '
+rank[[' +
++=[[, .
+CHECKER_POINT_VALUE[[/ B
+;[[B C
+loserRankingChange\\ &
+.\\& '
+rank\\' +
++=\\, .
+CHECKER_POINT_VALUE\\/ B
+;\\B C
+loserRankingChange]] &
+.]]& '
+numeroPerdidas]]' 5
++=]]6 8
+$num]]9 :
+;]]: ;
+loserRankingChange^^ &
+.^^& '
+partidasJugadas^^' 6
+++^^6 8
+;^^8 9
+context__ 
+.__ 
+SaveChanges__ '
+(__' (
+)__( )
+;__) *
+}`` 
+}aa 
+catchbb 
+(bb 
+DbUpdateExceptionbb $
+)bb$ %
+{cc 
+throwdd 
+newdd 
+DbUpdateExceptiondd +
+(dd+ ,
+)dd, -
+;dd- .
+}ee 
+}ff 	
+}gg 
+}hh „
 pD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\DataManager\ReportDataManager.cs
 	namespace		 	
 

@@ -3,19 +3,12 @@
     Author(s): César Sergio Martinez Palacios
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CheckersCliente.Windows
 {
-    public class DialogWindowManager
+    public static class DialogWindowManager
     {
-        private const string SAVE_FILTER = "PDF Document|*.pdf";
-        private const string SAVE_TITLE = "Selecciona ruta de guardado";
 
         public static void ShowErrorWindow(string errorMessage)
         {

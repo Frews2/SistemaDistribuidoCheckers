@@ -3,17 +3,12 @@
     Author(s): César Sergio Martinez Palacios
 */
 using CheckersCliente.MainService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CheckersCliente
 {
-    public class JugadorManager
+    public static class JugadorManager
     {
         public static void Login(Jugador jugador)
         {
@@ -40,6 +35,20 @@ namespace CheckersCliente
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+            }
+        }
+
+        public static void EndSession(string playerNickname)
+        {
+            InstanceContext instanceContext = new InstanceContext(new PlayerCallbackHandler());
+            PlayerManagerClient server = new PlayerManagerClient(instanceContext);
+            try
+            {
+                server.CloseSession(playerNickname);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("El servidor ya no esta disponible");
             }
         }
 

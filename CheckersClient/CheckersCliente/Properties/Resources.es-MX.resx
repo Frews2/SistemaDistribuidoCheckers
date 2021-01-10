@@ -387,4 +387,25 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   <data name="Pass" xml:space="preserve">
     <value>Pasar turno</value>
   </data>
+  <data name="CancelQuestion" xml:space="preserve">
+    <value>¿Seguro que desea cancelar?</value>
+  </data>
+  <data name="LoggedPlayer" xml:space="preserve">
+    <value>Ya ha iniciado sesión</value>
+  </data>
+  <data name="LogOutQuestion" xml:space="preserve">
+    <value>¿Esta seguro de cerrar sesion?</value>
+  </data>
+  <data name="PasswordErrorText" xml:space="preserve">
+    <value>Las contraseñas no coinciden o no tienen la longitud mínima (8 caracteres).</value>
+  </data>
+  <data name="Player1" xml:space="preserve">
+    <value>Jugador 1:</value>
+  </data>
+  <data name="Player2" xml:space="preserve">
+    <value>Jugador 2:</value>
+  </data>
+  <data name="ReportSuccess" xml:space="preserve">
+    <value>Jugador reportado exitosamente</value>
+  </data>
 </root>

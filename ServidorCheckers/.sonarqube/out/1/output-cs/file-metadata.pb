@@ -8,10 +8,8 @@ pD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess
 ZD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\Jugador.csutf-8q
 fD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\JugadoresDB.Context.csutf-8i
 ^D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\JugadoresDB.csutf-8r
-gD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\JugadoresDB.Designer.csutf-8e
-ZD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\Partida.csutf-8s
+gD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\JugadoresDB.Designer.csutf-8s
 jD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\Properties\AssemblyInfo.csutf-8e
 ZD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\Ranking.csutf-8e
-ZD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\Reporte.csutf-8h
-]D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\Reputacion.csutf-8˜
+ZD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\Reporte.csutf-8˜
 ŒD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\DataAccess\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.csutf-8

@@ -1,17 +1,6 @@
 ﻿using CheckersCliente.Managers;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CheckersCliente.Windows
 {
@@ -22,7 +11,8 @@ namespace CheckersCliente.Windows
     {
         int playerReportingNumber;
         int actualMatchNumber;
-        public bool playerReported = false;
+        private bool playerReported = false;
+
 
         public ReportWindow(int playerReporting,int matchNumber)
         {
@@ -66,12 +56,12 @@ namespace CheckersCliente.Windows
             }
             else
             {
-                bool close = Windows.DialogWindowManager.ShowConfirmationWindow("Seguro que desea cancelar?");
+                bool close = DialogWindowManager.ShowConfirmationWindow(Properties.Resources.CancelQuestion);
                 if (close)
                 {
                     e.Cancel = false;
                     Game gameWindow = App.Current.Windows.OfType<Game>().FirstOrDefault();
-                    gameWindow.reportWindowOpen = false;
+                    gameWindow.ReportWindowOpen = false;
                 }
                 else
                 {

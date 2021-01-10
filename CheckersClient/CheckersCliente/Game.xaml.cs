@@ -4,16 +4,12 @@
 */
 using CheckersCliente.MainService;
 using CheckersCliente.Managers;
-using CheckersCliente.MenuPages;
-using LogicaCliente;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Navigation;
 
 namespace CheckersCliente
 {
@@ -39,7 +35,9 @@ namespace CheckersCliente
         private Brush player1Color;
         private Brush player2Color;
         private Match actualMatch;
-        public bool reportWindowOpen = false;
+        private bool matchEnd = false;
+
+        public bool ReportWindowOpen { get; set; } = false;
 
         public Game(Match match, int playerNumber)
         {
@@ -60,6 +58,7 @@ namespace CheckersCliente
             {
 
                 Board.IsEnabled = false;
+                passButton.IsEnabled = false;
                 localPlayer = match.playerTwoData;
             }
             else
@@ -71,7 +70,20 @@ namespace CheckersCliente
 
         private void RegresarAMenu(object sender, RoutedEventArgs e)
         {
-            GameManager.LeaveMatchmaking(actualMatch, localPlayer);
+            GameManager.LeaveMatchmaking(actualMatch.matchActiveNumber, localPlayerNumber);
+            matchEnd = true;
+            if (localPlayerNumber == 1)
+            {
+                Menu menu = new Menu(actualMatch.playerOneData);
+                menu.Show();
+            }
+            else
+            {
+                Menu menu = new Menu(actualMatch.playerTwoData);
+                menu.Show();
+            }
+
+            this.Close();
         }
 
         private void EndTurnNoMovement(object sender, RoutedEventArgs e)
@@ -79,10 +91,8 @@ namespace CheckersCliente
             this.EndTurn();
         }
 
-
         private void Movement(object sender, RoutedEventArgs e)
         {
-
             var button = (Button)sender;
 
             columnNumber = Grid.GetColumn(button);
@@ -95,148 +105,7 @@ namespace CheckersCliente
                     previousRow = Grid.GetRow(previousButton);
                     previousColumn = Grid.GetColumn(previousButton);
 
-                    if (boardMatrix[previousRow, previousColumn] == Checker.player1Checker)
-                    {
-                        if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -1) &&
-                           (columnNumber - previousColumn == -1 || columnNumber - previousColumn == 1))
-                        {
-                            if (!IsKingChecker())
-                            {
-                                boardMatrix[rowNumber, columnNumber] = Checker.player1Checker;
-                                boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
-                                button.Content = "•";
-                                button.Foreground = player1Color;
-                                button.FontSize = 20;
-                                DismissButtonClick(previousButton);
-                                previousButton.Content = "";
-                            }
-
-                            DismissButtonClick(previousButton);
-                            EndTurn();
-                        }
-                        else
-                        {
-                            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -2) && (columnNumber - previousColumn == -2))
-                            {
-                                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2King)
-                                {
-                                    player2CheckerCount--;
-                                    boardMatrix[rowNumber + 1, columnNumber + 1] = Checker.freeSpace;
-
-                                    if (IsKingChecker())
-                                    {
-                                        DismissButtonClick(previousButton);
-                                        EndTurn();
-
-                                    }
-                                    else
-                                    {
-                                        boardMatrix[rowNumber, columnNumber] = Checker.player1Checker;
-                                        boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
-                                        DismissButtonClick(previousButton);
-                                        UpdateCheckersGuiPosition(boardMatrix);
-
-                                        if (Player1MoreJumpCheck())
-                                        {
-                                            previousButton = button;
-                                            RemarkClickedButton(button);
-                                        }
-                                        else
-                                        {
-                                            DismissButtonClick(previousButton);
-                                            EndTurn();
-                                        }
-                                    }
-
-                                }
-                            }
-                            else
-                            {
-                                if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -2) && (columnNumber - previousColumn == 2))
-                                {
-                                    if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King)
-                                    {
-                                        player2CheckerCount--;
-                                        boardMatrix[rowNumber + 1, columnNumber - 1] = Checker.freeSpace;
-
-                                        if (IsKingChecker())
-                                        {
-                                            DismissButtonClick(previousButton);
-                                            EndTurn();
-                                        }
-                                        else
-                                        {
-                                            boardMatrix[rowNumber, columnNumber] = Checker.player1Checker;
-                                            boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
-
-                                            DismissButtonClick(previousButton);
-                                            UpdateCheckersGuiPosition(boardMatrix);
-
-                                            if (Player1MoreJumpCheck())
-                                            {
-                                                previousButton = button;
-                                                RemarkClickedButton(button);
-                                            }
-                                            else
-                                            {
-                                                DismissButtonClick(previousButton);
-                                                EndTurn();
-                                            }
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    InvalidClick();
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (KingMove())
-                        {
-                            button.Content = "♛";
-                            button.FontSize = 20;
-                            button.Foreground = player1Color;
-                            previousButton.Content = "";
-
-                            DismissButtonClick(previousButton);
-                            EndTurn();
-                        }
-                        else
-                        {
-                            if (ValidateKingJump())
-                            {
-                                player2CheckerCount--;
-
-                                int jumpedRow = (int)(rowNumber + ((rowNumber - previousRow) * -.5));
-                                int jumpedColumn = (int)(columnNumber + ((columnNumber - previousColumn) * -.5));
-
-                                boardMatrix[rowNumber, columnNumber] = Checker.player1King;
-                                boardMatrix[jumpedRow, jumpedColumn] = Checker.freeSpace;
-                                boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
-
-                                DismissButtonClick(previousButton);
-                                UpdateCheckersGuiPosition(boardMatrix);
-
-                                if (KingMoreJumpAvaliable())
-                                {
-                                    previousButton = button;
-                                    RemarkClickedButton(button);
-                                }
-                                else
-                                {
-                                    DismissButtonClick(previousButton);
-                                    EndTurn();
-                                }
-                            }
-                            else
-                            {
-                                InvalidClick();
-                            }
-                        }
-                    }
+                    FirstMovementCheck(button);
                 }
                 else
                 {
@@ -254,6 +123,167 @@ namespace CheckersCliente
             }
         }
 
+        private void FirstMovementCheck(Button button)
+        {
+            if (boardMatrix[previousRow, previousColumn] == Checker.player1Checker)
+            {
+                if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -1) &&
+                   (columnNumber - previousColumn == -1 || columnNumber - previousColumn == 1))
+                {
+                    if (!IsKingChecker())
+                    {
+                        boardMatrix[rowNumber, columnNumber] = Checker.player1Checker;
+                        boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
+                        button.Content = "•";
+                        button.Foreground = player1Color;
+                        button.FontSize = 20;
+                        DismissButtonClick(previousButton);
+                        previousButton.Content = "";
+                    }
+
+                    DismissButtonClick(previousButton);
+                    EndTurn();
+                }
+                else
+                {
+                    SecondMovementCheck(button);
+                }
+            }
+            else
+            {
+                KingMoveCheck(button);
+            }
+        }
+
+        private void SecondMovementCheck(Button button)
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -2) && (columnNumber - previousColumn == -2))
+            {
+                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2King)
+                {
+                    player2CheckerCount--;
+                    boardMatrix[rowNumber + 1, columnNumber + 1] = Checker.freeSpace;
+
+                    if (IsKingChecker())
+                    {
+                        DismissButtonClick(previousButton);
+                        EndTurn();
+
+                    }
+                    else
+                    {
+                        boardMatrix[rowNumber, columnNumber] = Checker.player1Checker;
+                        boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
+                        DismissButtonClick(previousButton);
+                        UpdateCheckersGuiPosition(boardMatrix);
+
+                        if (Player1MoreJumpCheck())
+                        {
+                            previousButton = button;
+                            RemarkClickedButton(button);
+                        }
+                        else
+                        {
+                            DismissButtonClick(previousButton);
+                            EndTurn();
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                ThirdMovementCheck(button);
+            }
+        }
+
+        private void ThirdMovementCheck(Button button)
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -2) && (columnNumber - previousColumn == 2))
+            {
+                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King)
+                {
+                    player2CheckerCount--;
+                    boardMatrix[rowNumber + 1, columnNumber - 1] = Checker.freeSpace;
+
+                    if (IsKingChecker())
+                    {
+                        DismissButtonClick(previousButton);
+                        EndTurn();
+                    }
+                    else
+                    {
+                        boardMatrix[rowNumber, columnNumber] = Checker.player1Checker;
+                        boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
+
+                        DismissButtonClick(previousButton);
+                        UpdateCheckersGuiPosition(boardMatrix);
+
+                        if (Player1MoreJumpCheck())
+                        {
+                            previousButton = button;
+                            RemarkClickedButton(button);
+                        }
+                        else
+                        {
+                            DismissButtonClick(previousButton);
+                            EndTurn();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                InvalidClick();
+            }
+        }
+
+        private void KingMoveCheck(Button button)
+        {
+            if (KingMove())
+            {
+                button.Content = "♛";
+                button.FontSize = 20;
+                button.Foreground = player1Color;
+                previousButton.Content = "";
+
+                DismissButtonClick(previousButton);
+                EndTurn();
+            }
+            else
+            {
+                if (ValidateKingJump())
+                {
+                    player2CheckerCount--;
+
+                    int jumpedRow = (int)(rowNumber + ((rowNumber - previousRow) * -.5));
+                    int jumpedColumn = (int)(columnNumber + ((columnNumber - previousColumn) * -.5));
+
+                    boardMatrix[rowNumber, columnNumber] = Checker.player1King;
+                    boardMatrix[jumpedRow, jumpedColumn] = Checker.freeSpace;
+                    boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
+
+                    DismissButtonClick(previousButton);
+                    UpdateCheckersGuiPosition(boardMatrix);
+
+                    if (KingJumpsAvaliable())
+                    {
+                        previousButton = button;
+                        RemarkClickedButton(button);
+                    }
+                    else
+                    {
+                        DismissButtonClick(previousButton);
+                        EndTurn();
+                    }
+                }
+                else
+                {
+                    InvalidClick();
+                }
+            }
+        }
+
         private void playerTwoMovement(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
@@ -267,143 +297,11 @@ namespace CheckersCliente
 
                 if (boardMatrix[previousRow, previousColumn] == Checker.player2Checker)
                 {
-                    if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 1) && (columnNumber - previousColumn == -1 || columnNumber - previousColumn == 1))
-                    {
-                        if (!IsKingChecker())
-                        {
-                            boardMatrix[rowNumber, columnNumber] = Checker.player2Checker;
-                            boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
-
-                            button.Content = "•";
-                            button.Foreground = player2Color;
-                            button.FontSize = 20;
-                            previousButton.Content = "";
-
-                            DismissButtonClick(previousButton);
-                        }
-                        DismissButtonClick(previousButton);
-                        EndTurn();
-                    }
-                    else
-                    {
-                        if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 2) && columnNumber - previousColumn == -2)
-                        {
-                            if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King)
-                            {
-                                player1CheckerCount--;
-
-                                boardMatrix[rowNumber - 1, columnNumber + 1] = Checker.freeSpace;
-
-                                if (IsKingChecker())
-                                {
-                                    DismissButtonClick(previousButton);
-                                    EndTurn();
-                                }
-                                else
-                                {
-                                    boardMatrix[rowNumber, columnNumber] = Checker.player2Checker;
-                                    boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
-
-                                    DismissButtonClick(previousButton);
-                                    UpdateCheckersGuiPosition(boardMatrix);
-
-                                    if (Player2MoreJumpCheck())
-                                    {
-                                        RemarkClickedButton(button);
-                                        previousButton = button;
-                                    }
-                                    else
-                                    {
-                                        DismissButtonClick(previousButton);
-                                        EndTurn();
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 2) && columnNumber - previousColumn == 2)
-                            {
-                                player1CheckerCount--;
-
-                                boardMatrix[rowNumber - 1, columnNumber - 1] = Checker.freeSpace;
-
-                                if (IsKingChecker())
-                                {
-                                    DismissButtonClick(previousButton);
-                                    EndTurn();
-                                }
-                                else
-                                {
-                                    boardMatrix[rowNumber, columnNumber] = Checker.player2Checker;
-                                    boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
-
-                                    DismissButtonClick(previousButton);
-                                    UpdateCheckersGuiPosition(boardMatrix);
-
-                                    if (Player2MoreJumpCheck())
-                                    {
-                                        RemarkClickedButton(button);
-                                        previousButton = button;
-                                    }
-                                    else
-                                    {
-                                        DismissButtonClick(previousButton);
-                                        EndTurn();
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                InvalidClick();
-                            }
-                        }
-                    }
+                    PlayerTwoFirstMovementCheck(button);
                 }
                 else
                 {
-                    if (KingMove())
-                    {
-                        button.Content = "♚";
-                        button.FontSize = 20;
-                        button.Foreground = player2Color;
-                        previousButton.Content = "";
-
-                        DismissButtonClick(previousButton);
-                        EndTurn();
-                    }
-                    else
-                    {
-                        if (ValidateKingJump())
-                        {
-                            player1CheckerCount--;
-
-                            int jumpedRow = (int)(rowNumber + ((rowNumber - previousRow) * -.5));
-                            int jumpedCol = (int)(columnNumber + ((columnNumber - previousColumn) * -.5));
-
-                            boardMatrix[rowNumber, columnNumber] = Checker.player2King;
-                            boardMatrix[jumpedRow, jumpedCol] = Checker.freeSpace;
-                            boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
-
-                            DismissButtonClick(previousButton);
-                            UpdateCheckersGuiPosition(boardMatrix);
-
-                            if (KingMoreJumpAvaliable())
-                            {
-                                previousButton = button;
-                                RemarkClickedButton(button);
-                            }
-                            else
-                            {
-                                DismissButtonClick(previousButton);
-                                EndTurn();
-                            }
-                        }
-                        else
-                        {
-                            InvalidClick();
-                        }
-                    }
+                    PlayerTwoKingCheck(button);
                 }
             }
             else
@@ -418,6 +316,159 @@ namespace CheckersCliente
                 }
             }
         }
+
+        private void PlayerTwoFirstMovementCheck(Button button)
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 1) && (columnNumber - previousColumn == -1 || columnNumber - previousColumn == 1))
+            {
+                if (!IsKingChecker())
+                {
+                    boardMatrix[rowNumber, columnNumber] = Checker.player2Checker;
+                    boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
+
+                    button.Content = "•";
+                    button.Foreground = player2Color;
+                    button.FontSize = 20;
+                    previousButton.Content = "";
+
+                    DismissButtonClick(previousButton);
+                }
+                DismissButtonClick(previousButton);
+                EndTurn();
+            }
+            else
+            {
+                PlayerTwoSecondMovementCheck(button);
+            }
+        }
+
+        private void PlayerTwoSecondMovementCheck(Button button)
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 2) && columnNumber - previousColumn == -2)
+            {
+                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King)
+                {
+                    player1CheckerCount--;
+
+                    boardMatrix[rowNumber - 1, columnNumber + 1] = Checker.freeSpace;
+
+                    if (IsKingChecker())
+                    {
+                        DismissButtonClick(previousButton);
+                        EndTurn();
+                    }
+                    else
+                    {
+                        boardMatrix[rowNumber, columnNumber] = Checker.player2Checker;
+                        boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
+
+                        DismissButtonClick(previousButton);
+                        UpdateCheckersGuiPosition(boardMatrix);
+
+                        if (Player2MoreJumpCheck())
+                        {
+                            RemarkClickedButton(button);
+                            previousButton = button;
+                        }
+                        else
+                        {
+                            DismissButtonClick(previousButton);
+                            EndTurn();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                PlayerTwoThirdMovementCheck(button);
+            }
+        }
+
+        private void PlayerTwoThirdMovementCheck(Button button)
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 2) && columnNumber - previousColumn == 2)
+            {
+                player1CheckerCount--;
+
+                boardMatrix[rowNumber - 1, columnNumber - 1] = Checker.freeSpace;
+
+                if (IsKingChecker())
+                {
+                    DismissButtonClick(previousButton);
+                    EndTurn();
+                }
+                else
+                {
+                    boardMatrix[rowNumber, columnNumber] = Checker.player2Checker;
+                    boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
+
+                    DismissButtonClick(previousButton);
+                    UpdateCheckersGuiPosition(boardMatrix);
+
+                    if (Player2MoreJumpCheck())
+                    {
+                        RemarkClickedButton(button);
+                        previousButton = button;
+                    }
+                    else
+                    {
+                        DismissButtonClick(previousButton);
+                        EndTurn();
+                    }
+                }
+            }
+            else
+            {
+                InvalidClick();
+            }
+        }
+
+        private void PlayerTwoKingCheck(Button button)
+        {
+            if (KingMove())
+            {
+                button.Content = "♚";
+                button.FontSize = 20;
+                button.Foreground = player2Color;
+                previousButton.Content = "";
+
+                DismissButtonClick(previousButton);
+                EndTurn();
+            }
+            else
+            {
+                if (ValidateKingJump())
+                {
+                    player1CheckerCount--;
+
+                    int jumpedRow = (int)(rowNumber + ((rowNumber - previousRow) * -.5));
+                    int jumpedCol = (int)(columnNumber + ((columnNumber - previousColumn) * -.5));
+
+                    boardMatrix[rowNumber, columnNumber] = Checker.player2King;
+                    boardMatrix[jumpedRow, jumpedCol] = Checker.freeSpace;
+                    boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
+
+                    DismissButtonClick(previousButton);
+                    UpdateCheckersGuiPosition(boardMatrix);
+
+                    if (KingJumpsAvaliable())
+                    {
+                        previousButton = button;
+                        RemarkClickedButton(button);
+                    }
+                    else
+                    {
+                        DismissButtonClick(previousButton);
+                        EndTurn();
+                    }
+                }
+                else
+                {
+                    InvalidClick();
+                }
+            }
+        }
+        
         private void GenerateGame()
         {
             buttonList = Board.Children.Cast<Button>().ToList();
@@ -443,23 +494,8 @@ namespace CheckersCliente
                         }
                     }
                 }
-
-                if (travelRow == 1 || travelRow == 5 || travelRow == 7)
-                {
-                    int travelColumns;
-
-                    for (travelColumns = 1; travelColumns < 8; travelColumns += 2)
-                    {
-                        if (travelRow == 5 || travelRow == 7)
-                        {
-                            boardMatrix[travelRow, travelColumns] = Checker.player1Checker;
-                        }
-                        else
-                        {
-                            boardMatrix[travelRow, travelColumns] = Checker.player2Checker;
-                        }
-                    }
-                }
+                GeneratingGameProcess(travelRow);
+               
             }
             player1Turn = true;
             checkPlayerSecondClick = false;
@@ -470,8 +506,32 @@ namespace CheckersCliente
             player1CheckerCount = 12;
             player2CheckerCount = 12;
 
-            int counter = 0;
+            GenerateCheckers();
+        }
 
+        private void GeneratingGameProcess(int travelRow)
+        {
+            if (travelRow == 1 || travelRow == 5 || travelRow == 7)
+            {
+                int travelColumns;
+
+                for (travelColumns = 1; travelColumns < 8; travelColumns += 2)
+                {
+                    if (travelRow == 5 || travelRow == 7)
+                    {
+                        boardMatrix[travelRow, travelColumns] = Checker.player1Checker;
+                    }
+                    else
+                    {
+                        boardMatrix[travelRow, travelColumns] = Checker.player2Checker;
+                    }
+                }
+            }
+        }
+
+        private void GenerateCheckers()
+        {
+            int counter = 0;
             buttonList.ForEach(button =>
             {
                 if (counter < 12)
@@ -536,28 +596,36 @@ namespace CheckersCliente
                     }
                     else
                     {
-                        if (boardMatrixUpdate[row, col] == Checker.player2Checker)
-                        {
-                            button.Content = "•";
-                            button.FontSize = 20;
-                            button.Foreground = player2Color;
-                        }
-                        else
-                        {
-                            if (boardMatrixUpdate[row, col] == Checker.player2King)
-                            {
-                                button.Content = "♚";
-                                button.FontSize = 20;
-                                button.Foreground = player2Color;
-                            }
-                            else
-                            {
-                                button.Content = "";
-                            }
-                        }
+                        PlayerTwoCheckersUpdate(boardMatrixUpdate,button);
                     }
                 }
             });
+        }
+
+        private void PlayerTwoCheckersUpdate(Checker[,] boardMatrixUpdate,Button button)
+        {
+            int row = Grid.GetRow(button);
+            int col = Grid.GetColumn(button);
+
+            if (boardMatrixUpdate[row, col] == Checker.player2Checker)
+            {
+                button.Content = "•";
+                button.FontSize = 20;
+                button.Foreground = player2Color;
+            }
+            else
+            {
+                if (boardMatrixUpdate[row, col] == Checker.player2King)
+                {
+                    button.Content = "♚";
+                    button.FontSize = 20;
+                    button.Foreground = player2Color;
+                }
+                else
+                {
+                    button.Content = "";
+                }
+            }
         }
 
         private bool Player1MoreJumpCheck()
@@ -603,7 +671,7 @@ namespace CheckersCliente
             }
         }
 
-        private bool KingMoreJumpAvaliable()
+        private bool KingJumpsAvaliable()
         {
             if (player1Turn)
             {
@@ -614,72 +682,92 @@ namespace CheckersCliente
                 }
                 else
                 {
-                    if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
-                        (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        if (rowNumber + 2 <= 7 && columnNumber - 2 >= 0 && boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
-                            (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King))
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            if (rowNumber + 2 <= 7 && columnNumber + 2 <= 7 && boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
-                                (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2King))
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                    }
+                    return KingSecondCheckJump();
                 }
             }
             else
             {
-                if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && boardMatrix[rowNumber - 2, columnNumber - 2] == Checker.freeSpace &&
-                    (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1King))
+                return KingFourthCheckJump();
+            }
+
+        }
+
+        private bool KingSecondCheckJump()
+        {
+            if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
+                        (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King))
+            {
+                return true;
+            }
+            else
+            {
+                if (rowNumber + 2 <= 7 && columnNumber - 2 >= 0 && boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King))
                 {
                     return true;
-
                 }
                 else
                 {
-                    if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
-                        (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
-                            (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King))
-                        {
-                            return true;
-
-                        }
-                        else
-                        {
-                            if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
-                                (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King))
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                    }
+                    return KingThirdCheckJump();
                 }
             }
+        }
 
+        private bool KingThirdCheckJump()
+        {
+            if (rowNumber + 2 <= 7 && columnNumber + 2 <= 7 && boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
+                               (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2King))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool KingFourthCheckJump()
+        {
+            if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && boardMatrix[rowNumber - 2, columnNumber - 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1King))
+            {
+                return true;
+
+            }
+            else
+            {
+                if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King))
+                {
+                    return true;
+                }
+                else
+                {
+                    return KingFifthCheckJump();   
+                }
+            }
+        }
+
+        private bool KingFifthCheckJump()
+        {
+            if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
+                        (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King))
+            {
+                return true;
+
+            }
+            else
+            {
+                if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         private bool IsKingChecker()
@@ -745,117 +833,155 @@ namespace CheckersCliente
                 }
                 else
                 {
-                    if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == -2)
-                    {
-                        if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-
-                    }
-                    else
-                    {
-                        if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == 2)
-                        {
-                            if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King)
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                return false;
-                            }
-
-                        }
-                        else
-                        {
-                            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == -2)
-                            {
-                                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    return false;
-                                }
-                            }
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                    }
+                    return SecondValidateKingJump();
                 }
             }
             else
             {
-                if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == 2)
-                {
-                    if (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1King)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                return ValidateSecondPlayerKingJump();
+            }
 
+        }
+
+        private bool SecondValidateKingJump()
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == -2)
+            {
+                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King)
+                {
+                    return true;
                 }
                 else
                 {
-                    if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == -2)
-                    {
-                        if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                    return false;
+                }
 
-                    }
-                    else
-                    {
-                        if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == 2)
-                        {
-                            if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King)
-                            {
-                                return true;
-                            }
-                            else
-                            {
-                                return false;
-                            }
+            }
+            else
+            {
+                
+                return ThirdValidateKingJump();
+            }
+        }
 
-                        }
-                        else
-                        {
-                            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == -2)
-                            {
-                                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King)
-                                {
-                                    return true;
-                                }
-                                else
-                                {
-                                    return false;
-                                }
-                            }
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                    }
+        private bool ThirdValidateKingJump()
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == 2)
+            {
+                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            else
+            {
+                return FourthValidateKingJump();
+            }
+        }
+
+        private bool FourthValidateKingJump()
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == -2)
+            {
+                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
+            else
+            {
+                return false;
+            }
+        }
 
+        private bool ValidateSecondPlayerKingJump()
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == 2)
+            {
+                if (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1King)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            else
+            {
+                return SecondValidateSecondPlayerKing();
+            }
+        }
+
+        private bool SecondValidateSecondPlayerKing()
+        {
+
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == -2)
+            {
+                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            else
+            {
+                return ThirdValidateSecondPlayerKing();
+            }
+            
+        }
+
+        private bool ThirdValidateSecondPlayerKing()
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == 2)
+            {
+                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            else
+            {
+                return FourthValidateSecondPlayerKing();
+            }
+        }
+
+        private bool FourthValidateSecondPlayerKing()
+        {
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == -2)
+            {
+                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void EndTurn()
@@ -869,6 +995,7 @@ namespace CheckersCliente
             {
 
                 Board.IsEnabled = false;
+                passButton.IsEnabled = false;
                 IsKingChecker();
 
                 checkPlayerSecondClick = !checkPlayerSecondClick;
@@ -892,13 +1019,15 @@ namespace CheckersCliente
         {
             if (player1Turn)
             {
-                Board.IsEnabled = false;
+                Board.IsEnabled = true;
+                passButton.IsEnabled = true;
                 player1Turn = !player1Turn;
                 currentPlayer.Text = "Player 2 Turn";
             }
             else
             {
-                Board.IsEnabled = false;
+                Board.IsEnabled = true;
+                passButton.IsEnabled = true;
                 player1Turn = true;
                 currentPlayer.Text = "Player 1 Turn";
             }
@@ -916,13 +1045,14 @@ namespace CheckersCliente
         {
             if (playerOneCheckers == 0)
             {
-                MessageBoxResult result = MessageBox.Show("PLAYER TWO WINS!", "GAME OVER");
-
+                MessageBox.Show("PLAYER TWO WINS!", "GAME OVER");
+                matchEnd = true;
             }
             else
             {
 
-                MessageBoxResult result = MessageBox.Show("PLAYER ONE WINS!", "GAME OVER");
+                MessageBox.Show("PLAYER ONE WINS!", "GAME OVER");
+                matchEnd = true;
             }
 
             Menu menu = new Menu(localPlayer);
@@ -947,7 +1077,8 @@ namespace CheckersCliente
         {
             GameManager.SendMessage(actualMatch.matchActiveNumber, localPlayerNumber, message.Text);
             messagesList.Add("Player " + localPlayerNumber + ": " + message.Text);
-            message.Text = "";
+            message.Clear();
+            messageButton.IsEnabled = false;
         }
 
         public void RecieveMessage(string newMesage, string playerSource)
@@ -957,11 +1088,11 @@ namespace CheckersCliente
 
         private void ReportPlayer(object sender, RoutedEventArgs e)
         {
-            if (reportWindowOpen == false)
+            if (!ReportWindowOpen )
             {
                 Windows.ReportWindow reportWindow = new Windows.ReportWindow(localPlayerNumber, actualMatch.matchActiveNumber);
                 reportWindow.Show();
-                reportWindowOpen = true;
+                ReportWindowOpen = true;
             }
         }
 
@@ -977,6 +1108,36 @@ namespace CheckersCliente
         {
             reportButton.IsEnabled = false;
             reportButton.Visibility = Visibility.Hidden;
+        }
+
+        private void WindowClose(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (matchEnd)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
+        public void AbandonedGame()
+        {
+            matchEnd = true;
+
+            if (localPlayerNumber == 1)
+            {
+                Menu menu = new Menu(actualMatch.playerOneData);
+                menu.Show();
+            }
+            else
+            {
+                Menu menu = new Menu(actualMatch.playerTwoData);
+                menu.Show();
+            }
+            Windows.DialogWindowManager.ShowErrorWindow("El otro jugador se ha desconectado");
+            this.Close();
         }
     }
 }

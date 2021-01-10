@@ -13,13 +13,14 @@ namespace CheckersCliente.CallbackHandlers
     public class GameManagerCallbackHandler : IGameManagerCallback
     {
 
-        public void GetMatchmakingResult(MatchmakingResult result, Match newMatch, int playerNumber)
+        public void GetMatchmakingResult(MatchmakingResult result, Match match, int playerNumber)
         {
             if (result == MatchmakingResult.MATCH_FOUND)
             {
-                Game gameWindow = new Game(newMatch, playerNumber);
+                Game gameWindow = new Game(match, playerNumber);
                 gameWindow.Show();
                 Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                menu.ChangeLanguage();
                 menu.Close();
             }
             else
@@ -27,6 +28,7 @@ namespace CheckersCliente.CallbackHandlers
                 if (result == MatchmakingResult.MATCH_NOT_FOUND)
                 {
                     Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                    menu.EnableNavigation();
                     menu.NavigationService.Navigate(new GameStandBy());
                 }
                 else
@@ -68,18 +70,18 @@ namespace CheckersCliente.CallbackHandlers
             game.FinishGame(playerTwoCheckers,playerOneCheckers);
         }
 
-        public void RecieveGameMessage(string message, int playerNumberSource)
+        public void RecieveGameMessage(string message, int playerNumber)
         {
             Game game = App.Current.Windows.OfType<Game>().FirstOrDefault();
-            string playerNumberText = "";
+            string playerNumberText;
 
-            if (playerNumberSource == 1)
+            if (playerNumber == 1)
             {
-                playerNumberText = "Player 1: ";
+                playerNumberText = Resources.Player1 + " ";
             }
             else
             {
-                playerNumberText = "Player 2: ";
+                playerNumberText = Resources.Player2 + " ";
             }
 
             game.RecieveMessage(message,playerNumberText);
@@ -90,14 +92,20 @@ namespace CheckersCliente.CallbackHandlers
         {
             if(reportSaveResult == ReportSaveResult.SAVED_REPORT)
             {
-                Windows.DialogWindowManager.ShowSuccessWindow("se ha reportado exitosamente");
+                Windows.DialogWindowManager.ShowSuccessWindow(Resources.ReportSuccess);
                 Windows.ReportWindow reportWindow = App.Current.Windows.OfType<Windows.ReportWindow>().FirstOrDefault();
                 reportWindow.ReportedPlayer();
             }
             else
             {
-                Windows.DialogWindowManager.ShowErrorWindow("Error intente de nuevo");
+                Windows.DialogWindowManager.ShowErrorWindow(Resources.NoConnectionMessage);
             }
+        }
+
+        public void EndAbandonedGame()
+        {
+            Game game = App.Current.Windows.OfType<Game>().FirstOrDefault();
+            game.AbandonedGame();
         }
     }
 

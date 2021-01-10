@@ -1,18 +1,9 @@
 ﻿using LogicaCliente;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace CheckersCliente.LogInPages
@@ -42,7 +33,7 @@ namespace CheckersCliente.LogInPages
             if (timeSeconds > 0)
             {
                 timeSeconds--;
-                CountdownNumber.Text = string.Format("{1}", timeSeconds / 60, timeSeconds % 60);
+                CountdownNumber.Text = string.Format("{0} {1}", timeSeconds / 60, timeSeconds % 60);
             }
             else
             {
@@ -98,6 +89,7 @@ namespace CheckersCliente.LogInPages
         private void CancelClick(object sender, RoutedEventArgs e)
         {
             LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+            login.EnableNavigation();
             login.NavigationService.Navigate(new LogInPage());
         }
     }

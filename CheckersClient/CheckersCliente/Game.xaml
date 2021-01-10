@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="{x:Static p:Resources.Game}"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        d:DesignWidth="1000" d:DesignHeight="1000">
+        d:DesignWidth="1000" d:DesignHeight="1000" Closing="WindowClose">
 
     <Grid Background="#FFED1C1C">
         <Button x:Name="returnButton"  Content="{x:Static p:Resources.Return}" Margin="10,510,480,5" VerticalAlignment="Bottom" Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="RegresarAMenu" IsEnabled="True"/>

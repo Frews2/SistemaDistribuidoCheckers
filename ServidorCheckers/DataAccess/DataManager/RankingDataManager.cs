@@ -2,6 +2,7 @@
  Date: 21/11/2020
  Author(s): Ricardo Moguel Sanchez
 */
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -14,6 +15,33 @@ namespace DataAccess.DataManager
         private readonly JugadoresDBEntities context = new JugadoresDBEntities();
         private const int CHECKER_POINT_VALUE = 10;
 
+        public void NewPlayerRank(Jugador newPlayer)
+        {
+            string playerNickname = newPlayer.apodo;
+            newPlayer = GetPlayerByNickname(playerNickname);
+            DateTime actualDate = DateTime.Now;
+            string sqlDate = actualDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            actualDate = Convert.ToDateTime(sqlDate);
+            Ranking newRank = new Ranking()
+            {
+                idDuenio = newPlayer.idJugador,
+                fechaRegistracion = actualDate,
+                numeroVictorias = 0,
+                numeroPerdidas = 0,
+                partidasJugadas = 0,
+                rank = 0
+            };
+            try
+            {
+                context.Ranking.Add(newRank);
+            }
+            catch (DbUpdateException)
+            {
+                throw new DbUpdateException();
+            }
+
+        }
+
         public List<DataAccess.Ranking> GetRankingList()
         {
             List<DataAccess.Ranking> playerRankings = null;
@@ -23,28 +51,18 @@ namespace DataAccess.DataManager
             return playerRankings;
         }
 
-        public Dominio.Jugador GetPlayerByID(int playerID)
+        public DataAccess.Jugador GetPlayerByNickname(string playerNickname)
         {
-            Dominio.Jugador searchedPlayer = new Dominio.Jugador();
             try
             {
-                Jugador queriedPlayer = null;
-                queriedPlayer = context.Jugador.Find(playerID);
-                searchedPlayer.Apodo = queriedPlayer.apodo;
-                searchedPlayer.Contrasenia = queriedPlayer.contrasenia;
-                searchedPlayer.CorreoElectronico = queriedPlayer.correoElectronico;
-                searchedPlayer.Status = queriedPlayer.status;
-                searchedPlayer.RespuestaConfirmacion = queriedPlayer.respuestaConfirmacion;
-                searchedPlayer.PreguntaRecuperacion = queriedPlayer.preguntaRecuperacion;
-                searchedPlayer.PinConfirmacion = queriedPlayer.pinConfirmacion;
-                searchedPlayer.IdCreador = queriedPlayer.idCreador;
-                searchedPlayer.IdLenguaje = queriedPlayer.idioma;
+                Jugador searchedPlayer =context.Jugador.Where(playerSearch => playerSearch.apodo == playerNickname).FirstOrDefault<Jugador>();
+
+                return searchedPlayer;
             }
             catch (DbUpdateException)
             {
                 throw new DbUpdateException();
             }
-            return searchedPlayer;
         }
 
         public void UpdateMatchResults(Dominio.Jugador playerOne, int playerOneCheckers, Dominio.Jugador playerTwo, int playerTwoCheckers, int playerNumberWinner)

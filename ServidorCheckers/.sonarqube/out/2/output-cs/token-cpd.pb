@@ -109,7 +109,7 @@ reportList- 7
 )* +
 ;+ ,
 }   
-}!! ˘*
+}!! µ/
 ^D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IGameManager.cs
 	namespace 	
 	Contratos
@@ -298,40 +298,34 @@ reportList- 7
 reportTextM W
 )W X
 ;X Y
-} 
-[ 
-ServiceContract 
-] 
-public 
+[ 	
+OperationContract	 
+( 
+IsOneWay #
+=$ %
+true& *
+)* +
+]+ ,
+void 
+
+LeaveMatch 
+( 
+int 
+matchNumber '
+,' (
+int) ,
+playerNumber- 9
+)9 :
+;: ;
+} 
+[ 
+ServiceContract 
+] 
+public   
 
-	interface  
-IGameManagerCallback )
-{ 
-[ 	
-OperationContract	 
-( 
-IsOneWay #
-=$ %
-true& *
-)* +
-]+ ,
-void   
-UpdateGameGUI   
-(   
-Checker   "
-[  " #
-]  # $
-[  $ %
-]  % &
-updateBoardMatrix  ' 8
-,  8 9
-int  : =
-playerTwoCheckers  > O
-,  O P
-int  Q T
-playerOneCheckers  U f
-)  f g
-;  g h
+	interface    
+IGameManagerCallback   )
+{!! 
 ["" 	
 OperationContract""	 
 ("" 
@@ -340,17 +334,23 @@ reportTextM W
 true""& *
 )""* +
 ]""+ ,
-void## 
-
-FinishGame## 
-(## 
-int## 
-playerTwoCheckers## -
-,##- .
-int##/ 2
-playerOneCheckers##3 D
-)##D E
-;##E F
+void## 
+UpdateGameGUI## 
+(## 
+Checker## "
+[##" #
+]### $
+[##$ %
+]##% &
+updateBoardMatrix##' 8
+,##8 9
+int##: =
+playerTwoCheckers##> O
+,##O P
+int##Q T
+playerOneCheckers##U f
+)##f g
+;##g h
 [%% 	
 OperationContract%%	 
 (%% 
@@ -359,19 +359,17 @@ FinishGame## 
 true%%& *
 )%%* +
 ]%%+ ,
-void&&  
-GetMatchmakingResult&& !
-(&&! "
-MatchmakingResult&&" 3
-result&&4 :
-,&&: ;
-Match&&< A
-match&&B G
-,&&G H
-int&&I L
-playerNumber&&M Y
-)&&Y Z
-;&&Z [
+void&& 
+
+FinishGame&& 
+(&& 
+int&& 
+playerTwoCheckers&& -
+,&&- .
+int&&/ 2
+playerOneCheckers&&3 D
+)&&D E
+;&&E F
 [(( 	
 OperationContract((	 
 ((( 
@@ -380,13 +378,19 @@ FinishGame## 
 true((& *
 )((* +
 ]((+ ,
-void)) 
-UpdateMatchNumber)) 
-()) 
-int)) "
-newMatchNumber))# 1
-)))1 2
-;))2 3
+void))  
+GetMatchmakingResult)) !
+())! "
+MatchmakingResult))" 3
+result))4 :
+,)): ;
+Match))< A
+match))B G
+,))G H
+int))I L
+playerNumber))M Y
+)))Y Z
+;))Z [
 [++ 	
 OperationContract++	 
 (++ 
@@ -395,16 +399,13 @@ FinishGame## 
 true++& *
 )++* +
 ]+++ ,
-void,, 
-RecieveGameMessage,, 
-(,,  
-string,,  &
-message,,' .
-,,,. /
-int,,/ 2
-playerNumber,,3 ?
-),,? @
-;,,@ A
+void,, 
+UpdateMatchNumber,, 
+(,, 
+int,, "
+newMatchNumber,,# 1
+),,1 2
+;,,2 3
 [.. 	
 OperationContract..	 
 (.. 
@@ -413,15 +414,46 @@ FinishGame## 
 true..& *
 )..* +
 ]..+ ,
-void// 
-ReportResult// 
-(// 
-ReportSaveResult// *
-reportSaveResult//+ ;
-)//; <
-;//< =
-}00 
-}11 ü0
+void// 
+RecieveGameMessage// 
+(//  
+string//  &
+message//' .
+,//. /
+int/// 2
+playerNumber//3 ?
+)//? @
+;//@ A
+[11 	
+OperationContract11	 
+(11 
+IsOneWay11 #
+=11$ %
+true11& *
+)11* +
+]11+ ,
+void22 
+ReportResult22 
+(22 
+ReportSaveResult22 *
+reportSaveResult22+ ;
+)22; <
+;22< =
+[44 	
+OperationContract44	 
+(44 
+IsOneWay44 #
+=44$ %
+true44& *
+)44* +
+]44+ ,
+void55 
+EndAbandonedGame55 
+(55 
+)55 
+;55  
+}66 
+}77 î5
 `D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IPlayerManager.cs
 	namespace 	
 	Contratos
@@ -603,33 +635,30 @@ answerTextG Q
 actualPlayer""% 1
 )""1 2
 ;""2 3
-}## 
-[%% 
-ServiceContract%% 
-]%% 
-public&& 
+[$$ 	
+OperationContract$$	 
+($$ 
+IsOneWay$$ #
+=$$$ %
+true$$& *
+)$$* +
+]$$+ ,
+void%% 
+CloseSession%% 
+(%% 
+string%%  
+playerNickname%%! /
+)%%/ 0
+;%%0 1
+}&& 
+[(( 
+ServiceContract(( 
+](( 
+public)) 
 
-	interface&& "
-IPlayerManagerCallback&& +
-{'' 
-[(( 	
-OperationContract((	 
-((( 
-IsOneWay(( #
-=(($ %
-true((& *
-)((* +
-]((+ ,
-void)) 
-GetLoginResult)) 
-()) 
-LoginResult)) '
-resultadoLogin))( 6
-,))6 7
-Jugador))7 >
-player))? E
-)))E F
-;))F G
+	interface)) "
+IPlayerManagerCallback)) +
+{** 
 [++ 	
 OperationContract++	 
 (++ 
@@ -638,17 +667,16 @@ answerTextG Q
 true++& *
 )++* +
 ]+++ ,
-void,, 
-GetSaveResult,, 
-(,, 
-
-SaveResult,, %
-resultadoGuardado,,& 7
-,,,7 8
-Jugador,,9 @
-player,,A G
-),,G H
-;,,H I
+void,, 
+GetAdminLoginResult,,  
+(,,  !
+LoginResult,,! ,
+resultadoLogin,,- ;
+,,,; <
+Jugador,,< C
+playerLoged,,D O
+),,O P
+;,,P Q
 [.. 	
 OperationContract..	 
 (.. 
@@ -657,13 +685,16 @@ SaveResult,, %
 true..& *
 )..* +
 ]..+ ,
-void// 
-GetVerifyResult// 
-(// 
-VerificationResult// /!
-resultadoVerificacion//0 E
-)//E F
-;//F G
+void//  
+GetPlayerLoginResult// !
+(//! "
+LoginResult//" -
+resultadoLogin//. <
+,//< =
+Jugador//> E
+playerLoged//F Q
+)//Q R
+;//R S
 [11 	
 OperationContract11	 
 (11 
@@ -672,17 +703,18 @@ SaveResult,, %
 true11& *
 )11* +
 ]11+ ,
-void22 
-GetResendMailResult22  
-(22  !
+void22 
+GetSaveResult22 
+(22 
 
-MailResult22! +
-resultadoCorreo22, ;
-,22; <
-string22= C
-actualNickname22D R
-)22R S
-;22S T
+SaveResult22 %
+
+saveResult22& 0
+,220 1
+Jugador222 9
+	newPlayer22: C
+)22C D
+;22D E
 [44 	
 OperationContract44	 
 (44 
@@ -691,20 +723,13 @@ MailResult22! +
 true44& *
 )44* +
 ]44+ ,
-void55 
-GetMailResult55 
-(55 
-
-MailResult55 %
-resultadoCorreo55& 5
-,555 6
-string557 =
-actualNickname55> L
-,55L M
-string55N T
-securityQuestion55U e
-)55e f
-;55f g
+void55 
+GetVerifyResult55 
+(55 
+VerificationResult55 /!
+resultadoVerificacion550 E
+)55E F
+;55F G
 [77 	
 OperationContract77	 
 (77 
@@ -713,16 +738,17 @@ MailResult55 %
 true77& *
 )77* +
 ]77+ ,
-void88 
-GetPinResult88 
-(88 
-	PinResult88 #
-verifiedPinResult88$ 5
-,885 6
-string887 =
-playerNickname88> L
-)88L M
-;88M N
+void88 
+GetResendMailResult88  
+(88  !
+
+MailResult88! +
+emailResult88, 7
+,887 8
+string889 ?
+playerNickname88@ N
+)88N O
+;88O P
 [:: 	
 OperationContract::	 
 (:: 
@@ -731,13 +757,20 @@ MailResult55 %
 true::& *
 )::* +
 ]::+ ,
-void;; #
-GetPasswordChangeResult;; $
-(;;$ % 
-PasswordChangeResult;;% 9!
-passwordChangedResult;;: O
-);;O P
-;;;P Q
+void;; 
+GetMailResult;; 
+(;; 
+
+MailResult;; %
+emailResult;;& 1
+,;;1 2
+string;;3 9
+playerNickname;;: H
+,;;H I
+string;;J P
+securityQuestion;;Q a
+);;a b
+;;;b c
 [== 	
 OperationContract==	 
 (== 
@@ -746,20 +779,53 @@ MailResult55 %
 true==& *
 )==* +
 ]==+ ,
-void>> 
-SendActualPlayer>> 
-(>> 
-DataObtainedResult>> 0
-dataObtainedResult>>1 C
-,>>C D
-Dominio>>E L
-.>>L M
-Jugador>>M T
-actualPlayer>>U a
-)>>a b
-;>>b c
-}?? 
-}BB ì
+void>> 
+GetPinResult>> 
+(>> 
+	PinResult>> #
+	pinResult>>$ -
+,>>- .
+string>>/ 5
+playerNickname>>6 D
+)>>D E
+;>>E F
+[@@ 	
+OperationContract@@	 
+(@@ 
+IsOneWay@@ #
+=@@$ %
+true@@& *
+)@@* +
+]@@+ ,
+voidAA #
+GetPasswordChangeResultAA $
+(AA$ % 
+PasswordChangeResultAA% 9 
+passwordChangeResultAA: N
+)AAN O
+;AAO P
+[CC 	
+OperationContractCC	 
+(CC 
+IsOneWayCC #
+=CC$ %
+trueCC& *
+)CC* +
+]CC+ ,
+voidDD 
+SendActualPlayerDD 
+(DD 
+DataObtainedResultDD 0
+dataObtainedResultDD1 C
+,DDC D
+DominioDDE L
+.DDL M
+JugadorDDM T
+actualPlayerDDU a
+)DDa b
+;DDb c
+}EE 
+}HH ì
 aD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\IRankingManager.cs
 	namespace		 	
 	Contratos		
@@ -841,7 +907,7 @@ aD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\
 )A B
 ;B C
 } 
-} Ñˆ
+} ¿ô
 ]D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\MainService.cs
 	namespace 	
 	Contratos
@@ -950,21 +1016,21 @@ Dictionary   
 <   
 string   !
 ,  ! ""
-IPlayerManagerCallback  # 9
->  9 :
-playersLoggedIn  ; J
-=  K L
-new  M P
+IPlayerManagerCallback  " 8
+>  8 9
+playersLoggedIn  : I
+=  J K
+new  L O
 
-Dictionary  Q [
-<  [ \
-string  \ b
-,  b c"
-IPlayerManagerCallback  d z
->  z {
-(  { |
-)  | }
-;  } ~
+Dictionary  P Z
+<  Z [
+string  [ a
+,  a b"
+IPlayerManagerCallback  c y
+>  y z
+(  z {
+)  { |
+;  | }
 public$$ 
 void$$ 
 Login$$ 
@@ -975,11 +1041,7 @@ Dictionary  Q [
 {%% 	
 LoginResult&& 
 result&& 
-=&&  
-LoginResult&&! ,
-.&&, -
-NoExisteJugador&&- <
-;&&< =
+;&& 
 AdminDataManager'' 
 adminDataManager'' -
 =''. /
@@ -1015,5541 +1077,5965 @@ Dictionary  Q [
 Apodo**S X
 )**X Y
 )**Y Z
-{++ 
-result,, 
-=,, 
-LoginResult,, (
-.,,( )
-EsAdmin,,) 0
-;,,0 1
-Callback.. 
-... 
-GetLoginResult.. +
-(..+ ,
-result.., 2
-,..2 3
-player..4 :
-)..: ;
-;..; <
-}// 
-else00 
-{11 
-result22 
-=22 
-LoginResult22 (
-.22( )
-PasswordIncorrecto22) ;
-;22; <
-Callback44 
-.44 
-GetLoginResult44 +
-(44+ ,
-result44, 2
-,442 3
-player444 :
-)44: ;
-;44; <
-}55 
-}66 
-else77 
-{88 
-LoginPlayer99 
-(99 
-player99 "
-)99" #
-;99# $
-}:: 
-};; 	
-public== 
-void== 
-LoginPlayer== 
-(==  
-Jugador==  '
-player==( .
-)==. /
-{>> 	
-LoginResult?? 
-result?? 
-=??  
-LoginResult??! ,
-.??, -
-NoExisteJugador??- <
-;??< =
-JugadorDataManager@@ 
-jugadorManager@@ -
-=@@. /
-new@@0 3
-JugadorDataManager@@4 F
-(@@F G
-)@@G H
-;@@H I
-ifAA 
-(AA 
-jugadorManagerAA 
-.AA 
-CheckNicknameAA ,
-(AA, -
-playerAA- 3
-.AA3 4
-ApodoAA4 9
-)AA9 :
-)AA: ;
-{BB 
-ifCC 
-(CC 
-jugadorManagerCC "
-.CC" #
+{++ 
+try,, 
+{-- 
+result.. 
+=..  
+LoginResult..! ,
+..., -
+EsAdmin..- 4
+;..4 5
+playersLoggedIn00 '
+.00' (
+Add00( +
+(00+ ,
+player00, 2
+.002 3
+Apodo003 8
+,008 9
+PlayerCallback00: H
+)00H I
+;00I J
+}11 
+catch22 
+(22 (
+AddressAlreadyInUseException22 7
+)227 8
+{33 
+result44 
+=44  
+LoginResult44! ,
+.44, -
+LOGGED_PLAYER44- :
+;44: ;
+}55 
+PlayerCallback77 "
+.77" #
+GetAdminLoginResult77# 6
+(776 7
+result777 =
+,77= >
+player77? E
+)77E F
+;77F G
+}88 
+else99 
+{:: 
+result;; 
+=;; 
+LoginResult;; (
+.;;( )
+PasswordIncorrecto;;) ;
+;;;; <
+PlayerCallback== "
+.==" #
+GetAdminLoginResult==# 6
+(==6 7
+result==7 =
+,=== >
+player==? E
+)==E F
+;==F G
+}>> 
+}?? 
+else@@ 
+{AA 
+LoginPlayerBB 
+(BB 
+playerBB "
+)BB" #
+;BB# $
+}CC 
+}DD 	
+publicFF 
+voidFF 
+LoginPlayerFF 
+(FF  
+JugadorFF  '
+playerFF( .
+)FF. /
+{GG 	
+LoginResultHH 
+resultHH 
+=HH  
+LoginResultHH! ,
+.HH, -
+NoExisteJugadorHH- <
+;HH< =
+JugadorDataManagerII 
+jugadorManagerII -
+=II. /
+newII0 3
+JugadorDataManagerII4 F
+(IIF G
+)IIG H
+;IIH I
+ifJJ 
+(JJ 
+jugadorManagerJJ 
+.JJ 
+CheckNicknameJJ ,
+(JJ, -
+playerJJ- 3
+.JJ3 4
+ApodoJJ4 9
+)JJ9 :
+)JJ: ;
+{KK 
+ifLL 
+(LL 
+jugadorManagerLL "
+.LL" #
 
-CheckStateCC# -
-(CC- .
-playerCC. 4
-.CC4 5
-ApodoCC5 :
-)CC: ;
-)CC; <
-{DD 
-ifEE 
-(EE 
-jugadorManagerEE &
-.EE& '
-EsPasswordCorrectoEE' 9
-(EE9 :
-playerEE: @
-.EE@ A
-ContraseniaEEA L
-,EEL M
-playerEEN T
-.EET U
-ApodoEEU Z
-)EEZ [
-)EE[ \
-{FF 
-resultGG 
-=GG  
-LoginResultGG! ,
-.GG, -#
-ExisteJugadorVerificadoGG- D
-;GGD E
+CheckStateLL# -
+(LL- .
+playerLL. 4
+.LL4 5
+ApodoLL5 :
+)LL: ;
+)LL; <
+{MM 
+ifNN 
+(NN 
+jugadorManagerNN &
+.NN& '
+EsPasswordCorrectoNN' 9
+(NN9 :
+playerNN: @
+.NN@ A
+ContraseniaNNA L
+,NNL M
+playerNNN T
+.NNT U
+ApodoNNU Z
+)NNZ [
+)NN[ \
+{OO 
 
-DataAccessHH "
-.HH" #
-JugadorHH# *
-searchedPlayerHH+ 9
-=HH: ;
-jugadorManagerHH< J
-.HHJ K
-GetPlayerByNicknameHHK ^
-(HH^ _
-playerHH_ e
-.HHe f
-ApodoHHf k
-)HHk l
-;HHl m
-playerII 
-.II 
+DataAccessPP "
+.PP" #
+JugadorPP# *
+searchedPlayerPP+ 9
+=PP: ;
+jugadorManagerPP< J
+.PPJ K
+GetPlayerByNicknamePPK ^
+(PP^ _
+playerPP_ e
+.PPe f
+ApodoPPf k
+)PPk l
+;PPl m
+ifQQ 
+(QQ 
+!QQ 
+playersLoggedInQQ ,
+.QQ, -
+ContainsKeyQQ- 8
+(QQ8 9
+searchedPlayerQQ9 G
+.QQG H
+apodoQQH M
+)QQM N
+)QQN O
+{RR 
+resultSS "
+=SS# $
+LoginResultSS% 0
+.SS0 1#
+ExisteJugadorVerificadoSS1 H
+;SSH I
+playersLoggedInUU +
+.UU+ ,
+AddUU, /
+(UU/ 0
+searchedPlayerUU0 >
+.UU> ?
+apodoUU? D
+,UUD E
+PlayerCallbackUUF T
+)UUT U
+;UUU V
+playerVV "
+.VV" #
+ApodoVV# (
+=VV) *
+searchedPlayerVV+ 9
+.VV9 :
+apodoVV: ?
+;VV? @
+playerWW "
+.WW" #
 
-IdLenguajeII )
-=II* +
-searchedPlayerII, :
-.II: ;
-idiomaII; A
-;IIA B
-playerJJ 
-.JJ 
-	IdJugadorJJ (
-=JJ) *
-searchedPlayerJJ+ 9
-.JJ9 :
-	idJugadorJJ: C
-;JJC D
-playerKK 
-.KK 
-ContraseniaKK *
-=KK+ ,
-searchedPlayerKK- ;
-.KK; <
-contraseniaKK< G
-;KKG H
-playerLL 
-.LL 
-CorreoElectronicoLL 0
-=LL1 2
-searchedPlayerLL3 A
-.LLA B
-correoElectronicoLLB S
-;LLS T
-playerMM 
-.MM  
-PreguntaRecuperacionMM 3
-=MM4 5
-searchedPlayerMM6 D
-.MMD E 
-preguntaRecuperacionMME Y
-;MMY Z
-CallbackOO  
-.OO  !
-GetLoginResultOO! /
-(OO/ 0
-resultOO0 6
-,OO6 7
-playerOO8 >
-)OO> ?
-;OO? @
-}PP 
-elseQQ 
-{RR 
-resultSS 
-=SS  
-LoginResultSS! ,
-.SS, -
-PasswordIncorrectoSS- ?
-;SS? @
-CallbackUU  
-.UU  !
-GetLoginResultUU! /
-(UU/ 0
-resultUU0 6
-,UU6 7
-playerUU8 >
-)UU> ?
-;UU? @
-}VV 
-}WW 
-elseXX 
-{YY 
-ifZZ 
-(ZZ 
-jugadorDataManagerZZ *
-.ZZ* +
-CheckBannedStateZZ+ ;
-(ZZ; <
-playerZZ< B
-.ZZB C
-ApodoZZC H
-)ZZH I
-)ZZI J
-{[[ 
-result\\ 
-=\\  
-LoginResult\\! ,
-.\\, -
-	EsBaneado\\- 6
-;\\6 7
-Callback^^  
-.^^  !
-GetLoginResult^^! /
-(^^/ 0
-result^^0 6
-,^^6 7
-player^^8 >
-)^^> ?
-;^^? @
-}__ 
-else`` 
-{aa 
-resultbb 
-=bb  
-LoginResultbb! ,
-.bb, -%
-ExisteJugadorNoVerificadobb- F
-;bbF G
-Callbackdd  
-.dd  !
-GetLoginResultdd! /
-(dd/ 0
-resultdd0 6
-,dd6 7
-playerdd8 >
-)dd> ?
-;dd? @
-}ee 
-}gg 
-}hh 
-elseii 
-{jj 
-Callbackll 
-.ll 
-GetLoginResultll '
-(ll' (
-resultll( .
-,ll. /
-playerll0 6
-)ll6 7
-;ll7 8
-}mm 
-}nn 	
-publicpp 
-voidpp 
-
-SavePlayerpp 
-(pp 
-Dominiopp &
-.pp& '
-Jugadorpp' .
-playerpp/ 5
-)pp5 6
-{qq 	
-JugadorDataManagerrr 
-playerDataManagerrr 0
-=rr1 2
-newrr3 6
-JugadorDataManagerrr7 I
-(rrI J
-)rrJ K
-;rrK L
-inttt 
-columnasAfectadastt !
-=tt" #
-$numtt$ %
-;tt% &
-
-SaveResultuu 
-
-saveResultuu !
-;uu! "
-
-MailResultvv 
-
-mailResultvv !
-=vv" #
-
-MailResultvv$ .
-.vv. /
-	SendErrorvv/ 8
-;vv8 9
-boolxx 
-nicknameExistsxx 
-=xx  !
-playerDataManagerxx" 3
-.xx3 4
-CheckNicknamexx4 A
-(xxA B
-playerxxB H
-.xxH I
-ApodoxxI N
-)xxN O
-;xxO P
-ifzz 
-(zz 
-!zz 
-nicknameExistszz 
-)zz  
-{{{ 
-bool|| 
-emailExists||  
-=||! "
-playerDataManager||# 4
-.||4 5
-
-CheckEmail||5 ?
-(||? @
-player||@ F
-.||F G
-CorreoElectronico||G X
-)||X Y
-;||Y Z
-if~~ 
-(~~ 
-!~~ 
-emailExists~~  
-)~~  !
-{ 
-
-DataAccess
-ÄÄ 
+IdLenguajeWW# -
+=WW. /
+searchedPlayerWW0 >
+.WW> ?
+idiomaWW? E
+;WWE F
+playerXX "
+.XX" #
+	IdJugadorXX# ,
+=XX- .
+searchedPlayerXX/ =
+.XX= >
+	idJugadorXX> G
+;XXG H
+playerYY "
+.YY" #
+ContraseniaYY# .
+=YY/ 0
+searchedPlayerYY1 ?
+.YY? @
+contraseniaYY@ K
+;YYK L
+playerZZ "
+.ZZ" #
+CorreoElectronicoZZ# 4
+=ZZ5 6
+searchedPlayerZZ7 E
+.ZZE F
+correoElectronicoZZF W
+;ZZW X
+player[[ "
+.[[" # 
+PreguntaRecuperacion[[# 7
+=[[8 9
+searchedPlayer[[: H
+.[[H I 
+preguntaRecuperacion[[I ]
+;[[] ^
+PlayerCallback]] *
+.]]* + 
+GetPlayerLoginResult]]+ ?
+(]]? @
+result]]@ F
+,]]F G
+player]]H N
+)]]N O
+;]]O P
+}^^ 
+else__ 
+{`` 
+resultaa "
+=aa# $
+LoginResultaa% 0
+.aa0 1
+LOGGED_PLAYERaa1 >
+;aa> ?
+PlayerCallbackcc *
+.cc* + 
+GetPlayerLoginResultcc+ ?
+(cc? @
+resultcc@ F
+,ccF G
+playerccH N
+)ccN O
+;ccO P
+}dd 
+}ee 
+elseff 
+{gg 
+resulthh 
+=hh  
+LoginResulthh! ,
+.hh, -
+PasswordIncorrectohh- ?
+;hh? @
+PlayerCallbackjj &
+.jj& ' 
+GetPlayerLoginResultjj' ;
+(jj; <
+resultjj< B
+,jjB C
+playerjjD J
+)jjJ K
+;jjK L
+}kk 
+}ll 
+elsemm 
+{nn 
+CheckBanoo 
+(oo 
+playeroo #
+)oo# $
+;oo$ %
+}pp 
+}qq 
+elserr 
+{ss 
+PlayerCallbacktt 
+.tt  
+GetPlayerLoginResulttt 3
+(tt3 4
+resulttt4 :
+,tt: ;
+playertt< B
+)ttB C
+;ttC D
+}uu 
+}vv 	
+privatexx 
+voidxx 
+CheckBanxx 
+(xx 
+Jugadorxx %
+playerxx& ,
+)xx, -
+{yy 	
+LoginResultzz 
+resultzz 
+;zz 
+JugadorDataManager{{ 
+jugadorManager{{ -
+={{. /
+new{{0 3
+JugadorDataManager{{4 F
+({{F G
+){{G H
+;{{H I
+if|| 
+(|| 
+jugadorDataManager|| "
+.||" #
+CheckBannedState||# 3
+(||3 4
+player||4 :
+.||: ;
+Apodo||; @
+)||@ A
+)||A B
+{}} 
+result~~ 
+=~~ 
+LoginResult~~ $
+.~~$ %
+	EsBaneado~~% .
+;~~. /
+PlayerCallback
+ÄÄ 
 .
-ÄÄ 
-Jugador
-ÄÄ &
-	newPlayer
-ÄÄ' 0
-=
-ÄÄ1 2
-new
-ÄÄ3 6
-
-DataAccess
-ÄÄ7 A
-.
-ÄÄA B
-Jugador
-ÄÄB I
-{
-ÅÅ 
-apodo
-ÇÇ 
-=
-ÇÇ 
-player
-ÇÇ  &
-.
-ÇÇ& '
-Apodo
-ÇÇ' ,
-,
-ÇÇ, -
-contrasenia
-ÉÉ #
-=
-ÉÉ$ %
-hashText
-ÉÉ& .
-.
-ÉÉ. /
-
-TextToHash
-ÉÉ/ 9
+ÄÄ "
+GetPlayerLoginResult
+ÄÄ 3
 (
-ÉÉ9 :
+ÄÄ3 4
+result
+ÄÄ4 :
+,
+ÄÄ: ;
 player
-ÉÉ: @
-.
-ÉÉ@ A
-Contrasenia
-ÉÉA L
+ÄÄ< B
 )
-ÉÉL M
-,
-ÉÉM N
-correoElectronico
-ÑÑ )
-=
-ÑÑ* +
-player
-ÑÑ, 2
-.
-ÑÑ2 3
-CorreoElectronico
-ÑÑ3 D
-,
-ÑÑD E
-status
-ÖÖ 
-=
-ÖÖ  
-ACTIVATION_STATE
-ÖÖ! 1
-,
-ÖÖ1 2#
-respuestaConfirmacion
-ÜÜ -
-=
-ÜÜ. /
-player
-ÜÜ0 6
-.
-ÜÜ6 7#
-RespuestaConfirmacion
-ÜÜ7 L
-,
-ÜÜL M"
-preguntaRecuperacion
-áá ,
-=
-áá- .
-player
-áá/ 5
-.
-áá5 6"
-PreguntaRecuperacion
-áá6 J
-,
-ááJ K
-pinConfirmacion
-àà '
-=
-àà( )
-player
-àà* 0
-.
-àà0 1
-PinConfirmacion
-àà1 @
-,
-àà@ A
-	idCreador
-ââ !
-=
-ââ" #
-$num
-ââ$ %
-,
-ââ% &
-idioma
-ää 
-=
-ää  
-player
-ää! '
-.
-ää' (
-
-IdLenguaje
-ää( 2
+ÄÄB C
+;
+ÄÄC D
 }
-ãã 
-;
-ãã  
-JugadorDataManager
-çç &
-jugadorManager
-çç' 5
-=
-çç6 7
-new
-çç8 ; 
-JugadorDataManager
-çç< N
-(
-ççN O
-)
-ççO P
-;
-ççP Q
-columnasAfectadas
-éé %
-=
-éé& '
-jugadorManager
-éé( 6
-.
-éé6 7
-SaveNewPlayer
-éé7 D
-(
-ééD E
-	newPlayer
-ééE N
-)
-ééN O
-;
-ééO P
-if
-êê 
-(
-êê 
-columnasAfectadas
-êê )
->
-êê* +
-$num
-êê, -
-)
-êê- .
+ÅÅ 
+else
+ÇÇ 
 {
-ëë 
-
-saveResult
-íí "
+ÉÉ 
+result
+ÑÑ 
 =
-íí# $
+ÑÑ 
+LoginResult
+ÑÑ $
+.
+ÑÑ$ %'
+ExisteJugadorNoVerificado
+ÑÑ% >
+;
+ÑÑ> ?
+PlayerCallback
+ÜÜ 
+.
+ÜÜ "
+GetPlayerLoginResult
+ÜÜ 3
+(
+ÜÜ3 4
+result
+ÜÜ4 :
+,
+ÜÜ: ;
+player
+ÜÜ< B
+)
+ÜÜB C
+;
+ÜÜC D
+}
+áá 
+}
+àà 	
+public
+ää 
+void
+ää 
+
+SavePlayer
+ää 
+(
+ää 
+Dominio
+ää &
+.
+ää& '
+Jugador
+ää' .
+player
+ää/ 5
+)
+ää5 6
+{
+ãã 	 
+JugadorDataManager
+åå 
+playerDataManager
+åå 0
+=
+åå1 2
+new
+åå3 6 
+JugadorDataManager
+åå7 I
+(
+ååI J
+)
+ååJ K
+;
+ååK L
 
 SaveResult
-íí% /
-.
-íí/ 0
-JugadorGuardado
-íí0 ?
-;
-íí? @
-Callback
-ìì  
-.
-ìì  !
-GetSaveResult
-ìì! .
-(
-ìì. /
+éé 
 
 saveResult
-ìì/ 9
-,
-ìì9 :
-player
-ìì; A
-)
-ììA B
+éé !
 ;
-ììB C
-System
-ïï 
-.
-ïï 
-Net
-ïï "
-.
-ïï" #
-Mail
-ïï# '
-.
-ïï' (
-MailMessage
-ïï( 3
-mensaje
-ïï4 ;
-=
-ïï< =
-new
-ïï> A
-System
-ïïB H
-.
-ïïH I
-Net
-ïïI L
-.
-ïïL M
-Mail
-ïïM Q
-.
-ïïQ R
-MailMessage
-ïïR ]
-(
-ïï] ^
-)
-ïï^ _
-;
-ïï_ `
-mensaje
-óó 
-.
-óó  
-To
-óó  "
-.
-óó" #
-Add
-óó# &
-(
-óó& '
-	newPlayer
-óó' 0
-.
-óó0 1
-correoElectronico
-óó1 B
-)
-óóB C
-;
-óóC D
-mensaje
-òò 
-.
-òò  
-Subject
-òò  '
-=
-òò( )
-$str
-òò* O
-+
-òòP Q
-player
-òòR X
-.
-òòX Y
-Apodo
-òòY ^
-;
-òò^ _
-mensaje
-ôô 
-.
-ôô  
-Body
-ôô  $
-=
-ôô% &
-$str
-ôô' .
-+
-ôô/ 0
-player
-ôô1 7
-.
-ôô7 8
-Apodo
-ôô8 =
-+
-ôô> ?
-$str
-ôô@ l
-+
-ôôm n
-$str
-öö S
-+
-ööT U
-	newPlayer
-ööV _
-.
-öö_ `
-pinConfirmacion
-öö` o
-;
-ööo p
-mensaje
-õõ 
-.
-õõ  
-From
-õõ  $
-=
-õõ% &
-new
-õõ' *
-System
-õõ+ 1
-.
-õõ1 2
-Net
-õõ2 5
-.
-õõ5 6
-Mail
-õõ6 :
-.
-õõ: ;
-MailAddress
-õõ; F
-(
-õõF G
-$str
-õõG b
-,
-õõb c
-$str
-õõd {
-)
-õõ{ |
-;
-õõ| }
-System
-ùù 
-.
-ùù 
-Net
-ùù "
-.
-ùù" #
-Mail
-ùù# '
-.
-ùù' (
+éé! "
 
-SmtpClient
-ùù( 2
-cliente
-ùù3 :
-=
-ùù; <
-new
-ùù= @
-System
-ùùA G
-.
-ùùG H
-Net
-ùùH K
-.
-ùùK L
-Mail
-ùùL P
-.
-ùùP Q
-
-SmtpClient
-ùùQ [
-{
-ûû 
-Credentials
-üü '
-=
-üü( )
-new
-üü* -
-System
-üü. 4
-.
-üü4 5
-Net
-üü5 8
-.
-üü8 9
-NetworkCredential
-üü9 J
-(
-üüJ K
-mailUser
-üüK S
-,
-üüS T
-mailPassword
-üüU a
-)
-üüa b
-,
-üüb c
-Port
-††  
-=
-††! "
-$num
-††# &
-,
-††& '
-	EnableSsl
-°° %
-=
-°°& '
-true
-°°( ,
-,
-°°, -
-Host
-¢¢  
-=
-¢¢! "
-$str
-¢¢# 3
-,
-¢¢3 4
-}
-££ 
-;
-££ 
-try
-§§ 
-{
-•• 
-cliente
-¶¶ #
-.
-¶¶# $
-Send
-¶¶$ (
-(
-¶¶( )
-mensaje
-¶¶) 0
-)
-¶¶0 1
-;
-¶¶1 2
-}
-ßß 
-catch
-®® 
-(
-®® 
-System
-®® %
-.
-®®% &
-Net
-®®& )
-.
-®®) *
-Mail
-®®* .
-.
-®®. /
-SmtpException
-®®/ <
-)
-®®< =
-{
-©© 
-Callback
-™™ $
-.
-™™$ %!
-GetResendMailResult
-™™% 8
-(
-™™8 9
+MailResult
+èè 
 
 mailResult
-™™9 C
-,
-™™C D
-player
-™™E K
-.
-™™K L
-Apodo
-™™L Q
-)
-™™Q R
+èè !
 ;
-™™R S
-throw
-´´ !
-new
-´´" %
-System
-´´& ,
-.
-´´, -
-Net
-´´- 0
-.
-´´0 1
-Mail
-´´1 5
-.
-´´5 6
-SmtpException
-´´6 C
-(
-´´C D
-$str´´D Ñ
-)´´Ñ Ö
-;´´Ö Ü
-}
-¨¨ 
-}
-≠≠ 
-else
-ÆÆ 
-{
-ØØ 
-
-saveResult
-∞∞ "
+èè! "
+bool
+ëë 
+nicknameExists
+ëë 
 =
-∞∞# $
-
-SaveResult
-∞∞% /
+ëë  !
+playerDataManager
+ëë" 3
 .
-∞∞/ 0
-ErrorGuardado
-∞∞0 =
-;
-∞∞= >
-Callback
-±±  
-.
-±±  !
-GetSaveResult
-±±! .
-(
-±±. /
-
-saveResult
-±±/ 9
-,
-±±9 :
-player
-±±; A
-)
-±±A B
-;
-±±B C
-}
-≤≤ 
-}
-≥≥ 
-else
-¥¥ 
-{
-µµ 
-
-saveResult
-∂∂ 
-=
-∂∂  
-
-SaveResult
-∂∂! +
-.
-∂∂+ ,
-CorreoExistente
-∂∂, ;
-;
-∂∂; <
-Callback
-∑∑ 
-.
-∑∑ 
-GetSaveResult
-∑∑ *
-(
-∑∑* +
-
-saveResult
-∑∑+ 5
-,
-∑∑5 6
-player
-∑∑7 =
-)
-∑∑= >
-;
-∑∑> ?
-}
-∏∏ 
-}
-ππ 
-else
-∫∫ 
-{
-ªª 
-
-saveResult
-ºº 
-=
-ºº 
-
-SaveResult
-ºº '
-.
-ºº' (
-NicknameExistente
-ºº( 9
-;
-ºº9 :
-Callback
-ΩΩ 
-.
-ΩΩ 
-GetSaveResult
-ΩΩ &
-(
-ΩΩ& '
-
-saveResult
-ΩΩ' 1
-,
-ΩΩ1 2
-player
-ΩΩ3 9
-)
-ΩΩ9 :
-;
-ΩΩ: ;
-}
-ææ 
-}
-øø 	
-public
-¡¡ 
-void
-¡¡ 
-VerifyPlayer
-¡¡  
-(
-¡¡  !
-Dominio
-¡¡! (
-.
-¡¡( )
-Jugador
-¡¡) 0
-player
-¡¡1 7
-)
-¡¡7 8
-{
-¬¬ 	 
-VerificationResult
-√√ 
-	resultado
-√√ (
-=
-√√) * 
-VerificationResult
-√√+ =
-.
-√√= >
-NoExisteJugador
-√√> M
-;
-√√M N 
-JugadorDataManager
-≈≈ 
-jugadorManager
-≈≈ -
-=
-≈≈. /
-new
-≈≈0 3 
-JugadorDataManager
-≈≈4 F
-(
-≈≈F G
-)
-≈≈G H
-;
-≈≈H I
-if
-«« 
-(
-«« 
-jugadorManager
-«« 
-.
-«« 
+ëë3 4
 CheckNickname
-«« ,
+ëë4 A
 (
-««, -
+ëëA B
 player
-««- 3
+ëëB H
 .
-««3 4
+ëëH I
 Apodo
-««4 9
+ëëI N
 )
-««9 :
-)
-««: ;
-{
-»» 
+ëëN O
+;
+ëëO P
 if
-…… 
+ìì 
 (
-…… 
-jugadorManager
-…… "
-.
-……" #
-PinCorrecto
-……# .
-(
-……. /
-player
-……/ 5
-.
-……5 6
-Apodo
-……6 ;
-,
-……; <
-player
-……= C
-.
-……C D
-PinConfirmacion
-……D S
+ìì 
+!
+ìì 
+nicknameExists
+ìì 
 )
-……S T
-)
-……T U
+ìì  
 {
-   
-int
-ÀÀ 
-result
-ÀÀ 
+îî 
+bool
+ïï 
+emailExists
+ïï  
 =
-ÀÀ  
-jugadorManager
-ÀÀ! /
+ïï! "
+playerDataManager
+ïï# 4
 .
-ÀÀ/ 0
-VerifyNewPlayer
-ÀÀ0 ?
-(
-ÀÀ? @
-new
-ÀÀ@ C
+ïï4 5
 
-DataAccess
-ÀÀD N
-.
-ÀÀN O
-Jugador
-ÀÀO V
-{
-ÃÃ 
-apodo
-ÕÕ 
-=
-ÕÕ 
+CheckEmail
+ïï5 ?
+(
+ïï? @
 player
-ÕÕ  &
+ïï@ F
 .
-ÕÕ& '
-Apodo
-ÕÕ' ,
-,
-ÕÕ, -
-pinConfirmacion
-ŒŒ '
-=
-ŒŒ( )
-player
-ŒŒ* 0
-.
-ŒŒ0 1
-PinConfirmacion
-ŒŒ1 @
-,
-ŒŒ@ A
-}
-œœ 
-)
-œœ 
-;
-œœ 
-if
-—— 
-(
-—— 
-result
-—— 
->
-——  
-$num
-——! "
-)
-——" #
-{
-““ 
-	resultado
-”” !
-=
-””" # 
-VerificationResult
-””$ 6
-.
-””6 7"
-VerificacionExistosa
-””7 K
-;
-””K L
-}
-‘‘ 
-}
-’’ 
-else
-÷÷ 
-{
-◊◊ 
-	resultado
-ÿÿ 
-=
-ÿÿ  
-VerificationResult
-ÿÿ  2
-.
-ÿÿ2 3
-PinIncorrecto
-ÿÿ3 @
-;
-ÿÿ@ A
-}
-ŸŸ 
-}
-⁄⁄ 
-else
-€€ 
-{
-‹‹ 
-	resultado
-›› 
-=
-››  
-VerificationResult
-›› .
-.
-››. /
-NoExisteJugador
-››/ >
-;
-››> ?
-}
-ﬁﬁ 
-Callback
-‡‡ 
-.
-‡‡ 
-GetVerifyResult
-‡‡ $
-(
-‡‡$ %
-	resultado
-‡‡% .
-)
-‡‡. /
-;
-‡‡/ 0
-}
-·· 	
-public
-„„ 
-void
-„„ 
-SendMail
-„„ 
-(
-„„ 
-Jugador
-„„ $
-player
-„„% +
-)
-„„+ ,
-{
-‰‰ 	
-
-MailResult
-ÂÂ 
-mailSuccesResult
-ÂÂ '
-;
-ÂÂ' (
-System
-ÁÁ 
-.
-ÁÁ 
-Net
-ÁÁ 
-.
-ÁÁ 
-Mail
-ÁÁ 
-.
-ÁÁ 
-MailMessage
-ÁÁ '
-mailMesagge
-ÁÁ( 3
-=
-ÁÁ4 5
-new
-ÁÁ6 9
-System
-ÁÁ: @
-.
-ÁÁ@ A
-Net
-ÁÁA D
-.
-ÁÁD E
-Mail
-ÁÁE I
-.
-ÁÁI J
-MailMessage
-ÁÁJ U
-(
-ÁÁU V
-)
-ÁÁV W
-;
-ÁÁW X
-mailMesagge
-ÈÈ 
-.
-ÈÈ 
-To
-ÈÈ 
-.
-ÈÈ 
-Add
-ÈÈ 
-(
-ÈÈ 
-player
-ÈÈ %
-.
-ÈÈ% &
+ïïF G
 CorreoElectronico
-ÈÈ& 7
+ïïG X
 )
-ÈÈ7 8
+ïïX Y
 ;
-ÈÈ8 9
-mailMesagge
-ÍÍ 
-.
-ÍÍ 
-Subject
-ÍÍ 
-=
-ÍÍ  !
-$str
-ÍÍ" G
-+
-ÍÍH I
-player
-ÍÍJ P
-.
-ÍÍP Q
-Apodo
-ÍÍQ V
-;
-ÍÍV W
-mailMesagge
-ÎÎ 
-.
-ÎÎ 
-Body
-ÎÎ 
-=
-ÎÎ 
-$str
-ÎÎ &
-+
-ÎÎ' (
-player
-ÎÎ) /
-.
-ÎÎ/ 0
-Apodo
-ÎÎ0 5
-+
-ÎÎ6 7
-$str
-ÎÎ8 d
-+
-ÎÎe f
-$str
-ÏÏ G
-+
-ÏÏH I
-player
-ÏÏJ P
-.
-ÏÏP Q
-PinConfirmacion
-ÏÏQ `
-;
-ÏÏ` a
-mailMesagge
-ÌÌ 
-.
-ÌÌ 
-From
-ÌÌ 
-=
-ÌÌ 
-new
-ÌÌ "
-System
-ÌÌ# )
-.
-ÌÌ) *
-Net
-ÌÌ* -
-.
-ÌÌ- .
-Mail
-ÌÌ. 2
-.
-ÌÌ2 3
-MailAddress
-ÌÌ3 >
-(
-ÌÌ> ?
-$str
-ÌÌ? Z
-,
-ÌÌZ [
-$str
-ÌÌ\ s
-)
-ÌÌs t
-;
-ÌÌt u
-System
-ÔÔ 
-.
-ÔÔ 
-Net
-ÔÔ 
-.
-ÔÔ 
-Mail
-ÔÔ 
-.
-ÔÔ 
-
-SmtpClient
-ÔÔ &
-client
-ÔÔ' -
-=
-ÔÔ. /
-new
-ÔÔ0 3
-System
-ÔÔ4 :
-.
-ÔÔ: ;
-Net
-ÔÔ; >
-.
-ÔÔ> ?
-Mail
-ÔÔ? C
-.
-ÔÔC D
-
-SmtpClient
-ÔÔD N
-{
- 
-Credentials
-ÒÒ 
-=
-ÒÒ 
-new
-ÒÒ !
-System
-ÒÒ" (
-.
-ÒÒ( )
-Net
-ÒÒ) ,
-.
-ÒÒ, -
-NetworkCredential
-ÒÒ- >
-(
-ÒÒ> ?
-mailUser
-ÒÒ? G
-,
-ÒÒG H
-mailPassword
-ÒÒI U
-)
-ÒÒU V
-,
-ÒÒV W
-Port
-ÚÚ 
-=
-ÚÚ 
-$num
-ÚÚ 
-,
-ÚÚ 
-	EnableSsl
-ÛÛ 
-=
-ÛÛ 
-true
-ÛÛ  
-,
-ÛÛ  !
-Host
-ÙÙ 
-=
-ÙÙ 
-$str
-ÙÙ '
-,
-ÙÙ' (
-}
-ıı 
-;
-ıı 
-try
-ˆˆ 
-{
-˜˜ 
-client
-¯¯ 
-.
-¯¯ 
-Send
-¯¯ 
-(
-¯¯ 
-mailMesagge
-¯¯ '
-)
-¯¯' (
-;
-¯¯( )
-mailSuccesResult
-˘˘  
-=
-˘˘! "
-
-MailResult
-˘˘# -
-.
-˘˘- .
-MailSend
-˘˘. 6
-;
-˘˘6 7
-Callback
-˙˙ 
-.
-˙˙ !
-GetResendMailResult
-˙˙ ,
-(
-˙˙, -
-mailSuccesResult
-˙˙- =
-,
-˙˙= >
-player
-˙˙? E
-.
-˙˙E F
-Apodo
-˙˙F K
-)
-˙˙K L
-;
-˙˙L M
-}
-˚˚ 
-catch
-¸¸ 
-(
-¸¸ 
-System
-¸¸ 
-.
-¸¸ 
-Net
-¸¸ 
-.
-¸¸ 
-Mail
-¸¸ "
-.
-¸¸" #
-SmtpException
-¸¸# 0
-)
-¸¸0 1
-{
-˝˝ 
-mailSuccesResult
-˛˛  
-=
-˛˛! "
-
-MailResult
-˛˛# -
-.
-˛˛- .
-	SendError
-˛˛. 7
-;
-˛˛7 8
-Callback
-ˇˇ 
-.
-ˇˇ !
-GetResendMailResult
-ˇˇ ,
-(
-ˇˇ, -
-mailSuccesResult
-ˇˇ- =
-,
-ˇˇ= >
-player
-ˇˇ? E
-.
-ˇˇE F
-Apodo
-ˇˇF K
-)
-ˇˇK L
-;
-ˇˇL M
-throw
-ÄÄ 
-new
-ÄÄ 
-System
-ÄÄ  
-.
-ÄÄ  !
-Net
-ÄÄ! $
-.
-ÄÄ$ %
-Mail
-ÄÄ% )
-.
-ÄÄ) *
-SmtpException
-ÄÄ* 7
-(
-ÄÄ7 8
-$str
-ÄÄ8 x
-)
-ÄÄx y
-;
-ÄÄy z
-}
-ÅÅ 
-}
-ÇÇ 	
-public
-ÑÑ 
-void
-ÑÑ  
-PasswordForgotMail
-ÑÑ &
-(
-ÑÑ& '
-string
-ÑÑ' -
-actualNickname
-ÑÑ. <
-)
-ÑÑ< =
-{
-ÖÖ 	 
-JugadorDataManager
-ÜÜ 
-jugadorManager
-ÜÜ -
-=
-ÜÜ. /
-new
-ÜÜ0 3 
-JugadorDataManager
-ÜÜ4 F
-(
-ÜÜF G
-)
-ÜÜG H
-;
-ÜÜH I
-
-MailResult
-áá 
-mailSuccesResult
-áá '
-;
-áá' (
-string
-àà 
-securityQuestion
-àà #
-=
-àà$ %
-$str
-àà& )
-;
-àà) *
+ïïY Z
 if
-ää 
+óó 
 (
-ää 
-jugadorManager
-ää 
-.
-ää 
-CheckNickname
-ää ,
-(
-ää, -
-actualNickname
-ää- ;
+óó 
+!
+óó 
+emailExists
+óó  
 )
-ää; <
-)
-ää< =
+óó  !
 {
-ãã 
+òò 
+System
+ôô 
+.
+ôô 
+Net
+ôô 
+.
+ôô 
+Mail
+ôô #
+.
+ôô# $
+MailMessage
+ôô$ /
+mensaje
+ôô0 7
+=
+ôô8 9
+new
+ôô: =
+System
+ôô> D
+.
+ôôD E
+Net
+ôôE H
+.
+ôôH I
+Mail
+ôôI M
+.
+ôôM N
+MailMessage
+ôôN Y
+(
+ôôY Z
+)
+ôôZ [
+;
+ôô[ \
+mensaje
+õõ 
+.
+õõ 
+To
+õõ 
+.
+õõ 
+Add
+õõ "
+(
+õõ" #
+player
+õõ# )
+.
+õõ) *
+CorreoElectronico
+õõ* ;
+)
+õõ; <
+;
+õõ< =
+mensaje
+úú 
+.
+úú 
+Subject
+úú #
+=
+úú$ %
+$str
+úú& E
++
+úúF G
+player
+úúH N
+.
+úúN O
+Apodo
+úúO T
+;
+úúT U
+mensaje
+ùù 
+.
+ùù 
+Body
+ùù  
+=
+ùù! "
+$str
+ùù# +
++
+ùù, -
+player
+ùù. 4
+.
+ùù4 5
+Apodo
+ùù5 :
++
+ùù; <
+$str
+ùù= t
++
+ùùu v
+$str
+ûû G
++
+ûûH I
+player
+ûûJ P
+.
+ûûP Q
+PinConfirmacion
+ûûQ `
+;
+ûû` a
+mensaje
+üü 
+.
+üü 
+From
+üü  
+=
+üü! "
+new
+üü# &
+System
+üü' -
+.
+üü- .
+Net
+üü. 1
+.
+üü1 2
+Mail
+üü2 6
+.
+üü6 7
+MailAddress
+üü7 B
+(
+üüB C
+$str
+üüC ^
+,
+üü^ _
+$str
+üü` w
+)
+üüw x
+;
+üüx y
+System
+°° 
+.
+°° 
+Net
+°° 
+.
+°° 
+Mail
+°° #
+.
+°°# $
+
+SmtpClient
+°°$ .
+cliente
+°°/ 6
+=
+°°7 8
+new
+°°9 <
+System
+°°= C
+.
+°°C D
+Net
+°°D G
+.
+°°G H
+Mail
+°°H L
+.
+°°L M
+
+SmtpClient
+°°M W
+{
+¢¢ 
+Credentials
+££ #
+=
+££$ %
+new
+££& )
+System
+££* 0
+.
+££0 1
+Net
+££1 4
+.
+££4 5
+NetworkCredential
+££5 F
+(
+££F G
+mailUser
+££G O
+,
+££O P
+mailPassword
+££Q ]
+)
+££] ^
+,
+££^ _
+Port
+§§ 
+=
+§§ 
+$num
+§§ "
+,
+§§" #
+	EnableSsl
+•• !
+=
+••" #
+true
+••$ (
+,
+••( )
+Host
+¶¶ 
+=
+¶¶ 
+$str
+¶¶ /
+,
+¶¶/ 0
+}
+ßß 
+;
+ßß 
+try
+®® 
+{
+©© 
+
+mailResult
+™™ "
+=
+™™# $
+
+MailResult
+™™% /
+.
+™™/ 0
+MailSend
+™™0 8
+;
+™™8 9
+cliente
+´´ 
+.
+´´  
+Send
+´´  $
+(
+´´$ %
+mensaje
+´´% ,
+)
+´´, -
+;
+´´- .
+}
+¨¨ 
+catch
+≠≠ 
+(
+≠≠ 
+System
+≠≠ !
+.
+≠≠! "
+Net
+≠≠" %
+.
+≠≠% &
+Mail
+≠≠& *
+.
+≠≠* +
+SmtpException
+≠≠+ 8
+)
+≠≠8 9
+{
+ÆÆ 
+
+mailResult
+ØØ "
+=
+ØØ# $
+
+MailResult
+ØØ% /
+.
+ØØ/ 0
+	SendError
+ØØ0 9
+;
+ØØ9 :
+PlayerCallback
+∞∞ &
+.
+∞∞& '!
+GetResendMailResult
+∞∞' :
+(
+∞∞: ;
+
+mailResult
+∞∞; E
+,
+∞∞E F
+player
+∞∞G M
+.
+∞∞M N
+Apodo
+∞∞N S
+)
+∞∞S T
+;
+∞∞T U
+}
+±± 
+if
+≤≤ 
+(
+≤≤ 
+
+mailResult
+≤≤ "
+==
+≤≤# %
+
+MailResult
+≤≤& 0
+.
+≤≤0 1
+MailSend
+≤≤1 9
+)
+≤≤9 :
+{
+≥≥ 
+SaveNewPlayer
+¥¥ %
+(
+¥¥% &
+player
+¥¥& ,
+)
+¥¥, -
+;
+¥¥- .
+}
+µµ 
+}
+∂∂ 
+else
+∑∑ 
+{
+∏∏ 
+
+saveResult
+ππ 
+=
+ππ  
+
+SaveResult
+ππ! +
+.
+ππ+ ,
+CorreoExistente
+ππ, ;
+;
+ππ; <
+PlayerCallback
+∫∫ "
+.
+∫∫" #
+GetSaveResult
+∫∫# 0
+(
+∫∫0 1
+
+saveResult
+∫∫1 ;
+,
+∫∫; <
+player
+∫∫= C
+)
+∫∫C D
+;
+∫∫D E
+}
+ªª 
+}
+ºº 
+else
+ΩΩ 
+{
+ææ 
+
+saveResult
+øø 
+=
+øø 
+
+SaveResult
+øø '
+.
+øø' (
+NicknameExistente
+øø( 9
+;
+øø9 :
+PlayerCallback
+¿¿ 
+.
+¿¿ 
+GetSaveResult
+¿¿ ,
+(
+¿¿, -
+
+saveResult
+¿¿- 7
+,
+¿¿7 8
+player
+¿¿9 ?
+)
+¿¿? @
+;
+¿¿@ A
+}
+¡¡ 
+}
+¬¬ 	
+private
+ƒƒ 
+void
+ƒƒ 
+SaveNewPlayer
+ƒƒ "
+(
+ƒƒ" #
+Jugador
+ƒƒ# *
+player
+ƒƒ+ 1
+)
+ƒƒ1 2
+{
+≈≈ 	
+
+SaveResult
+∆∆ 
+
+saveResult
+∆∆ !
+;
+∆∆! "
 
 DataAccess
-åå 
+«« 
 .
-åå 
+«« 
 Jugador
-åå "
-player
-åå# )
+«« 
+	newPlayer
+«« (
 =
-åå* +
-jugadorManager
-åå, :
-.
-åå: ;!
-ChangePinByNickname
-åå; N
-(
-ååN O
-actualNickname
-ååO ]
-)
-åå] ^
-;
-åå^ _
-securityQuestion
-çç  
-=
-çç! "
-player
-çç# )
-.
-çç) *"
-preguntaRecuperacion
-çç* >
-;
-çç> ?
-System
-èè 
-.
-èè 
-Net
-èè 
-.
-èè 
-Mail
-èè 
-.
-èè  
-MailMessage
-èè  +
-mailMesagge
-èè, 7
-=
-èè8 9
+««) *
 new
-èè: =
-System
-èè> D
+««+ .
+
+DataAccess
+««/ 9
 .
-èèD E
-Net
-èèE H
-.
-èèH I
-Mail
-èèI M
-.
-èèM N
-MailMessage
-èèN Y
-(
-èèY Z
-)
-èèZ [
-;
-èè[ \
-mailMesagge
-ëë 
-.
-ëë 
-To
-ëë 
-.
-ëë 
-Add
-ëë "
-(
-ëë" #
-player
-ëë# )
-.
-ëë) *
-correoElectronico
-ëë* ;
-)
-ëë; <
-;
-ëë< =
-mailMesagge
-íí 
-.
-íí 
-Subject
-íí #
-=
-íí$ %
-$str
-íí& K
-+
-ííL M
-player
-ííN T
-.
-ííT U
+««9 :
+Jugador
+««: A
+{
+»» 
 apodo
-ííU Z
-;
-ííZ [
-mailMesagge
-ìì 
-.
-ìì 
-Body
-ìì  
+…… 
 =
-ìì! "
-$str
-ìì# *
-+
-ìì+ ,
+…… 
 player
-ìì- 3
+…… 
 .
-ìì3 4
-apodo
-ìì4 9
-+
-ìì: ;
-$str
-ìì< j
-+
-ììk l
-$str
-îî \
-+
-îî] ^
-player
-îî_ e
-.
-îîe f
-pinConfirmacion
-îîf u
-;
-îîu v
-mailMesagge
-ïï 
-.
-ïï 
-From
-ïï  
+…… 
+Apodo
+…… $
+,
+……$ %
+contrasenia
+   
 =
-ïï! "
-new
-ïï# &
-System
-ïï' -
-.
-ïï- .
-Net
-ïï. 1
-.
-ïï1 2
-Mail
-ïï2 6
-.
-ïï6 7
-MailAddress
-ïï7 B
-(
-ïïB C
-$str
-ïïC ^
-,
-ïï^ _
-$str
-ïï` w
-)
-ïïw x
-;
-ïïx y
-System
-óó 
-.
-óó 
-Net
-óó 
-.
-óó 
-Mail
-óó 
-.
-óó  
-
-SmtpClient
-óó  *
-client
-óó+ 1
-=
-óó2 3
-new
-óó4 7
-System
-óó8 >
-.
-óó> ?
-Net
-óó? B
-.
-óóB C
-Mail
-óóC G
-.
-óóG H
-
-SmtpClient
-óóH R
-{
-òò 
-Credentials
-ôô 
-=
-ôô  !
-new
-ôô" %
-System
-ôô& ,
-.
-ôô, -
-Net
-ôô- 0
-.
-ôô0 1
-NetworkCredential
-ôô1 B
-(
-ôôB C
-mailUser
-ôôC K
-,
-ôôK L
-mailPassword
-ôôM Y
-)
-ôôY Z
-,
-ôôZ [
-Port
-öö 
-=
-öö 
-$num
-öö 
-,
-öö 
-	EnableSsl
-õõ 
-=
-õõ 
-true
-õõ  $
-,
-õõ$ %
-Host
-úú 
-=
-úú 
-$str
-úú +
-,
-úú+ ,
-}
-ùù 
-;
-ùù 
-try
-ûû 
-{
-üü 
-client
-†† 
-.
-†† 
-Send
-†† 
-(
-††  
-mailMesagge
-††  +
-)
-††+ ,
-;
-††, -
-mailSuccesResult
-°° $
-=
-°°% &
-
-MailResult
-°°' 1
-.
-°°1 2
-MailSend
-°°2 :
-;
-°°: ;
-Callback
-¢¢ 
-.
-¢¢ 
-GetMailResult
-¢¢ *
-(
-¢¢* +
-mailSuccesResult
-¢¢+ ;
-,
-¢¢; <
-actualNickname
-¢¢= K
-,
-¢¢K L
-securityQuestion
-¢¢M ]
-)
-¢¢] ^
-;
-¢¢^ _
-}
-££ 
-catch
-§§ 
-(
-§§ 
-System
-§§ 
-.
-§§ 
-Net
-§§ !
-.
-§§! "
-Mail
-§§" &
-.
-§§& '
-SmtpException
-§§' 4
-)
-§§4 5
-{
-•• 
-mailSuccesResult
-¶¶ $
-=
-¶¶% &
-
-MailResult
-¶¶' 1
-.
-¶¶1 2
-	SendError
-¶¶2 ;
-;
-¶¶; <
-Callback
-ßß 
-.
-ßß 
-GetMailResult
-ßß *
-(
-ßß* +
-mailSuccesResult
-ßß+ ;
-,
-ßß; <
-actualNickname
-ßß= K
-,
-ßßK L
-securityQuestion
-ßßM ]
-)
-ßß] ^
-;
-ßß^ _
-throw
-®® 
-new
-®® 
-System
-®® $
-.
-®®$ %
-Net
-®®% (
-.
-®®( )
-Mail
-®®) -
-.
-®®- .
-SmtpException
-®®. ;
-(
-®®; <
-$str
-®®< |
-)
-®®| }
-;
-®®} ~
-}
-©© 
-}
-™™ 
-else
-´´ 
-{
-¨¨ 
-mailSuccesResult
-≠≠  
-=
-≠≠! "
-
-MailResult
-≠≠# -
-.
-≠≠- .
-UnknownPlayer
-≠≠. ;
-;
-≠≠; <
-Callback
-ÆÆ 
-.
-ÆÆ 
-GetMailResult
-ÆÆ &
-(
-ÆÆ& '
-mailSuccesResult
-ÆÆ' 7
-,
-ÆÆ7 8
-actualNickname
-ÆÆ9 G
-,
-ÆÆG H
-securityQuestion
-ÆÆI Y
-)
-ÆÆY Z
-;
-ÆÆZ [
-}
-ØØ 
-}
-∞∞ 	
-public
-≤≤ 
-void
-≤≤ 
-	VerifyPin
-≤≤ 
-(
-≤≤ 
-string
-≤≤ $
-actualNickname
-≤≤% 3
-,
-≤≤3 4
-string
-≤≤5 ;
-	playerPin
-≤≤< E
-,
-≤≤E F
-string
-≤≤G M
-
-answerText
-≤≤N X
-)
-≤≤X Y
-{
-≥≥ 	
-	PinResult
-¥¥ 
-	pinResult
-¥¥ 
-=
-¥¥  !
-	PinResult
-¥¥" +
-.
-¥¥+ ,
-
-UnknownPin
-¥¥, 6
-;
-¥¥6 7
-if
-∂∂ 
-(
-∂∂  
-jugadorDataManager
-∂∂ "
-.
-∂∂" #
-PinCorrecto
-∂∂# .
-(
-∂∂. /
-actualNickname
-∂∂/ =
-,
-∂∂= >
-	playerPin
-∂∂? H
-)
-∂∂H I
-)
-∂∂I J
-{
-∑∑ 
-if
-∏∏ 
-(
-∏∏  
-jugadorDataManager
-∏∏ &
-.
-∏∏& '
-CorrectAnswer
-∏∏' 4
-(
-∏∏4 5
-actualNickname
-∏∏5 C
-,
-∏∏C D
-
-answerText
-∏∏E O
-)
-∏∏O P
-)
-∏∏P Q
-{
-ππ 
-	pinResult
-∫∫ 
-=
-∫∫ 
-	PinResult
-∫∫  )
-.
-∫∫) *
-VerifiedPin
-∫∫* 5
-;
-∫∫5 6
-}
-ªª 
-else
-ºº 
-{
-ΩΩ 
-	pinResult
-ææ 
-=
-ææ 
-	PinResult
-ææ  )
-.
-ææ) *
-WrongAnswer
-ææ* 5
-;
-ææ5 6
-}
-øø 
-}
-¿¿ 
-Callback
-¬¬ 
-.
-¬¬ 
-GetPinResult
-¬¬ !
-(
-¬¬! "
-	pinResult
-¬¬" +
-,
-¬¬+ ,
-actualNickname
-¬¬- ;
-)
-¬¬; <
-;
-¬¬< =
-}
-√√ 	
-public
-≈≈ 
-void
-≈≈ 
-ChangePassword
-≈≈ "
-(
-≈≈" #
-string
-≈≈# )
-userNickname
-≈≈* 6
-,
-≈≈6 7
-string
-≈≈8 >
-password
-≈≈? G
-)
-≈≈G H
-{
-∆∆ 	"
-PasswordChangeResult
-««  
-changeResult
-««! -
-=
-««. /"
-PasswordChangeResult
-««0 D
-.
-««D E
-ErrorChanging
-««E R
-;
-««R S
-if
-…… 
-(
-……  
-jugadorDataManager
-…… "
-.
-……" #
-CheckNickname
-……# 0
-(
-……0 1
-userNickname
-……1 =
-)
-……= >
-)
-……> ?
-{
-   
-string
-ÀÀ 
-newPassword
-ÀÀ "
-=
-ÀÀ# $
+   
 hashText
-ÀÀ% -
+   &
 .
-ÀÀ- .
+  & '
 
 TextToHash
-ÀÀ. 8
+  ' 1
 (
-ÀÀ8 9
-password
-ÀÀ9 A
-)
-ÀÀA B
-;
-ÀÀB C
-int
-ÃÃ 
-resultChange
-ÃÃ  
-=
-ÃÃ! " 
-jugadorDataManager
-ÃÃ# 5
+  1 2
+player
+  2 8
 .
-ÃÃ5 6
-ChangePassword
-ÃÃ6 D
-(
-ÃÃD E
-userNickname
-ÃÃE Q
+  8 9
+Contrasenia
+  9 D
+)
+  D E
 ,
-ÃÃQ R
-newPassword
-ÃÃS ^
-)
-ÃÃ^ _
-;
-ÃÃ_ `
-if
-ŒŒ 
-(
-ŒŒ 
-resultChange
-ŒŒ  
->
-ŒŒ! "
-$num
-ŒŒ# $
-)
-ŒŒ$ %
-{
-œœ 
-changeResult
-––  
-=
-––! ""
-PasswordChangeResult
-––# 7
-.
-––7 8
-ChangedPassword
-––8 G
-;
-––G H
-}
-—— 
-}
-”” 
-Callback
-’’ 
-.
-’’ %
-GetPasswordChangeResult
-’’ ,
-(
-’’, -
-changeResult
-’’- 9
-)
-’’9 :
-;
-’’: ;
-}
-◊◊ 	
-public
-ŸŸ 
-void
-ŸŸ 
-GetActualPlayer
-ŸŸ #
-(
-ŸŸ# $
-Jugador
-ŸŸ$ +
-actualPlayer
-ŸŸ, 8
-)
-ŸŸ8 9
-{
-⁄⁄ 	 
-DataObtainedResult
-€€  
-dataObtainedResult
-€€ 1
-=
-€€2 3 
-DataObtainedResult
-€€4 F
-.
-€€F G 
-ErrorObtainingData
-€€G Y
-;
-€€Y Z
-
-DataAccess
-‹‹ 
-.
-‹‹ 
-Jugador
-‹‹ 
-searchedPlayer
-‹‹ -
-=
-‹‹. / 
-jugadorDataManager
-‹‹0 B
-.
-‹‹B C!
-GetPlayerByNickname
-‹‹C V
-(
-‹‹V W
-actualPlayer
-‹‹W c
-.
-‹‹c d
-Apodo
-‹‹d i
-)
-‹‹i j
-;
-‹‹j k
-if
-ﬁﬁ 
-(
-ﬁﬁ 
-searchedPlayer
-ﬁﬁ 
-!=
-ﬁﬁ !
-null
-ﬁﬁ" &
-)
-ﬁﬁ& '
-{
-ﬂﬂ 
-Dominio
-‡‡ 
-.
-‡‡ 
-Jugador
-‡‡ "
-domainSearchedPlayer
-‡‡  4
-=
-‡‡5 6
-new
-‡‡7 :
-Dominio
-‡‡; B
-.
-‡‡B C
-Jugador
-‡‡C J
-{
-·· 
-	IdJugador
-‚‚ 
-=
-‚‚ 
-searchedPlayer
-‚‚  .
-.
-‚‚. /
-	idJugador
-‚‚/ 8
-,
-‚‚8 9
-Apodo
-„„ 
-=
-„„ 
-searchedPlayer
-„„ *
-.
-„„* +
-apodo
-„„+ 0
-,
-„„0 1
-CorreoElectronico
-‰‰ %
-=
-‰‰& '
-searchedPlayer
-‰‰( 6
-.
-‰‰6 7
+  E F
 correoElectronico
-‰‰7 H
-,
-‰‰H I
-Status
-ÂÂ 
+ÀÀ !
 =
-ÂÂ 
-searchedPlayer
-ÂÂ +
+ÀÀ" #
+player
+ÀÀ$ *
 .
-ÂÂ+ ,
+ÀÀ* +
+CorreoElectronico
+ÀÀ+ <
+,
+ÀÀ< =
 status
-ÂÂ, 2
-,
-ÂÂ2 3"
-PreguntaRecuperacion
-ÊÊ (
+ÃÃ 
 =
-ÊÊ) *
-searchedPlayer
-ÊÊ+ 9
-.
-ÊÊ9 :"
-preguntaRecuperacion
-ÊÊ: N
+ÃÃ 
+ACTIVATION_STATE
+ÃÃ )
 ,
-ÊÊN O
+ÃÃ) *#
+respuestaConfirmacion
+ÕÕ %
+=
+ÕÕ& '
+player
+ÕÕ( .
+.
+ÕÕ. /#
+RespuestaConfirmacion
+ÕÕ/ D
+,
+ÕÕD E"
+preguntaRecuperacion
+ŒŒ $
+=
+ŒŒ% &
+player
+ŒŒ' -
+.
+ŒŒ- ."
+PreguntaRecuperacion
+ŒŒ. B
+,
+ŒŒB C
+pinConfirmacion
+œœ 
+=
+œœ  !
+player
+œœ" (
+.
+œœ( )
+PinConfirmacion
+œœ) 8
+,
+œœ8 9
+	idCreador
+–– 
+=
+–– 
+$num
+–– 
+,
+–– 
+idioma
+—— 
+=
+—— 
+player
+—— 
+.
+——  
 
 IdLenguaje
-ÁÁ 
-=
-ÁÁ  
-searchedPlayer
-ÁÁ! /
-.
-ÁÁ/ 0
-idioma
-ÁÁ0 6
+——  *
 }
-ÈÈ 
+““ 
 ;
-ÈÈ  
-dataObtainedResult
-ÍÍ "
+““  
+JugadorDataManager
+‘‘ 
+jugadorManager
+‘‘ -
 =
-ÍÍ# $ 
-DataObtainedResult
-ÍÍ% 7
-.
-ÍÍ7 8
-DataObtained
-ÍÍ8 D
-;
-ÍÍD E
-Callback
-ÎÎ 
-.
-ÎÎ 
-SendActualPlayer
-ÎÎ )
-(
-ÎÎ) * 
-dataObtainedResult
-ÎÎ* <
-,
-ÎÎ< ="
-domainSearchedPlayer
-ÎÎ> R
-)
-ÎÎR S
-;
-ÎÎS T
-}
-ÏÏ 
-else
-ÌÌ 
-{
-ÓÓ 
-Dominio
-ÔÔ 
-.
-ÔÔ 
-Jugador
-ÔÔ 
-emptyPlayer
-ÔÔ  +
-=
-ÔÔ, -
+‘‘. /
 new
-ÔÔ. 1
-Jugador
-ÔÔ2 9
+‘‘0 3 
+JugadorDataManager
+‘‘4 F
 (
-ÔÔ9 :
+‘‘F G
 )
-ÔÔ: ;
+‘‘G H
 ;
-ÔÔ; <
-Callback
- 
+‘‘H I
+int
+’’ 
+columnasAfectadas
+’’ !
+=
+’’" #
+jugadorManager
+’’$ 2
 .
- 
-SendActualPlayer
- )
+’’2 3
+SaveNewPlayer
+’’3 @
 (
-) * 
-dataObtainedResult
-* <
-,
-< =
-emptyPlayer
-> I
+’’@ A
+	newPlayer
+’’A J
 )
-I J
+’’J K
 ;
-J K
-}
-ÒÒ 
-}
-ÙÙ 	$
-IPlayerManagerCallback
-ˆˆ 
-Callback
-ˆˆ '
-{
-˜˜ 	
-get
-¯¯ 
-{
-˘˘ 
-return
-˙˙ 
-OperationContext
-˙˙ '
+’’K L 
+RankingDataManager
+÷÷ 
+rankingData
+÷÷ *
+=
+÷÷+ ,
+new
+÷÷- 0 
+RankingDataManager
+÷÷1 C
+(
+÷÷C D
+)
+÷÷D E
+;
+÷÷E F
+rankingData
+◊◊ 
 .
-˙˙' (
-Current
-˙˙( /
-.
-˙˙/ 0 
-GetCallbackChannel
-˙˙0 B
-<
-˙˙B C$
-IPlayerManagerCallback
-˙˙C Y
+◊◊ 
+NewPlayerRank
+◊◊ %
+(
+◊◊% &
+	newPlayer
+◊◊& /
+)
+◊◊/ 0
+;
+◊◊0 1
+if
+ÿÿ 
+(
+ÿÿ 
+columnasAfectadas
+ÿÿ !
 >
-˙˙Y Z
-(
-˙˙Z [
+ÿÿ" #
+$num
+ÿÿ$ %
 )
-˙˙[ \
+ÿÿ% &
+{
+ŸŸ 
+
+saveResult
+⁄⁄ 
+=
+⁄⁄ 
+
+SaveResult
+⁄⁄ '
+.
+⁄⁄' (
+JugadorGuardado
+⁄⁄( 7
 ;
-˙˙\ ]
+⁄⁄7 8
+PlayerCallback
+€€ 
+.
+€€ 
+GetSaveResult
+€€ ,
+(
+€€, -
+
+saveResult
+€€- 7
+,
+€€7 8
+player
+€€9 ?
+)
+€€? @
+;
+€€@ A
 }
-˚˚ 
+‹‹ 
+else
+›› 
+{
+ﬁﬁ 
+
+saveResult
+ﬂﬂ 
+=
+ﬂﬂ 
+
+SaveResult
+ﬂﬂ '
+.
+ﬂﬂ' (
+ErrorGuardado
+ﬂﬂ( 5
+;
+ﬂﬂ5 6
+PlayerCallback
+‡‡ 
+.
+‡‡ 
+GetSaveResult
+‡‡ ,
+(
+‡‡, -
+
+saveResult
+‡‡- 7
+,
+‡‡7 8
+player
+‡‡9 ?
+)
+‡‡? @
+;
+‡‡@ A
 }
-¸¸ 	
+·· 
 }
-˝˝ 
+‚‚ 	
 public
-ˇˇ 
+‰‰ 
+void
+‰‰ 
+VerifyPlayer
+‰‰  
+(
+‰‰  !
+Dominio
+‰‰! (
+.
+‰‰( )
+Jugador
+‰‰) 0
+player
+‰‰1 7
+)
+‰‰7 8
+{
+ÂÂ 	 
+VerificationResult
+ÊÊ 
+	resultado
+ÊÊ (
+=
+ÊÊ) * 
+VerificationResult
+ÊÊ+ =
+.
+ÊÊ= >
+NoExisteJugador
+ÊÊ> M
+;
+ÊÊM N 
+JugadorDataManager
+ËË 
+jugadorManager
+ËË -
+=
+ËË. /
+new
+ËË0 3 
+JugadorDataManager
+ËË4 F
+(
+ËËF G
+)
+ËËG H
+;
+ËËH I
+if
+ÍÍ 
+(
+ÍÍ 
+jugadorManager
+ÍÍ 
+.
+ÍÍ 
+CheckNickname
+ÍÍ ,
+(
+ÍÍ, -
+player
+ÍÍ- 3
+.
+ÍÍ3 4
+Apodo
+ÍÍ4 9
+)
+ÍÍ9 :
+)
+ÍÍ: ;
+{
+ÎÎ 
+if
+ÏÏ 
+(
+ÏÏ 
+jugadorManager
+ÏÏ "
+.
+ÏÏ" #
+PinCorrecto
+ÏÏ# .
+(
+ÏÏ. /
+player
+ÏÏ/ 5
+.
+ÏÏ5 6
+Apodo
+ÏÏ6 ;
+,
+ÏÏ; <
+player
+ÏÏ= C
+.
+ÏÏC D
+PinConfirmacion
+ÏÏD S
+)
+ÏÏS T
+)
+ÏÏT U
+{
+ÌÌ 
+int
+ÓÓ 
+result
+ÓÓ 
+=
+ÓÓ  
+jugadorManager
+ÓÓ! /
+.
+ÓÓ/ 0
+VerifyNewPlayer
+ÓÓ0 ?
+(
+ÓÓ? @
+new
+ÓÓ@ C
+
+DataAccess
+ÓÓD N
+.
+ÓÓN O
+Jugador
+ÓÓO V
+{
+ÔÔ 
+apodo
+ 
+=
+ 
+player
+  &
+.
+& '
+Apodo
+' ,
+,
+, -
+pinConfirmacion
+ÒÒ '
+=
+ÒÒ( )
+player
+ÒÒ* 0
+.
+ÒÒ0 1
+PinConfirmacion
+ÒÒ1 @
+,
+ÒÒ@ A
+}
+ÚÚ 
+)
+ÚÚ 
+;
+ÚÚ 
+if
+ÙÙ 
+(
+ÙÙ 
+result
+ÙÙ 
+>
+ÙÙ  
+$num
+ÙÙ! "
+)
+ÙÙ" #
+{
+ıı 
+	resultado
+ˆˆ !
+=
+ˆˆ" # 
+VerificationResult
+ˆˆ$ 6
+.
+ˆˆ6 7"
+VerificacionExistosa
+ˆˆ7 K
+;
+ˆˆK L
+}
+˜˜ 
+}
+¯¯ 
+else
+˘˘ 
+{
+˙˙ 
+	resultado
+˚˚ 
+=
+˚˚  
+VerificationResult
+˚˚  2
+.
+˚˚2 3
+PinIncorrecto
+˚˚3 @
+;
+˚˚@ A
+}
+¸¸ 
+}
+˝˝ 
+else
+˛˛ 
+{
+ˇˇ 
+	resultado
+ÄÄ 
+=
+ÄÄ  
+VerificationResult
+ÄÄ .
+.
+ÄÄ. /
+NoExisteJugador
+ÄÄ/ >
+;
+ÄÄ> ?
+}
+ÅÅ 
+PlayerCallback
+ÉÉ 
+.
+ÉÉ 
+GetVerifyResult
+ÉÉ *
+(
+ÉÉ* +
+	resultado
+ÉÉ+ 4
+)
+ÉÉ4 5
+;
+ÉÉ5 6
+}
+ÑÑ 	
+public
+ÜÜ 
+void
+ÜÜ 
+SendMail
+ÜÜ 
+(
+ÜÜ 
+Jugador
+ÜÜ $
+player
+ÜÜ% +
+)
+ÜÜ+ ,
+{
+áá 	
+
+MailResult
+àà 
+mailSuccesResult
+àà '
+;
+àà' (
+System
+ää 
+.
+ää 
+Net
+ää 
+.
+ää 
+Mail
+ää 
+.
+ää 
+MailMessage
+ää '
+mailMesagge
+ää( 3
+=
+ää4 5
+new
+ää6 9
+System
+ää: @
+.
+ää@ A
+Net
+ääA D
+.
+ääD E
+Mail
+ääE I
+.
+ääI J
+MailMessage
+ääJ U
+(
+ääU V
+)
+ääV W
+;
+ääW X
+mailMesagge
+åå 
+.
+åå 
+To
+åå 
+.
+åå 
+Add
+åå 
+(
+åå 
+player
+åå %
+.
+åå% &
+CorreoElectronico
+åå& 7
+)
+åå7 8
+;
+åå8 9
+mailMesagge
+çç 
+.
+çç 
+Subject
+çç 
+=
+çç  !
+$str
+çç" A
++
+ççB C
+player
+ççD J
+.
+ççJ K
+Apodo
+ççK P
+;
+ççP Q
+mailMesagge
+éé 
+.
+éé 
+Body
+éé 
+=
+éé 
+$str
+éé '
++
+éé( )
+player
+éé* 0
+.
+éé0 1
+Apodo
+éé1 6
++
+éé7 8
+$str
+éé9 p
++
+ééq r
+$str
+èè ?
++
+èè@ A
+player
+èèB H
+.
+èèH I
+PinConfirmacion
+èèI X
+;
+èèX Y
+mailMesagge
+êê 
+.
+êê 
+From
+êê 
+=
+êê 
+new
+êê "
+System
+êê# )
+.
+êê) *
+Net
+êê* -
+.
+êê- .
+Mail
+êê. 2
+.
+êê2 3
+MailAddress
+êê3 >
+(
+êê> ?
+$str
+êê? Z
+,
+êêZ [
+$str
+êê\ s
+)
+êês t
+;
+êêt u
+System
+íí 
+.
+íí 
+Net
+íí 
+.
+íí 
+Mail
+íí 
+.
+íí 
+
+SmtpClient
+íí &
+client
+íí' -
+=
+íí. /
+new
+íí0 3
+System
+íí4 :
+.
+íí: ;
+Net
+íí; >
+.
+íí> ?
+Mail
+íí? C
+.
+ííC D
+
+SmtpClient
+ííD N
+{
+ìì 
+Credentials
+îî 
+=
+îî 
+new
+îî !
+System
+îî" (
+.
+îî( )
+Net
+îî) ,
+.
+îî, -
+NetworkCredential
+îî- >
+(
+îî> ?
+mailUser
+îî? G
+,
+îîG H
+mailPassword
+îîI U
+)
+îîU V
+,
+îîV W
+Port
+ïï 
+=
+ïï 
+$num
+ïï 
+,
+ïï 
+	EnableSsl
+ññ 
+=
+ññ 
+true
+ññ  
+,
+ññ  !
+Host
+óó 
+=
+óó 
+$str
+óó '
+,
+óó' (
+}
+òò 
+;
+òò 
+try
+ôô 
+{
+öö 
+client
+õõ 
+.
+õõ 
+Send
+õõ 
+(
+õõ 
+mailMesagge
+õõ '
+)
+õõ' (
+;
+õõ( )
+mailSuccesResult
+úú  
+=
+úú! "
+
+MailResult
+úú# -
+.
+úú- .
+MailSend
+úú. 6
+;
+úú6 7
+PlayerCallback
+ùù 
+.
+ùù !
+GetResendMailResult
+ùù 2
+(
+ùù2 3
+mailSuccesResult
+ùù3 C
+,
+ùùC D
+player
+ùùE K
+.
+ùùK L
+Apodo
+ùùL Q
+)
+ùùQ R
+;
+ùùR S
+}
+ûû 
+catch
+üü 
+(
+üü 
+System
+üü 
+.
+üü 
+Net
+üü 
+.
+üü 
+Mail
+üü "
+.
+üü" #
+SmtpException
+üü# 0
+)
+üü0 1
+{
+†† 
+mailSuccesResult
+°°  
+=
+°°! "
+
+MailResult
+°°# -
+.
+°°- .
+	SendError
+°°. 7
+;
+°°7 8
+PlayerCallback
+¢¢ 
+.
+¢¢ !
+GetResendMailResult
+¢¢ 2
+(
+¢¢2 3
+mailSuccesResult
+¢¢3 C
+,
+¢¢C D
+player
+¢¢E K
+.
+¢¢K L
+Apodo
+¢¢L Q
+)
+¢¢Q R
+;
+¢¢R S
+}
+££ 
+}
+§§ 	
+public
+¶¶ 
+void
+¶¶  
+PasswordForgotMail
+¶¶ &
+(
+¶¶& '
+string
+¶¶' -
+actualNickname
+¶¶. <
+)
+¶¶< =
+{
+ßß 	 
+JugadorDataManager
+®® 
+jugadorManager
+®® -
+=
+®®. /
+new
+®®0 3 
+JugadorDataManager
+®®4 F
+(
+®®F G
+)
+®®G H
+;
+®®H I
+
+MailResult
+©© 
+mailSuccesResult
+©© '
+;
+©©' (
+string
+™™ 
+securityQuestion
+™™ #
+=
+™™$ %
+$str
+™™& )
+;
+™™) *
+if
+¨¨ 
+(
+¨¨ 
+jugadorManager
+¨¨ 
+.
+¨¨ 
+CheckNickname
+¨¨ ,
+(
+¨¨, -
+actualNickname
+¨¨- ;
+)
+¨¨; <
+)
+¨¨< =
+{
+≠≠ 
+
+DataAccess
+ÆÆ 
+.
+ÆÆ 
+Jugador
+ÆÆ "
+player
+ÆÆ# )
+=
+ÆÆ* +
+jugadorManager
+ÆÆ, :
+.
+ÆÆ: ;!
+ChangePinByNickname
+ÆÆ; N
+(
+ÆÆN O
+actualNickname
+ÆÆO ]
+)
+ÆÆ] ^
+;
+ÆÆ^ _
+securityQuestion
+ØØ  
+=
+ØØ! "
+player
+ØØ# )
+.
+ØØ) *"
+preguntaRecuperacion
+ØØ* >
+;
+ØØ> ?
+System
+±± 
+.
+±± 
+Net
+±± 
+.
+±± 
+Mail
+±± 
+.
+±±  
+MailMessage
+±±  +
+mailMesagge
+±±, 7
+=
+±±8 9
+new
+±±: =
+System
+±±> D
+.
+±±D E
+Net
+±±E H
+.
+±±H I
+Mail
+±±I M
+.
+±±M N
+MailMessage
+±±N Y
+(
+±±Y Z
+)
+±±Z [
+;
+±±[ \
+mailMesagge
+≥≥ 
+.
+≥≥ 
+To
+≥≥ 
+.
+≥≥ 
+Add
+≥≥ "
+(
+≥≥" #
+player
+≥≥# )
+.
+≥≥) *
+correoElectronico
+≥≥* ;
+)
+≥≥; <
+;
+≥≥< =
+mailMesagge
+¥¥ 
+.
+¥¥ 
+Subject
+¥¥ #
+=
+¥¥$ %
+$str
+¥¥& K
++
+¥¥L M
+player
+¥¥N T
+.
+¥¥T U
+apodo
+¥¥U Z
+;
+¥¥Z [
+mailMesagge
+µµ 
+.
+µµ 
+Body
+µµ  
+=
+µµ! "
+$str
+µµ# *
++
+µµ+ ,
+player
+µµ- 3
+.
+µµ3 4
+apodo
+µµ4 9
++
+µµ: ;
+$str
+µµ< j
++
+µµk l
+$str
+∂∂ \
++
+∂∂] ^
+player
+∂∂_ e
+.
+∂∂e f
+pinConfirmacion
+∂∂f u
+;
+∂∂u v
+mailMesagge
+∑∑ 
+.
+∑∑ 
+From
+∑∑  
+=
+∑∑! "
+new
+∑∑# &
+System
+∑∑' -
+.
+∑∑- .
+Net
+∑∑. 1
+.
+∑∑1 2
+Mail
+∑∑2 6
+.
+∑∑6 7
+MailAddress
+∑∑7 B
+(
+∑∑B C
+$str
+∑∑C ^
+,
+∑∑^ _
+$str
+∑∑` w
+)
+∑∑w x
+;
+∑∑x y
+System
+ππ 
+.
+ππ 
+Net
+ππ 
+.
+ππ 
+Mail
+ππ 
+.
+ππ  
+
+SmtpClient
+ππ  *
+client
+ππ+ 1
+=
+ππ2 3
+new
+ππ4 7
+System
+ππ8 >
+.
+ππ> ?
+Net
+ππ? B
+.
+ππB C
+Mail
+ππC G
+.
+ππG H
+
+SmtpClient
+ππH R
+{
+∫∫ 
+Credentials
+ªª 
+=
+ªª  !
+new
+ªª" %
+System
+ªª& ,
+.
+ªª, -
+Net
+ªª- 0
+.
+ªª0 1
+NetworkCredential
+ªª1 B
+(
+ªªB C
+mailUser
+ªªC K
+,
+ªªK L
+mailPassword
+ªªM Y
+)
+ªªY Z
+,
+ªªZ [
+Port
+ºº 
+=
+ºº 
+$num
+ºº 
+,
+ºº 
+	EnableSsl
+ΩΩ 
+=
+ΩΩ 
+true
+ΩΩ  $
+,
+ΩΩ$ %
+Host
+ææ 
+=
+ææ 
+$str
+ææ +
+,
+ææ+ ,
+}
+øø 
+;
+øø 
+try
+¿¿ 
+{
+¡¡ 
+client
+¬¬ 
+.
+¬¬ 
+Send
+¬¬ 
+(
+¬¬  
+mailMesagge
+¬¬  +
+)
+¬¬+ ,
+;
+¬¬, -
+mailSuccesResult
+√√ $
+=
+√√% &
+
+MailResult
+√√' 1
+.
+√√1 2
+MailSend
+√√2 :
+;
+√√: ;
+PlayerCallback
+ƒƒ "
+.
+ƒƒ" #
+GetMailResult
+ƒƒ# 0
+(
+ƒƒ0 1
+mailSuccesResult
+ƒƒ1 A
+,
+ƒƒA B
+actualNickname
+ƒƒC Q
+,
+ƒƒQ R
+securityQuestion
+ƒƒS c
+)
+ƒƒc d
+;
+ƒƒd e
+}
+≈≈ 
+catch
+∆∆ 
+(
+∆∆ 
+System
+∆∆ 
+.
+∆∆ 
+Net
+∆∆ !
+.
+∆∆! "
+Mail
+∆∆" &
+.
+∆∆& '
+SmtpException
+∆∆' 4
+)
+∆∆4 5
+{
+«« 
+mailSuccesResult
+»» $
+=
+»»% &
+
+MailResult
+»»' 1
+.
+»»1 2
+	SendError
+»»2 ;
+;
+»»; <
+PlayerCallback
+…… "
+.
+……" #
+GetMailResult
+……# 0
+(
+……0 1
+mailSuccesResult
+……1 A
+,
+……A B
+actualNickname
+……C Q
+,
+……Q R
+securityQuestion
+……S c
+)
+……c d
+;
+……d e
+}
+   
+}
+ÀÀ 
+else
+ÃÃ 
+{
+ÕÕ 
+mailSuccesResult
+ŒŒ  
+=
+ŒŒ! "
+
+MailResult
+ŒŒ# -
+.
+ŒŒ- .
+UnknownPlayer
+ŒŒ. ;
+;
+ŒŒ; <
+PlayerCallback
+œœ 
+.
+œœ 
+GetMailResult
+œœ ,
+(
+œœ, -
+mailSuccesResult
+œœ- =
+,
+œœ= >
+actualNickname
+œœ? M
+,
+œœM N
+securityQuestion
+œœO _
+)
+œœ_ `
+;
+œœ` a
+}
+–– 
+}
+—— 	
+public
+”” 
+void
+”” 
+	VerifyPin
+”” 
+(
+”” 
+string
+”” $
+actualNickname
+””% 3
+,
+””3 4
+string
+””5 ;
+	playerPin
+””< E
+,
+””E F
+string
+””G M
+
+answerText
+””N X
+)
+””X Y
+{
+‘‘ 	
+	PinResult
+’’ 
+	pinResult
+’’ 
+=
+’’  !
+	PinResult
+’’" +
+.
+’’+ ,
+
+UnknownPin
+’’, 6
+;
+’’6 7
+if
+◊◊ 
+(
+◊◊  
+jugadorDataManager
+◊◊ "
+.
+◊◊" #
+PinCorrecto
+◊◊# .
+(
+◊◊. /
+actualNickname
+◊◊/ =
+,
+◊◊= >
+	playerPin
+◊◊? H
+)
+◊◊H I
+)
+◊◊I J
+{
+ÿÿ 
+if
+ŸŸ 
+(
+ŸŸ  
+jugadorDataManager
+ŸŸ &
+.
+ŸŸ& '
+CorrectAnswer
+ŸŸ' 4
+(
+ŸŸ4 5
+actualNickname
+ŸŸ5 C
+,
+ŸŸC D
+
+answerText
+ŸŸE O
+)
+ŸŸO P
+)
+ŸŸP Q
+{
+⁄⁄ 
+	pinResult
+€€ 
+=
+€€ 
+	PinResult
+€€  )
+.
+€€) *
+VerifiedPin
+€€* 5
+;
+€€5 6
+}
+‹‹ 
+else
+›› 
+{
+ﬁﬁ 
+	pinResult
+ﬂﬂ 
+=
+ﬂﬂ 
+	PinResult
+ﬂﬂ  )
+.
+ﬂﬂ) *
+WrongAnswer
+ﬂﬂ* 5
+;
+ﬂﬂ5 6
+}
+‡‡ 
+}
+·· 
+PlayerCallback
+„„ 
+.
+„„ 
+GetPinResult
+„„ '
+(
+„„' (
+	pinResult
+„„( 1
+,
+„„1 2
+actualNickname
+„„3 A
+)
+„„A B
+;
+„„B C
+}
+‰‰ 	
+public
+ÊÊ 
+void
+ÊÊ 
+ChangePassword
+ÊÊ "
+(
+ÊÊ" #
+string
+ÊÊ# )
+userNickname
+ÊÊ* 6
+,
+ÊÊ6 7
+string
+ÊÊ8 >
+password
+ÊÊ? G
+)
+ÊÊG H
+{
+ÁÁ 	"
+PasswordChangeResult
+ËË  
+changeResult
+ËË! -
+=
+ËË. /"
+PasswordChangeResult
+ËË0 D
+.
+ËËD E
+ErrorChanging
+ËËE R
+;
+ËËR S
+if
+ÍÍ 
+(
+ÍÍ  
+jugadorDataManager
+ÍÍ "
+.
+ÍÍ" #
+CheckNickname
+ÍÍ# 0
+(
+ÍÍ0 1
+userNickname
+ÍÍ1 =
+)
+ÍÍ= >
+)
+ÍÍ> ?
+{
+ÎÎ 
+string
+ÏÏ 
+newPassword
+ÏÏ "
+=
+ÏÏ# $
+hashText
+ÏÏ% -
+.
+ÏÏ- .
+
+TextToHash
+ÏÏ. 8
+(
+ÏÏ8 9
+password
+ÏÏ9 A
+)
+ÏÏA B
+;
+ÏÏB C
+int
+ÌÌ 
+resultChange
+ÌÌ  
+=
+ÌÌ! " 
+jugadorDataManager
+ÌÌ# 5
+.
+ÌÌ5 6
+ChangePassword
+ÌÌ6 D
+(
+ÌÌD E
+userNickname
+ÌÌE Q
+,
+ÌÌQ R
+newPassword
+ÌÌS ^
+)
+ÌÌ^ _
+;
+ÌÌ_ `
+if
+ÔÔ 
+(
+ÔÔ 
+resultChange
+ÔÔ  
+>
+ÔÔ! "
+$num
+ÔÔ# $
+)
+ÔÔ$ %
+{
+ 
+changeResult
+ÒÒ  
+=
+ÒÒ! ""
+PasswordChangeResult
+ÒÒ# 7
+.
+ÒÒ7 8
+ChangedPassword
+ÒÒ8 G
+;
+ÒÒG H
+}
+ÚÚ 
+}
+ÙÙ 
+PlayerCallback
+ˆˆ 
+.
+ˆˆ %
+GetPasswordChangeResult
+ˆˆ 2
+(
+ˆˆ2 3
+changeResult
+ˆˆ3 ?
+)
+ˆˆ? @
+;
+ˆˆ@ A
+}
+¯¯ 	
+public
+˙˙ 
+void
+˙˙ 
+GetActualPlayer
+˙˙ #
+(
+˙˙# $
+Jugador
+˙˙$ +
+actualPlayer
+˙˙, 8
+)
+˙˙8 9
+{
+˚˚ 	 
+DataObtainedResult
+¸¸  
+dataObtainedResult
+¸¸ 1
+=
+¸¸2 3 
+DataObtainedResult
+¸¸4 F
+.
+¸¸F G 
+ErrorObtainingData
+¸¸G Y
+;
+¸¸Y Z
+
+DataAccess
+˝˝ 
+.
+˝˝ 
+Jugador
+˝˝ 
+searchedPlayer
+˝˝ -
+=
+˝˝. / 
+jugadorDataManager
+˝˝0 B
+.
+˝˝B C!
+GetPlayerByNickname
+˝˝C V
+(
+˝˝V W
+actualPlayer
+˝˝W c
+.
+˝˝c d
+Apodo
+˝˝d i
+)
+˝˝i j
+;
+˝˝j k
+if
+ˇˇ 
+(
+ˇˇ 
+searchedPlayer
+ˇˇ 
+!=
+ˇˇ !
+null
+ˇˇ" &
+)
+ˇˇ& '
+{
+ÄÄ 
+Dominio
+ÅÅ 
+.
+ÅÅ 
+Jugador
+ÅÅ "
+domainSearchedPlayer
+ÅÅ  4
+=
+ÅÅ5 6
+new
+ÅÅ7 :
+Dominio
+ÅÅ; B
+.
+ÅÅB C
+Jugador
+ÅÅC J
+{
+ÇÇ 
+	IdJugador
+ÉÉ 
+=
+ÉÉ 
+searchedPlayer
+ÉÉ  .
+.
+ÉÉ. /
+	idJugador
+ÉÉ/ 8
+,
+ÉÉ8 9
+Apodo
+ÑÑ 
+=
+ÑÑ 
+searchedPlayer
+ÑÑ *
+.
+ÑÑ* +
+apodo
+ÑÑ+ 0
+,
+ÑÑ0 1
+CorreoElectronico
+ÖÖ %
+=
+ÖÖ& '
+searchedPlayer
+ÖÖ( 6
+.
+ÖÖ6 7
+correoElectronico
+ÖÖ7 H
+,
+ÖÖH I
+Status
+ÜÜ 
+=
+ÜÜ 
+searchedPlayer
+ÜÜ +
+.
+ÜÜ+ ,
+status
+ÜÜ, 2
+,
+ÜÜ2 3"
+PreguntaRecuperacion
+áá (
+=
+áá) *
+searchedPlayer
+áá+ 9
+.
+áá9 :"
+preguntaRecuperacion
+áá: N
+,
+ááN O
+
+IdLenguaje
+àà 
+=
+àà  
+searchedPlayer
+àà! /
+.
+àà/ 0
+idioma
+àà0 6
+}
+ää 
+;
+ää  
+dataObtainedResult
+ãã "
+=
+ãã# $ 
+DataObtainedResult
+ãã% 7
+.
+ãã7 8
+DataObtained
+ãã8 D
+;
+ããD E
+PlayerCallback
+åå 
+.
+åå 
+SendActualPlayer
+åå /
+(
+åå/ 0 
+dataObtainedResult
+åå0 B
+,
+ååB C"
+domainSearchedPlayer
+ååD X
+)
+ååX Y
+;
+ååY Z
+}
+çç 
+else
+éé 
+{
+èè 
+Dominio
+êê 
+.
+êê 
+Jugador
+êê 
+emptyPlayer
+êê  +
+=
+êê, -
+new
+êê. 1
+Jugador
+êê2 9
+(
+êê9 :
+)
+êê: ;
+;
+êê; <
+PlayerCallback
+ëë 
+.
+ëë 
+SendActualPlayer
+ëë /
+(
+ëë/ 0 
+dataObtainedResult
+ëë0 B
+,
+ëëB C
+emptyPlayer
+ëëD O
+)
+ëëO P
+;
+ëëP Q
+}
+íí 
+}
+ïï 	
+public
+óó 
+void
+óó 
+CloseSession
+óó  
+(
+óó  !
+string
+óó! '
+playerNickname
+óó( 6
+)
+óó6 7
+{
+òò 	
+playersLoggedIn
+ôô 
+.
+ôô 
+Remove
+ôô "
+(
+ôô" #
+playerNickname
+ôô# 1
+)
+ôô1 2
+;
+ôô2 3
+}
+õõ 	$
+IPlayerManagerCallback
+ùù 
+PlayerCallback
+ùù -
+{
+ûû 	
+get
+üü 
+{
+†† 
+return
+°° 
+OperationContext
+°° '
+.
+°°' (
+Current
+°°( /
+.
+°°/ 0 
+GetCallbackChannel
+°°0 B
+<
+°°B C$
+IPlayerManagerCallback
+°°C Y
+>
+°°Y Z
+(
+°°Z [
+)
+°°[ \
+;
+°°\ ]
+}
+¢¢ 
+}
+££ 	
+}
+§§ 
+public
+¶¶ 
 
 partial
-ˇˇ 
+¶¶ 
 class
-ˇˇ 
+¶¶ 
 MainService
-ˇˇ $
+¶¶ $
 :
-ˇˇ% &
+¶¶% &
 IRankingManager
-ˇˇ' 6
+¶¶' 6
 {
-ÄÄ 
+ßß 
 public
-ÅÅ 
+®® 
 void
-ÅÅ 
+®® 
 GetRankingData
-ÅÅ "
+®® "
 (
-ÅÅ" #
+®®" #
 )
-ÅÅ# $
+®®# $
 {
-ÇÇ 	
+©© 	
 RankingResult
-ÉÉ 
+™™ 
 result
-ÉÉ  
+™™  
 ;
-ÉÉ  !
+™™  !
 List
-ÑÑ 
+´´ 
 <
-ÑÑ 
+´´ 
 Dominio
-ÑÑ 
+´´ 
 .
-ÑÑ 
+´´ 
 Ranking
-ÑÑ  
+´´  
 >
-ÑÑ  !
+´´  !
 rankings
-ÑÑ" *
+´´" *
 =
-ÑÑ+ ,
+´´+ ,
 QueryRankingData
-ÑÑ- =
+´´- =
 (
-ÑÑ= >
+´´= >
 )
-ÑÑ> ?
+´´> ?
 ;
-ÑÑ? @
+´´? @
 if
-ÜÜ 
+≠≠ 
 (
-ÜÜ 
+≠≠ 
 rankings
-ÜÜ 
+≠≠ 
 ==
-ÜÜ 
+≠≠ 
 null
-ÜÜ  
+≠≠  
 )
-ÜÜ  !
+≠≠  !
 {
-áá 
+ÆÆ 
 result
-àà 
+ØØ 
 =
-àà 
+ØØ 
 RankingResult
-àà &
+ØØ &
 .
-àà& '
+ØØ& '
 
 NO_RANKING
-àà' 1
+ØØ' 1
 ;
-àà1 2
+ØØ1 2
 }
-ââ 
+∞∞ 
 else
-ää 
+±± 
 {
-ãã 
+≤≤ 
 result
-åå 
+≥≥ 
 =
-åå 
+≥≥ 
 RankingResult
-åå &
+≥≥ &
 .
-åå& '
+≥≥& '
 RANKING_EXISTS
-åå' 5
+≥≥' 5
 ;
-åå5 6
+≥≥5 6
 RankingCallback
-éé 
+µµ 
 .
-éé   
+µµ   
 ReceiveRankingData
-éé  2
+µµ  2
 (
-éé2 3
+µµ2 3
 rankings
-éé3 ;
+µµ3 ;
 )
-éé; <
+µµ; <
 ;
-éé< =
+µµ< =
 }
-èè 
+∂∂ 
 RankingCallback
-íí 
+ππ 
 .
-íí 
+ππ 
 GetRankingResult
-íí ,
+ππ ,
 (
-íí, -
+ππ, -
 result
-íí- 3
+ππ- 3
 )
-íí3 4
+ππ3 4
 ;
-íí4 5
+ππ4 5
 }
-ìì 	
+∫∫ 	
 public
-ïï 
+ºº 
 List
-ïï 
+ºº 
 <
-ïï 
+ºº 
 Dominio
-ïï 
+ºº 
 .
-ïï 
+ºº 
 Ranking
-ïï #
+ºº #
 >
-ïï# $
+ºº# $
 QueryRankingData
-ïï% 5
+ºº% 5
 (
-ïï5 6
+ºº5 6
 )
-ïï6 7
+ºº6 7
 {
-ññ 	
+ΩΩ 	
 List
-óó 
+ææ 
 <
-óó 
+ææ 
 Dominio
-óó 
+ææ 
 .
-óó 
+ææ 
 Ranking
-óó  
+ææ  
 >
-óó  !
+ææ  !
 currentRankings
-óó" 1
+ææ" 1
 =
-óó2 3
+ææ2 3
 new
-óó4 7
+ææ4 7
 List
-óó8 <
+ææ8 <
 <
-óó< =
+ææ< =
 Dominio
-óó= D
+ææ= D
 .
-óóD E
+ææD E
 Ranking
-óóE L
+ææE L
 >
-óóL M
+ææL M
 (
-óóM N
+ææM N
 )
-óóN O
+ææN O
 ;
-óóO P 
+ææO P 
 RankingDataManager
-òò 
+øø 
 dataManager
-òò *
+øø *
 =
-òò+ ,
+øø+ ,
 new
-òò- 0 
+øø- 0 
 RankingDataManager
-òò1 C
+øø1 C
 (
-òòC D
+øøC D
 )
-òòD E
+øøD E
 ;
-òòE F 
+øøE F 
 JugadorDataManager
-ôô 
+¿¿ 
 playerManager
-ôô ,
+¿¿ ,
 =
-ôô- .
+¿¿- .
 new
-ôô/ 2 
+¿¿/ 2 
 JugadorDataManager
-ôô3 E
+¿¿3 E
 (
-ôôE F
+¿¿E F
 )
-ôôF G
+¿¿F G
 ;
-ôôG H
+¿¿G H
 List
-öö 
+¡¡ 
 <
-öö 
+¡¡ 
 
 DataAccess
-öö 
+¡¡ 
 .
-öö 
+¡¡ 
 Ranking
-öö #
+¡¡ #
 >
-öö# $ 
+¡¡# $ 
 queriedRankingList
-öö% 7
+¡¡% 7
 =
-öö8 9
+¡¡8 9
 dataManager
-öö: E
+¡¡: E
 .
-ööE F
+¡¡E F
 GetRankingList
-ööF T
+¡¡F T
 (
-ööT U
+¡¡T U
 )
-ööU V
+¡¡U V
 ;
-ööV W
+¡¡V W
 if
-úú 
+√√ 
 (
-úú 
+√√ 
 dataManager
-úú 
+√√ 
 .
-úú 
+√√ 
 GetRankingList
-úú *
+√√ *
 (
-úú* +
+√√* +
 )
-úú+ ,
+√√+ ,
 !=
-úú- /
+√√- /
 null
-úú0 4
+√√0 4
 )
-úú4 5
+√√4 5
 {
-ùù 
+ƒƒ 
 foreach
-ûû 
+≈≈ 
 (
-ûû 
+≈≈ 
 
 DataAccess
-ûû #
+≈≈ #
 .
-ûû# $
+≈≈# $
 Ranking
-ûû$ +
+≈≈$ +
 playerRanking
-ûû, 9
+≈≈, 9
 in
-ûû: < 
+≈≈: < 
 queriedRankingList
-ûû= O
+≈≈= O
 )
-ûûO P
+≈≈O P
 {
-üü 
+∆∆ 
 currentRankings
-†† #
+«« #
 .
-††# $
+««# $
 Add
-††$ '
+««$ '
 (
-††' (
+««' (
 new
-††( +
+««( +
 Dominio
-††, 3
+««, 3
 .
-††3 4
+««3 4
 Ranking
-††4 ;
+««4 ;
 {
-°° 
+»» 
 	IdRanking
-¢¢ !
+…… !
 =
-¢¢" #
+……" #
 playerRanking
-¢¢$ 1
+……$ 1
 .
-¢¢1 2
+……1 2
 	idRanking
-¢¢2 ;
+……2 ;
 ,
-¢¢; <
+……; <
 Duenio
-££ 
+   
 =
-££  
+    
 playerManager
-££! .
+  ! .
 .
-££. /!
+  . /!
 GetDomainPlayerByID
-££/ B
+  / B
 (
-££B C
+  B C
 playerRanking
-££C P
+  C P
 .
-££P Q
+  P Q
 idDuenio
-££Q Y
+  Q Y
 )
-££Y Z
+  Y Z
 ,
-££Z [
+  Z [
 FechaRegistracion
-§§ )
+ÀÀ )
 =
-§§* +
+ÀÀ* +
 playerRanking
-§§, 9
+ÀÀ, 9
 .
-§§9 :
+ÀÀ9 :
 fechaRegistracion
-§§: K
+ÀÀ: K
 ??
-§§L N
+ÀÀL N
 default
-§§O V
+ÀÀO V
 (
-§§V W
+ÀÀV W
 DateTime
-§§W _
+ÀÀW _
 )
-§§_ `
+ÀÀ_ `
 ,
-§§` a
+ÀÀ` a
 NumeroVictorias
-•• '
+ÃÃ '
 =
-••( )
+ÃÃ( )
 playerRanking
-••* 7
+ÃÃ* 7
 .
-••7 8
+ÃÃ7 8
 numeroVictorias
-••8 G
+ÃÃ8 G
 ??
-••H J
+ÃÃH J
 default
-••K R
+ÃÃK R
 (
-••R S
+ÃÃR S
 int
-••S V
+ÃÃS V
 )
-••V W
+ÃÃV W
 ,
-••W X
+ÃÃW X
 PartidasJugadas
-¶¶ '
+ÕÕ '
 =
-¶¶( )
+ÕÕ( )
 playerRanking
-¶¶* 7
+ÕÕ* 7
 .
-¶¶7 8
+ÕÕ7 8
 partidasJugadas
-¶¶8 G
+ÕÕ8 G
 ??
-¶¶H J
+ÕÕH J
 default
-¶¶K R
+ÕÕK R
 (
-¶¶R S
+ÕÕR S
 int
-¶¶S V
+ÕÕS V
 )
-¶¶V W
+ÕÕV W
 ,
-¶¶W X
+ÕÕW X
 Rank
-ßß 
+ŒŒ 
 =
-ßß 
+ŒŒ 
 playerRanking
-ßß ,
+ŒŒ ,
 .
-ßß, -
+ŒŒ, -
 rank
-ßß- 1
+ŒŒ- 1
 ??
-ßß2 4
+ŒŒ2 4
 default
-ßß5 <
+ŒŒ5 <
 (
-ßß< =
+ŒŒ< =
 int
-ßß= @
+ŒŒ= @
 )
-ßß@ A
+ŒŒ@ A
 ,
-ßßA B
+ŒŒA B
 NumeroPerdidas
-®® &
+œœ &
 =
-®®' (
+œœ' (
 playerRanking
-®®) 6
+œœ) 6
 .
-®®6 7
+œœ6 7
 numeroPerdidas
-®®7 E
+œœ7 E
 ??
-®®F H
+œœF H
 default
-®®I P
+œœI P
 (
-®®P Q
+œœP Q
 int
-®®Q T
+œœQ T
 )
-®®T U
+œœT U
 }
-©© 
+–– 
 )
-©© 
+–– 
 ;
-©© 
+–– 
 }
-™™ 
+—— 
 }
-´´ 
+““ 
 return
-≠≠ 
+‘‘ 
 currentRankings
-≠≠ "
+‘‘ "
 ;
-≠≠" #
+‘‘" #
 }
-ÆÆ 	%
+’’ 	%
 IRankingManagerCallback
-∞∞ 
+◊◊ 
 RankingCallback
-∞∞  /
+◊◊  /
 {
-±± 	
+ÿÿ 	
 get
-≤≤ 
+ŸŸ 
 {
-≥≥ 
+⁄⁄ 
 return
-¥¥ 
+€€ 
 OperationContext
-¥¥ '
+€€ '
 .
-¥¥' (
+€€' (
 Current
-¥¥( /
+€€( /
 .
-¥¥/ 0 
+€€/ 0 
 GetCallbackChannel
-¥¥0 B
+€€0 B
 <
-¥¥B C%
+€€B C%
 IRankingManagerCallback
-¥¥C Z
+€€C Z
 >
-¥¥Z [
+€€Z [
 (
-¥¥[ \
+€€[ \
 )
-¥¥\ ]
+€€\ ]
 ;
-¥¥] ^
+€€] ^
 }
-µµ 
+‹‹ 
 }
-∂∂ 	
+›› 	
 }
-∑∑ 
+ﬁﬁ 
 public
-ππ 
+‡‡ 
 
 partial
-ππ 
+‡‡ 
 class
-ππ 
+‡‡ 
 MainService
-ππ $
+‡‡ $
 :
-ππ% &
+‡‡% &
 IGameManager
-ππ' 3
+‡‡' 3
 {
-∫∫ 
+·· 
 private
-ªª 
+‚‚ 
 List
-ªª 
+‚‚ 
 <
-ªª 
+‚‚ 
 Match
-ªª 
+‚‚ 
 >
-ªª 
+‚‚ 
 activeMatches
-ªª )
+‚‚ )
 =
-ªª* +
+‚‚* +
 new
-ªª, /
+‚‚, /
 List
-ªª0 4
+‚‚0 4
 <
-ªª4 5
+‚‚4 5
 Match
-ªª5 :
+‚‚5 :
 >
-ªª: ;
+‚‚: ;
 (
-ªª; <
+‚‚; <
 )
-ªª< =
+‚‚< =
 ;
-ªª= >
+‚‚= >
 private
-ºº 
+„„ 
 int
-ºº !
+„„ !
 numberActiveMatches
-ºº '
-=
-ºº( )
-$num
-ºº* +
-;
-ºº+ ,
-private
-ΩΩ 
-List
-ΩΩ 
-<
-ΩΩ 
-Match
-ΩΩ 
->
-ΩΩ "
-playersQueuedClassic
-ΩΩ 0
-=
-ΩΩ1 2
-new
-ΩΩ3 6
-List
-ΩΩ7 ;
-<
-ΩΩ; <
-Match
-ΩΩ< A
->
-ΩΩA B
-(
-ΩΩB C
-)
-ΩΩC D
-;
-ΩΩD E
-private
-ææ 
-const
-ææ 
-int
-ææ 
-
-PLAYER_ONE
-ææ $
-=
-ææ% &
-$num
-ææ' (
-;
-ææ( )
-private
-øø 
-const
-øø 
-int
-øø 
-
-PLAYER_TWO
-øø $
-=
-øø% &
-$num
-øø' (
-;
-øø( )"
-IGameManagerCallback
-¡¡ !
-GameManagerCallback
-¡¡ 0
-{
-¬¬ 	
-get
-√√ 
-{
-ƒƒ 
-return
-≈≈ 
-OperationContext
-≈≈ '
-.
-≈≈' (
-Current
-≈≈( /
-.
-≈≈/ 0 
-GetCallbackChannel
-≈≈0 B
-<
-≈≈B C"
-IGameManagerCallback
-≈≈C W
->
-≈≈W X
-(
-≈≈X Y
-)
-≈≈Y Z
-;
-≈≈Z [
-}
-∆∆ 
-}
-«« 	
-public
-…… 
-void
-…… 
-Player1Turn
-…… 
-(
-……  
-Checker
-……  '
-[
-……' (
-]
-……( )
-[
-……) *
-]
-……* +
-updateBoardMatrix
-……, =
-,
-……= >
-int
-……? B
-matchNumber
-……C N
-,
-……N O
-int
-……P S
-playerTwoCheckers
-……T e
-,
-……e f
-int
-……g j
-playerOneCheckers
-……k |
-)
-……| }
-{
-   	
-activeMatches
-ÀÀ 
-[
-ÀÀ 
-matchNumber
-ÀÀ %
-]
-ÀÀ% &
-.
-ÀÀ& '
-playerTwoCallback
-ÀÀ' 8
-.
-ÀÀ8 9
-UpdateGameGUI
-ÀÀ9 F
-(
-ÀÀF G
-updateBoardMatrix
-ÀÀG X
-,
-ÀÀX Y
-playerTwoCheckers
-ÀÀZ k
-,
-ÀÀk l
-playerOneCheckers
-ÀÀm ~
-)
-ÀÀ~ 
-;ÀÀ Ä
-}
-ÃÃ 	
-public
-ŒŒ 
-void
-ŒŒ 
-CreateMatch
-ŒŒ 
-(
-ŒŒ  
-Jugador
-ŒŒ  '
-currentPlayer
-ŒŒ( 5
-,
-ŒŒ5 6
-CheckersGameMode
-ŒŒ7 G
-gameMode
-ŒŒH P
-)
-ŒŒP Q
-{
-œœ 	
-MatchmakingResult
-–– 
-matchmakingResult
-–– /
-;
-––/ 0
-if
-““ 
-(
-““ "
-playersQueuedClassic
-““ $
-.
-““$ %
-Count
-““% *
->
-““+ ,
-$num
-““- .
-)
-““. /
-{
-”” 
-Match
-‘‘ 
-newCompleteGame
-‘‘ %
-=
-‘‘& '"
-playersQueuedClassic
-‘‘( <
-.
-‘‘< =
-First
-‘‘= B
-(
-‘‘B C
-)
-‘‘C D
-;
-‘‘D E"
-playersQueuedClassic
-’’ $
-.
-’’$ %
-Remove
-’’% +
-(
-’’+ ,
-newCompleteGame
-’’, ;
-)
-’’; <
-;
-’’< =
-newCompleteGame
-÷÷ 
-.
-÷÷  
-playerTwoCallback
-÷÷  1
-=
-÷÷2 3!
-GameManagerCallback
-÷÷4 G
-;
-÷÷G H
-newCompleteGame
-◊◊ 
-.
-◊◊  
-playerTwoData
-◊◊  -
-=
-◊◊. /
-currentPlayer
-◊◊0 =
-;
-◊◊= >
-newCompleteGame
-ÿÿ 
-.
-ÿÿ  
-matchActiveNumber
-ÿÿ  1
-=
-ÿÿ2 3!
-numberActiveMatches
-ÿÿ4 G
-;
-ÿÿG H"
-playersQueuedClassic
-ŸŸ $
-.
-ŸŸ$ %
-Sort
-ŸŸ% )
-(
-ŸŸ) *
-)
-ŸŸ* +
-;
-ŸŸ+ ,
-matchmakingResult
-⁄⁄ !
-=
-⁄⁄" #
-MatchmakingResult
-⁄⁄$ 5
-.
-⁄⁄5 6
-MATCH_FOUND
-⁄⁄6 A
-;
-⁄⁄A B
-activeMatches
-€€ 
-.
-€€ 
-Add
-€€ !
-(
-€€! "
-newCompleteGame
-€€" 1
-)
-€€1 2
-;
-€€2 3!
-numberActiveMatches
-‹‹ #
-++
-‹‹# %
-;
-‹‹% &
-try
-ﬁﬁ 
-{
-ﬂﬂ 
-newCompleteGame
-‡‡ #
-.
-‡‡# $
-playerOneCallback
-‡‡$ 5
-.
-‡‡5 6"
-GetMatchmakingResult
-‡‡6 J
-(
-‡‡J K
-matchmakingResult
-‡‡K \
-,
-‡‡\ ]
-newCompleteGame
-‡‡^ m
-,
-‡‡m n
-
-PLAYER_ONE
-‡‡o y
-)
-‡‡y z
-;
-‡‡z {!
-GameManagerCallback
 „„ '
-.
-„„' ("
-GetMatchmakingResult
-„„( <
-(
-„„< =
-matchmakingResult
-„„= N
-,
-„„N O
-newCompleteGame
-„„P _
-,
-„„_ `
-
-PLAYER_TWO
-„„a k
-)
-„„k l
-;
-„„l m
-}
-‰‰ 
-catch
-ÂÂ 
-(
-ÂÂ '
-EndpointNotFoundException
-ÂÂ /
-)
-ÂÂ/ 0
-{
-ÊÊ 
-matchmakingResult
-ÁÁ %
 =
-ÁÁ& '
-MatchmakingResult
-ÁÁ( 9
-.
-ÁÁ9 :#
-UNABLE_TO_ENTER_MATCH
-ÁÁ: O
+„„( )
+$num
+„„* +
 ;
-ÁÁO P!
-GameManagerCallback
-ËË '
-.
-ËË' ("
-GetMatchmakingResult
-ËË( <
-(
-ËË< =
-matchmakingResult
-ËË= N
-,
-ËËN O
-newCompleteGame
-ËËP _
-,
-ËË_ `
-
-PLAYER_TWO
-ËËa k
-)
-ËËk l
-;
-ËËl m
-}
-ÍÍ 
-}
-ÏÏ 
-else
-ÌÌ 
-{
-ÓÓ 
-Match
-ÔÔ 
-newGame
-ÔÔ 
-=
-ÔÔ 
-new
-ÔÔ  #
-Match
-ÔÔ$ )
-(
-ÔÔ) *
-)
-ÔÔ* +
-{
- 
-currentPlayer
-ÒÒ !
-=
-ÒÒ" #
-
-PLAYER_ONE
-ÒÒ$ .
-,
-ÒÒ. /
-playerOneData
-ÚÚ !
-=
-ÚÚ" #
-currentPlayer
-ÚÚ$ 1
-,
-ÚÚ1 2
-playerOneCallback
-ÛÛ %
-=
-ÛÛ& '!
-GameManagerCallback
-ÛÛ( ;
-,
-ÛÛ; <
-}
-ÙÙ 
-;
-ÙÙ "
-playersQueuedClassic
-ˆˆ $
-.
-ˆˆ$ %
-Add
-ˆˆ% (
-(
-ˆˆ( )
-newGame
-ˆˆ) 0
-)
-ˆˆ0 1
-;
-ˆˆ1 2
-matchmakingResult
-˜˜ !
-=
-˜˜" #
-MatchmakingResult
-˜˜$ 5
-.
-˜˜5 6
-MATCH_NOT_FOUND
-˜˜6 E
-;
-˜˜E F!
-GameManagerCallback
-¯¯ #
-.
-¯¯# $"
-GetMatchmakingResult
-¯¯$ 8
-(
-¯¯8 9
-matchmakingResult
-¯¯9 J
-,
-¯¯J K
-newGame
-¯¯L S
-,
-¯¯S T
-
-PLAYER_ONE
-¯¯U _
-)
-¯¯_ `
-;
-¯¯` a
-}
-˙˙ 
-}
-˚˚ 	
-public
-˛˛ 
-void
-˛˛ 
-Player2Turn
-˛˛ 
-(
-˛˛  
-Checker
-˛˛  '
-[
-˛˛' (
-]
-˛˛( )
-[
-˛˛) *
-]
-˛˛* +
-updateBoardMatrix
-˛˛, =
-,
-˛˛= >
-int
-˛˛? B
-matchNumber
-˛˛C N
-,
-˛˛N O
-int
-˛˛P S
-playerTwoCheckers
-˛˛T e
-,
-˛˛e f
-int
-˛˛g j
-playerOneCheckers
-˛˛k |
-)
-˛˛| }
-{
-ˇˇ 	
-activeMatches
-ÄÄ 
-[
-ÄÄ 
-matchNumber
-ÄÄ %
-]
-ÄÄ% &
-.
-ÄÄ& '
-playerOneCallback
-ÄÄ' 8
-.
-ÄÄ8 9
-UpdateGameGUI
-ÄÄ9 F
-(
-ÄÄF G
-updateBoardMatrix
-ÄÄG X
-,
-ÄÄX Y
-playerTwoCheckers
-ÄÄZ k
-,
-ÄÄk l
-playerOneCheckers
-ÄÄm ~
-)
-ÄÄ~ 
-;ÄÄ Ä
-}
-ÅÅ 	
-public
-ÉÉ 
-void
-ÉÉ 
-FinishPlayerGame
-ÉÉ $
-(
-ÉÉ$ %
-int
-ÉÉ% (
-matchNumber
-ÉÉ) 4
-,
-ÉÉ4 5
-int
-ÉÉ6 9
-playerNumber
-ÉÉ: F
-,
-ÉÉF G
-int
-ÉÉH K
-playerTwoCheckers
-ÉÉL ]
-,
-ÉÉ] ^
-int
-ÉÉ_ b
-playerOneCheckers
-ÉÉc t
-)
-ÉÉt u
-{
-ÑÑ 	
-if
-ÖÖ 
-(
-ÖÖ 
-playerNumber
-ÖÖ 
-==
-ÖÖ 
-
-PLAYER_ONE
-ÖÖ  *
-)
-ÖÖ* +
-{
-ÜÜ 
-activeMatches
-áá 
-[
-áá 
-matchNumber
-áá )
-]
-áá) *
-.
-áá* +
-playerTwoCallback
-áá+ <
-.
-áá< =
-
-FinishGame
-áá= G
-(
-ááG H
-playerTwoCheckers
-ááH Y
-,
-ááY Z
-playerOneCheckers
-áá[ l
-)
-áál m
-;
-áám n
-}
-àà 
-else
-ââ 
-{
-ää 
-activeMatches
-åå 
-[
-åå 
-matchNumber
-åå )
-]
-åå) *
-.
-åå* +
-playerOneCallback
-åå+ <
-.
-åå< =
-
-FinishGame
-åå= G
-(
-ååG H
-playerTwoCheckers
-ååH Y
-,
-ååY Z
-playerOneCheckers
-åå[ l
-)
-åål m
-;
-ååm n
-}
-çç  
-RankingDataManager
-éé  
-rankingDataManager
-éé 1
-=
-éé2 3
-new
-éé4 7 
-RankingDataManager
-éé8 J
-(
-ééJ K
-)
-ééK L
-;
-ééL M 
-rankingDataManager
-èè 
-.
-èè  
-UpdateMatchResults
-èè 1
-(
-èè1 2
-activeMatches
-èè2 ?
-[
-èè? @
-matchNumber
-èè@ K
-]
-èèK L
-.
-èèL M
-playerOneData
-èèM Z
-,
-èèZ [
-playerOneCheckers
-èè\ m
-,
-èèm n
-activeMatches
-èèo |
-[
-èè| }
-matchNumberèè} à
-]èèà â
-.èèâ ä
-playerTwoDataèèä ó
-,èèó ò!
-playerTwoCheckersèèô ™
-,èè™ ´
-playerNumberèè¨ ∏
-)èè∏ π
-;èèπ ∫!
-numberActiveMatches
-êê 
---
-êê !
-;
-êê! "
-activeMatches
-ëë 
-.
-ëë 
-RemoveAt
-ëë "
-(
-ëë" #
-matchNumber
-ëë# .
-)
-ëë. /
-;
-ëë/ 0
-int
-ìì 
-listPosition
-ìì 
-;
-ìì 
-for
-ïï 
-(
-ïï 
-listPosition
-ïï 
-=
-ïï 
-matchNumber
-ïï  +
-;
-ïï+ ,
-listPosition
-ïï- 9
+„„+ ,
+private
+‰‰ 
+List
+‰‰ 
 <
-ïï: ;
-activeMatches
-ïï< I
-.
-ïïI J
-Count
-ïïJ O
-;
-ïïO P
-listPosition
-ïïQ ]
-++
-ïï] _
-)
-ïï_ `
-{
-ññ 
-activeMatches
-óó 
-[
-óó 
-listPosition
-óó *
-]
-óó* +
-.
-óó+ ,
-matchActiveNumber
-óó, =
---
-óó= ?
-;
-óó? @
-activeMatches
-òò 
-[
-òò 
-listPosition
-òò *
-]
-òò* +
-.
-òò+ ,
-playerOneCallback
-òò, =
-.
-òò= >
-UpdateMatchNumber
-òò> O
+‰‰ 
+Match
+‰‰ 
+>
+‰‰ "
+playersQueuedClassic
+‰‰ 0
+=
+‰‰1 2
+new
+‰‰3 6
+List
+‰‰7 ;
+<
+‰‰; <
+Match
+‰‰< A
+>
+‰‰A B
 (
-òòO P
-activeMatches
-òòP ]
-[
-òò] ^
-listPosition
-òò^ j
-]
-òòj k
-.
-òòk l
-matchActiveNumber
-òòl }
+‰‰B C
 )
-òò} ~
+‰‰C D
 ;
-òò~ 
-activeMatches
-ôô 
-[
-ôô 
-listPosition
-ôô *
-]
-ôô* +
-.
-ôô+ ,
-playerTwoCallback
-ôô, =
-.
-ôô= >
-UpdateMatchNumber
-ôô> O
-(
-ôôO P
-activeMatches
-ôôP ]
-[
-ôô] ^
-listPosition
-ôô^ j
-]
-ôôj k
-.
-ôôk l
-matchActiveNumber
-ôôl }
-)
-ôô} ~
-;
-ôô~ 
-}
-öö 
-}
-õõ 	
-public
-ùù 
-void
-ùù 
-SendGameMessage
-ùù #
-(
-ùù# $
+‰‰D E
+private
+ÂÂ 
+const
+ÂÂ 
 int
-ùù$ '
-playerNumber
-ùù( 4
-,
-ùù4 5
-string
-ùù6 <
-message
-ùù= D
-,
-ùùD E
-int
-ùùF I
-matchNumber
-ùùJ U
-)
-ùùU V
-{
-ûû 	
-if
-üü 
-(
-üü 
-playerNumber
-üü 
-==
-üü 
+ÂÂ 
 
 PLAYER_ONE
-üü  *
-)
-üü* +
-{
-†† 
-activeMatches
-°° 
-[
-°° 
-matchNumber
-°° )
-]
-°°) *
-.
-°°* +
-playerTwoCallback
-°°+ <
-.
-°°< = 
-RecieveGameMessage
-°°= O
-(
-°°O P
-message
-°°P W
-,
-°°W X
-
-PLAYER_ONE
-°°Y c
-)
-°°c d
+ÂÂ $
+=
+ÂÂ% &
+$num
+ÂÂ' (
 ;
-°°d e
-}
-¢¢ 
-else
-££ 
-{
-§§ 
-activeMatches
-•• 
-[
-•• 
-matchNumber
-•• )
-]
-••) *
-.
-••* +
-playerOneCallback
-••+ <
-.
-••< = 
-RecieveGameMessage
-••= O
-(
-••O P
-message
-••P W
-,
-••W X
+ÂÂ( )
+private
+ÊÊ 
+const
+ÊÊ 
+int
+ÊÊ 
 
 PLAYER_TWO
-••X b
-)
-••b c
+ÊÊ $
+=
+ÊÊ% &
+$num
+ÊÊ' (
 ;
-••c d
-}
-¶¶ 
-}
-ßß 	
-public
-©© 
-void
-©© 
-ReportPlayer
-©©  
+ÊÊ( )"
+IGameManagerCallback
+ËË !
+GameManagerCallback
+ËË 0
+{
+ÈÈ 	
+get
+ÍÍ 
+{
+ÎÎ 
+return
+ÏÏ 
+OperationContext
+ÏÏ '
+.
+ÏÏ' (
+Current
+ÏÏ( /
+.
+ÏÏ/ 0 
+GetCallbackChannel
+ÏÏ0 B
+<
+ÏÏB C"
+IGameManagerCallback
+ÏÏC W
+>
+ÏÏW X
 (
-©©  !
-int
-©©! $#
-playerNumberReporting
-©©% :
+ÏÏX Y
+)
+ÏÏY Z
+;
+ÏÏZ [
+}
+ÌÌ 
+}
+ÓÓ 	
+public
+ 
+void
+ 
+Player1Turn
+ 
+(
+  
+Checker
+  '
+[
+' (
+]
+( )
+[
+) *
+]
+* +
+updateBoardMatrix
+, =
 ,
-©©: ;
+= >
 int
-©©< ?
+? B
 matchNumber
-©©@ K
+C N
 ,
-©©K L
+N O
+int
+P S
+playerTwoCheckers
+T e
+,
+e f
+int
+g j
+playerOneCheckers
+k |
+)
+| }
+{
+ÒÒ 	
+try
+ÚÚ 
+{
+ÛÛ 
+activeMatches
+ÙÙ 
+[
+ÙÙ 
+matchNumber
+ÙÙ )
+]
+ÙÙ) *
+.
+ÙÙ* +
+playerTwoCallback
+ÙÙ+ <
+.
+ÙÙ< =
+UpdateGameGUI
+ÙÙ= J
+(
+ÙÙJ K
+updateBoardMatrix
+ÙÙK \
+,
+ÙÙ\ ]
+playerTwoCheckers
+ÙÙ^ o
+,
+ÙÙo p 
+playerOneCheckersÙÙq Ç
+)ÙÙÇ É
+;ÙÙÉ Ñ
+}
+ıı 
+catch
+ˆˆ 
+(
+ˆˆ '
+EndpointNotFoundException
+ˆˆ ,
+)
+ˆˆ, -
+{
+˜˜ 
+activeMatches
+¯¯ 
+[
+¯¯ 
+matchNumber
+¯¯ )
+]
+¯¯) *
+.
+¯¯* +
+playerOneCallback
+¯¯+ <
+.
+¯¯< =
+EndAbandonedGame
+¯¯= M
+(
+¯¯M N
+)
+¯¯N O
+;
+¯¯O P
+}
+˘˘ 
+}
+˙˙ 	
+public
+¸¸ 
+void
+¸¸ 
+CreateMatch
+¸¸ 
+(
+¸¸  
+Jugador
+¸¸  '
+currentPlayer
+¸¸( 5
+,
+¸¸5 6
+CheckersGameMode
+¸¸7 G
+gameMode
+¸¸H P
+)
+¸¸P Q
+{
+˝˝ 	
+MatchmakingResult
+˛˛ 
+matchmakingResult
+˛˛ /
+;
+˛˛/ 0
+if
+ÄÄ 
+(
+ÄÄ "
+playersQueuedClassic
+ÄÄ $
+.
+ÄÄ$ %
+Count
+ÄÄ% *
+>
+ÄÄ+ ,
+$num
+ÄÄ- .
+)
+ÄÄ. /
+{
+ÅÅ 
+Match
+ÇÇ 
+newCompleteGame
+ÇÇ %
+=
+ÇÇ& '"
+playersQueuedClassic
+ÇÇ( <
+.
+ÇÇ< =
+First
+ÇÇ= B
+(
+ÇÇB C
+)
+ÇÇC D
+;
+ÇÇD E"
+playersQueuedClassic
+ÉÉ $
+.
+ÉÉ$ %
+Remove
+ÉÉ% +
+(
+ÉÉ+ ,
+newCompleteGame
+ÉÉ, ;
+)
+ÉÉ; <
+;
+ÉÉ< =
+newCompleteGame
+ÑÑ 
+.
+ÑÑ  
+playerTwoCallback
+ÑÑ  1
+=
+ÑÑ2 3!
+GameManagerCallback
+ÑÑ4 G
+;
+ÑÑG H
+newCompleteGame
+ÖÖ 
+.
+ÖÖ  
+playerTwoData
+ÖÖ  -
+=
+ÖÖ. /
+currentPlayer
+ÖÖ0 =
+;
+ÖÖ= >
+newCompleteGame
+ÜÜ 
+.
+ÜÜ  
+matchActiveNumber
+ÜÜ  1
+=
+ÜÜ2 3!
+numberActiveMatches
+ÜÜ4 G
+;
+ÜÜG H"
+playersQueuedClassic
+áá $
+.
+áá$ %
+Sort
+áá% )
+(
+áá) *
+)
+áá* +
+;
+áá+ ,
+matchmakingResult
+àà !
+=
+àà" #
+MatchmakingResult
+àà$ 5
+.
+àà5 6
+MATCH_FOUND
+àà6 A
+;
+ààA B
+activeMatches
+ââ 
+.
+ââ 
+Add
+ââ !
+(
+ââ! "
+newCompleteGame
+ââ" 1
+)
+ââ1 2
+;
+ââ2 3!
+numberActiveMatches
+ää #
+++
+ää# %
+;
+ää% &
+try
+åå 
+{
+çç 
+newCompleteGame
+éé #
+.
+éé# $
+playerOneCallback
+éé$ 5
+.
+éé5 6"
+GetMatchmakingResult
+éé6 J
+(
+ééJ K
+matchmakingResult
+ééK \
+,
+éé\ ]
+newCompleteGame
+éé^ m
+,
+éém n
+
+PLAYER_ONE
+ééo y
+)
+ééy z
+;
+ééz {!
+GameManagerCallback
+ëë '
+.
+ëë' ("
+GetMatchmakingResult
+ëë( <
+(
+ëë< =
+matchmakingResult
+ëë= N
+,
+ëëN O
+newCompleteGame
+ëëP _
+,
+ëë_ `
+
+PLAYER_TWO
+ëëa k
+)
+ëëk l
+;
+ëël m
+}
+íí 
+catch
+ìì 
+(
+ìì '
+EndpointNotFoundException
+ìì /
+)
+ìì/ 0
+{
+îî 
+matchmakingResult
+ïï %
+=
+ïï& '
+MatchmakingResult
+ïï( 9
+.
+ïï9 :#
+UNABLE_TO_ENTER_MATCH
+ïï: O
+;
+ïïO P!
+GameManagerCallback
+ññ '
+.
+ññ' ("
+GetMatchmakingResult
+ññ( <
+(
+ññ< =
+matchmakingResult
+ññ= N
+,
+ññN O
+newCompleteGame
+ññP _
+,
+ññ_ `
+
+PLAYER_TWO
+ñña k
+)
+ññk l
+;
+ññl m
+}
+òò 
+}
+öö 
+else
+õõ 
+{
+úú 
+Match
+ùù 
+newGame
+ùù 
+=
+ùù 
+new
+ùù  #
+Match
+ùù$ )
+(
+ùù) *
+)
+ùù* +
+{
+ûû 
+currentPlayer
+üü !
+=
+üü" #
+
+PLAYER_ONE
+üü$ .
+,
+üü. /
+playerOneData
+†† !
+=
+††" #
+currentPlayer
+††$ 1
+,
+††1 2
+playerOneCallback
+°° %
+=
+°°& '!
+GameManagerCallback
+°°( ;
+,
+°°; <
+}
+¢¢ 
+;
+¢¢ "
+playersQueuedClassic
+§§ $
+.
+§§$ %
+Add
+§§% (
+(
+§§( )
+newGame
+§§) 0
+)
+§§0 1
+;
+§§1 2
+matchmakingResult
+•• !
+=
+••" #
+MatchmakingResult
+••$ 5
+.
+••5 6
+MATCH_NOT_FOUND
+••6 E
+;
+••E F!
+GameManagerCallback
+¶¶ #
+.
+¶¶# $"
+GetMatchmakingResult
+¶¶$ 8
+(
+¶¶8 9
+matchmakingResult
+¶¶9 J
+,
+¶¶J K
+newGame
+¶¶L S
+,
+¶¶S T
+
+PLAYER_ONE
+¶¶U _
+)
+¶¶_ `
+;
+¶¶` a
+}
+®® 
+}
+©© 	
+public
+¨¨ 
+void
+¨¨ 
+Player2Turn
+¨¨ 
+(
+¨¨  
+Checker
+¨¨  '
+[
+¨¨' (
+]
+¨¨( )
+[
+¨¨) *
+]
+¨¨* +
+updateBoardMatrix
+¨¨, =
+,
+¨¨= >
+int
+¨¨? B
+matchNumber
+¨¨C N
+,
+¨¨N O
+int
+¨¨P S
+playerTwoCheckers
+¨¨T e
+,
+¨¨e f
+int
+¨¨g j
+playerOneCheckers
+¨¨k |
+)
+¨¨| }
+{
+≠≠ 	
+try
+ÆÆ 
+{
+ØØ 
+activeMatches
+∞∞ 
+[
+∞∞ 
+matchNumber
+∞∞ )
+]
+∞∞) *
+.
+∞∞* +
+playerOneCallback
+∞∞+ <
+.
+∞∞< =
+UpdateGameGUI
+∞∞= J
+(
+∞∞J K
+updateBoardMatrix
+∞∞K \
+,
+∞∞\ ]
+playerTwoCheckers
+∞∞^ o
+,
+∞∞o p 
+playerOneCheckers∞∞q Ç
+)∞∞Ç É
+;∞∞É Ñ
+}
+±± 
+catch
+≤≤ 
+(
+≤≤ '
+EndpointNotFoundException
+≤≤ ,
+)
+≤≤, -
+{
+≥≥ 
+activeMatches
+¥¥ 
+[
+¥¥ 
+matchNumber
+¥¥ )
+]
+¥¥) *
+.
+¥¥* +
+playerTwoCallback
+¥¥+ <
+.
+¥¥< =
+EndAbandonedGame
+¥¥= M
+(
+¥¥M N
+)
+¥¥N O
+;
+¥¥O P
+}
+µµ 
+}
+∂∂ 	
+public
+∏∏ 
+void
+∏∏ 
+FinishPlayerGame
+∏∏ $
+(
+∏∏$ %
+int
+∏∏% (
+matchNumber
+∏∏) 4
+,
+∏∏4 5
+int
+∏∏6 9
+playerNumber
+∏∏: F
+,
+∏∏F G
+int
+∏∏H K
+playerTwoCheckers
+∏∏L ]
+,
+∏∏] ^
+int
+∏∏_ b
+playerOneCheckers
+∏∏c t
+)
+∏∏t u
+{
+ππ 	
+if
+∫∫ 
+(
+∫∫ 
+playerNumber
+∫∫ 
+==
+∫∫ 
+
+PLAYER_ONE
+∫∫  *
+)
+∫∫* +
+{
+ªª 
+activeMatches
+ºº 
+[
+ºº 
+matchNumber
+ºº )
+]
+ºº) *
+.
+ºº* +
+playerTwoCallback
+ºº+ <
+.
+ºº< =
+
+FinishGame
+ºº= G
+(
+ººG H
+playerTwoCheckers
+ººH Y
+,
+ººY Z
+playerOneCheckers
+ºº[ l
+)
+ººl m
+;
+ººm n
+}
+ΩΩ 
+else
+ææ 
+{
+øø 
+activeMatches
+¿¿ 
+[
+¿¿ 
+matchNumber
+¿¿ )
+]
+¿¿) *
+.
+¿¿* +
+playerOneCallback
+¿¿+ <
+.
+¿¿< =
+
+FinishGame
+¿¿= G
+(
+¿¿G H
+playerTwoCheckers
+¿¿H Y
+,
+¿¿Y Z
+playerOneCheckers
+¿¿[ l
+)
+¿¿l m
+;
+¿¿m n
+}
+¡¡  
+RankingDataManager
+¬¬  
+rankingDataManager
+¬¬ 1
+=
+¬¬2 3
+new
+¬¬4 7 
+RankingDataManager
+¬¬8 J
+(
+¬¬J K
+)
+¬¬K L
+;
+¬¬L M 
+rankingDataManager
+√√ 
+.
+√√  
+UpdateMatchResults
+√√ 1
+(
+√√1 2
+activeMatches
+√√2 ?
+[
+√√? @
+matchNumber
+√√@ K
+]
+√√K L
+.
+√√L M
+playerOneData
+√√M Z
+,
+√√Z [
+playerOneCheckers
+√√\ m
+,
+√√m n
+activeMatches
+√√o |
+[
+√√| }
+matchNumber√√} à
+]√√à â
+.√√â ä
+playerTwoData√√ä ó
+,√√ó ò!
+playerTwoCheckers√√ô ™
+,√√™ ´
+playerNumber√√¨ ∏
+)√√∏ π
+;√√π ∫!
+numberActiveMatches
+≈≈ 
+--
+≈≈ !
+;
+≈≈! "
+activeMatches
+∆∆ 
+.
+∆∆ 
+RemoveAt
+∆∆ "
+(
+∆∆" #
+matchNumber
+∆∆# .
+)
+∆∆. /
+;
+∆∆/ 0
+int
+»» 
+listPosition
+»» 
+;
+»» 
+for
+   
+(
+   
+listPosition
+   
+=
+   
+matchNumber
+    +
+;
+  + ,
+listPosition
+  - 9
+<
+  : ;
+activeMatches
+  < I
+.
+  I J
+Count
+  J O
+;
+  O P
+listPosition
+  Q ]
+++
+  ] _
+)
+  _ `
+{
+ÀÀ 
+activeMatches
+ÃÃ 
+[
+ÃÃ 
+listPosition
+ÃÃ *
+]
+ÃÃ* +
+.
+ÃÃ+ ,
+matchActiveNumber
+ÃÃ, =
+--
+ÃÃ= ?
+;
+ÃÃ? @
+activeMatches
+ÕÕ 
+[
+ÕÕ 
+listPosition
+ÕÕ *
+]
+ÕÕ* +
+.
+ÕÕ+ ,
+playerOneCallback
+ÕÕ, =
+.
+ÕÕ= >
+UpdateMatchNumber
+ÕÕ> O
+(
+ÕÕO P
+activeMatches
+ÕÕP ]
+[
+ÕÕ] ^
+listPosition
+ÕÕ^ j
+]
+ÕÕj k
+.
+ÕÕk l
+matchActiveNumber
+ÕÕl }
+)
+ÕÕ} ~
+;
+ÕÕ~ 
+activeMatches
+ŒŒ 
+[
+ŒŒ 
+listPosition
+ŒŒ *
+]
+ŒŒ* +
+.
+ŒŒ+ ,
+playerTwoCallback
+ŒŒ, =
+.
+ŒŒ= >
+UpdateMatchNumber
+ŒŒ> O
+(
+ŒŒO P
+activeMatches
+ŒŒP ]
+[
+ŒŒ] ^
+listPosition
+ŒŒ^ j
+]
+ŒŒj k
+.
+ŒŒk l
+matchActiveNumber
+ŒŒl }
+)
+ŒŒ} ~
+;
+ŒŒ~ 
+}
+œœ 
+}
+–– 	
+public
+““ 
+void
+““ 
+SendGameMessage
+““ #
+(
+““# $
+int
+““$ '
+playerNumber
+““( 4
+,
+““4 5
 string
-©©M S
+““6 <
+message
+““= D
+,
+““D E
+int
+““F I
+matchNumber
+““J U
+)
+““U V
+{
+”” 	
+if
+‘‘ 
+(
+‘‘ 
+playerNumber
+‘‘ 
+==
+‘‘ 
+
+PLAYER_ONE
+‘‘  *
+)
+‘‘* +
+{
+’’ 
+activeMatches
+÷÷ 
+[
+÷÷ 
+matchNumber
+÷÷ )
+]
+÷÷) *
+.
+÷÷* +
+playerTwoCallback
+÷÷+ <
+.
+÷÷< = 
+RecieveGameMessage
+÷÷= O
+(
+÷÷O P
+message
+÷÷P W
+,
+÷÷W X
+
+PLAYER_ONE
+÷÷Y c
+)
+÷÷c d
+;
+÷÷d e
+}
+◊◊ 
+else
+ÿÿ 
+{
+ŸŸ 
+activeMatches
+⁄⁄ 
+[
+⁄⁄ 
+matchNumber
+⁄⁄ )
+]
+⁄⁄) *
+.
+⁄⁄* +
+playerOneCallback
+⁄⁄+ <
+.
+⁄⁄< = 
+RecieveGameMessage
+⁄⁄= O
+(
+⁄⁄O P
+message
+⁄⁄P W
+,
+⁄⁄W X
+
+PLAYER_TWO
+⁄⁄X b
+)
+⁄⁄b c
+;
+⁄⁄c d
+}
+€€ 
+}
+‹‹ 	
+public
+ﬁﬁ 
+void
+ﬁﬁ 
+ReportPlayer
+ﬁﬁ  
+(
+ﬁﬁ  !
+int
+ﬁﬁ! $#
+playerNumberReporting
+ﬁﬁ% :
+,
+ﬁﬁ: ;
+int
+ﬁﬁ< ?
+matchNumber
+ﬁﬁ@ K
+,
+ﬁﬁK L
+string
+ﬁﬁM S
 
 reportText
-©©T ^
+ﬁﬁT ^
 )
-©©^ _
+ﬁﬁ^ _
 {
-™™ 	
+ﬂﬂ 	
 int
-´´ 
+‡‡ 
 reportResult
-´´ 
+‡‡ 
 ;
-´´ 
+‡‡ 
 ReportSaveResult
-¨¨ 
+·· 
 reportSaveResult
-¨¨ -
+·· -
 =
-¨¨. /
+··. /
 ReportSaveResult
-¨¨0 @
+··0 @
 .
-¨¨@ A
+··@ A
 ERROR_SAVING
-¨¨A M
+··A M
 ;
-¨¨M N
+··M N
 ReportDataManager
-≠≠ 
+‚‚ 
 reportDataManager
-≠≠ /
+‚‚ /
 =
-≠≠0 1
+‚‚0 1
 new
-≠≠2 5
+‚‚2 5
 ReportDataManager
-≠≠6 G
+‚‚6 G
 (
-≠≠G H
+‚‚G H
 )
-≠≠H I
+‚‚H I
 ;
-≠≠I J
+‚‚I J
 if
-ØØ 
+‰‰ 
 (
-ØØ #
+‰‰ #
 playerNumberReporting
-ØØ %
+‰‰ %
 ==
-ØØ& (
+‰‰& (
 
 PLAYER_ONE
-ØØ) 3
+‰‰) 3
 )
-ØØ3 4
+‰‰3 4
 {
-∞∞ 
+ÂÂ 
 reportResult
-±± 
+ÊÊ 
 =
-±± 
+ÊÊ 
 reportDataManager
-±± 0
+ÊÊ 0
 .
-±±0 1
+ÊÊ0 1
 ReportPlayer
-±±1 =
+ÊÊ1 =
 (
-±±= >
+ÊÊ= >
 activeMatches
-±±> K
+ÊÊ> K
 [
-±±K L
+ÊÊK L
 matchNumber
-±±L W
+ÊÊL W
 ]
-±±W X
+ÊÊW X
 .
-±±X Y
+ÊÊX Y
 playerTwoData
-±±Y f
+ÊÊY f
 .
-±±f g
+ÊÊf g
 	IdJugador
-±±g p
+ÊÊg p
 ,
-±±p q
+ÊÊp q
 activeMatches
-±±r 
-[±± Ä
-matchNumber±±Ä ã
-]±±ã å
-.±±å ç
-playerOneData±±ç ö
-.±±ö õ
-	IdJugador±±õ §
-,±±§ •
+ÊÊr 
+[ÊÊ Ä
+matchNumberÊÊÄ ã
+]ÊÊã å
+.ÊÊå ç
+playerOneDataÊÊç ö
+.ÊÊö õ
+	IdJugadorÊÊõ §
+,ÊÊ§ •
 
-reportText±±¶ ∞
-)±±∞ ±
-;±±± ≤
+reportTextÊÊ¶ ∞
+)ÊÊ∞ ±
+;ÊÊ± ≤
 }
-≤≤ 
+ÁÁ 
 else
-≥≥ 
+ËË 
 {
-¥¥ 
+ÈÈ 
 reportResult
-µµ 
+ÍÍ 
 =
-µµ 
+ÍÍ 
 reportDataManager
-µµ 0
+ÍÍ 0
 .
-µµ0 1
+ÍÍ0 1
 ReportPlayer
-µµ1 =
+ÍÍ1 =
 (
-µµ= >
+ÍÍ= >
 activeMatches
-µµ> K
+ÍÍ> K
 [
-µµK L
+ÍÍK L
 matchNumber
-µµL W
+ÍÍL W
 ]
-µµW X
+ÍÍW X
 .
-µµX Y
+ÍÍX Y
 playerOneData
-µµY f
+ÍÍY f
 .
-µµf g
+ÍÍf g
 	IdJugador
-µµg p
+ÍÍg p
 ,
-µµp q
+ÍÍp q
 activeMatches
-µµr 
-[µµ Ä
-matchNumberµµÄ ã
-]µµã å
-.µµå ç
-playerTwoDataµµç ö
-.µµö õ
-	IdJugadorµµõ §
-,µµ§ •
+ÍÍr 
+[ÍÍ Ä
+matchNumberÍÍÄ ã
+]ÍÍã å
+.ÍÍå ç
+playerTwoDataÍÍç ö
+.ÍÍö õ
+	IdJugadorÍÍõ §
+,ÍÍ§ •
 
-reportTextµµ¶ ∞
-)µµ∞ ±
-;µµ± ≤
+reportTextÍÍ¶ ∞
+)ÍÍ∞ ±
+;ÍÍ± ≤
 }
-∂∂ 
+ÎÎ 
 if
-∏∏ 
+ÌÌ 
 (
-∏∏ 
+ÌÌ 
 reportResult
-∏∏ 
+ÌÌ 
 >
-∏∏ 
+ÌÌ 
 $num
-∏∏  
+ÌÌ  
 )
-∏∏  !
+ÌÌ  !
 {
-ππ 
+ÓÓ 
 reportSaveResult
-∫∫  
+ÔÔ  
 =
-∫∫! "
+ÔÔ! "
 ReportSaveResult
-∫∫# 3
+ÔÔ# 3
 .
-∫∫3 4
+ÔÔ3 4
 SAVED_REPORT
-∫∫4 @
+ÔÔ4 @
 ;
-∫∫@ A
+ÔÔ@ A
 }
-ªª !
+ !
 GameManagerCallback
-ºº 
+ÒÒ 
 .
-ºº  
+ÒÒ  
 ReportResult
-ºº  ,
+ÒÒ  ,
 (
-ºº, -
+ÒÒ, -
 reportSaveResult
-ºº- =
+ÒÒ- =
 )
-ºº= >
+ÒÒ= >
 ;
-ºº> ?
+ÒÒ> ?
 }
-ΩΩ 	
-}
-ææ 
+ÚÚ 	
 public
-¿¿ 
+ÙÙ 
+void
+ÙÙ 
+
+LeaveMatch
+ÙÙ 
+(
+ÙÙ 
+int
+ÙÙ "
+matchNumber
+ÙÙ# .
+,
+ÙÙ. /
+int
+ÙÙ0 3
+playerNumber
+ÙÙ4 @
+)
+ÙÙ@ A
+{
+ıı 	
+if
+ˆˆ 
+(
+ˆˆ 
+playerNumber
+ˆˆ 
+==
+ˆˆ 
+
+PLAYER_ONE
+ˆˆ  *
+)
+ˆˆ* +
+{
+˜˜ 
+activeMatches
+¯¯ 
+[
+¯¯ 
+matchNumber
+¯¯ )
+]
+¯¯) *
+.
+¯¯* +
+playerTwoCallback
+¯¯+ <
+.
+¯¯< =
+EndAbandonedGame
+¯¯= M
+(
+¯¯M N
+)
+¯¯N O
+;
+¯¯O P
+}
+˘˘ 
+else
+˙˙ 
+{
+˚˚ 
+activeMatches
+¸¸ 
+[
+¸¸ 
+matchNumber
+¸¸ )
+]
+¸¸) *
+.
+¸¸* +
+playerOneCallback
+¸¸+ <
+.
+¸¸< =
+EndAbandonedGame
+¸¸= M
+(
+¸¸M N
+)
+¸¸N O
+;
+¸¸O P
+}
+˝˝ 
+}
+˛˛ 	
+}
+ˇˇ 
+public
+ÅÅ 
 
 partial
-¿¿ 
+ÅÅ 
 class
-¿¿ 
+ÅÅ 
 MainService
-¿¿ $
+ÅÅ $
 :
-¿¿% &
+ÅÅ% &
 IBanManager
-¿¿' 2
+ÅÅ' 2
 {
-¡¡ !
+ÇÇ !
 IBanManagerCallback
-¬¬ 
+ÉÉ 
 BanCallback
-¬¬ '
+ÉÉ '
 {
-√√ 	
+ÑÑ 	
 get
-ƒƒ 
+ÖÖ 
 {
-≈≈ 
+ÜÜ 
 return
-∆∆ 
+áá 
 OperationContext
-∆∆ '
+áá '
 .
-∆∆' (
+áá' (
 Current
-∆∆( /
+áá( /
 .
-∆∆/ 0 
+áá/ 0 
 GetCallbackChannel
-∆∆0 B
+áá0 B
 <
-∆∆B C!
+ááB C!
 IBanManagerCallback
-∆∆C V
+ááC V
 >
-∆∆V W
+ááV W
 (
-∆∆W X
+ááW X
 )
-∆∆X Y
+ááX Y
 ;
-∆∆Y Z
+ááY Z
 }
-«« 
+àà 
 }
-»» 	
+ââ 	
 public
-   
+ãã 
 void
-   
+ãã 
 GetReportData
-   !
+ãã !
 (
-  ! "
+ãã! "
 )
-  " #
+ãã" #
 {
-ÀÀ 	
+åå 	
 AdminReportResult
-ÃÃ 
+çç 
 result
-ÃÃ $
+çç $
 =
-ÃÃ% &
+çç% &
 AdminReportResult
-ÃÃ' 8
+çç' 8
 .
-ÃÃ8 9
+çç8 9
 NO_REPORTS_EXIST
-ÃÃ9 I
+çç9 I
 ;
-ÃÃI J
+ççI J
 List
-ÕÕ 
+éé 
 <
-ÕÕ 
+éé 
 Dominio
-ÕÕ 
+éé 
 .
-ÕÕ 
+éé 
 Reporte
-ÕÕ  
+éé  
 >
-ÕÕ  !
+éé  !
 
 reportList
-ÕÕ" ,
+éé" ,
 =
-ÕÕ- .
+éé- .
 QueryReportData
-ÕÕ/ >
+éé/ >
 (
-ÕÕ> ?
+éé> ?
 )
-ÕÕ? @
+éé? @
 ;
-ÕÕ@ A
+éé@ A
 if
-œœ 
+êê 
 (
-œœ 
+êê 
 
 reportList
-œœ 
+êê 
 .
-œœ 
+êê 
 Count
-œœ  
+êê  
 >
-œœ! "
+êê! "
 $num
-œœ# $
+êê# $
 )
-œœ$ %
+êê$ %
 {
-–– 
+ëë 
 result
-—— 
+íí 
 =
-—— 
+íí 
 AdminReportResult
-—— *
+íí *
 .
-——* +
+íí* +
 REPORT_EXISTS
-——+ 8
+íí+ 8
 ;
-——8 9
+íí8 9
 BanCallback
-”” 
+îî 
 .
-”” 
+îî 
 ReceiveReportData
-”” -
+îî -
 (
-””- .
+îî- .
 
 reportList
-””. 8
+îî. 8
 )
-””8 9
+îî8 9
 ;
-””9 :
+îî9 :
 }
-‘‘ 
+ïï 
 BanCallback
-’’ 
+ññ 
 .
-’’ &
+ññ &
 GetReportDataQueryResult
-’’ 0
+ññ 0
 (
-’’0 1
+ññ0 1
 result
-’’1 7
+ññ1 7
 )
-’’7 8
+ññ7 8
 ;
-’’8 9
+ññ8 9
 }
-÷÷ 	
+óó 	
 public
-ÿÿ 
+ôô 
 List
-ÿÿ 
+ôô 
 <
-ÿÿ 
+ôô 
 Dominio
-ÿÿ 
+ôô 
 .
-ÿÿ 
+ôô 
 Reporte
-ÿÿ #
+ôô #
 >
-ÿÿ# $
+ôô# $
 QueryReportData
-ÿÿ% 4
+ôô% 4
 (
-ÿÿ4 5
+ôô4 5
 )
-ÿÿ5 6
+ôô5 6
 {
-ŸŸ 	
+öö 	
 List
-⁄⁄ 
+õõ 
 <
-⁄⁄ 
+õõ 
 Dominio
-⁄⁄ 
+õõ 
 .
-⁄⁄ 
+õõ 
 Reporte
-⁄⁄  
+õõ  
 >
-⁄⁄  !"
+õõ  !"
 currentPlayerReports
-⁄⁄" 6
+õõ" 6
 =
-⁄⁄7 8
+õõ7 8
 new
-⁄⁄9 <
+õõ9 <
 List
-⁄⁄= A
+õõ= A
 <
-⁄⁄A B
+õõA B
 Dominio
-⁄⁄B I
+õõB I
 .
-⁄⁄I J
+õõI J
 Reporte
-⁄⁄J Q
+õõJ Q
 >
-⁄⁄Q R
+õõQ R
 (
-⁄⁄R S
+õõR S
 )
-⁄⁄S T
+õõS T
 ;
-⁄⁄T U
+õõT U
 ReportDataManager
-€€ 
+úú 
 reportDataManager
-€€ /
+úú /
 =
-€€0 1
+úú0 1
 new
-€€2 5
+úú2 5
 ReportDataManager
-€€6 G
+úú6 G
 (
-€€G H
+úúG H
 )
-€€H I
+úúH I
 ;
-€€I J 
+úúI J 
 JugadorDataManager
-‹‹ 
+ùù 
 playerManager
-‹‹ ,
+ùù ,
 =
-‹‹- .
+ùù- .
 new
-‹‹/ 2 
+ùù/ 2 
 JugadorDataManager
-‹‹3 E
+ùù3 E
 (
-‹‹E F
+ùùE F
 )
-‹‹F G
+ùùF G
 ;
-‹‹G H
+ùùG H
 List
-›› 
+ûû 
 <
-›› 
+ûû 
 
 DataAccess
-›› 
+ûû 
 .
-›› 
+ûû 
 Reporte
-›› #
+ûû #
 >
-››# $
+ûû# $
 queriedReportList
-››% 6
+ûû% 6
 =
-››7 8
+ûû7 8
 reportDataManager
-››9 J
+ûû9 J
 .
-››J K
+ûûJ K
 GetReportList
-››K X
+ûûK X
 (
-››X Y
+ûûX Y
 )
-››Y Z
+ûûY Z
 ;
-››Z [
+ûûZ [
 if
-ﬂﬂ 
+†† 
 (
-ﬂﬂ 
+†† 
 reportDataManager
-ﬂﬂ !
+†† !
 .
-ﬂﬂ! "
+††! "
 GetReportList
-ﬂﬂ" /
+††" /
 (
-ﬂﬂ/ 0
+††/ 0
 )
-ﬂﬂ0 1
+††0 1
 !=
-ﬂﬂ2 4
+††2 4
 null
-ﬂﬂ5 9
+††5 9
 )
-ﬂﬂ9 :
+††9 :
 {
-‡‡ 
+°° 
 foreach
-·· 
+¢¢ 
 (
-·· 
+¢¢ 
 
 DataAccess
-·· #
+¢¢ #
 .
-··# $
+¢¢# $
 Reporte
-··$ +
+¢¢$ +
 playerReport
-··, 8
+¢¢, 8
 in
-··9 ;
+¢¢9 ;
 queriedReportList
-··< M
+¢¢< M
 )
-··M N
+¢¢M N
 {
-‚‚ "
+££ "
 currentPlayerReports
-„„ (
+§§ (
 .
-„„( )
+§§( )
 Add
-„„) ,
+§§) ,
 (
-„„, -
+§§, -
 new
-„„- 0
+§§- 0
 Dominio
-„„1 8
+§§1 8
 .
-„„8 9
+§§8 9
 Reporte
-„„9 @
+§§9 @
 {
-‰‰ 
+•• 
 	IdReporte
-ÂÂ !
+¶¶ !
 =
-ÂÂ" #
+¶¶" #
 playerReport
-ÂÂ$ 0
+¶¶$ 0
 .
-ÂÂ0 1
+¶¶0 1
 	idReporte
-ÂÂ1 :
+¶¶1 :
 ,
-ÂÂ: ;
+¶¶: ;
 Acusador
-ÊÊ  
+ßß  
 =
-ÊÊ! "
+ßß! "
 playerManager
-ÊÊ# 0
+ßß# 0
 .
-ÊÊ0 1!
+ßß0 1!
 GetDomainPlayerByID
-ÊÊ1 D
+ßß1 D
 (
-ÊÊD E
+ßßD E
 playerReport
-ÊÊE Q
+ßßE Q
 .
-ÊÊQ R
+ßßQ R
 
 idAcusador
-ÊÊR \
+ßßR \
 )
-ÊÊ\ ]
+ßß\ ]
 ,
-ÊÊ] ^
+ßß] ^
 	Reportado
-ÁÁ !
+®® !
 =
-ÁÁ" #
+®®" #
 playerManager
-ÁÁ$ 1
+®®$ 1
 .
-ÁÁ1 2!
+®®1 2!
 GetDomainPlayerByID
-ÁÁ2 E
+®®2 E
 (
-ÁÁE F
+®®E F
 playerReport
-ÁÁF R
+®®F R
 .
-ÁÁR S
+®®R S
 idReportado
-ÁÁS ^
+®®S ^
 )
-ÁÁ^ _
+®®^ _
 ,
-ÁÁ_ `
+®®_ `
 DescripcionAcuso
-ËË (
+©© (
 =
-ËË) *
+©©) *
 playerReport
-ËË+ 7
+©©+ 7
 .
-ËË7 8
+©©7 8
 descripcionAcuso
-ËË8 H
+©©8 H
 ??
-ËËI K
+©©I K
 default
-ËËL S
+©©L S
 (
-ËËS T
+©©S T
 string
-ËËT Z
+©©T Z
 )
-ËËZ [
+©©Z [
 }
-ÈÈ 
+™™ 
 )
-ÈÈ 
+™™ 
 ;
-ÈÈ 
+™™ 
 }
-ÍÍ 
+´´ 
 }
-ÎÎ 
+¨¨ 
 return
-ÌÌ "
+ÆÆ "
 currentPlayerReports
-ÌÌ '
+ÆÆ '
 ;
-ÌÌ' (
+ÆÆ' (
 }
-ÓÓ 	
+ØØ 	
 public
- 
+±± 
 void
- 
+±± 
 	BanPlayer
- 
+±± 
 (
- 
+±± 
 string
- $ 
+±± $ 
 reportedPlayerName
-% 7
+±±% 7
 )
-7 8
+±±7 8
 {
-ÒÒ 	
+≤≤ 	
 int
-ÚÚ 
+≥≥ 
 isPlayerBanned
-ÚÚ 
+≥≥ 
 =
-ÚÚ  
+≥≥  
 $num
-ÚÚ! "
+≥≥! "
 ;
-ÚÚ" #
+≥≥" #
 const
-ÛÛ 
+¥¥ 
 int
-ÛÛ 
+¥¥ 
 BAN_SAUCCESSFUL
-ÛÛ %
+¥¥ %
 =
-ÛÛ& '
+¥¥& '
 $num
-ÛÛ( )
+¥¥( )
 ;
-ÛÛ) *
+¥¥) *
 const
-ÙÙ 
+µµ 
 int
-ÙÙ 
+µµ 
 BAN_ALREADY
-ÙÙ !
+µµ !
 =
-ÙÙ" #
+µµ" #
 $num
-ÙÙ$ %
+µµ$ %
 ;
-ÙÙ% & 
+µµ% & 
 JugadorDataManager
-ıı 
+∂∂ 
 playerDataManager
-ıı 0
+∂∂ 0
 =
-ıı1 2
+∂∂1 2
 new
-ıı3 6 
+∂∂3 6 
 JugadorDataManager
-ıı7 I
+∂∂7 I
 (
-ııI J
+∂∂I J
 )
-ııJ K
+∂∂J K
 ;
-ııK L
+∂∂K L
 	BanResult
-˜˜ 
+∏∏ 
 	banResult
-˜˜ 
+∏∏ 
 =
-˜˜  !
+∏∏  !
 	BanResult
-˜˜" +
+∏∏" +
 .
-˜˜+ ,
+∏∏+ ,
 ERROR_BANNING
-˜˜, 9
+∏∏, 9
 ;
-˜˜9 :
+∏∏9 :
 
 DataAccess
-¯¯ 
+ππ 
 .
-¯¯ 
+ππ 
 Jugador
-¯¯ 
+ππ 
 reportedPlayer
-¯¯ -
+ππ -
 =
-¯¯. /
+ππ. /
 playerDataManager
-¯¯0 A
+ππ0 A
 .
-¯¯A B!
+ππA B!
 GetPlayerByNickname
-¯¯B U
+ππB U
 (
-¯¯U V 
+ππU V 
 reportedPlayerName
-¯¯V h
+ππV h
 )
-¯¯h i
+ππh i
 ;
-¯¯i j
+ππi j
 isPlayerBanned
-˘˘ 
+∫∫ 
 =
-˘˘ 
+∫∫ 
 playerDataManager
-˘˘ .
+∫∫ .
 .
-˘˘. /
+∫∫. /
 	BanPlayer
-˘˘/ 8
+∫∫/ 8
 (
-˘˘8 9
+∫∫8 9
 reportedPlayer
-˘˘9 G
+∫∫9 G
 .
-˘˘G H
+∫∫G H
 apodo
-˘˘H M
+∫∫H M
 )
-˘˘M N
+∫∫M N
 ;
-˘˘N O
+∫∫N O
 if
-˚˚ 
+ºº 
 (
-˚˚ 
+ºº 
 isPlayerBanned
-˚˚ 
+ºº 
 ==
-˚˚ !
+ºº !
 BAN_SAUCCESSFUL
-˚˚" 1
+ºº" 1
 )
-˚˚1 2
+ºº1 2
 {
-¸¸ 
+ΩΩ 
 MailMessage
-˝˝ 
+ææ 
 emailContent
-˝˝ (
+ææ (
 =
-˝˝) *
+ææ) *
 new
-˝˝+ .
+ææ+ .
 MailMessage
-˝˝/ :
+ææ/ :
 (
-˝˝: ;
+ææ: ;
 )
-˝˝; <
+ææ; <
 ;
-˝˝< =
+ææ< =
 emailContent
-ˇˇ 
+¿¿ 
 .
-ˇˇ 
+¿¿ 
 To
-ˇˇ 
+¿¿ 
 .
-ˇˇ  
+¿¿  
 Add
-ˇˇ  #
+¿¿  #
 (
-ˇˇ# $
+¿¿# $
 reportedPlayer
-ˇˇ$ 2
+¿¿$ 2
 .
-ˇˇ2 3
+¿¿2 3
 correoElectronico
-ˇˇ3 D
+¿¿3 D
 )
-ˇˇD E
+¿¿D E
 ;
-ˇˇE F
+¿¿E F
 emailContent
-ÄÄ 
+¡¡ 
 .
-ÄÄ 
+¡¡ 
 Subject
-ÄÄ $
+¡¡ $
 =
-ÄÄ% &
+¡¡% &
 $str
-ÄÄ' O
+¡¡' O
 +
-ÄÄP Q
+¡¡P Q
 reportedPlayer
-ÄÄR `
+¡¡R `
 .
-ÄÄ` a
+¡¡` a
 apodo
-ÄÄa f
+¡¡a f
 ;
-ÄÄf g
+¡¡f g
 emailContent
-ÅÅ 
+¬¬ 
 .
-ÅÅ 
+¬¬ 
 Body
-ÅÅ !
+¬¬ !
 =
-ÅÅ" #
+¬¬" #
 $str
-ÅÅ$ +
+¬¬$ +
 +
-ÅÅ, -
+¬¬, -
 reportedPlayer
-ÅÅ. <
+¬¬. <
 .
-ÅÅ< =
+¬¬< =
 apodo
-ÅÅ= B
+¬¬= B
 +
-ÅÅC D
+¬¬C D
 $str
-ÅÅE ~
-+ÅÅ Ä
+¬¬E ~
++¬¬ Ä
 $str
-ÇÇ 6
+√√ 6
 ;
-ÇÇ6 7
+√√6 7
 emailContent
-ÉÉ 
+ƒƒ 
 .
-ÉÉ 
+ƒƒ 
 From
-ÉÉ !
+ƒƒ !
 =
-ÉÉ" #
+ƒƒ" #
 new
-ÉÉ$ '
+ƒƒ$ '
 System
-ÉÉ( .
+ƒƒ( .
 .
-ÉÉ. /
+ƒƒ. /
 Net
-ÉÉ/ 2
+ƒƒ/ 2
 .
-ÉÉ2 3
+ƒƒ2 3
 Mail
-ÉÉ3 7
+ƒƒ3 7
 .
-ÉÉ7 8
+ƒƒ7 8
 MailAddress
-ÉÉ8 C
+ƒƒ8 C
 (
-ÉÉC D
+ƒƒC D
 $str
-ÉÉD _
+ƒƒD _
 ,
-ÉÉ_ `
+ƒƒ_ `
 $str
-ÉÉa x
+ƒƒa x
 )
-ÉÉx y
+ƒƒx y
 ;
-ÉÉy z
+ƒƒy z
 
 SmtpClient
-ÖÖ 
+∆∆ 
 client
-ÖÖ !
+∆∆ !
 =
-ÖÖ" #
+∆∆" #
 new
-ÖÖ$ '
+∆∆$ '
 
 SmtpClient
-ÖÖ( 2
+∆∆( 2
 {
-ÜÜ 
+«« 
 Credentials
-áá 
+»» 
 =
-áá  !
+»»  !
 new
-áá" %
+»»" %
 System
-áá& ,
+»»& ,
 .
-áá, -
+»», -
 Net
-áá- 0
+»»- 0
 .
-áá0 1
+»»0 1
 NetworkCredential
-áá1 B
+»»1 B
 (
-ááB C
+»»B C
 mailUser
-ááC K
+»»C K
 ,
-ááK L
+»»K L
 mailPassword
-ááM Y
+»»M Y
 )
-ááY Z
+»»Y Z
 ,
-ááZ [
+»»Z [
 	EnableSsl
-àà 
+…… 
 =
-àà 
+…… 
 true
-àà  $
+……  $
 ,
-àà$ %
+……$ %
 Port
-ââ 
+   
 =
-ââ 
+   
 $num
-ââ 
+   
 ,
-ââ 
+   
 Host
-ää 
+ÀÀ 
 =
-ää 
+ÀÀ 
 $str
-ää +
+ÀÀ +
 ,
-ää+ ,
+ÀÀ+ ,
 }
-ãã 
+ÃÃ 
 ;
-ãã 
+ÃÃ 
 try
-çç 
+ŒŒ 
 {
-éé 
+œœ 
 client
-èè 
+–– 
 .
-èè 
+–– 
 Send
-èè 
+–– 
 (
-èè  
+––  
 emailContent
-èè  ,
+––  ,
 )
-èè, -
+––, -
 ;
-èè- .
+––- .
 }
-êê 
+—— 
 catch
-ëë 
+““ 
 (
-ëë 
+““ 
 System
-ëë 
+““ 
 .
-ëë 
+““ 
 Net
-ëë !
+““ !
 .
-ëë! "
+““! "
 Mail
-ëë" &
+““" &
 .
-ëë& '
+““& '
 SmtpException
-ëë' 4
+““' 4
 )
-ëë4 5
+““4 5
 {
-íí 
+”” 
 throw
-ìì 
+‘‘ 
 new
-ìì 
+‘‘ 
 System
-ìì $
+‘‘ $
 .
-ìì$ %
+‘‘$ %
 Net
-ìì% (
+‘‘% (
 .
-ìì( )
+‘‘( )
 Mail
-ìì) -
+‘‘) -
 .
-ìì- .
+‘‘- .
 SmtpException
-ìì. ;
+‘‘. ;
 (
-ìì; <
-$strìì< í
-)ììí ì
-;ììì î
+‘‘; <
+$str‘‘< í
+)‘‘í ì
+;‘‘ì î
 }
-îî 
+’’ 
 	banResult
-ññ 
+◊◊ 
 =
-ññ 
+◊◊ 
 	BanResult
-ññ %
+◊◊ %
 .
-ññ% &
+◊◊% &
 PLAYER_BANNED
-ññ& 3
+◊◊& 3
 ;
-ññ3 4
+◊◊3 4
 }
-óó 
+ÿÿ 
 else
-òò 
+ŸŸ 
 if
-òò 
+ŸŸ 
 (
-òò 
+ŸŸ 
 isPlayerBanned
-òò "
+ŸŸ "
 ==
-òò# %
+ŸŸ# %
 BAN_ALREADY
-òò& 1
+ŸŸ& 1
 )
-òò1 2
+ŸŸ1 2
 {
-ôô 
+⁄⁄ 
 	banResult
-öö 
+€€ 
 =
-öö 
+€€ 
 	BanResult
-öö %
+€€ %
 .
-öö% &#
+€€% &#
 PLAYER_ALREADY_BANNED
-öö& ;
+€€& ;
 ;
-öö; <
+€€; <
 }
-õõ 
+‹‹ 
 BanCallback
-ùù 
+ﬁﬁ 
 .
-ùù 
+ﬁﬁ 
 GetBanResult
-ùù $
+ﬁﬁ $
 (
-ùù$ %
+ﬁﬁ$ %
 	banResult
-ùù% .
+ﬁﬁ% .
 )
-ùù. /
+ﬁﬁ. /
 ;
-ùù/ 0
+ﬁﬁ/ 0
 }
-üü 	
+‡‡ 	
 }
-†† 
-}°° ©
+·· 
+}‚‚ ©
 
 WD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\Match.cs
 	namespace 	
@@ -6764,7 +7250,7 @@ ComVisible 
 (## 
 $str## (
 )##( )
-]##) *Ã#
+]##) *ó$
 ^D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\ServidorCheckers\Contratos\StatesResult.cs
 	namespace 	
 	Contratos
@@ -6871,151 +7357,155 @@ ComVisible 
 EsAdmin++ 
 =++ 
 $num++ 
-,++ 
-	EsBaneado,, 
-=,, 
-$num,, 
-}-- 
-public// 
+,++ 
+LOGGED_PLAYER,, 
+=,, 
+$num,, 
+,,, 
+	EsBaneado-- 
+=-- 
+$num-- 
+}.. 
+public00 
 
-enum// 
+enum00 
 
-SaveResult// 
-{00 
-JugadorGuardado11 
-=11 
-$num11 
-,11 
-NicknameExistente22 
-=22 
-$num22 
-,22 
-CorreoExistente33 
-=33 
-$num33 
-,33 
-ErrorGuardado44 
-=44 
-$num44 
-,44 
-}55 
-public77 
+SaveResult00 
+{11 
+JugadorGuardado22 
+=22 
+$num22 
+,22 
+NicknameExistente33 
+=33 
+$num33 
+,33 
+CorreoExistente44 
+=44 
+$num44 
+,44 
+ErrorGuardado55 
+=55 
+$num55 
+,55 
+}66 
+public88 
 
-enum77 
-AdminReportResult77 !
-{88 
-NO_REPORTS_EXIST99 
-=99 
-$num99 
-,99 
-REPORT_EXISTS:: 
-=:: 
-$num:: 
-};; 
-public== 
+enum88 
+AdminReportResult88 !
+{99 
+NO_REPORTS_EXIST:: 
+=:: 
+$num:: 
+,:: 
+REPORT_EXISTS;; 
+=;; 
+$num;; 
+}<< 
+public>> 
 
-enum== 
-ReportSaveResult==  
-{>> 
-SAVED_REPORT?? 
-=?? 
-$num?? 
-,?? 
-ERROR_SAVING@@ 
+enum>> 
+ReportSaveResult>>  
+{?? 
+SAVED_REPORT@@ 
 =@@ 
 $num@@ 
-}AA 
-publicCC 
+,@@ 
+ERROR_SAVINGAA 
+=AA 
+$numAA 
+}BB 
+publicDD 
 
-enumCC 
-RankingResultCC 
-{DD 
+enumDD 
+RankingResultDD 
+{EE 
 
-NO_RANKINGEE 
-=EE 
-$numEE 
-,EE 
-RANKING_EXISTSFF 
-=FF 
-$numFF 
-}GG 
-publicHH 
+NO_RANKINGFF 
+=FF 
+$numFF 
+,FF 
+RANKING_EXISTSGG 
+=GG 
+$numGG 
+}HH 
+publicII 
 
-enumHH 
+enumII 
 
-MailResultHH 
-{II 
-MailSendJJ 
-=JJ 
-$numJJ 
-,JJ 
-	SendErrorKK 
-=KK 
-$numKK 
-,KK 
-UnknownPlayerLL 
-=LL 
-$numLL 
-}MM 
-publicOO 
+MailResultII 
+{JJ 
+MailSendKK 
+=KK 
+$numKK 
+,KK 
+	SendErrorLL 
+=LL 
+$numLL 
+,LL 
+UnknownPlayerMM 
+=MM 
+$numMM 
+}NN 
+publicPP 
 
-enumOO 
-	PinResultOO 
-{PP 
-VerifiedPinQQ 
-=QQ 
-$numQQ 
-,QQ 
-WrongAnswerRR 
+enumPP 
+	PinResultPP 
+{QQ 
+VerifiedPinRR 
 =RR 
-$numRR 
-,RR 
-
-UnknownPinSS 
-=SS 
+$numRR 
+,RR 
+WrongAnswerSS 
+=SS 
 $numSS 
-}TT 
-publicVV 
+,SS 
+
+UnknownPinTT 
+=TT 
+$numTT 
+}UU 
+publicWW 
 
-enumVV  
-PasswordChangeResultVV $
-{WW 
-ChangedPasswordXX 
-=XX 
-$numXX 
-,XX 
-ErrorChangingYY 
-=YY 
-$numYY 
-}ZZ 
-public\\ 
+enumWW  
+PasswordChangeResultWW $
+{XX 
+ChangedPasswordYY 
+=YY 
+$numYY 
+,YY 
+ErrorChangingZZ 
+=ZZ 
+$numZZ 
+}[[ 
+public]] 
 
-enum\\ 
-DataObtainedResult\\ "
-{]] 
-DataObtained^^ 
-=^^ 
-$num^^ 
-,^^ 
-ErrorObtainingData__ 
-=__ 
-$num__ 
-}`` 
-publicbb 
+enum]] 
+DataObtainedResult]] "
+{^^ 
+DataObtained__ 
+=__ 
+$num__ 
+,__ 
+ErrorObtainingData`` 
+=`` 
+$num`` 
+}aa 
+publiccc 
 
-enumbb 
-	BanResultbb 
-{cc 
-PLAYER_BANNEDdd 
-=dd 
-$numdd 
-,dd !
-PLAYER_ALREADY_BANNEDee 
-=ee 
-$numee  !
-,ee! "
-ERROR_BANNINGff 
-=ff 
-$numff 
-}gg 
-}hh 
+enumcc 
+	BanResultcc 
+{dd 
+PLAYER_BANNEDee 
+=ee 
+$numee 
+,ee !
+PLAYER_ALREADY_BANNEDff 
+=ff 
+$numff  !
+,ff! "
+ERROR_BANNINGgg 
+=gg 
+$numgg 
+}hh 
+}ii 

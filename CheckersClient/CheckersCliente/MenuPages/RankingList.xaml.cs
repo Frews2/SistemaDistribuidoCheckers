@@ -4,7 +4,7 @@
 */
 using CheckersCliente.MainService;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -28,6 +28,8 @@ namespace CheckersCliente.MenuPages
 
         private void Return(object sender, RoutedEventArgs e)
         {
+            Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+            actualMenu.EnableNavigation();
             NavigationService.GoBack();
         }
     }

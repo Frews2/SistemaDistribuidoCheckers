@@ -1,12 +1,7 @@
-﻿using CheckersCliente.MainService;
-using LogicaCliente;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Threading;
-
 namespace CheckersCliente.LogInPages
 {
     /// <summary>
@@ -32,7 +27,7 @@ namespace CheckersCliente.LogInPages
         
         private void CheckNickname(object sender, RoutedEventArgs e)
         {
-            if (Nicknamebox.Text.Length < MINIMUN_LENGHT || String.IsNullOrEmpty(Nicknamebox.Text))
+            if (Nicknamebox.Text.Length < MINIMUN_LENGHT || String.IsNullOrWhiteSpace(Nicknamebox.Text))
             {
                 SendButton.IsEnabled = false;
             }
@@ -44,6 +39,8 @@ namespace CheckersCliente.LogInPages
 
         private void CancelClick(object sender, RoutedEventArgs e)
         {
+            LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+            login.EnableNavigation();
             NavigationService.GoBack();
         }
 

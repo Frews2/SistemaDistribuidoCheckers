@@ -1,16 +1,11 @@
 ﻿using CheckersCliente.MainService;
 using LogicaCliente;
 using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CheckersCliente.LogInPages
 {
@@ -36,7 +31,7 @@ namespace CheckersCliente.LogInPages
             if (NicknameTextBox.Text.Length < MINIMUN_LENGHT || EmailTextBox.Text.Length < MINIMUM_MAIL_LENGHT 
                 || PasswordTextBox.Password.Length < MINIMUN_LENGHT || LanguageBox.SelectionBoxItem == null 
                 || QuestionTextBox.Text.Length < MINIMUN_LENGHT || AnswerTextBox.Text.Length < ANSWER_MINIMUM_LENGHT 
-                || IsEmail() == false || IsQuestion() == false || CheckWhiteSpaces() == false)
+                || !IsEmail() || !IsQuestion() || !CheckWhiteSpaces())
             {
                 RegisterButton.IsEnabled = false;
                 LengthBlock.Visibility = Visibility.Visible;
@@ -50,8 +45,9 @@ namespace CheckersCliente.LogInPages
 
         private bool CheckWhiteSpaces()
         {
-            if (String.IsNullOrEmpty(NicknameTextBox.Text) || String.IsNullOrEmpty(PasswordTextBox.Password)
-                || String.IsNullOrEmpty(AnswerTextBox.Text))
+            if (String.IsNullOrWhiteSpace(NicknameTextBox.Text) || String.IsNullOrWhiteSpace(PasswordTextBox.Password)
+                || String.IsNullOrWhiteSpace(AnswerTextBox.Text) || string.IsNullOrWhiteSpace(EmailTextBox.Text)
+                || String.IsNullOrWhiteSpace(QuestionTextBox.Text))
             {
                 return false;
             }
@@ -144,6 +140,8 @@ namespace CheckersCliente.LogInPages
 
         private void CancelRegister(object sender, RoutedEventArgs e)
         {
+            LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+            login.EnableNavigation();
             NavigationService.GoBack();
         }
     }

@@ -1,9 +1,4 @@
-u
-gD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\LogicaCliente\ArrayCheckerManager.cs
-
-		
- a
-_D:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\LogicaCliente\HashManager.cs«
+«
 aD:\ProyectosVisualStudio\SistemaDistribuidoCheckers\CheckersClient\LogicaCliente\ValidatorText.cs
 
 

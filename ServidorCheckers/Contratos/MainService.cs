@@ -29,7 +29,7 @@ namespace Contratos
         JugadorDataManager jugadorDataManager = new JugadorDataManager();
         HashManager hashText = new HashManager();
 
-        private Dictionary<string, IPlayerManagerCallback> playersLoggedIn = new Dictionary<string, IPlayerManagerCallback>();
+        private Dictionary<string,IPlayerManagerCallback> playersLoggedIn = new Dictionary<string, IPlayerManagerCallback>();
 
 
 
@@ -41,15 +41,24 @@ namespace Contratos
             {
                 if (adminDataManager.EsPasswordCorrecto(player.Contrasenia, player.Apodo))
                 {
-                    result = LoginResult.EsAdmin;
+                    try
+                    {
+                        result = LoginResult.EsAdmin;
 
-                    Callback.GetLoginResult(result, player);
+                        playersLoggedIn.Add(player.Apodo, PlayerCallback);
+                    }
+                    catch (AddressAlreadyInUseException)
+                    {
+                        result = LoginResult.LOGGED_PLAYER;
+                    }
+
+                    PlayerCallback.GetAdminLoginResult(result, player);
                 }
                 else
                 {
                     result = LoginResult.PasswordIncorrecto;
 
-                    Callback.GetLoginResult(result, player);
+                    PlayerCallback.GetAdminLoginResult(result, player);
                 }
             }
             else
@@ -68,44 +77,60 @@ namespace Contratos
                 {
                     if (jugadorManager.EsPasswordCorrecto(player.Contrasenia, player.Apodo))
                     {
-                        result = LoginResult.ExisteJugadorVerificado;
                         DataAccess.Jugador searchedPlayer = jugadorManager.GetPlayerByNickname(player.Apodo);
-                        player.IdLenguaje = searchedPlayer.idioma;
-                        player.IdJugador = searchedPlayer.idJugador;
-                        player.Contrasenia = searchedPlayer.contrasenia;
-                        player.CorreoElectronico = searchedPlayer.correoElectronico;
-                        player.PreguntaRecuperacion = searchedPlayer.preguntaRecuperacion;
+                        if (!playersLoggedIn.ContainsKey(searchedPlayer.apodo))
+                        {
+                            result = LoginResult.ExisteJugadorVerificado;
 
-                        Callback.GetLoginResult(result, player);
+                            playersLoggedIn.Add(searchedPlayer.apodo, PlayerCallback);
+                            player.Apodo = searchedPlayer.apodo;
+                            player.IdLenguaje = searchedPlayer.idioma;
+                            player.IdJugador = searchedPlayer.idJugador;
+                            player.Contrasenia = searchedPlayer.contrasenia;
+                            player.CorreoElectronico = searchedPlayer.correoElectronico;
+                            player.PreguntaRecuperacion = searchedPlayer.preguntaRecuperacion;
+
+                            PlayerCallback.GetPlayerLoginResult(result, player);
+                        }
+                        else
+                        { 
+                            result = LoginResult.LOGGED_PLAYER;
+
+                            PlayerCallback.GetPlayerLoginResult(result, player);
+                        }
                     }
                     else
                     {
                         result = LoginResult.PasswordIncorrecto;
 
-                        Callback.GetLoginResult(result, player);
+                        PlayerCallback.GetPlayerLoginResult(result, player);
                     }
                 }
                 else
                 {
-                    if (jugadorDataManager.CheckBannedState(player.Apodo))
-                    {
-                        result = LoginResult.EsBaneado;
-
-                        Callback.GetLoginResult(result, player);
-                    }
-                    else
-                    {
-                        result = LoginResult.ExisteJugadorNoVerificado;
-
-                        Callback.GetLoginResult(result, player);
-                    }
-
+                    CheckBan(player);
                 }
             }
             else
             {
+                PlayerCallback.GetPlayerLoginResult(result, player);
+            }
+        }
 
-                Callback.GetLoginResult(result, player);
+        private void CheckBan(Jugador player)
+        {
+            LoginResult result;
+            if (jugadorDataManager.CheckBannedState(player.Apodo))
+            {
+                result = LoginResult.EsBaneado;
+
+                PlayerCallback.GetPlayerLoginResult(result, player);
+            }
+            else
+            {
+                result = LoginResult.ExisteJugadorNoVerificado;
+
+                PlayerCallback.GetPlayerLoginResult(result, player);
             }
         }
 
@@ -113,9 +138,8 @@ namespace Contratos
         {
             JugadorDataManager playerDataManager = new JugadorDataManager();
 
-            int columnasAfectadas = 0;
             SaveResult saveResult;
-            MailResult mailResult = MailResult.SendError;
+            MailResult mailResult;
 
             bool nicknameExists = playerDataManager.CheckNickname(player.Apodo);
 
@@ -125,68 +149,78 @@ namespace Contratos
 
                 if (!emailExists)
                 {
-                    DataAccess.Jugador newPlayer = new DataAccess.Jugador
+                    System.Net.Mail.MailMessage mensaje = new System.Net.Mail.MailMessage();
+
+                    mensaje.To.Add(player.CorreoElectronico);
+                    mensaje.Subject = "Account creation confirmation" + player.Apodo;
+                    mensaje.Body = "Hello " + player.Apodo + " you are one step away from verifying your account!, " +
+                        "the account verification code is as follows: " + player.PinConfirmacion;
+                    mensaje.From = new System.Net.Mail.MailAddress("checkersGame124@gmail.com", "Checkers Game Proyect");
+
+                    System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient
                     {
-                        apodo = player.Apodo,
-                        contrasenia = hashText.TextToHash(player.Contrasenia),
-                        correoElectronico = player.CorreoElectronico,
-                        status = ACTIVATION_STATE,
-                        respuestaConfirmacion = player.RespuestaConfirmacion,
-                        preguntaRecuperacion = player.PreguntaRecuperacion,
-                        pinConfirmacion = player.PinConfirmacion,
-                        idCreador = 1,
-                        idioma = player.IdLenguaje
+                        Credentials = new System.Net.NetworkCredential(mailUser, mailPassword),
+                        Port = 587,
+                        EnableSsl = true,
+                        Host = "smtp.gmail.com",
                     };
-
-                    JugadorDataManager jugadorManager = new JugadorDataManager();
-                    columnasAfectadas = jugadorManager.SaveNewPlayer(newPlayer);
-
-                    if (columnasAfectadas > 0)
+                    try
                     {
-                        saveResult = SaveResult.JugadorGuardado;
-                        Callback.GetSaveResult(saveResult, player);
-
-                        System.Net.Mail.MailMessage mensaje = new System.Net.Mail.MailMessage();
-
-                        mensaje.To.Add(newPlayer.correoElectronico);
-                        mensaje.Subject = "Confirmación de creación de cuenta " + player.Apodo;
-                        mensaje.Body = "Hola " + player.Apodo + " estas a un paso de verificar tu cuenta!, " +
-                            "el código de verificación de cuenta es el siguiente: " + newPlayer.pinConfirmacion;
-                        mensaje.From = new System.Net.Mail.MailAddress("checkersGame124@gmail.com", "Checkers Game Proyect");
-
-                        System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient
-                        {
-                            Credentials = new System.Net.NetworkCredential(mailUser, mailPassword),
-                            Port = 587,
-                            EnableSsl = true,
-                            Host = "smtp.gmail.com",
-                        };
-                        try
-                        {
-                            cliente.Send(mensaje);
-                        }
-                        catch (System.Net.Mail.SmtpException)
-                        {
-                            Callback.GetResendMailResult(mailResult, player.Apodo);
-                            throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar su correo");
-                        }
+                        mailResult = MailResult.MailSend;
+                        cliente.Send(mensaje);
                     }
-                    else
+                    catch (System.Net.Mail.SmtpException)
                     {
-                        saveResult = SaveResult.ErrorGuardado;
-                        Callback.GetSaveResult(saveResult, player);
+                        mailResult = MailResult.SendError;
+                        PlayerCallback.GetResendMailResult(mailResult, player.Apodo);
+                    }
+                    if (mailResult == MailResult.MailSend)
+                    {
+                        SaveNewPlayer(player);
                     }
                 }
                 else
                 {
                     saveResult = SaveResult.CorreoExistente;
-                    Callback.GetSaveResult(saveResult, player);
+                    PlayerCallback.GetSaveResult(saveResult, player);
                 }
             }
             else
             {
                 saveResult = SaveResult.NicknameExistente;
-                Callback.GetSaveResult(saveResult, player);
+                PlayerCallback.GetSaveResult(saveResult, player);
+            }
+        }
+
+        private void SaveNewPlayer(Jugador player)
+        {
+            SaveResult saveResult;
+            DataAccess.Jugador newPlayer = new DataAccess.Jugador
+            {
+                apodo = player.Apodo,
+                contrasenia = hashText.TextToHash(player.Contrasenia),
+                correoElectronico = player.CorreoElectronico,
+                status = ACTIVATION_STATE,
+                respuestaConfirmacion = player.RespuestaConfirmacion,
+                preguntaRecuperacion = player.PreguntaRecuperacion,
+                pinConfirmacion = player.PinConfirmacion,
+                idCreador = 1,
+                idioma = player.IdLenguaje
+            };
+
+            JugadorDataManager jugadorManager = new JugadorDataManager();
+            int columnasAfectadas = jugadorManager.SaveNewPlayer(newPlayer);
+            RankingDataManager rankingData = new RankingDataManager();
+            rankingData.NewPlayerRank(newPlayer);
+            if (columnasAfectadas > 0)
+            {
+                saveResult = SaveResult.JugadorGuardado;
+                PlayerCallback.GetSaveResult(saveResult, player);
+            }
+            else
+            {
+                saveResult = SaveResult.ErrorGuardado;
+                PlayerCallback.GetSaveResult(saveResult, player);
             }
         }
 
@@ -221,7 +255,7 @@ namespace Contratos
                 resultado = VerificationResult.NoExisteJugador;
             }
 
-            Callback.GetVerifyResult(resultado);
+            PlayerCallback.GetVerifyResult(resultado);
         }
 
         public void SendMail(Jugador player)
@@ -231,9 +265,9 @@ namespace Contratos
             System.Net.Mail.MailMessage mailMesagge = new System.Net.Mail.MailMessage();
 
             mailMesagge.To.Add(player.CorreoElectronico);
-            mailMesagge.Subject = "Confirmación de creación de cuenta " + player.Apodo;
-            mailMesagge.Body = "Hola " + player.Apodo + " estas a un paso de verificar tu cuenta!, " +
-                "el código de verificación de cuenta es el siguiente: " + player.PinConfirmacion;
+            mailMesagge.Subject = "Account creation confirmation" + player.Apodo;
+            mailMesagge.Body = "Hello " + player.Apodo + " you are one step away from verifying your account!, " +
+                "the account verification code is as follows: " + player.PinConfirmacion;
             mailMesagge.From = new System.Net.Mail.MailAddress("checkersGame124@gmail.com", "Checkers Game Proyect");
 
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient
@@ -247,13 +281,12 @@ namespace Contratos
             {
                 client.Send(mailMesagge);
                 mailSuccesResult = MailResult.MailSend;
-                Callback.GetResendMailResult(mailSuccesResult, player.Apodo);
+                PlayerCallback.GetResendMailResult(mailSuccesResult, player.Apodo);
             }
             catch (System.Net.Mail.SmtpException)
             {
                 mailSuccesResult = MailResult.SendError;
-                Callback.GetResendMailResult(mailSuccesResult, player.Apodo);
-                throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar su correo");
+                PlayerCallback.GetResendMailResult(mailSuccesResult, player.Apodo);
             }
         }
 
@@ -287,19 +320,18 @@ namespace Contratos
                 {
                     client.Send(mailMesagge);
                     mailSuccesResult = MailResult.MailSend;
-                    Callback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
+                    PlayerCallback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
                 }
                 catch (System.Net.Mail.SmtpException)
                 {
                     mailSuccesResult = MailResult.SendError;
-                    Callback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
-                    throw new System.Net.Mail.SmtpException("No se ha podido enviar el correo, favor de verificar su correo");
+                    PlayerCallback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
                 }
             }
             else
             {
                 mailSuccesResult = MailResult.UnknownPlayer;
-                Callback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
+                PlayerCallback.GetMailResult(mailSuccesResult, actualNickname, securityQuestion);
             }
         }
 
@@ -319,7 +351,7 @@ namespace Contratos
                 }
             }
 
-            Callback.GetPinResult(pinResult, actualNickname);
+            PlayerCallback.GetPinResult(pinResult, actualNickname);
         }
 
         public void ChangePassword(string userNickname, string password)
@@ -338,7 +370,7 @@ namespace Contratos
 
             }
 
-            Callback.GetPasswordChangeResult(changeResult);
+            PlayerCallback.GetPasswordChangeResult(changeResult);
 
         }
 
@@ -360,18 +392,24 @@ namespace Contratos
 
                 };
                 dataObtainedResult = DataObtainedResult.DataObtained;
-                Callback.SendActualPlayer(dataObtainedResult, domainSearchedPlayer);
+                PlayerCallback.SendActualPlayer(dataObtainedResult, domainSearchedPlayer);
             }
             else
             {
                 Dominio.Jugador emptyPlayer = new Jugador();
-                Callback.SendActualPlayer(dataObtainedResult, emptyPlayer);
+                PlayerCallback.SendActualPlayer(dataObtainedResult, emptyPlayer);
             }
 
 
         }
 
-        IPlayerManagerCallback Callback
+        public void CloseSession(string playerNickname)
+        {
+            playersLoggedIn.Remove(playerNickname);
+
+        }
+
+        IPlayerManagerCallback PlayerCallback
         {
             get
             {
@@ -456,7 +494,14 @@ namespace Contratos
 
         public void Player1Turn(Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers)
         {
-            activeMatches[matchNumber].playerTwoCallback.UpdateGameGUI(updateBoardMatrix, playerTwoCheckers, playerOneCheckers);
+            try
+            {
+                activeMatches[matchNumber].playerTwoCallback.UpdateGameGUI(updateBoardMatrix, playerTwoCheckers, playerOneCheckers);
+            }
+            catch (EndpointNotFoundException)
+            {
+                activeMatches[matchNumber].playerOneCallback.EndAbandonedGame();
+            }
         }
 
         public void CreateMatch(Jugador currentPlayer, CheckersGameMode gameMode)
@@ -509,7 +554,14 @@ namespace Contratos
 
         public void Player2Turn(Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers)
         {
-            activeMatches[matchNumber].playerOneCallback.UpdateGameGUI(updateBoardMatrix, playerTwoCheckers, playerOneCheckers);
+            try
+            {
+                activeMatches[matchNumber].playerOneCallback.UpdateGameGUI(updateBoardMatrix, playerTwoCheckers, playerOneCheckers);
+            }
+            catch (EndpointNotFoundException)
+            {
+                activeMatches[matchNumber].playerTwoCallback.EndAbandonedGame();
+            }
         }
 
         public void FinishPlayerGame(int matchNumber, int playerNumber, int playerTwoCheckers, int playerOneCheckers)
@@ -520,11 +572,11 @@ namespace Contratos
             }
             else
             {
-
                 activeMatches[matchNumber].playerOneCallback.FinishGame(playerTwoCheckers, playerOneCheckers);
             }
             RankingDataManager rankingDataManager = new RankingDataManager();
             rankingDataManager.UpdateMatchResults(activeMatches[matchNumber].playerOneData, playerOneCheckers, activeMatches[matchNumber].playerTwoData, playerTwoCheckers, playerNumber);
+
             numberActiveMatches--;
             activeMatches.RemoveAt(matchNumber);
 
@@ -570,6 +622,18 @@ namespace Contratos
                 reportSaveResult = ReportSaveResult.SAVED_REPORT;
             }
             GameManagerCallback.ReportResult(reportSaveResult);
+        }
+
+        public void LeaveMatch(int matchNumber, int playerNumber)
+        {
+            if (playerNumber == PLAYER_ONE)
+            {
+                activeMatches[matchNumber].playerTwoCallback.EndAbandonedGame();
+            }
+            else
+            {
+                activeMatches[matchNumber].playerOneCallback.EndAbandonedGame();
+            }
         }
     }
 

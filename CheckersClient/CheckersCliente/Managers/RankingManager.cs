@@ -4,12 +4,13 @@
 */
 using CheckersCliente.CallbackHandlers;
 using CheckersCliente.MainService;
+using CheckersCliente.Properties;
 using System.ServiceModel;
 using System.Windows;
 
 namespace CheckersCliente.Managers
 {
-    public class RankingManager
+    public static class RankingManager
     {
         private static readonly InstanceContext instanceContext = new InstanceContext(new RankingCallbackHandler());
         private static readonly RankingManagerClient server = new RankingManagerClient(instanceContext);
@@ -22,7 +23,7 @@ namespace CheckersCliente.Managers
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+                MessageBox.Show(Resources.NoConnectionMessage);
             }
         }
     }

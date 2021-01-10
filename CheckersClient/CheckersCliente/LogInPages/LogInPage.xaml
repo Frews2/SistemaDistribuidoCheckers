@@ -8,12 +8,21 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LogIn" Height="800" Width="800">
-    
+
     <Grid Margin="-12,-8,-6.4,-5.6">
 
         <Grid.Background>
             <ImageBrush ImageSource="/Images\LogIn.jpg"/>
         </Grid.Background>
+
+        <Label Content="{x:Static p:Resources.Language}" HorizontalAlignment="Left" Margin="48,322,0,0" VerticalAlignment="Top" Height="30" 
+               Width="176" FontWeight="ExtraBold" FontSize="14" Foreground="White" FontFamily="Bookman Old Style" Background="#FFC82913"/>
+
+        <ComboBox HorizontalAlignment="Left" Margin="137,326,0,0" VerticalAlignment="Top" Width="83" Height="23" x:Name="LanguageBox" SelectionChanged="LanguageSelect">
+            <ComboBoxItem Content="English"/>
+            <ComboBoxItem Content="Español"/>
+            <ComboBoxItem Content="Italiano"/>
+        </ComboBox>
 
         <Label Content="{x:Static p:Resources.Nickname}" HorizontalAlignment="Left" Margin="278,354,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" Width="257"/>
         <Label Content="{x:Static p:Resources.Password}" Margin="278,460,259,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" />

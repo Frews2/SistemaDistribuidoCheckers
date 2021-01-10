@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace CheckersCliente.Managers
 {
-    public class BanManager
+    public static class BanManager
     {
         private static readonly InstanceContext instanceContext = new InstanceContext(new BanCallbackHandler());
         private static readonly BanManagerClient server = new BanManagerClient(instanceContext);
@@ -22,7 +22,7 @@ namespace CheckersCliente.Managers
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
             }
         }
 
@@ -34,7 +34,7 @@ namespace CheckersCliente.Managers
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
             }
         }
     }

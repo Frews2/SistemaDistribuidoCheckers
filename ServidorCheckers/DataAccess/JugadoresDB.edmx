@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JugadoresDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JugadoresDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrador">
           <Key>
             <PropertyRef Name="idAdministrador" />
@@ -29,17 +29,6 @@
           <Property Name="idCreador" Type="int" Nullable="false" />
           <Property Name="idioma" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Partida">
-          <Key>
-            <PropertyRef Name="idPartida" />
-          </Key>
-          <Property Name="idPartida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tiempo" Type="time" Precision="7" />
-          <Property Name="modoJuego" Type="nvarchar(max)" />
-          <Property Name="turno" Type="int" />
-          <Property Name="idGanador" Type="int" Nullable="false" />
-          <Property Name="idPerdedor" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Ranking">
           <Key>
             <PropertyRef Name="idRanking" />
@@ -61,15 +50,6 @@
           <Property Name="idReportado" Type="int" Nullable="false" />
           <Property Name="descripcionAcuso" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Reputacion">
-          <Key>
-            <PropertyRef Name="idReputacion" />
-          </Key>
-          <Property Name="idReputacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idDuenio" Type="int" Nullable="false" />
-          <Property Name="numeroReportes" Type="int" />
-          <Property Name="numeroVecesReportado" Type="int" />
-        </EntityType>
         <Association Name="FK_dbo_Administrador_dbo_Jugador_creador">
           <End Role="Administrador" Type="Self.Administrador" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -81,32 +61,6 @@
             </Principal>
             <Dependent Role="Jugador">
               <PropertyRef Name="idCreador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Jugador_dbo_Partida_ganador">
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Partida" Type="Self.Partida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jugador">
-              <PropertyRef Name="idJugador" />
-            </Principal>
-            <Dependent Role="Partida">
-              <PropertyRef Name="idGanador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Jugador_dbo_Partida_perdedor">
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="1" />
-          <End Role="Partida" Type="Self.Partida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jugador">
-              <PropertyRef Name="idJugador" />
-            </Principal>
-            <Dependent Role="Partida">
-              <PropertyRef Name="idPerdedor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -150,38 +104,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_Jugador_dbo_Reputacion_duenio">
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Reputacion" Type="Self.Reputacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jugador">
-              <PropertyRef Name="idJugador" />
-            </Principal>
-            <Dependent Role="Reputacion">
-              <PropertyRef Name="idDuenio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="JugadoresDBModelStoreContainer">
           <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Jugador" EntityType="Self.Jugador" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Partida" EntityType="Self.Partida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ranking" EntityType="Self.Ranking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reporte" EntityType="Self.Reporte" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reputacion" EntityType="Self.Reputacion" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_Administrador_dbo_Jugador_creador" Association="Self.FK_dbo_Administrador_dbo_Jugador_creador">
             <End Role="Administrador" EntitySet="Administrador" />
             <End Role="Jugador" EntitySet="Jugador" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Jugador_dbo_Partida_ganador" Association="Self.FK_dbo_Jugador_dbo_Partida_ganador">
-            <End Role="Jugador" EntitySet="Jugador" />
-            <End Role="Partida" EntitySet="Partida" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Jugador_dbo_Partida_perdedor" Association="Self.FK_dbo_Jugador_dbo_Partida_perdedor">
-            <End Role="Jugador" EntitySet="Jugador" />
-            <End Role="Partida" EntitySet="Partida" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Jugador_dbo_Ranking_duenio" Association="Self.FK_dbo_Jugador_dbo_Ranking_duenio">
             <End Role="Jugador" EntitySet="Jugador" />
@@ -195,13 +125,8 @@
             <End Role="Jugador" EntitySet="Jugador" />
             <End Role="Reporte" EntitySet="Reporte" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_Jugador_dbo_Reputacion_duenio" Association="Self.FK_dbo_Jugador_dbo_Reputacion_duenio">
-            <End Role="Jugador" EntitySet="Jugador" />
-            <End Role="Reputacion" EntitySet="Reputacion" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JugadoresDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -230,25 +155,9 @@
           <Property Name="idCreador" Type="Int32" Nullable="false" />
           <Property Name="idioma" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Administrador" Relationship="Self.FK_dbo_Administrador_dbo_Jugador_creador" FromRole="Jugador" ToRole="Administrador" />
-          <NavigationProperty Name="Partida" Relationship="Self.FK_dbo_Jugador_dbo_Partida_ganador" FromRole="Jugador" ToRole="Partida" />
-          <NavigationProperty Name="Partida1" Relationship="Self.FK_dbo_Jugador_dbo_Partida_perdedor" FromRole="Jugador" ToRole="Partida" />
           <NavigationProperty Name="Ranking" Relationship="Self.FK_dbo_Jugador_dbo_Ranking_duenio" FromRole="Jugador" ToRole="Ranking" />
           <NavigationProperty Name="Reporte" Relationship="Self.FK_dbo_Jugador_dbo_Reporte_acusador" FromRole="Jugador" ToRole="Reporte" />
           <NavigationProperty Name="Reporte1" Relationship="Self.FK_dbo_Jugador_dbo_Reporte_reportado" FromRole="Jugador" ToRole="Reporte" />
-          <NavigationProperty Name="Reputacion" Relationship="Self.FK_dbo_Jugador_dbo_Reputacion_duenio" FromRole="Jugador" ToRole="Reputacion" />
-        </EntityType>
-        <EntityType Name="Partida">
-          <Key>
-            <PropertyRef Name="idPartida" />
-          </Key>
-          <Property Name="idPartida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tiempo" Type="Time" Precision="7" />
-          <Property Name="modoJuego" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="turno" Type="Int32" />
-          <Property Name="idGanador" Type="Int32" Nullable="false" />
-          <Property Name="idPerdedor" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Jugador" Relationship="Self.FK_dbo_Jugador_dbo_Partida_ganador" FromRole="Partida" ToRole="Jugador" />
-          <NavigationProperty Name="Jugador1" Relationship="Self.FK_dbo_Jugador_dbo_Partida_perdedor" FromRole="Partida" ToRole="Jugador" />
         </EntityType>
         <EntityType Name="Ranking">
           <Key>
@@ -274,16 +183,6 @@
           <NavigationProperty Name="Jugador" Relationship="Self.FK_dbo_Jugador_dbo_Reporte_acusador" FromRole="Reporte" ToRole="Jugador" />
           <NavigationProperty Name="Jugador1" Relationship="Self.FK_dbo_Jugador_dbo_Reporte_reportado" FromRole="Reporte" ToRole="Jugador" />
         </EntityType>
-        <EntityType Name="Reputacion">
-          <Key>
-            <PropertyRef Name="idReputacion" />
-          </Key>
-          <Property Name="idReputacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idDuenio" Type="Int32" Nullable="false" />
-          <Property Name="numeroReportes" Type="Int32" />
-          <Property Name="numeroVecesReportado" Type="Int32" />
-          <NavigationProperty Name="Jugador" Relationship="Self.FK_dbo_Jugador_dbo_Reputacion_duenio" FromRole="Reputacion" ToRole="Jugador" />
-        </EntityType>
         <Association Name="FK_dbo_Administrador_dbo_Jugador_creador">
           <End Role="Administrador" Type="Self.Administrador" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -295,32 +194,6 @@
             </Principal>
             <Dependent Role="Jugador">
               <PropertyRef Name="idCreador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Jugador_dbo_Partida_ganador">
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Partida" Type="Self.Partida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jugador">
-              <PropertyRef Name="idJugador" />
-            </Principal>
-            <Dependent Role="Partida">
-              <PropertyRef Name="idGanador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Jugador_dbo_Partida_perdedor">
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="1" />
-          <End Role="Partida" Type="Self.Partida" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jugador">
-              <PropertyRef Name="idJugador" />
-            </Principal>
-            <Dependent Role="Partida">
-              <PropertyRef Name="idPerdedor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -364,38 +237,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_Jugador_dbo_Reputacion_duenio">
-          <End Role="Jugador" Type="Self.Jugador" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Reputacion" Type="Self.Reputacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Jugador">
-              <PropertyRef Name="idJugador" />
-            </Principal>
-            <Dependent Role="Reputacion">
-              <PropertyRef Name="idDuenio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="JugadoresDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administrador" EntityType="Self.Administrador" />
           <EntitySet Name="Jugador" EntityType="Self.Jugador" />
-          <EntitySet Name="Partida" EntityType="Self.Partida" />
           <EntitySet Name="Ranking" EntityType="Self.Ranking" />
           <EntitySet Name="Reporte" EntityType="Self.Reporte" />
-          <EntitySet Name="Reputacion" EntityType="Self.Reputacion" />
           <AssociationSet Name="FK_dbo_Administrador_dbo_Jugador_creador" Association="Self.FK_dbo_Administrador_dbo_Jugador_creador">
             <End Role="Administrador" EntitySet="Administrador" />
             <End Role="Jugador" EntitySet="Jugador" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Jugador_dbo_Partida_ganador" Association="Self.FK_dbo_Jugador_dbo_Partida_ganador">
-            <End Role="Jugador" EntitySet="Jugador" />
-            <End Role="Partida" EntitySet="Partida" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Jugador_dbo_Partida_perdedor" Association="Self.FK_dbo_Jugador_dbo_Partida_perdedor">
-            <End Role="Jugador" EntitySet="Jugador" />
-            <End Role="Partida" EntitySet="Partida" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Jugador_dbo_Ranking_duenio" Association="Self.FK_dbo_Jugador_dbo_Ranking_duenio">
             <End Role="Jugador" EntitySet="Jugador" />
@@ -408,10 +257,6 @@
           <AssociationSet Name="FK_dbo_Jugador_dbo_Reporte_reportado" Association="Self.FK_dbo_Jugador_dbo_Reporte_reportado">
             <End Role="Jugador" EntitySet="Jugador" />
             <End Role="Reporte" EntitySet="Reporte" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Jugador_dbo_Reputacion_duenio" Association="Self.FK_dbo_Jugador_dbo_Reputacion_duenio">
-            <End Role="Jugador" EntitySet="Jugador" />
-            <End Role="Reputacion" EntitySet="Reputacion" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -446,18 +291,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Partida">
-            <EntityTypeMapping TypeName="JugadoresDBModel.Partida">
-              <MappingFragment StoreEntitySet="Partida">
-                <ScalarProperty Name="idPartida" ColumnName="idPartida" />
-                <ScalarProperty Name="tiempo" ColumnName="tiempo" />
-                <ScalarProperty Name="modoJuego" ColumnName="modoJuego" />
-                <ScalarProperty Name="turno" ColumnName="turno" />
-                <ScalarProperty Name="idGanador" ColumnName="idGanador" />
-                <ScalarProperty Name="idPerdedor" ColumnName="idPerdedor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Ranking">
             <EntityTypeMapping TypeName="JugadoresDBModel.Ranking">
               <MappingFragment StoreEntitySet="Ranking">
@@ -478,16 +311,6 @@
                 <ScalarProperty Name="idAcusador" ColumnName="idAcusador" />
                 <ScalarProperty Name="idReportado" ColumnName="idReportado" />
                 <ScalarProperty Name="descripcionAcuso" ColumnName="descripcionAcuso" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Reputacion">
-            <EntityTypeMapping TypeName="JugadoresDBModel.Reputacion">
-              <MappingFragment StoreEntitySet="Reputacion">
-                <ScalarProperty Name="idReputacion" ColumnName="idReputacion" />
-                <ScalarProperty Name="idDuenio" ColumnName="idDuenio" />
-                <ScalarProperty Name="numeroReportes" ColumnName="numeroReportes" />
-                <ScalarProperty Name="numeroVecesReportado" ColumnName="numeroVecesReportado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -17,13 +17,13 @@ namespace CheckersCliente
     public class PlayerCallbackHandler : IPlayerManagerCallback
     {
         /// <summary>
-        /// Obtiene el resultado del inicio de sesion del servidor
+        /// Obtiene el resultado del inicio de sesion del servidor del administrador
         /// </summary>
-        /// <param name="resultado"></param>
+        /// <param name="resultadoLogin"></param>
         /// <param name="playerLoged"></param>
-        public void GetLoginResult(LoginResult resultado, Jugador playerLoged)
+        public void GetAdminLoginResult(LoginResult resultadoLogin, Jugador playerLoged)
         {
-            if (resultado == LoginResult.EsAdmin)
+            if (resultadoLogin == LoginResult.EsAdmin)
             {
                 AdminPage adminPage = new AdminPage(playerLoged);
                 adminPage.Show();
@@ -32,43 +32,71 @@ namespace CheckersCliente
             }
             else
             {
-                if (resultado == LoginResult.ExisteJugadorVerificado)
+                if (resultadoLogin == LoginResult.PasswordIncorrecto)
                 {
-                    Menu menu = new Menu(playerLoged);
-                    menu.Show();
-                    LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
-                    logIn.Close();
+                    DialogWindowManager.ShowErrorWindow(Resources.IncorrectPasswordMessage);
                 }
                 else
                 {
-                    if (resultado == LoginResult.ExisteJugadorNoVerificado)
-                    {
-                        DialogWindowManager.ShowErrorWindow(Resources.NotVerifiedMessage);
-                        LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
-                        login.NavigationService.Navigate(new FinalizeRegister(playerLoged));
-                    }
-                    else
-                    {
-                        if(resultado == LoginResult.EsBaneado)
-                        {
-                            DialogWindowManager.ShowErrorWindow(Resources.BannedLoginMessage);
-                        }
-                        else
-                        {
-                            if (resultado == LoginResult.NoExisteJugador)
-                            {
-                                DialogWindowManager.ShowErrorWindow(Resources.DoesNotExistLoginMessage);
-                            }
-                            else
-                            {
-                                DialogWindowManager.ShowErrorWindow(Resources.IncorrectPasswordMessage);
-                            }
-                        }
-                        
-                    }
+                    DialogWindowManager.ShowErrorWindow(Resources.LoggedPlayer);
                 }
             }
             
+        }
+
+        /// <summary>
+        /// Obtiene el resultado del inicio de sesion del servidor del jugador
+        /// </summary>
+        /// <param name="resultadoLogin"></param>
+        /// <param name="playerLoged"></param>
+        public void GetPlayerLoginResult(LoginResult resultadoLogin, Jugador playerLoged)
+        {
+            if (resultadoLogin == LoginResult.ExisteJugadorVerificado)
+            {
+                Menu menu = new Menu(playerLoged);
+                menu.Show();
+                LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                logIn.Close();
+            }
+            else
+            {
+                if (resultadoLogin == LoginResult.ExisteJugadorNoVerificado)
+                {
+                    DialogWindowManager.ShowErrorWindow(Resources.NotVerifiedMessage);
+                    LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                    login.NavigationService.Navigate(new FinalizeRegister(playerLoged));
+                }
+                else
+                {
+                    LoginBanCheck(resultadoLogin);
+                }
+            }
+        }
+
+        private void LoginBanCheck(LoginResult resultadoLogin)
+        {
+            if (resultadoLogin == LoginResult.EsBaneado)
+            {
+                DialogWindowManager.ShowErrorWindow(Resources.BannedLoginMessage);
+            }
+            else
+            {
+                if (resultadoLogin == LoginResult.NoExisteJugador)
+                {
+                    DialogWindowManager.ShowErrorWindow(Resources.DoesNotExistLoginMessage);
+                }
+                else
+                {
+                    if (resultadoLogin == LoginResult.LOGGED_PLAYER)
+                    {
+                        DialogWindowManager.ShowErrorWindow(Resources.LoggedPlayer);
+                    }
+                    else
+                    {
+                        DialogWindowManager.ShowErrorWindow(Resources.IncorrectPasswordMessage);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -148,6 +176,7 @@ namespace CheckersCliente
             {
                 DialogWindowManager.ShowSuccessWindow(Resources.EmailSentMessage);
                 LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                login.EnableNavigation();
                 login.NavigationService.Navigate(new VerificatePasswordPin(playerNickname,securityQuestion));
             }
             else
@@ -168,6 +197,7 @@ namespace CheckersCliente
             if(pinResult == PinResult.VerifiedPin)
             {
                 LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                login.EnableNavigation();
                 login.NavigationService.Navigate(new ChangePassword(playerNickname));
             }
             else
@@ -204,6 +234,7 @@ namespace CheckersCliente
             if (dataObtainedResult == DataObtainedResult.DataObtained)
             {
                 Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                menu.EnableNavigation();
                 menu.NavigationService.Navigate(new UserConfiguration(actualPlayer));
             }
             else

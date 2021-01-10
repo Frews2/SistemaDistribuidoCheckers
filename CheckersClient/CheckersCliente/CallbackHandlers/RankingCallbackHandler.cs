@@ -3,7 +3,6 @@
  Author(s): Ricardo Moguel Sanchez
 */
 using CheckersCliente.MainService;
-using CheckersCliente.Managers;
 using CheckersCliente.MenuPages;
 using CheckersCliente.Properties;
 using System.Collections.Generic;

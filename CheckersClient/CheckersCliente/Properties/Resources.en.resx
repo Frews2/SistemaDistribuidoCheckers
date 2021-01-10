@@ -291,4 +291,25 @@
   <data name="Pass" xml:space="preserve">
     <value>Pass turn</value>
   </data>
+  <data name="CancelQuestion" xml:space="preserve">
+    <value>Are you sure to cancel?</value>
+  </data>
+  <data name="LoggedPlayer" xml:space="preserve">
+    <value>Already logged in</value>
+  </data>
+  <data name="LogOutQuestion" xml:space="preserve">
+    <value>Are you sure to log out?</value>
+  </data>
+  <data name="PasswordErrorText" xml:space="preserve">
+    <value>The passwords doesn't match or doesn't have the minimun length (8 characters).</value>
+  </data>
+  <data name="Player1" xml:space="preserve">
+    <value>Player 1:</value>
+  </data>
+  <data name="Player2" xml:space="preserve">
+    <value>Player 2:</value>
+  </data>
+  <data name="ReportSuccess" xml:space="preserve">
+    <value>Reported player successfully</value>
+  </data>
 </root>

@@ -4,22 +4,9 @@
 */
 using CheckersCliente.MainService;
 using CheckersCliente.MenuPages;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CheckersCliente
 {
@@ -28,16 +15,20 @@ namespace CheckersCliente
     /// </summary>
     public partial class Menu : NavigationWindow
     {
+        private string playerNickname;
+        private bool changeLanguage = false;
+        private bool navigate = false;
 
         public Menu(Jugador player)
         {
             InitializeComponent();
             lookLanguage(player.IdLenguaje);
+            navigate = true;
             NavigationService.Navigate(new PrincipalMenu(player));
+            playerNickname = player.Apodo;
 
         }
 
-        public string LangSwitch { get; private set; } = null;
 
         private void lookLanguage(int idLanguage)
         {
@@ -54,5 +45,51 @@ namespace CheckersCliente
                     break;
             }
         }
+        public void ChangeLanguage()
+        {
+            changeLanguage = true;
+        }
+
+        private void WindowClose(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (changeLanguage)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                bool close = Windows.DialogWindowManager.ShowConfirmationWindow(Properties.Resources.LogOutQuestion);
+                if (close)
+                {
+                    e.Cancel = false;
+                    JugadorManager.EndSession(playerNickname);
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        public void EnableNavigation()
+        {
+            navigate = true;
+        }
+
+
+        private void NavigationWindowNavigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (!navigate)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+                navigate = false;
+            }
+        }
+
+
     }
 }

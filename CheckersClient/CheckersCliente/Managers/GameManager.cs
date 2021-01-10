@@ -10,10 +10,9 @@ using System.Windows;
 
 namespace CheckersCliente.Managers
 {
-    public class GameManager
+    public static class GameManager
     {
-        public Checker[][] checkersUpdatedMatrix;
-        
+
 
         public static void EnterMatchmaking(Jugador player, CheckersGameMode gameMode)
         {
@@ -25,45 +24,48 @@ namespace CheckersCliente.Managers
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
             }
         }
 
-        public static void LeaveMatchmaking(Match game, Jugador player)
+        public static void LeaveMatchmaking(int matchNumber, int playerNumberLeaving)
         {
             try
             {
+                InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
+                GameManagerClient server = new GameManagerClient(instanceContext);
+                server.LeaveMatch(matchNumber,playerNumberLeaving);
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
             }
         }
 
         public static void Player1TurnResult(Checker [,]updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers)
         {
-            Checker[][] checkersUpdatedMatrix = new Checker[updateBoardMatrix.GetLength(0)][];
+            Checker[][] checkersNewMatrix = new Checker[updateBoardMatrix.GetLength(0)][];
             int rowNumber = 0;
             int columnNumber = 0;
 
             for (rowNumber = 0; rowNumber < 8; rowNumber++)
             {
-                checkersUpdatedMatrix[rowNumber] = new Checker[updateBoardMatrix.GetLength(1)];
+                checkersNewMatrix[rowNumber] = new Checker[updateBoardMatrix.GetLength(1)];
                 for (columnNumber = 0; columnNumber < 8; columnNumber++)
                 {
 
-                    checkersUpdatedMatrix[rowNumber][columnNumber] = updateBoardMatrix[rowNumber, columnNumber];
+                    checkersNewMatrix[rowNumber][columnNumber] = updateBoardMatrix[rowNumber, columnNumber];
                 }
             }
             try
             {
                 InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
                 GameManagerClient server = new GameManagerClient(instanceContext);
-                server.Player1Turn(checkersUpdatedMatrix, matchNumber, playerTwoCheckers, playerOneCheckers);
+                server.Player1Turn(checkersNewMatrix, matchNumber, playerTwoCheckers, playerOneCheckers);
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
             }
 
         }
@@ -75,24 +77,24 @@ namespace CheckersCliente.Managers
             {
                 InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
                 GameManagerClient server = new GameManagerClient(instanceContext);
-                Checker[][] checkersUpdatedMatrix = new Checker[updateBoardMatrix.GetLength(0)][];
+                Checker[][] checkersNewMatrix = new Checker[updateBoardMatrix.GetLength(0)][];
                 int rowNumber;
                 int columnNumber;
 
                 for (rowNumber = 0; rowNumber < 8; rowNumber++)
                 {
-                    checkersUpdatedMatrix[rowNumber] = new Checker[updateBoardMatrix.GetLength(1)];
+                    checkersNewMatrix[rowNumber] = new Checker[updateBoardMatrix.GetLength(1)];
                     for (columnNumber = 0; columnNumber < 8; columnNumber++)
                     {
 
-                        checkersUpdatedMatrix[rowNumber][columnNumber] = updateBoardMatrix[rowNumber, columnNumber];
+                        checkersNewMatrix[rowNumber][columnNumber] = updateBoardMatrix[rowNumber, columnNumber];
                     }
                 }
-                server.Player2Turn(checkersUpdatedMatrix, matchNumber, playerTwoCheckers, playerOneCheckers);
+                server.Player2Turn(checkersNewMatrix, matchNumber, playerTwoCheckers, playerOneCheckers);
             }
             catch (EndpointNotFoundException)
             {
-                MessageBox.Show("No se ha podido conectar a la Base de datos, intentar mas tarde");
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
             }
             
         }
@@ -101,21 +103,42 @@ namespace CheckersCliente.Managers
         {
             InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
             GameManagerClient server = new GameManagerClient(instanceContext);
-            server.FinishPlayerGame(matchNumber, localPlayer, playerTwoCheckers, playerOneCheckers);
+            try
+            {
+                server.FinishPlayerGame(matchNumber, localPlayer, playerTwoCheckers, playerOneCheckers);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
+            }
         }
 
         public static void SendMessage(int matchNumber, int localPlayer, string message)
         {
             InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
             GameManagerClient server = new GameManagerClient(instanceContext);
-            server.SendGameMessage(localPlayer, message, matchNumber);
+            try
+            {
+                server.SendGameMessage(localPlayer, message, matchNumber);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
+            }
         }
 
         public static void ReportPlayer(int playerReporting, int matchNumber, string reportText)
         {
             InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
             GameManagerClient server = new GameManagerClient(instanceContext);
-            server.ReportPlayer(playerReporting,matchNumber, reportText);
+            try
+            {
+                server.ReportPlayer(playerReporting, matchNumber, reportText);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Properties.Resources.NoConnectionMessage);
+            }
         }
     }
 }

@@ -32,31 +32,37 @@ namespace Contratos
 
         [OperationContract(IsOneWay = true)]
         void GetActualPlayer(Jugador actualPlayer);
+
+        [OperationContract(IsOneWay = true)]
+        void CloseSession(string playerNickname);
     }
 
     [ServiceContract]
     public interface IPlayerManagerCallback
     {
         [OperationContract(IsOneWay = true)]
-        void GetLoginResult(LoginResult resultadoLogin,Jugador player);
+        void GetAdminLoginResult(LoginResult resultadoLogin,Jugador playerLoged);
 
         [OperationContract(IsOneWay = true)]
-        void GetSaveResult(SaveResult resultadoGuardado, Jugador player);
+        void GetPlayerLoginResult(LoginResult resultadoLogin, Jugador playerLoged);
+
+        [OperationContract(IsOneWay = true)]
+        void GetSaveResult(SaveResult saveResult, Jugador newPlayer);
 
         [OperationContract(IsOneWay = true)]
         void GetVerifyResult(VerificationResult resultadoVerificacion);
 
         [OperationContract(IsOneWay = true)]
-        void GetResendMailResult(MailResult resultadoCorreo, string actualNickname);
+        void GetResendMailResult(MailResult emailResult, string playerNickname);
 
         [OperationContract(IsOneWay = true)]
-        void GetMailResult(MailResult resultadoCorreo, string actualNickname, string securityQuestion);
+        void GetMailResult(MailResult emailResult, string playerNickname, string securityQuestion);
 
         [OperationContract(IsOneWay = true)]
-        void GetPinResult(PinResult verifiedPinResult, string playerNickname);
+        void GetPinResult(PinResult pinResult, string playerNickname);
 
         [OperationContract(IsOneWay = true)]
-        void GetPasswordChangeResult(PasswordChangeResult passwordChangedResult);
+        void GetPasswordChangeResult(PasswordChangeResult passwordChangeResult);
 
         [OperationContract(IsOneWay = true)]
         void SendActualPlayer(DataObtainedResult dataObtainedResult, Dominio.Jugador actualPlayer);

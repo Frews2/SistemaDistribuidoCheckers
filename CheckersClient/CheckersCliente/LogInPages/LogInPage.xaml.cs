@@ -4,21 +4,14 @@
 */
 
 using CheckersCliente.MainService;
-using CheckersCliente.MenuPages;
 using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CheckersCliente.LogInPages
 {
@@ -46,7 +39,7 @@ namespace CheckersCliente.LogInPages
         private void EnableLoginButton(object sender, RoutedEventArgs e)
         {
             if (PasswordTextBox.SecurePassword.Length < 5 || NicknameTextBox.Text.Length < 5
-                || ChekWhiteSpaces() == false)
+                || !ChekWhiteSpaces())
             {
                 LogInButton.IsEnabled = false;
             }
@@ -58,7 +51,7 @@ namespace CheckersCliente.LogInPages
 
         private bool ChekWhiteSpaces()
         {
-            if (String.IsNullOrEmpty(PasswordTextBox.Password) || String.IsNullOrEmpty(NicknameTextBox.Text))
+            if (String.IsNullOrWhiteSpace(PasswordTextBox.Password) || String.IsNullOrWhiteSpace(NicknameTextBox.Text))
             {
                 return false;
             }
@@ -70,11 +63,37 @@ namespace CheckersCliente.LogInPages
 
         private void GetPassword(object sender, MouseButtonEventArgs e)
         {
+            LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+            login.EnableNavigation();
             NavigationService.Navigate(new ObtainPasswordPinMail());
         }
+
         private void RegisterAccount(object sender, MouseButtonEventArgs e)
         {
+            LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+            login.EnableNavigation();
             NavigationService.Navigate(new RegisterAccount());
+        }
+
+        private void LanguageSelect(object sender, RoutedEventArgs e)
+        {
+            switch (LanguageBox.SelectedIndex)
+            {
+                case 0:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                    break;
+                case 1:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-MX");
+                    break;
+                case 2:
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("it");
+                    break;
+            }
+            LogIn logIn = new LogIn();
+            logIn.EnableNavigation();
+            logIn.Show();
+            LogIn actualLogin = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+            actualLogin.Close();
         }
     }
 }

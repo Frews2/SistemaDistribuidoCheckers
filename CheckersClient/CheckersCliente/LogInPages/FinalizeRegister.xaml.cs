@@ -16,7 +16,7 @@ namespace CheckersCliente.LogInPages
     {
         private int timeSeconds = 31;
         DispatcherTimer clockTimer;
-        Jugador pagePlayer = new Jugador();
+        Jugador pagePlayer;
 
         public  FinalizeRegister(Jugador player)
         {
@@ -34,7 +34,7 @@ namespace CheckersCliente.LogInPages
             if (timeSeconds > 0)
             {
                 timeSeconds--;
-                CountdownNumber.Text = string.Format("{1}", timeSeconds/60,timeSeconds%60);
+                CountdownNumber.Text = string.Format("{0} {1}", timeSeconds/60,timeSeconds%60);
             }
             else
             {
@@ -70,6 +70,7 @@ namespace CheckersCliente.LogInPages
         private void CancelClick(object sender, RoutedEventArgs e)
         {
             LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+            login.EnableNavigation();
             login.NavigationService.Navigate(new LogInPage());
         }
 

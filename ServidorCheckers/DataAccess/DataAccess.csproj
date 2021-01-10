@@ -95,17 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JugadoresDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Partida.cs">
-      <DependentUpon>JugadoresDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ranking.cs">
       <DependentUpon>JugadoresDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Reporte.cs">
-      <DependentUpon>JugadoresDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Reputacion.cs">
       <DependentUpon>JugadoresDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>

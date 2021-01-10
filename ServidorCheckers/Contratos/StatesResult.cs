@@ -41,7 +41,8 @@ public enum VerificationResult
         ExisteJugadorVerificado = 3,
         ExisteJugadorNoVerificado = 4,
         EsAdmin = 5,
-        EsBaneado = 6
+        LOGGED_PLAYER = 6,
+        EsBaneado = 7
     }
 
     public enum SaveResult

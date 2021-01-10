@@ -27,9 +27,7 @@ namespace DataAccess
     
         public virtual DbSet<Administrador> Administrador { get; set; }
         public virtual DbSet<Jugador> Jugador { get; set; }
-        public virtual DbSet<Partida> Partida { get; set; }
         public virtual DbSet<Ranking> Ranking { get; set; }
         public virtual DbSet<Reporte> Reporte { get; set; }
-        public virtual DbSet<Reputacion> Reputacion { get; set; }
     }
 }

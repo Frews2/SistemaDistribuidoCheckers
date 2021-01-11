@@ -1,4 +1,8 @@
-﻿using CheckersCliente.MainService;
+﻿/*
+    Date: 28/11/2020
+    Author(s): César Sergio Martinez Palacios
+*/
+using CheckersCliente.MainService;
 using LogicaCliente;
 using System;
 using System.Linq;
@@ -14,12 +18,35 @@ namespace CheckersCliente.LogInPages
     /// </summary>
     public partial class RegisterAccount : Page
     {
+        /// <summary>
+        /// Valor constante que indica idioma de configuraciones Ingles
+        /// </summary>
         public const int ENGLISH_NUMBER = 0;
+        /// <summary>
+        /// Valor constante que indica idioma de configuraciones Español
+        /// </summary>
         public const int SPANISH_NUMBER = 1;
+        /// <summary>
+        /// Valor constante que indica idioma de configuraciones Italiano
+        /// </summary>
         public const int ITALIANO_NUMBER = 2;
+        /// <summary>
+        /// Valor constante que indica el minimo tamaño de un campo de texto
+        /// </summary>
         public const int MINIMUN_LENGHT = 8;
+        /// <summary>
+        /// Valor constante que indica el tamaño minimo para un email valido
+        /// </summary>
         public const int MINIMUM_MAIL_LENGHT = 10;
+        /// <summary>
+        /// Valor constante que indica el tamaño minimo para una respuesta valida
+        /// </summary>
         public const int ANSWER_MINIMUM_LENGHT = 1;
+
+        /// <summary>
+        /// Constructor para la pagina <c> RegisterAccount</c> con la funcionalidad
+        /// para crear un <c>Jugador</c> para que el jugador pueda accesar el sistema
+        /// </summary>
         public RegisterAccount()
         {
             InitializeComponent();
@@ -102,7 +129,7 @@ namespace CheckersCliente.LogInPages
 
             int selectedLanguage = CheckLanguage();
 
-            JugadorManager.SaveNewPlayer(new Jugador
+            PlayerManager.SaveNewPlayer(new Jugador
             {
                 Apodo = NicknameTextBox.Text,
                 Contrasenia = PasswordTextBox.Password,

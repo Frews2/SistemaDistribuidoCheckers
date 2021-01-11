@@ -11,29 +11,51 @@ using System.Windows;
 
 namespace CheckersCliente.CallbackHandlers
 {
-    class RankingCallbackHandler : IRankingManagerCallback
+    /// <summary>
+    /// Maneja las respuestas para mostrar la lista de ranking global a un jugador
+    /// </summary>
+    public class RankingCallbackHandler : IRankingManagerCallback
     {
+        /// <summary>
+        /// Maneja el resultado de un intento a consultar la lista de ranking global
+        /// </summary>
+        /// <param name="result"></param>
         public void GetRankingResult(RankingResult result)
         {
             if (result == RankingResult.RANKING_EXISTS)
             {
                 MessageBox.Show(Resources.LoadMessage);
             }
-            else if (result == RankingResult.NO_RANKING)
-            {
-                MessageBox.Show(Resources.NoInfoMessage);
-            }
             else
             {
-                MessageBox.Show(Resources.NoConnectionMessage);
+                if (result == RankingResult.NO_RANKING)
+                {
+                    MessageBox.Show(Resources.NoInfoMessage);
+                }
+                else
+                {
+                    MessageBox.Show(Resources.NoConnectionMessage);
+                }
             }
         }
 
+        /// <summary>
+        /// Muestra la lista de ranking global en una pagina <c>RankingList</c>
+        /// </summary>
+        /// <param name="rankingList"></param>
         public void ReceiveRankingData(Ranking[] rankingList)
         {
             List<Ranking> rankings = rankingList.ToList();
-            Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
-            menu.Navigate(new RankingList(rankings));
+
+            if (rankings.Count > 0)
+            {
+                Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                menu.Navigate(new RankingList(rankings));
+            }
+            else
+            {
+                MessageBox.Show(Resources.NoInfoMessage);
+            }
         }
     }
 }

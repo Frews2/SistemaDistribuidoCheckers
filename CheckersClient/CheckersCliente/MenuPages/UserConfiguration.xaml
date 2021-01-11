@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p="clr-namespace:CheckersCliente.Properties"
       xmlns:local="clr-namespace:CheckersCliente.MenuPages"
-      xmlns:Properties="clr-namespace:CheckersCliente.Properties" x:Class="CheckersCliente.MenuPages.UserConfiguration"
+      xmlns:Properties="clr-namespace:CheckersCliente.Properties" 
+      x:Class="CheckersCliente.MenuPages.UserConfiguration"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Title="UserConfiguration">
@@ -16,17 +17,30 @@
         </Grid.Background>
 
 
-        <TextBlock Text="{x:Static p:Resources.PlayerData}" Margin="10,48,0,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
-        <TextBlock Text="{x:Static p:Resources.Nickname}" Margin="63,119,494,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
-        <TextBlock Text="{Binding Apodo}" Margin="311,119,45,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="20" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Left"/>
-        <TextBlock Text="{x:Static p:Resources.E_mail}" Margin="13,179,494,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
-        <TextBlock Text="{Binding CorreoElectronico}" Margin="311,179,45,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="20" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Left"/>
-        <TextBlock x:Name="LanguageTextBlock" Margin="311,239,45,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="20" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Left"/>
-        <TextBlock Text="{x:Static p:Resources.Language}" Margin="53,239,494,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
-        <TextBlock Text="{x:Static p:Resources.ConfirmationQuestion}" Margin="104,300,111,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
-        <TextBlock Text="{Binding PreguntaRecuperacion}" Margin="0,348,0,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center" RenderTransformOrigin="0.517,1.078"/>
+        <TextBlock Text="{x:Static p:Resources.PlayerData}" Margin="10,48,0,0" VerticalAlignment="Top" Height="63" 
+                   FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+        <TextBlock Text="{x:Static p:Resources.Nickname}" Margin="63,119,494,0" VerticalAlignment="Top" Height="63" 
+                   FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+        <TextBlock Text="{Binding Apodo}" Margin="311,119,45,0" VerticalAlignment="Top" Height="63" FontWeight="Bold" 
+                   FontSize="20" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Left"/>
+        <TextBlock Text="{x:Static p:Resources.E_mail}" Margin="13,179,494,0" VerticalAlignment="Top" Height="63" 
+                   FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+        <TextBlock Text="{Binding CorreoElectronico}" Margin="311,179,45,0" VerticalAlignment="Top" Height="63" 
+                   FontWeight="Bold" FontSize="20" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Left"/>
+        <TextBlock x:Name="LanguageTextBlock" Margin="311,239,45,0" VerticalAlignment="Top" Height="63" FontWeight="Bold"
+                   FontSize="20" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Left"/>
+        <TextBlock Text="{x:Static p:Resources.Language}" Margin="53,239,494,0" VerticalAlignment="Top" Height="63" 
+                   FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
+        <TextBlock Text="{x:Static p:Resources.ConfirmationQuestion}" Margin="104,300,111,0" VerticalAlignment="Top" 
+                   Height="63" FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" 
+                   TextAlignment="Center"/>
+        <TextBlock Text="{Binding PreguntaRecuperacion}" Margin="0,348,0,0" VerticalAlignment="Top" Height="63"
+                   FontWeight="Bold" FontSize="26" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"
+                   RenderTransformOrigin="0.517,1.078"/>
 
-        <Button x:Name="CancelButton" Content="{x:Static p:Resources.Cancel}" Margin="280,480,318,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black"  FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic" Click="CancelClick"/>
+        <Button x:Name="CancelButton" Content="{x:Static p:Resources.Cancel}" Margin="280,480,318,0" 
+                VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black"  
+                FontWeight="Bold" Height="54" FontSize="18" FontStyle="Italic" Click="CancelClick"/>
 
     </Grid>
 </Page>

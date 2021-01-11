@@ -17,6 +17,11 @@ namespace CheckersCliente.MenuPages
     {
         private List<Ranking> rankingList;
 
+        /// <summary>
+        /// Constructor para la pagina <c>RankingList</c> que muestra una tabla de 
+        /// <c>Ranking</c> de los jugadores registrados al sistema
+        /// </summary>
+        /// <param name="rankings"></param>
         public RankingList(List<Ranking> rankings)
         {
             

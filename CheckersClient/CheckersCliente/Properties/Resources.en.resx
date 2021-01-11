@@ -312,4 +312,22 @@
   <data name="ReportSuccess" xml:space="preserve">
     <value>Reported player successfully</value>
   </data>
+  <data name="MatchmakingStandBy" xml:space="preserve">
+    <value>Please wait while we find a match for you</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="EmptyFieldsError" xml:space="preserve">
+    <value>One or more fields are empty. Please enter the required information.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="WrongFieldsError" xml:space="preserve">
+    <value>The information in one or more fields are empty. Please verify the information.</value>
+  </data>
 </root>

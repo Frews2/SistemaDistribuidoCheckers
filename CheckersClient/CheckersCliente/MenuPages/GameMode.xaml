@@ -17,12 +17,19 @@
         </Grid.Background>
 
         <Label Content="{x:Static p:Resources.GameMode}" HorizontalAlignment="Center" Margin="260,35,242,0"
-               VerticalAlignment="Top" Height="62" Width="280" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
+               VerticalAlignment="Top" Height="62" Width="280" FontWeight="Bold" FontSize="36"
+               Foreground="White" FontFamily="Bookman Old Style"/>
 
-        <Button Content="{x:Static p:Resources.ClassicCheckers}" Margin="260,198,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="EnterClassicGame"/>
-        <Button Content="{x:Static p:Resources.SuicideCheckers}" Margin="260,303,260,0" VerticalAlignment="Top" Background="Black" BorderBrush="Black" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="EnterSuicideGame"/>
+        <Button Content="{x:Static p:Resources.ClassicCheckers}" Margin="260,198,260,0" VerticalAlignment="Top" 
+                Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" 
+                FontSize="24" FontStyle="Italic" Click="EnterClassicGame"/>
+        <Button Content="{x:Static p:Resources.SuicideCheckers}" Margin="260,303,260,0" VerticalAlignment="Top" 
+                Background="Black" BorderBrush="Black" Foreground="White" FontWeight="Bold" Height="54" 
+                FontSize="24" FontStyle="Italic" Click="EnterSuicideGame"/>
 
-        <Button Content="{x:Static p:Resources.Cancel}" Margin="260,480,260,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic" Click="Return"/>
+        <Button Content="{x:Static p:Resources.Cancel}" Margin="260,480,260,0" VerticalAlignment="Top"
+                Background="White" BorderBrush="#FF050404" Foreground="Black" FontWeight="Bold" Height="54" 
+                FontSize="24" FontStyle="Italic" Click="Return"/>
 
     </Grid>
 </Page>

@@ -12,6 +12,10 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class GameStandBy : Page
     {
+        /// <summary>
+        /// Constructor para la pagina <c>GameStandBy</c> que sirve de 
+        /// pagina de carga mientras se encuentra una partida de juego checkers
+        /// </summary>
         public GameStandBy()
         {
             InitializeComponent();

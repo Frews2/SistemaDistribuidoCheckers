@@ -407,4 +407,19 @@ partita di gioco. Per favore riprova.</value>
   <data name="ReportSuccess" xml:space="preserve">
     <value>Giocatore segnalato con successo</value>
   </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Conferma</value>
+  </data>
+  <data name="EmptyFieldsError" xml:space="preserve">
+    <value>Uno o più campi sono vuoti. Si prega di inserire le informazioni richieste.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Successo</value>
+  </data>
+  <data name="WrongFieldsError" xml:space="preserve">
+    <value>Le informazioni in uno o più campi sono vuote. Si prega di verificare le informazioni.</value>
+  </data>
 </root>

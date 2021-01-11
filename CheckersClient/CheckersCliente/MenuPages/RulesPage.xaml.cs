@@ -10,6 +10,9 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class RulesPage : Page
     {
+        /// <summary>
+        /// Constructor para la pagina <c>RulesPage</c> que muestra la descripción de las reglas para un juego de checkers
+        /// </summary>
         public RulesPage()
         {
             InitializeComponent();

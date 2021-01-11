@@ -1,4 +1,8 @@
-﻿using CheckersCliente.MainService;
+﻿/*
+    Date: 09/12/2020
+    Author(s): César Sergio Martinez Palacios
+*/
+using CheckersCliente.MainService;
 using System;
 using System.Linq;
 using System.Windows;
@@ -18,6 +22,11 @@ namespace CheckersCliente.LogInPages
         DispatcherTimer clockTimer;
         Jugador pagePlayer;
 
+        /// <summary>
+        /// Constructor para la pagina <c>FinalizeRegister</c> con la funcionalidad
+        /// para dar de alta la cuenta de un jugador verificado
+        /// </summary>
+        /// <param name="player"></param>
         public  FinalizeRegister(Jugador player)
         {
             pagePlayer = player;
@@ -48,7 +57,7 @@ namespace CheckersCliente.LogInPages
         private void VerifyAccount(object sender, RoutedEventArgs e)
         {
             VerifyButton.IsEnabled = false;
-            JugadorManager.VerifyPlayer(new Jugador
+            PlayerManager.VerifyPlayer(new Jugador
             {
                 Apodo = pagePlayer.Apodo,
                 PinConfirmacion = PINbox.Text
@@ -58,7 +67,7 @@ namespace CheckersCliente.LogInPages
         private void ReSendMail(object sender, RoutedEventArgs e)
         {
 
-            JugadorManager.ResendEmail(pagePlayer);
+            PlayerManager.ResendEmail(pagePlayer);
             timeSeconds = 31;
             clockTimer.Start();
             CountdownNumber.Visibility = Visibility.Visible;

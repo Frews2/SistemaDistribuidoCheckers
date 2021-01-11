@@ -1,4 +1,8 @@
-﻿using LogicaCliente;
+﻿/*
+    Date: 30/11/2020
+    Author(s): César Sergio Martinez Palacios
+*/
+using LogicaCliente;
 using System;
 using System.Linq;
 using System.Windows;
@@ -13,11 +17,20 @@ namespace CheckersCliente.LogInPages
     /// </summary>
     public partial class VerificatePasswordPin : Page
     {
+        /// <summary>
+        /// Valor constante que muestra el valor minimo para un campo de texto valido
+        /// </summary>
         public const int MINIMUN_LENGHT = 8;
         private int timeSeconds = 31;
         DispatcherTimer clockTimer;
         private string playerNickname;
 
+        /// <summary>
+        /// Constructor para la pagina <c>VerificatePasswordPin</c> con la funcionalidad
+        /// para validar un <c>Jugador</c> como valido y guardar la cuenta del jugador en el sistema
+        /// </summary>
+        /// <param name="nickname"></param>
+        /// <param name="securityQuestion"></param>
         public VerificatePasswordPin(string nickname, string securityQuestion)
         {
             playerNickname = nickname;
@@ -46,7 +59,7 @@ namespace CheckersCliente.LogInPages
 
         private void ReSendMail(object sender, RoutedEventArgs e)
         {
-            JugadorManager.ObtainMailPassword(playerNickname);
+            PlayerManager.ObtainMailPassword(playerNickname);
             timeSeconds = 31;
             clockTimer.Start();
             CountdownNumber.Visibility = Visibility.Visible;
@@ -83,7 +96,7 @@ namespace CheckersCliente.LogInPages
         private void VerifyClick(object sender, RoutedEventArgs e)
         {
             VerifyButton.IsEnabled = false;
-            JugadorManager.VerifyPin(playerNickname, PINbox.Text, AnswerTextBox.Text);
+            PlayerManager.VerifyPin(playerNickname, PINbox.Text, AnswerTextBox.Text);
         }
 
         private void CancelClick(object sender, RoutedEventArgs e)

@@ -19,7 +19,10 @@ namespace CheckersCliente.MenuPages
         private Jugador currentPlayer;
         private CheckersGameMode selectedGameMode;
 
-
+        /// <summary>
+        /// Constructor para la pagina <c>GameMode</c> con funcionalidad para seleccion de modo de juego
+        /// </summary>
+        /// <param name="player"></param>
         public GameMode(Jugador player)
         {
             InitializeComponent();

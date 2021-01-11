@@ -13,6 +13,11 @@ namespace CheckersCliente
     public partial class LogIn : NavigationWindow
     {
         private bool navigate = false;
+
+        /// <summary>
+        /// Constructor para la ventana <c>LogIn</c> que contiene la funcionalidad asociada al
+        /// inicio de sesion, recuperación de cuenta y registro de cuenta nueva
+        /// </summary>
         public LogIn()
         {
             InitializeComponent();
@@ -20,6 +25,9 @@ namespace CheckersCliente
             NavigationService.Navigate(new LogInPages.LogInPage());
         }
 
+        /// <summary>
+        /// Habilita la navegación entre paginas de la ventana
+        /// </summary>
         public void EnableNavigation()
         {
             navigate = true;

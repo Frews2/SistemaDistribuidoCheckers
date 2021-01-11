@@ -16,7 +16,10 @@ namespace CheckersCliente
     /// </summary>
     public partial class AdminPage : NavigationWindow
     {
-
+        /// <summary>
+        /// Constructor para la ventana <c>AdminPage</c> que contiene la funcionalidad asociada al Administrador
+        /// </summary>
+        /// <param name="admin"></param>
         public AdminPage(Jugador admin)
         {
             InitializeComponent();

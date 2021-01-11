@@ -13,7 +13,12 @@ namespace CheckersCliente.Windows
         int actualMatchNumber;
         private bool playerReported = false;
 
-
+        /// <summary>
+        /// Constructor para la ventana <c>ReportWindow</c> con la funcionalidad
+        /// para crear un <c>Reporte</c> acusando un jugador de mal comportamiento
+        /// </summary>
+        /// <param name="playerReporting"></param>
+        /// <param name="matchNumber"></param>
         public ReportWindow(int playerReporting,int matchNumber)
         {
             InitializeComponent();
@@ -40,6 +45,9 @@ namespace CheckersCliente.Windows
             }
         }
 
+        /// <summary>
+        /// Cambia la variable booleana para estatus de acuso contra un jugador a verdadero
+        /// </summary>
         public void ReportedPlayer()
         {
             playerReported = true;

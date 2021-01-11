@@ -20,6 +20,10 @@ namespace CheckersCliente.LogInPages
     /// </summary>
     public partial class LogInPage : Page
     {
+        /// <summary>
+        /// Constructor para la pagina <c>LogInPage</c> con la funcionalidad
+        /// para iniciar sesion al sistema.
+        /// </summary>
         public LogInPage()
         {
             InitializeComponent();
@@ -29,7 +33,7 @@ namespace CheckersCliente.LogInPages
         {
             LogInButton.IsEnabled = false;
 
-            JugadorManager.Login(new Jugador
+            PlayerManager.Login(new Jugador
             {
                 Apodo = NicknameTextBox.Text,
                 Contrasenia = PasswordTextBox.Password

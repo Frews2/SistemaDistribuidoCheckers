@@ -408,4 +408,19 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   <data name="ReportSuccess" xml:space="preserve">
     <value>Jugador reportado exitosamente</value>
   </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmación</value>
+  </data>
+  <data name="EmptyFieldsError" xml:space="preserve">
+    <value>Uno o varios campos están vacíos. Por favor ingresa los datos necesarios.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Exito</value>
+  </data>
+  <data name="WrongFieldsError" xml:space="preserve">
+    <value>La información en uno o varios campos es incorrecta. Por favor verifica la información.</value>
+  </data>
 </root>

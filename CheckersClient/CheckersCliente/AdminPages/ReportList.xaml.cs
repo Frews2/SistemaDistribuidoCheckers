@@ -19,7 +19,11 @@ namespace CheckersCliente.AdminPages
         private Reporte selectedReport;
         private Jugador bannedPlayer;
 
-
+        /// <summary>
+        /// Constructor para una pagina <c>ReportList</c> que contiene una tabla de
+        /// reportes elaborados por jugadores
+        /// </summary>
+        /// <param name="reports"></param>
         public ReportList(List<Reporte> reports)
         {
             InitializeComponent();

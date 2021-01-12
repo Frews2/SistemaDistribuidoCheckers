@@ -1,4 +1,8 @@
-﻿using CheckersCliente.MainService;
+﻿/*
+ Date: 03/01/2020
+ Author(s): Ricardo Moguel Sanchez
+*/
+using CheckersCliente.MainService;
 using CheckersCliente.Managers;
 using System.Globalization;
 using System.Linq;
@@ -13,6 +17,11 @@ namespace CheckersCliente.AdminPages
     /// </summary>
     public partial class AdminMenu : Page
     {
+        /// <summary>
+        /// Constructor para una pagina <c>AdminMenu</c> que muestra las opciones 
+        /// disponibles al administrador
+        /// </summary>
+        /// <param name="admin"></param>
         public AdminMenu(Jugador admin)
         {
             InitializeComponent();

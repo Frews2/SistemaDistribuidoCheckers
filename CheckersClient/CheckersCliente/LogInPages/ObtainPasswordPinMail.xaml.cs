@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    Date: 09/12/2020
+    Author(s): César Sergio Martinez Palacios
+*/
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,9 +13,17 @@ namespace CheckersCliente.LogInPages
     /// </summary>
     public partial class ObtainPasswordPinMail : Page
     {
+        /// <summary>
+        /// Valor constante para el tamaño minimo de los campos de texto de la 
+        /// pagina <c>ObtainPasswordPinMail</c>
+        /// </summary>
         public const int MINIMUN_LENGHT = 8;
         private string playerNickname;
 
+        /// <summary>
+        /// Constructor para la pagina <c>ObtainPasswordPinMail</c> con la funcionalidad
+        /// para enviar un correo con la contraseña PIN para habilitar el cambio de contraseña del jugador
+        /// </summary>
         public ObtainPasswordPinMail()
         {
             InitializeComponent();
@@ -21,7 +33,7 @@ namespace CheckersCliente.LogInPages
         {
             SendButton.IsEnabled = false;
             playerNickname = Nicknamebox.Text;
-            JugadorManager.ObtainMailPassword(playerNickname);
+            PlayerManager.ObtainMailPassword(playerNickname);
             
         }
         
@@ -43,8 +55,6 @@ namespace CheckersCliente.LogInPages
             login.EnableNavigation();
             NavigationService.GoBack();
         }
-
-        
 
     }
 }

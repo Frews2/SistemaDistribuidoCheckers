@@ -13,11 +13,14 @@ using CheckersCliente.Properties;
 
 namespace CheckersCliente
 {
+    /// <summary>
+    /// Maneja respuestas del servidor para gestionar inicio de sesión y registro de jugadores
+    /// </summary>
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class PlayerCallbackHandler : IPlayerManagerCallback
     {
         /// <summary>
-        /// Obtiene el resultado del inicio de sesion del servidor del administrador
+        /// Maneja el resultado del inicio de sesion del servidor del administrador
         /// </summary>
         /// <param name="resultadoLogin"></param>
         /// <param name="playerLoged"></param>
@@ -45,7 +48,7 @@ namespace CheckersCliente
         }
 
         /// <summary>
-        /// Obtiene el resultado del inicio de sesion del servidor del jugador
+        /// Maneja el resultado del inicio de sesion del servidor del jugador
         /// </summary>
         /// <param name="resultadoLogin"></param>
         /// <param name="playerLoged"></param>
@@ -73,6 +76,10 @@ namespace CheckersCliente
             }
         }
 
+        /// <summary>
+        /// Maneja el resultado de verificar si el jugador tiene prohibido el acceso al sistema
+        /// </summary>
+        /// <param name="resultadoLogin"></param>
         private void LoginBanCheck(LoginResult resultadoLogin)
         {
             if (resultadoLogin == LoginResult.EsBaneado)
@@ -100,7 +107,7 @@ namespace CheckersCliente
         }
 
         /// <summary>
-        /// Obtiene el resultado de un intento a guardar un Jugador y sus datos a la base de datos.
+        /// Maneja el resultado de un intento a guardar un Jugador y sus datos a la base de datos.
         /// </summary>
         /// <param name="saveResult"></param>
         /// <param name="newPlayer"></param>
@@ -132,6 +139,10 @@ namespace CheckersCliente
             }
         }
 
+        /// <summary>
+        /// Maneja el resultado cuando de intentar verificar un jugador para que este pueda accesar el sistema
+        /// </summary>
+        /// <param name="resultadoVerificacion"></param>
         public void GetVerifyResult(VerificationResult resultadoVerificacion)
         {
             if(resultadoVerificacion == VerificationResult.VerificacionExistosa)
@@ -150,6 +161,11 @@ namespace CheckersCliente
             }
         }
 
+        /// <summary>
+        /// Maneja el resultado de intentar mandar un segundo correo al email de un jugador
+        /// </summary>
+        /// <param name="emailResult"></param>
+        /// <param name="playerNickname"></param>
         public void GetResendMailResult(MailResult emailResult, string playerNickname)
         {
             if (emailResult == MailResult.MailSend)
@@ -170,6 +186,12 @@ namespace CheckersCliente
             }
         }
 
+        /// <summary>
+        /// Maneja el resultado de mandar un correo para habilitar cambio de contraseña de un jugador
+        /// </summary>
+        /// <param name="emailResult"></param>
+        /// <param name="playerNickname"></param>
+        /// <param name="securityQuestion"></param>
         public void GetMailResult(MailResult emailResult, string playerNickname, string securityQuestion)
         {
             if(emailResult == MailResult.MailSend)
@@ -192,6 +214,12 @@ namespace CheckersCliente
             }
         }
     
+        /// <summary>
+        /// Maneja el resultado de verificar la contraseña PIN de un jugador para habilitar
+        /// el cambio de contraseña de la cuenta de este
+        /// </summary>
+        /// <param name="pinResult"></param>
+        /// <param name="playerNickname"></param>
         public void GetPinResult(PinResult pinResult, string playerNickname)
         {
             if(pinResult == PinResult.VerifiedPin)
@@ -213,6 +241,10 @@ namespace CheckersCliente
             }
         }
 
+        /// <summary>
+        /// Maneja el resultado de intentar cambiar la contraseña de la cuenta de un jugador
+        /// </summary>
+        /// <param name="passwordChangeResult"></param>
         public void GetPasswordChangeResult(PasswordChangeResult passwordChangeResult)
         {
             if (passwordChangeResult == PasswordChangeResult.ChangedPassword)
@@ -229,6 +261,11 @@ namespace CheckersCliente
 
         }
 
+        /// <summary>
+        /// Maneja el resultado de intentar visualizar los datos del jugador en una pagina <c>UserConfiguration</c>
+        /// </summary>
+        /// <param name="dataObtainedResult"></param>
+        /// <param name="actualPlayer"></param>
         public void SendActualPlayer(DataObtainedResult dataObtainedResult, Jugador actualPlayer)
         {
             if (dataObtainedResult == DataObtainedResult.DataObtained)
@@ -243,6 +280,5 @@ namespace CheckersCliente
             }
         }
 
-        
     }
 }

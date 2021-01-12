@@ -15,15 +15,20 @@
             <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
-        <Label Content="{x:Static p:Resources.ReportAdministration}" Margin="73,20,121,498" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="606" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
+        <Label Content="{x:Static p:Resources.ReportAdministration}" Margin="73,20,121,498" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="606" 
+               FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
 
-        <DataGrid x:Name="tableOfReports" HorizontalAlignment="Center" Height="358"  VerticalAlignment="Top" Width="630" 
-                  AutoGenerateColumns="False" Background="#FFFAFAFA" CanUserAddRows="false" RenderTransformOrigin="0.723,0.467"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="40" Margin="54,128,96,0" >
+        <DataGrid x:Name="tableOfReports" HorizontalAlignment="Center" Height="358"  
+                  VerticalAlignment="Top" Width="630" AutoGenerateColumns="False" 
+                  Background="#FFFAFAFA" CanUserAddRows="false" RenderTransformOrigin="0.723,0.467"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="40" 
+                  Margin="54,128,96,0" >
 
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="{x:Static p:Resources.ReportID}" Width ="90" MinWidth="90" MaxWidth="200"
-                                        CanUserResize="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
+                <DataGridTemplateColumn Header="{x:Static p:Resources.ReportID}" Width ="90" 
+                                        MinWidth="90" MaxWidth="200" CanUserResize="False" 
+                                        CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
@@ -40,8 +45,9 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="{x:Static p:Resources.Accuser}"  Width ="120" CanUserResize="False" 
-                                                CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
+                <DataGridTemplateColumn Header="{x:Static p:Resources.Accuser}" Width ="120"
+                                        CanUserResize="False" CanUserSort="False" IsReadOnly="True" 
+                                        CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
@@ -53,13 +59,15 @@
 
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Acusador.Apodo}" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Text="{Binding Acusador.Apodo}" 
+                                       TextWrapping="WrapWithOverflow"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="{x:Static p:Resources.Reported}"  Width ="120" CanUserResize="False" 
-                                                CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
+                <DataGridTemplateColumn Header="{x:Static p:Resources.Reported}"  Width ="120" 
+                                        CanUserResize="False" CanUserSort="False" IsReadOnly="True" 
+                                        CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
@@ -71,13 +79,15 @@
 
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Reportado.Apodo}" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Text="{Binding Reportado.Apodo}" 
+                                       TextWrapping="WrapWithOverflow"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="{x:Static p:Resources.ReportDescription}"  Width ="200" CanUserResize="False" 
-                                                CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
+                <DataGridTemplateColumn Header="{x:Static p:Resources.ReportDescription}" 
+                                        Width ="200" CanUserResize="False" CanUserSort="False"
+                                        IsReadOnly="True" CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
@@ -89,13 +99,15 @@
 
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding DescripcionAcuso}" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Text="{Binding DescripcionAcuso}" 
+                                       TextWrapping="WrapWithOverflow"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn  Header="{x:Static p:Resources.Options}" Width ="130" CanUserResize="False" 
-                                                CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
+                <DataGridTemplateColumn  Header="{x:Static p:Resources.Options}" Width ="130"
+                                         CanUserResize="False" CanUserSort="False" IsReadOnly="True"
+                                         CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
@@ -106,9 +118,11 @@
                     </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="{x:Static p:Resources.Ban}" Name="suspendPlayer" MinWidth="80" 
-                                    VerticalAlignment="Top"  HorizontalAlignment="Left" Background="Black" BorderBrush="#FF050404" Foreground="White"
-                                    FontWeight="Bold" Height="30" FontSize="16" FontStyle="Italic" Click="BanPlayer"/>
+                            <Button Content="{x:Static p:Resources.Ban}" Name="suspendPlayer"
+                                    MinWidth="80" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                    Background="Black" BorderBrush="#FF050404" Foreground="White"
+                                    FontWeight="Bold" Height="30" FontSize="16" FontStyle="Italic"
+                                    Click="BanPlayer"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -116,8 +130,9 @@
         </DataGrid>
 
         <Button
-            Content="{x:Static p:Resources.Exit}" Margin="286,508,282,0" VerticalAlignment="Top" Background="Black"
-            BorderBrush="#FF050404" Foreground="White" FontWeight="Bold" Height="54" FontSize="24" FontStyle="Italic"
-            Click="Exit" Width="232" HorizontalAlignment="Center"/>
+            Content="{x:Static p:Resources.Exit}" Margin="286,508,282,0" VerticalAlignment="Top"
+            Background="Black" BorderBrush="#FF050404" Foreground="White" FontWeight="Bold"
+            Height="54" FontSize="24" FontStyle="Italic" Width="232" HorizontalAlignment="Center"
+            Click="Exit" />
     </Grid>
 </Page>

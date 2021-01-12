@@ -14,7 +14,9 @@ using Dominio;
 
 namespace Contratos
 {
-
+    /// <summary>
+    /// Implementaciónn de Interface para servicios con respecto a datos de jugadores
+    /// </summary>
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public partial class MainService : IPlayerManager
     {
@@ -32,7 +34,13 @@ namespace Contratos
         private Dictionary<string,IPlayerManagerCallback> playersLoggedIn = new Dictionary<string, IPlayerManagerCallback>();
 
 
-
+        /// <summary>
+        /// Implementación de Contrato para iniciar sesion al sistema
+        /// </summary>
+        /// <param name="player"></param>
+        /// <exception>
+        /// Este metodo puede retornar una excepcion tipo AddressAlreadyInUseEsception
+        /// </exception>
         public void Login(Jugador player)
         {
             LoginResult result;
@@ -67,6 +75,10 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para iniciar sesion como Jugador
+        /// </summary>
+        /// <param name="player"></param>
         public void LoginPlayer(Jugador player)
         {
             LoginResult result = LoginResult.NoExisteJugador;
@@ -134,6 +146,13 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para guardar un jugador registrado a la base de datos
+        /// </summary>
+        /// <param name="player"></param>
+        /// <exception>
+        /// Este metodo puede retornar una excepcion tipo SmtpException
+        /// </exception>
         public void SavePlayer(Dominio.Jugador player)
         {
             JugadorDataManager playerDataManager = new JugadorDataManager();
@@ -224,6 +243,10 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para verificar un jugador antes de ser otorgado acceso al sistema
+        /// </summary>
+        /// <param name="player"></param>
         public void VerifyPlayer(Dominio.Jugador player)
         {
             VerificationResult resultado = VerificationResult.NoExisteJugador;
@@ -258,6 +281,13 @@ namespace Contratos
             PlayerCallback.GetVerifyResult(resultado);
         }
 
+        /// <summary>
+        /// Implementación de Contrato para enviar correo al email de un jugador
+        /// </summary>
+        /// <param name="player"></param>
+        /// <exception>
+        /// Este metodo puede retornar una excepcion tipo SmtpException
+        /// </exception>
         public void SendMail(Jugador player)
         {
             MailResult mailSuccesResult;
@@ -290,6 +320,13 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para enviar email de solicitud de cambio de contraseña a un jugador
+        /// </summary>
+        /// <param name="actualNickname"></param>
+        /// <exception>
+        /// Este metodo puede retornar una excepcion tipo SmtpException
+        /// </exception>
         public void PasswordForgotMail(string actualNickname)
         {
             JugadorDataManager jugadorManager = new JugadorDataManager();
@@ -335,6 +372,12 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para verificar el PIN de confirmacion para habilitar el cambio de contraseña de un jugador
+        /// </summary>
+        /// <param name="actualNickname"></param>
+        /// <param name="playerPin"></param>
+        /// <param name="answerText"></param>
         public void VerifyPin(string actualNickname, string playerPin, string answerText)
         {
             PinResult pinResult = PinResult.UnknownPin;
@@ -354,6 +397,11 @@ namespace Contratos
             PlayerCallback.GetPinResult(pinResult, actualNickname);
         }
 
+        /// <summary>
+        /// Implementación de Contrato para actualizar la contraseña de un jugador
+        /// </summary>
+        /// <param name="userNickname"></param>
+        /// <param name="password"></param>
         public void ChangePassword(string userNickname, string password)
         {
             PasswordChangeResult changeResult = PasswordChangeResult.ErrorChanging;
@@ -374,6 +422,10 @@ namespace Contratos
 
         }
 
+        /// <summary>
+        /// Implementación de Contrato para obtener datos de un jugador
+        /// </summary>
+        /// <param name="actualPlayer"></param>
         public void GetActualPlayer(Jugador actualPlayer)
         {
             DataObtainedResult dataObtainedResult = DataObtainedResult.ErrorObtainingData;
@@ -403,6 +455,10 @@ namespace Contratos
 
         }
 
+        /// <summary>
+        /// Implementación de Contrato para cerrrar sesion dentro del sistema
+        /// </summary>
+        /// <param name="playerNickname"></param>
         public void CloseSession(string playerNickname)
         {
             playersLoggedIn.Remove(playerNickname);
@@ -418,8 +474,14 @@ namespace Contratos
         }
     }
 
+    /// <summary>
+    /// Implementación de Interface para servicios con respecto a datos de ranking de jugadores
+    /// </summary>
     public partial class MainService : IRankingManager
     {
+        /// <summary>
+        /// Implementación de Contrato para obtener datos de rankings de la base de datos
+        /// </summary>
         public void GetRankingData()
         {
             RankingResult result;
@@ -440,6 +502,10 @@ namespace Contratos
             RankingCallback.GetRankingResult(result);
         }
 
+        /// <summary>
+        /// Consulta de la base de datos por una lista de rankings
+        /// </summary>
+        /// <returns>Retorna lista de <c>Ranking</c></returns>
         public List<Dominio.Ranking> QueryRankingData()
         {
             List<Dominio.Ranking> currentRankings = new List<Dominio.Ranking>();
@@ -476,6 +542,9 @@ namespace Contratos
         }
     }
 
+    /// <summary>
+    /// Implementación de Interface para servicios con respecto a jugar una partida de checkers
+    /// </summary>
     public partial class MainService : IGameManager
     {
         private List<Match> activeMatches = new List<Match>();
@@ -492,6 +561,12 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para actualizar el tablero despues del turno del jugador 1
+        /// </summary>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public void Player1Turn(Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers)
         {
             try
@@ -504,6 +579,12 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para crear una partida de checkers
+        /// </summary>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public void CreateMatch(Jugador currentPlayer, CheckersGameMode gameMode)
         {
             MatchmakingResult matchmakingResult;
@@ -531,7 +612,8 @@ namespace Contratos
                 {
                     matchmakingResult = MatchmakingResult.UNABLE_TO_ENTER_MATCH;
                     GameManagerCallback.GetMatchmakingResult(matchmakingResult, newCompleteGame, PLAYER_TWO);
-
+                    activeMatches.Remove(newCompleteGame);
+                    numberActiveMatches--;
                 }
 
             }
@@ -551,7 +633,12 @@ namespace Contratos
             }
         }
 
-
+        /// <summary>
+        /// Implementación de Contrato para actualizar el tablero despues del turno del jugador 2
+        /// </summary>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public void Player2Turn(Checker[][] updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers)
         {
             try
@@ -564,6 +651,9 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para terminar una partida de un juego de checkers
+        /// </summary>
         public void FinishPlayerGame(int matchNumber, int playerNumber, int playerTwoCheckers, int playerOneCheckers)
         {
             if (playerNumber == PLAYER_ONE)
@@ -590,6 +680,12 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Contrato para mandar un mensaje al oponente durante un partido 
+        /// </summary>
+        /// <param name="playerNumber"></param>
+        /// <param name="message"></param>
+        /// <param name="matchNumber"></param>
         public void SendGameMessage(int playerNumber, string message, int matchNumber)
         {
             if (playerNumber == PLAYER_ONE)
@@ -602,6 +698,12 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Contrato para crear un reporte de acuso contra el oponente durante un partido
+        /// </summary>
+        /// <param name="playerNumberReporting"></param>
+        /// <param name="matchNumber"></param>
+        /// <param name="reportText"></param>
         public void ReportPlayer(int playerNumberReporting, int matchNumber, string reportText)
         {
             int reportResult;
@@ -624,6 +726,11 @@ namespace Contratos
             GameManagerCallback.ReportResult(reportSaveResult);
         }
 
+        /// <summary>
+        /// Contrato para salir de una partida de un juego de checkers
+        /// </summary>
+        /// <param name="matchNumber"></param>
+        /// <param name="playerNumber"></param>
         public void LeaveMatch(int matchNumber, int playerNumber)
         {
             if (playerNumber == PLAYER_ONE)
@@ -637,6 +744,9 @@ namespace Contratos
         }
     }
 
+    /// <summary>
+    /// Implementación de Interface para servicios con respecto a prohibir acceso a jugadores
+    /// </summary>
     public partial class MainService : IBanManager
     {
         IBanManagerCallback BanCallback
@@ -647,6 +757,9 @@ namespace Contratos
             }
         }
 
+        /// <summary>
+        /// Implementación de Contrato para obtener datos de reportes de la base de datos
+        /// </summary>
         public void GetReportData()
         {
             AdminReportResult result = AdminReportResult.NO_REPORTS_EXIST;
@@ -661,6 +774,10 @@ namespace Contratos
             BanCallback.GetReportDataQueryResult(result);
         }
 
+        /// <summary>
+        /// Obtiene una lisa de reportes de la base de datos
+        /// </summary>
+        /// <returns>retorna una lista de <c>Reporte</c></returns>
         public List<Dominio.Reporte> QueryReportData()
         {
             List<Dominio.Reporte> currentPlayerReports = new List<Dominio.Reporte>();
@@ -685,6 +802,13 @@ namespace Contratos
             return currentPlayerReports;
         }
 
+        /// <summary>
+        /// Contrato para prohibir acceso al sistema a un jugador
+        /// </summary>
+        /// <param name="reportedPlayerName"></param>
+        /// <exception>
+        /// Este metodo puede retornar una excepcion tipo SmtpException
+        /// </exception>
         public void BanPlayer(string reportedPlayerName)
         {
             int isPlayerBanned = 0;

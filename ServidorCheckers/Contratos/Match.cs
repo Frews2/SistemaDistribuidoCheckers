@@ -5,6 +5,9 @@
 
 namespace Contratos
 {
+    /// <summary>
+    /// Clase para gestionar una partida en progreso entre dos instancias de <c>Jugador</c>
+    /// </summary>
     public class Match
     {
         public int matchActiveNumber { get; set; }

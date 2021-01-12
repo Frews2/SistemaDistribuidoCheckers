@@ -26,6 +26,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\CheckersCliente.xml</DocumentationFile>
+    <NoWarn>References.cs</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -197,7 +199,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Managers\JugadorManager.cs" />
+    <Compile Include="Managers\PlayerManager.cs" />
     <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Managers\RankingManager.cs" />
     <Compile Include="Menu.xaml.cs">

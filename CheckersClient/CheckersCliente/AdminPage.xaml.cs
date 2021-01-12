@@ -27,7 +27,10 @@ namespace CheckersCliente
             NavigationService.Navigate(new AdminMenu(admin));
 
         }
-
+        /// <summary>
+        /// variable que indica el lenguaje a cambiar a en caso de que el 
+        /// administrador desea cambiar lenguaje de configuración
+        /// </summary>
         public string LangSwitch { get; private set; } = null;
 
         private void LookLanguage(int idLanguage)

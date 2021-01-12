@@ -1,5 +1,5 @@
 ﻿/*
- Date: 25/11/2020
+ Date: 04/1/2021
  Author(s): César Sergio Martinez Palacios
 */
 using CheckersCliente.MainService;

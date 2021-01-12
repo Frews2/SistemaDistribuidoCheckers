@@ -21,6 +21,9 @@ namespace CheckersCliente.Managers
         /// </summary>
         /// <param name="player"></param>
         /// <param name="gameMode"></param>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void EnterMatchmaking(Jugador player, CheckersGameMode gameMode)
         {
             try
@@ -40,6 +43,9 @@ namespace CheckersCliente.Managers
         /// </summary>
         /// <param name="matchNumber"></param>
         /// <param name="playerNumberLeaving"></param>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void LeaveMatchmaking(int matchNumber, int playerNumberLeaving)
         {
             try
@@ -62,6 +68,9 @@ namespace CheckersCliente.Managers
         /// <param name="matchNumber"></param>
         /// <param name="playerTwoCheckers"></param>
         /// <param name="playerOneCheckers"></param>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void Player1TurnResult(Checker [,]updateBoardMatrix, int matchNumber, int playerTwoCheckers, int playerOneCheckers)
         {
             Checker[][] checkersNewMatrix = new Checker[updateBoardMatrix.GetLength(0)][];
@@ -98,6 +107,9 @@ namespace CheckersCliente.Managers
         /// <param name="matchNumber"></param>
         /// <param name="playerTwoCheckers"></param>
         /// <param name="playerOneCheckers"></param>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void Player2TurnResult(Checker[,] updateBoardMatrix, int matchNumber,int playerTwoCheckers, int playerOneCheckers)
         {
 
@@ -126,7 +138,7 @@ namespace CheckersCliente.Managers
             }
             
         }
-    
+
         /// <summary>
         /// Crea una solicitud al servidor para terminar la partida despues de un juego exitoso de checkers
         /// </summary>
@@ -134,6 +146,9 @@ namespace CheckersCliente.Managers
         /// <param name="localPlayer"></param>
         /// <param name="playerTwoCheckers"></param>
         /// <param name="playerOneCheckers"></param>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void EndPlayerGame(int matchNumber, int localPlayer, int playerTwoCheckers, int playerOneCheckers)
         {
             InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
@@ -154,6 +169,9 @@ namespace CheckersCliente.Managers
         /// <param name="matchNumber"></param>
         /// <param name="localPlayer"></param>
         /// <param name="message"></param>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void SendMessage(int matchNumber, int localPlayer, string message)
         {
             InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());
@@ -174,6 +192,9 @@ namespace CheckersCliente.Managers
         /// <param name="playerReporting"></param>
         /// <param name="matchNumber"></param>
         /// <param name="reportText"></param>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void ReportPlayer(int playerReporting, int matchNumber, string reportText)
         {
             InstanceContext instanceContext = new InstanceContext(new GameManagerCallbackHandler());

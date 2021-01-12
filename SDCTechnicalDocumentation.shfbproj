@@ -9,7 +9,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{d3e78628-4f11-437e-afc3-43c6a1dc6d56}</ProjectGuid>
+    <ProjectGuid>{b34d2368-2073-4742-93f2-418d7b0a8f20}</ProjectGuid>
     <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
     <AssemblyName>Documentation</AssemblyName>
@@ -21,10 +21,12 @@
     <HtmlHelpName>Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
-      <DocumentationSource sourceFile="CheckersClient\CheckersCliente\bin\Debug\CheckersCliente.xml" />
-<DocumentationSource sourceFile="CheckersClient\CheckersCliente\bin\Debug\CheckersCliente.exe" /></DocumentationSources>
-    <MissingTags>Summary, Parameter, AutoDocumentCtors, Namespace, AutoDocumentDispose</MissingTags>
-    <VisibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
+      <DocumentationSource sourceFile="ServidorCheckers\Contratos\Contratos.csproj" />
+<DocumentationSource sourceFile="ServidorCheckers\DataAccess\DataAccess.csproj" />
+<DocumentationSource sourceFile="ServidorCheckers\Dominio\Dominio.csproj" />
+<DocumentationSource sourceFile="ServidorCheckers\ServidorCheckers\ServidorCheckers.csproj" />
+<DocumentationSource sourceFile="CheckersClient\CheckersCliente\CheckersCliente.csproj" />
+<DocumentationSource sourceFile="CheckersClient\LogicaCliente\LogicaCliente.csproj" /></DocumentationSources>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

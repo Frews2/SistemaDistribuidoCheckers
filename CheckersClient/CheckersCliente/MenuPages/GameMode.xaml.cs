@@ -34,11 +34,7 @@ namespace CheckersCliente.MenuPages
             selectedGameMode = CheckersGameMode.ClassicCheckers;
             GameManager.EnterMatchmaking(currentPlayer, selectedGameMode);
         }
-        private void EnterSuicideGame(object sender, RoutedEventArgs e)
-        {
-            selectedGameMode = CheckersGameMode.SuicidalCheckers;
-            GameManager.EnterMatchmaking(currentPlayer, selectedGameMode);
-        }
+
         private void Return(object sender, System.Windows.RoutedEventArgs e)
         {
             Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();

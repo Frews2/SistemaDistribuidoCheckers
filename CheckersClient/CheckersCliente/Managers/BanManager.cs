@@ -20,6 +20,9 @@ namespace CheckersCliente.Managers
         /// <summary>
         /// Crea una solicitud para obtener una lista de <c>Reporte</c> de jugadores guardados en el servidor
         /// </summary>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void GetReportedList()
         {
             try
@@ -36,6 +39,9 @@ namespace CheckersCliente.Managers
         /// Crea una solicitud para prohibir un <c>Jugador</c> de accesar el sistema por parte del administrador
         /// </summary>
         /// <param name="playerName"></param>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void BanPlayer(string playerName)
         {
             try

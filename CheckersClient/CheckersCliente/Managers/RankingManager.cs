@@ -21,6 +21,9 @@ namespace CheckersCliente.Managers
         /// <summary>
         /// Crea una solicitud para consultar las puntuaciones de <c>Ranking</c> en el ranking global del sistema
         /// </summary>
+        /// <exception> 
+        /// Esta excepcion puede retornar una excepcion tipo EndpointNotFoundException
+        /// </exception>
         public static void AddRankingPetitionCallback()
         {
             try

@@ -37,7 +37,7 @@
             <TextBlock Text="{x:Static Properties:Resources.WaitMessage}" x:Name="CountdownText" Margin="141,539,136,0" 
                        VerticalAlignment="Top" Height="23" FontWeight="Bold" FontSize="16" Foreground="White" 
                        FontFamily="Bookman Old Style" TextAlignment="Center"/>
-            <TextBlock x:Name="CountdownNumber"  Margin="365,567,370,0" VerticalAlignment="Top" Height="23" FontWeight="Bold"
+            <TextBlock x:Name="CountdownNumber"  Margin="280,567,280,0" VerticalAlignment="Top" Height="45" FontWeight="Bold"
                        FontSize="24" Foreground="White" FontFamily="Bookman Old Style" TextAlignment="Center"/>
 
             <TextBox x:Name="PINbox" HorizontalAlignment="Left" Height="50" Margin="365,222,0,0" TextWrapping="Wrap" 

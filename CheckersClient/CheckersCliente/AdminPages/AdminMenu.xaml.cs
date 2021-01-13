@@ -4,6 +4,7 @@
 */
 using CheckersCliente.MainService;
 using CheckersCliente.Managers;
+using CheckersCliente.Windows;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -17,6 +18,8 @@ namespace CheckersCliente.AdminPages
     /// </summary>
     public partial class AdminMenu : Page
     {
+        private Jugador administrador;
+
         /// <summary>
         /// Constructor para una pagina <c>AdminMenu</c> que muestra las opciones 
         /// disponibles al administrador
@@ -25,7 +28,8 @@ namespace CheckersCliente.AdminPages
         public AdminMenu(Jugador admin)
         {
             InitializeComponent();
-            DataContext = admin;
+            administrador = admin;
+            DataContext = administrador;
         }
 
         private void DisplayReports(object sender, RoutedEventArgs e)
@@ -35,8 +39,15 @@ namespace CheckersCliente.AdminPages
 
         private void CloseMenu(object sender, RoutedEventArgs e)
         {
-            AdminPage actualMenu = App.Current.Windows.OfType<AdminPage>().FirstOrDefault();
-            actualMenu.Close();
+            bool isYes = false;
+            isYes = DialogWindowManager.ShowConfirmationWindow(Properties.Resources.LogOutQuestion);
+            if (isYes)
+            {
+                AdminPage actualMenu = App.Current.Windows.OfType<AdminPage>().FirstOrDefault();
+                actualMenu.Close();
+                PlayerManager.EndSession(administrador.Apodo);
+            }
+            
         }
 
         private void LanguageSelect(object sender, RoutedEventArgs e)

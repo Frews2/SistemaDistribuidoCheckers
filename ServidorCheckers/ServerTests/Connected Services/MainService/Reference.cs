@@ -68,31 +68,40 @@ namespace ServerTests.MainService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetActualPlayer")]
         System.Threading.Tasks.Task GetActualPlayerAsync(Dominio.Jugador actualPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/CloseSession")]
+        void CloseSession(string playerNickname);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/CloseSession")]
+        System.Threading.Tasks.Task CloseSessionAsync(string playerNickname);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IPlayerManagerCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetLoginResult")]
-        void GetLoginResult(Contratos.LoginResult resultadoLogin, Dominio.Jugador player);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetAdminLoginResult")]
+        void GetAdminLoginResult(Contratos.LoginResult resultadoLogin, Dominio.Jugador playerLoged);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetPlayerLoginResult")]
+        void GetPlayerLoginResult(Contratos.LoginResult resultadoLogin, Dominio.Jugador playerLoged);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetSaveResult")]
-        void GetSaveResult(Contratos.SaveResult resultadoGuardado, Dominio.Jugador player);
+        void GetSaveResult(Contratos.SaveResult saveResult, Dominio.Jugador newPlayer);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetVerifyResult")]
         void GetVerifyResult(Contratos.VerificationResult resultadoVerificacion);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetResendMailResult")]
-        void GetResendMailResult(Contratos.MailResult resultadoCorreo, string actualNickname);
+        void GetResendMailResult(Contratos.MailResult emailResult, string playerNickname);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetMailResult")]
-        void GetMailResult(Contratos.MailResult resultadoCorreo, string actualNickname, string securityQuestion);
+        void GetMailResult(Contratos.MailResult emailResult, string playerNickname, string securityQuestion);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetPinResult")]
-        void GetPinResult(Contratos.PinResult verifiedPinResult, string playerNickname);
+        void GetPinResult(Contratos.PinResult pinResult, string playerNickname);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/GetPasswordChangeResult")]
-        void GetPasswordChangeResult(Contratos.PasswordChangeResult passwordChangedResult);
+        void GetPasswordChangeResult(Contratos.PasswordChangeResult passwordChangeResult);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPlayerManager/SendActualPlayer")]
         void SendActualPlayer(Contratos.DataObtainedResult dataObtainedResult, Dominio.Jugador actualPlayer);
@@ -196,6 +205,14 @@ namespace ServerTests.MainService {
         
         public System.Threading.Tasks.Task GetActualPlayerAsync(Dominio.Jugador actualPlayer) {
             return base.Channel.GetActualPlayerAsync(actualPlayer);
+        }
+        
+        public void CloseSession(string playerNickname) {
+            base.Channel.CloseSession(playerNickname);
+        }
+        
+        public System.Threading.Tasks.Task CloseSessionAsync(string playerNickname) {
+            return base.Channel.CloseSessionAsync(playerNickname);
         }
     }
     
@@ -371,6 +388,12 @@ namespace ServerTests.MainService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ReportPlayer")]
         System.Threading.Tasks.Task ReportPlayerAsync(int playerNumberReporting, int matchNumber, string reportText);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/LeaveMatch")]
+        void LeaveMatch(int matchNumber, int playerNumber);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/LeaveMatch")]
+        System.Threading.Tasks.Task LeaveMatchAsync(int matchNumber, int playerNumber);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -414,6 +437,9 @@ namespace ServerTests.MainService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/ReportResult")]
         void ReportResult(Contratos.ReportSaveResult reportSaveResult);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/EndAbandonedGame")]
+        void EndAbandonedGame();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -490,6 +516,14 @@ namespace ServerTests.MainService {
         
         public System.Threading.Tasks.Task ReportPlayerAsync(int playerNumberReporting, int matchNumber, string reportText) {
             return base.Channel.ReportPlayerAsync(playerNumberReporting, matchNumber, reportText);
+        }
+        
+        public void LeaveMatch(int matchNumber, int playerNumber) {
+            base.Channel.LeaveMatch(matchNumber, playerNumber);
+        }
+        
+        public System.Threading.Tasks.Task LeaveMatchAsync(int matchNumber, int playerNumber) {
+            return base.Channel.LeaveMatchAsync(matchNumber, playerNumber);
         }
     }
 }

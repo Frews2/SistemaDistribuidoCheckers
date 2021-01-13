@@ -15,9 +15,9 @@
             <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
-        <Label Content="{x:Static p:Resources.ReportAdministration}" Margin="73,20,121,498" 
-               VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="606" 
-               FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
+        <Label Content="{x:Static p:Resources.ReportAdministration}" Margin="50,20,101,498" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="640" 
+               FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style" />
 
         <DataGrid x:Name="tableOfReports" HorizontalAlignment="Center" Height="358"  
                   VerticalAlignment="Top" Width="630" AutoGenerateColumns="False" 

@@ -148,13 +148,13 @@
     <value>Lenguaje</value>
   </data>
   <data name="GamesLost" xml:space="preserve">
-    <value>Partidas Perdidas</value>
+    <value>Perdidas</value>
   </data>
   <data name="GamesPlayed" xml:space="preserve">
     <value>Partidas Jugadas</value>
   </data>
   <data name="GamesWon" xml:space="preserve">
-    <value>Partidas Ganadas</value>
+    <value>Victorias</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Inicio</value>
@@ -202,7 +202,7 @@
     <value>Puntuaciones</value>
   </data>
   <data name="RegistrationDate" xml:space="preserve">
-    <value>Fecha de Registración</value>
+    <value>Fecha de Registro</value>
   </data>
   <data name="Return" xml:space="preserve">
     <value>Regresar</value>
@@ -422,5 +422,8 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
   </data>
   <data name="WrongFieldsError" xml:space="preserve">
     <value>La información en uno o varios campos es incorrecta. Por favor verifica la información.</value>
+  </data>
+  <data name="Points" xml:space="preserve">
+    <value>Puntos</value>
   </data>
 </root>

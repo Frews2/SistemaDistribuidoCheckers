@@ -330,4 +330,7 @@
   <data name="WrongFieldsError" xml:space="preserve">
     <value>The information in one or more fields are empty. Please verify the information.</value>
   </data>
+  <data name="Points" xml:space="preserve">
+    <value>Score</value>
+  </data>
 </root>

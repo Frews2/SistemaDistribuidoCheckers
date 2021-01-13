@@ -60,7 +60,7 @@ namespace DataAccess.DataManager
         {
             List<DataAccess.Ranking> playerRankings = null;
 
-            playerRankings = context.Ranking.OrderBy(position => position.rank).ToList();
+            playerRankings = context.Ranking.OrderByDescending(position => position.rank).ToList();
 
             return playerRankings;
         }

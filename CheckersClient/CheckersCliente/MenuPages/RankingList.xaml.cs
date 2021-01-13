@@ -28,7 +28,6 @@ namespace CheckersCliente.MenuPages
             InitializeComponent();
             rankingList = rankings;
             tableOfRankings.ItemsSource = rankingList;
-
         }
 
         private void Return(object sender, RoutedEventArgs e)

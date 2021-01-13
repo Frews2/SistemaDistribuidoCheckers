@@ -531,6 +531,8 @@ namespace Contratos
                 {
                     matchmakingResult = MatchmakingResult.UNABLE_TO_ENTER_MATCH;
                     GameManagerCallback.GetMatchmakingResult(matchmakingResult, newCompleteGame, PLAYER_TWO);
+                    activeMatches.Remove(newCompleteGame);
+                    numberActiveMatches--;
 
                 }
 

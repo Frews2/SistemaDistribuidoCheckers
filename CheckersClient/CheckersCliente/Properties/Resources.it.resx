@@ -420,6 +420,11 @@ partita di gioco. Per favore riprova.</value>
     <value>Successo</value>
   </data>
   <data name="WrongFieldsError" xml:space="preserve">
-    <value>Le informazioni in uno o più campi sono vuote. Si prega di verificare le informazioni.</value>
+    <value>88 / 5000
+Resultados de traducción
+Le informazioni in uno o più campi sono errate o vuote. Si prega di verificare le informazioni.</value>
+  </data>
+  <data name="playerDisconnected" xml:space="preserve">
+    <value>Il gioco è terminato perché il tuo avversario ha abbandonato il gioco</value>
   </data>
 </root>

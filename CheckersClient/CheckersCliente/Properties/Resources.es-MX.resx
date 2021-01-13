@@ -421,6 +421,9 @@ Esto puede ser el resultado de que todas las piezas de un jugador sean capturada
     <value>Exito</value>
   </data>
   <data name="WrongFieldsError" xml:space="preserve">
-    <value>La información en uno o varios campos es incorrecta. Por favor verifica la información.</value>
+    <value>La información de uno o más campos es incorrecta o está vacía. Verifique la información.</value>
+  </data>
+  <data name="playerDisconnected" xml:space="preserve">
+    <value>Juego terminado debido a que el otro jugador se ha desconectado</value>
   </data>
 </root>

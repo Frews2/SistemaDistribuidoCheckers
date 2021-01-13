@@ -1230,14 +1230,16 @@ namespace CheckersCliente
             {
                 Menu menu = new Menu(actualMatch.playerOneData);
                 menu.Show();
+                this.Close();
             }
             else
             {
                 Menu menu = new Menu(actualMatch.playerTwoData);
                 menu.Show();
+                this.Close();
             }
             Windows.DialogWindowManager.ShowErrorWindow("El otro jugador se ha desconectado");
-            this.Close();
+            
         }
     }
 }

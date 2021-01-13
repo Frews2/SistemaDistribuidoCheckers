@@ -328,6 +328,9 @@
     <value>Success</value>
   </data>
   <data name="WrongFieldsError" xml:space="preserve">
-    <value>The information in one or more fields are empty. Please verify the information.</value>
+    <value>The information in one or more fields are wrong or empty. Please verify the information.</value>
+  </data>
+  <data name="playerDisconnected" xml:space="preserve">
+    <value>Game ended because your opponent abandoned the game</value>
   </data>
 </root>

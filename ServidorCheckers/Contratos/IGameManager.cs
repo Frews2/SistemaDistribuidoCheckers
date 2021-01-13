@@ -1,4 +1,8 @@
-﻿using System.ServiceModel;
+﻿/*
+    Date: 30/12/2020
+    Author(s): César Sergio Martinez Palacios
+*/
+using System.ServiceModel;
 
 namespace Contratos
 {

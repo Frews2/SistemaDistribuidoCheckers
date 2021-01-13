@@ -1,4 +1,8 @@
-﻿using CheckersCliente.Managers;
+﻿/*
+ Date: 01/12/2020
+ Author(s): Cesar Sergio Martinez Palacios
+*/
+using CheckersCliente.Managers;
 using System.Linq;
 using System.Windows;
 

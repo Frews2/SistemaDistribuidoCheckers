@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  Date: 27/11/2020
  Author(s): Cesar Sergio Martinez Palacios
 */

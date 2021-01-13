@@ -765,7 +765,7 @@ namespace Contratos
             AdminReportResult result = AdminReportResult.NO_REPORTS_EXIST;
             List<Dominio.Reporte> reportList = QueryReportData();
 
-            if (reportList.Count > 1)
+            if (reportList.Count > 0)
             {
                 result = AdminReportResult.REPORT_EXISTS;
 

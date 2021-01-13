@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="/Images/checkersBackground.jpg"/>
         </Grid.Background>
 
-        <Label Content="{x:Static p:Resources.Rankings}" Margin="194,32,192,498" VerticalAlignment="Center"
+        <Label Content="{x:Static p:Resources.Rankings}" Margin="194,2,192,498" VerticalAlignment="Center"
                HorizontalAlignment="Center" Height="70" Width="414" FontWeight="Bold" FontSize="48" Foreground="White" 
                FontFamily="Bookman Old Style"/>
         
@@ -24,13 +24,13 @@
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" RowHeight="30" Margin="73,128,47,0" >
             
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="{x:Static p:Resources.Rank}" Width ="70" MinWidth="90" MaxWidth="200"
+                <DataGridTemplateColumn Header="{x:Static p:Resources.Points}" Width ="70" MinWidth="90" MaxWidth="200"
                                         CanUserResize="False" CanUserSort="False" IsReadOnly="True" CanUserReorder="False">
                     <DataGridTemplateColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
                             <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="FontSize" Value="15"/>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTemplateColumn.HeaderStyle>
@@ -48,7 +48,7 @@
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
                             <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="FontSize" Value="15"/>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTemplateColumn.HeaderStyle>
@@ -66,7 +66,7 @@
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
                             <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="FontSize" Value="15"/>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTemplateColumn.HeaderStyle>
@@ -84,7 +84,7 @@
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
                             <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="FontSize" Value="15"/>
                             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTemplateColumn.HeaderStyle>
@@ -102,7 +102,7 @@
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
                             <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="FontSize" Value="15"/>
                             <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
                         </Style>
                     </DataGridTemplateColumn.HeaderStyle>
@@ -120,7 +120,7 @@
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="IndianRed"/>
                             <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="FontSize" Value="16"/>
+                            <Setter Property="FontSize" Value="15"/>
                             <Setter Property="TextBlock.TextWrapping" Value="WrapWithOverflow" />
                         </Style>
                     </DataGridTemplateColumn.HeaderStyle>

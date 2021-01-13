@@ -16,6 +16,10 @@ namespace CheckersCliente
     /// </summary>
     public partial class AdminPage : NavigationWindow
     {
+        private Jugador administrator;
+        private bool changeLanguage = false;
+        private bool navigate = false;
+
         /// <summary>
         /// Constructor para la ventana <c>AdminPage</c> que contiene la funcionalidad asociada al Administrador
         /// </summary>
@@ -23,6 +27,8 @@ namespace CheckersCliente
         public AdminPage(Jugador admin)
         {
             InitializeComponent();
+            administrator = admin;
+            navigate = true;
             LookLanguage(admin.IdLenguaje);
             NavigationService.Navigate(new AdminMenu(admin));
 
@@ -48,7 +54,5 @@ namespace CheckersCliente
                     break;
             }
         }
-
-
     }
 }

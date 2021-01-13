@@ -47,7 +47,7 @@ namespace CheckersCliente.AdminPages
                 actualMenu.Close();
                 PlayerManager.EndSession(administrador.Apodo);
             }
-            
+
         }
 
         private void LanguageSelect(object sender, RoutedEventArgs e)

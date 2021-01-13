@@ -422,4 +422,7 @@ partita di gioco. Per favore riprova.</value>
   <data name="WrongFieldsError" xml:space="preserve">
     <value>Le informazioni in uno o più campi sono vuote. Si prega di verificare le informazioni.</value>
   </data>
+  <data name="Points" xml:space="preserve">
+    <value>punti</value>
+  </data>
 </root>

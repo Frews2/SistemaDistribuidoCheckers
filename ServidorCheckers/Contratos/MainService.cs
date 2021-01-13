@@ -849,9 +849,13 @@ namespace Contratos
 
                 banResult = BanResult.PLAYER_BANNED;
             }
-            else if(isPlayerBanned == BAN_ALREADY)
+            else 
             {
-                banResult = BanResult.PLAYER_ALREADY_BANNED;
+                if (isPlayerBanned == BAN_ALREADY)
+                {
+                    banResult = BanResult.PLAYER_ALREADY_BANNED;
+                }
+                    
             }
 
             BanCallback.GetBanResult(banResult);

@@ -1,10 +1,10 @@
-﻿using Contratos;
+﻿/*
+ Date: 09/01/2021
+ Author(s): Ricardo Moguel Sanchez
+*/
+using Contratos;
 using Dominio;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServerTests.CallbackHandlers
 {
@@ -16,17 +16,20 @@ namespace ServerTests.CallbackHandlers
 
         public void GetBanResult(BanResult result)
         {
-            if (result == BanResult.PLAYER_BANNED)
+            if(result == BanResult.PLAYER_BANNED)
             {
                 banResult = BanResult.PLAYER_BANNED;
             }
-            else if (result == BanResult.PLAYER_ALREADY_BANNED)
+            else
             {
-                banResult = BanResult.PLAYER_ALREADY_BANNED;
-            }
-            else if (result == BanResult.ERROR_BANNING)
-            {
-                banResult = BanResult.ERROR_BANNING;
+                if(result == BanResult.PLAYER_ALREADY_BANNED)
+                {
+                    banResult = BanResult.PLAYER_ALREADY_BANNED;
+                }
+                else
+                {
+                    banResult = BanResult.ERROR_BANNING;
+                }
             }
         }
 
@@ -36,10 +39,14 @@ namespace ServerTests.CallbackHandlers
             {
                 adminReportResult = AdminReportResult.REPORT_EXISTS;
             }
-            else if (result == AdminReportResult.NO_REPORTS_EXIST)
+            else
             {
-                adminReportResult = AdminReportResult.NO_REPORTS_EXIST;
+                if (result == AdminReportResult.NO_REPORTS_EXIST)
+                {
+                    adminReportResult = AdminReportResult.NO_REPORTS_EXIST;
+                }
             }
+            
         }
 
         public void ReceiveReportData(List<Reporte> reportList)

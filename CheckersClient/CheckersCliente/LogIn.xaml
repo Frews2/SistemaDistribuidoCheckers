@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CheckersCliente"
         mc:Ignorable="d"
         Title="LogIn" Height="800" Width="800"
-        ResizeMode="NoResize" ShowsNavigationUI="False"
+        ResizeMode="NoResize" ShowsNavigationUI="False" WindowStartupLocation="CenterScreen"
         Source="LogInPages\LogInPage.xaml" Navigating="NavigationWindowNavigating">
 </NavigationWindow>
 

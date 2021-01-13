@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CallbackHandlers\BanCallbackHandler.cs" />
+    <Compile Include="CallbackHandlers\GameManagerCallbackHandler.cs" />
+    <Compile Include="CallbackHandlers\PlayerCallbackHandler.cs" />
+    <Compile Include="CallbackHandlers\RankingCallbackHandler.cs" />
     <Compile Include="Connected Services\MainService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -60,6 +63,8 @@
     </Compile>
     <Compile Include="GetDataUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CreateDataUnitTests.cs" />
+    <Compile Include="UpdateDataUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

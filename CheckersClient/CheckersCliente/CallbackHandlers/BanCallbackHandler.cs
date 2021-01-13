@@ -82,11 +82,6 @@ namespace CheckersCliente.CallbackHandlers
                 AdminPage menu = App.Current.Windows.OfType<AdminPage>().FirstOrDefault();
                 menu.Navigate(new ReportList(reports));
             }
-            else
-            {
-                MessageBox.Show(Resources.NoInfoMessage);
-            }
-            
         }
     }
 }

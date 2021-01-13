@@ -151,8 +151,14 @@
   <wsdl:message name="IPlayerManager_GetActualPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActualPlayer" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManager_GetLoginResult_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:GetLoginResult" />
+  <wsdl:message name="IPlayerManager_CloseSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloseSession" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetAdminLoginResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminLoginResult" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetPlayerLoginResult_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayerLoginResult" />
   </wsdl:message>
   <wsdl:message name="IPlayerManager_GetSaveResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:GetSaveResult" />
@@ -217,6 +223,9 @@
   <wsdl:message name="IGameManager_ReportPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:ReportPlayer" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_LeaveMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveMatch" />
+  </wsdl:message>
   <wsdl:message name="IGameManager_UpdateGameGUI_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateGameGUI" />
   </wsdl:message>
@@ -234,6 +243,9 @@
   </wsdl:message>
   <wsdl:message name="IGameManager_ReportResult_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReportResult" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_EndAbandonedGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:EndAbandonedGame" />
   </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="Login">
@@ -263,8 +275,14 @@
     <wsdl:operation name="GetActualPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetActualPlayer" message="tns:IPlayerManager_GetActualPlayer_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetLoginResult">
-      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetLoginResult" message="tns:IPlayerManager_GetLoginResult_OutputCallbackMessage" />
+    <wsdl:operation name="CloseSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/CloseSession" message="tns:IPlayerManager_CloseSession_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminLoginResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetAdminLoginResult" message="tns:IPlayerManager_GetAdminLoginResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlayerLoginResult">
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPlayerLoginResult" message="tns:IPlayerManager_GetPlayerLoginResult_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSaveResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetSaveResult" message="tns:IPlayerManager_GetSaveResult_OutputCallbackMessage" />
@@ -335,6 +353,9 @@
     <wsdl:operation name="ReportPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ReportPlayer" message="tns:IGameManager_ReportPlayer_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/LeaveMatch" message="tns:IGameManager_LeaveMatch_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateGameGUI">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/UpdateGameGUI" message="tns:IGameManager_UpdateGameGUI_OutputCallbackMessage" />
     </wsdl:operation>
@@ -352,6 +373,9 @@
     </wsdl:operation>
     <wsdl:operation name="ReportResult">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/ReportResult" message="tns:IGameManager_ReportResult_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EndAbandonedGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/EndAbandonedGame" message="tns:IGameManager_EndAbandonedGame_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -411,8 +435,20 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="GetLoginResult">
-      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetLoginResult" style="document" />
+    <wsdl:operation name="CloseSession">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/CloseSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminLoginResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetAdminLoginResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlayerLoginResult">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetPlayerLoginResult" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -555,6 +591,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="LeaveMatch">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/LeaveMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="UpdateGameGUI">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/UpdateGameGUI" style="document" />
       <wsdl:output>
@@ -587,6 +629,12 @@
     </wsdl:operation>
     <wsdl:operation name="ReportResult">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/ReportResult" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndAbandonedGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/EndAbandonedGame" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

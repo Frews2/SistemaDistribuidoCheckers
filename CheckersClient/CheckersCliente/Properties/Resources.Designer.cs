@@ -115,7 +115,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure to cancel?.
+        ///   Looks up a localized string similar to Are you sure you wish to cancel?.
         /// </summary>
         public static string CancelQuestion {
             get {
@@ -405,7 +405,7 @@ namespace CheckersCliente.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure to log out?.
+        ///   Looks up a localized string similar to Are you sure you wish to log out?.
         /// </summary>
         public static string LogOutQuestion {
             get {

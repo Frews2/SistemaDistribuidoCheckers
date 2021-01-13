@@ -128,7 +128,7 @@ namespace Contratos
         void ReportResult(ReportSaveResult reportSaveResult);
 
         /// <summary>
-        /// Contrato para obtener el resultado de terminar una partido por abandono de un jugador
+        /// Contrato para obtener el resultado de terminar una partida por abandono de un jugador
         /// </summary>
         [OperationContract(IsOneWay = true)]
         void EndAbandonedGame();

@@ -53,7 +53,6 @@ namespace CheckersCliente.LogInPages
         }
 
         private void EnableRegisterButton(object sender, RoutedEventArgs e)
-
         {
             if (NicknameTextBox.Text.Length < MINIMUN_LENGHT || EmailTextBox.Text.Length < MINIMUM_MAIL_LENGHT 
                 || PasswordTextBox.Password.Length < MINIMUN_LENGHT || LanguageBox.SelectionBoxItem == null 
@@ -73,7 +72,7 @@ namespace CheckersCliente.LogInPages
         private bool CheckWhiteSpaces()
         {
             if (String.IsNullOrWhiteSpace(NicknameTextBox.Text) || String.IsNullOrWhiteSpace(PasswordTextBox.Password)
-                || String.IsNullOrWhiteSpace(AnswerTextBox.Text) || string.IsNullOrWhiteSpace(EmailTextBox.Text)
+                || String.IsNullOrWhiteSpace(AnswerTextBox.Text) || String.IsNullOrWhiteSpace(EmailTextBox.Text)
                 || String.IsNullOrWhiteSpace(QuestionTextBox.Text))
             {
                 return false;
@@ -87,7 +86,7 @@ namespace CheckersCliente.LogInPages
         private bool IsEmail()
         {
             if (ValidatorText.IsEmail(EmailTextBox.Text) && EmailTextBox.Text.Length > MINIMUM_MAIL_LENGHT 
-                && !String.IsNullOrEmpty(EmailTextBox.Text))
+                && !String.IsNullOrWhiteSpace(EmailTextBox.Text))
             {
                 return true;
             }
@@ -99,7 +98,7 @@ namespace CheckersCliente.LogInPages
         private bool IsQuestion()
         {
             if (ValidatorText.IsQuestion(QuestionTextBox.Text) && QuestionTextBox.Text.Length > MINIMUN_LENGHT
-                && !String.IsNullOrEmpty(QuestionTextBox.Text))
+                && !String.IsNullOrWhiteSpace(QuestionTextBox.Text))
             {
                 return true;
             }

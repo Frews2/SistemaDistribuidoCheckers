@@ -1,4 +1,8 @@
-﻿using System.Linq;
+﻿/*
+ Date: 10/11/2020
+ Author(s): Cesar Sergio Martinez Palacios
+*/
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;

@@ -27,8 +27,7 @@ namespace DataAccess.DataManager
         /// </exception>
         public void NewPlayerRank(Jugador newPlayer)
         {
-            string playerNickname = newPlayer.apodo;
-            newPlayer = GetPlayerByNickname(playerNickname);
+            
             DateTime actualDate = DateTime.Now;
             string sqlDate = actualDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             actualDate = Convert.ToDateTime(sqlDate);
@@ -44,6 +43,7 @@ namespace DataAccess.DataManager
             try
             {
                 context.Ranking.Add(newRank);
+                context.SaveChanges();
             }
             catch (DbUpdateException)
             {

@@ -1,6 +1,6 @@
 ﻿/*
- Date: 25/11/2020
- Author(s): Ricardo Moguel Sanchez
+ Date: 30/12/2020
+ Author(s): Cesar Sergio Martinez Palacios
 */
 
 using CheckersCliente.CallbackHandlers;

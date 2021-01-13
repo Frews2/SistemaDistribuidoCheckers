@@ -1,4 +1,8 @@
-﻿using CheckersCliente.MainService;
+﻿/*
+ Date: 20/11/2020
+ Author(s): Cesar Sergio Martinez Palacios
+*/
+using CheckersCliente.MainService;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;

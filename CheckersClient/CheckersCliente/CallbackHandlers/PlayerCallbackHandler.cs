@@ -67,6 +67,7 @@ namespace CheckersCliente
                 {
                     DialogWindowManager.ShowErrorWindow(Resources.NotVerifiedMessage);
                     LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                    login.EnableNavigation();
                     login.NavigationService.Navigate(new FinalizeRegister(playerLoged));
                 }
                 else
@@ -117,6 +118,7 @@ namespace CheckersCliente
             {
                 DialogWindowManager.ShowSuccessWindow(Resources.SuccessfulRegisterMessage);
                 LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                login.EnableNavigation();
                 login.NavigationService.Navigate(new FinalizeRegister(newPlayer));
             }
             else
@@ -149,6 +151,7 @@ namespace CheckersCliente
             {
                 DialogWindowManager.ShowSuccessWindow(Resources.SuccessfulVerificationMessage);
                 LogIn logIn = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                logIn.EnableNavigation();
                 logIn.NavigationService.Navigate(new LogInPage());
             }
             else if (resultadoVerificacion == VerificationResult.NoExisteJugador)
@@ -251,6 +254,7 @@ namespace CheckersCliente
             {
                 DialogWindowManager.ShowSuccessWindow(Resources.SuccessfulPasswordChangeMessage);
                 LogIn login = App.Current.Windows.OfType<LogIn>().FirstOrDefault();
+                login.EnableNavigation();
                 login.NavigationService.Navigate(new LogInPage());
 
             }

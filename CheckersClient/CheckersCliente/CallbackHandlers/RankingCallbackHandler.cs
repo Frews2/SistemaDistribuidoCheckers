@@ -50,6 +50,7 @@ namespace CheckersCliente.CallbackHandlers
             if (rankings.Count > 0)
             {
                 Menu menu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
+                menu.EnableNavigation();
                 menu.Navigate(new RankingList(rankings));
             }
             else

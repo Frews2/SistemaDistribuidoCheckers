@@ -19,7 +19,10 @@ namespace CheckersCliente.MenuPages
         private Jugador currentPlayer;
         private CheckersGameMode selectedGameMode;
 
-
+        /// <summary>
+        /// Constructor para la pagina <c>GameMode</c> con funcionalidad para seleccion de modo de juego
+        /// </summary>
+        /// <param name="player"></param>
         public GameMode(Jugador player)
         {
             InitializeComponent();
@@ -31,11 +34,7 @@ namespace CheckersCliente.MenuPages
             selectedGameMode = CheckersGameMode.ClassicCheckers;
             GameManager.EnterMatchmaking(currentPlayer, selectedGameMode);
         }
-        private void EnterSuicideGame(object sender, RoutedEventArgs e)
-        {
-            selectedGameMode = CheckersGameMode.SuicidalCheckers;
-            GameManager.EnterMatchmaking(currentPlayer, selectedGameMode);
-        }
+
         private void Return(object sender, System.Windows.RoutedEventArgs e)
         {
             Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();

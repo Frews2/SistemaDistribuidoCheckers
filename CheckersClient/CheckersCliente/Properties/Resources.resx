@@ -275,7 +275,7 @@ This can result from all of a player's pieces being captured or blocked from mak
     <value>Suicide Checkers</value>
   </data>
   <data name="MatchmakingStandBy" xml:space="preserve">
-    <value>Please wait while we found a match for you</value>
+    <value>Please wait while we find a match for you</value>
   </data>
   <data name="Game" xml:space="preserve">
     <value>Game</value>
@@ -386,13 +386,13 @@ This can result from all of a player's pieces being captured or blocked from mak
     <value>Pass turn</value>
   </data>
   <data name="CancelQuestion" xml:space="preserve">
-    <value>Are you sure to cancel?</value>
+    <value>Are you sure you wish to cancel?</value>
   </data>
   <data name="LoggedPlayer" xml:space="preserve">
     <value>Already logged in</value>
   </data>
   <data name="LogOutQuestion" xml:space="preserve">
-    <value>Are you sure to log out?</value>
+    <value>Are you sure you wish to log out?</value>
   </data>
   <data name="PasswordErrorText" xml:space="preserve">
     <value>The passwords doesn't match or doesn't have the minimun length (8 characters).</value>
@@ -405,5 +405,20 @@ This can result from all of a player's pieces being captured or blocked from mak
   </data>
   <data name="ReportSuccess" xml:space="preserve">
     <value>Reported player successfully</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="EmptyFieldsError" xml:space="preserve">
+    <value>One or more fields are empty. Please enter the required information.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="WrongFieldsError" xml:space="preserve">
+    <value>The information in one or more fields are empty. Please verify the information.</value>
   </data>
 </root>

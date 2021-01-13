@@ -1,5 +1,5 @@
 ﻿/*
- Date: 25/11/2020
+ Date: 04/1/2021
  Author(s): César Sergio Martinez Palacios
 */
 using CheckersCliente.MainService;
@@ -37,8 +37,16 @@ namespace CheckersCliente
         private Match actualMatch;
         private bool matchEnd = false;
 
+        /// <summary>
+        /// La variable booleana indica si esta abierta o no la ventana <c>ReportWindow</c> para acusar a un jugador
+        /// </summary>
         public bool ReportWindowOpen { get; set; } = false;
 
+        /// <summary>
+        /// Constructor para la ventana <c>Game</c> que contiene la funcionalidad asociada a una Partida de juego checkers
+        /// </summary>
+        /// <param name="match"></param>
+        /// <param name="playerNumber"></param>
         public Game(Match match, int playerNumber)
         {
             InitializeComponent();
@@ -109,7 +117,8 @@ namespace CheckersCliente
                 }
                 else
                 {
-                    if (boardMatrix[rowNumber, columnNumber] == Checker.player1Checker || boardMatrix[rowNumber, columnNumber] == Checker.player1King)
+                    if (boardMatrix[rowNumber, columnNumber] == Checker.player1Checker ||
+                        boardMatrix[rowNumber, columnNumber] == Checker.player1King)
                     {
                         previousButton = button;
                         RemarkClickedButton(button);
@@ -157,9 +166,11 @@ namespace CheckersCliente
 
         private void SecondMovementCheck(Button button)
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -2) && (columnNumber - previousColumn == -2))
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -2) && 
+                (columnNumber - previousColumn == -2))
             {
-                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2King)
+                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker ||
+                    boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2King)
                 {
                     player2CheckerCount--;
                     boardMatrix[rowNumber + 1, columnNumber + 1] = Checker.freeSpace;
@@ -199,9 +210,11 @@ namespace CheckersCliente
 
         private void ThirdMovementCheck(Button button)
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -2) && (columnNumber - previousColumn == 2))
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == -2) &&
+                (columnNumber - previousColumn == 2))
             {
-                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King)
+                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || 
+                    boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King)
                 {
                     player2CheckerCount--;
                     boardMatrix[rowNumber + 1, columnNumber - 1] = Checker.freeSpace;
@@ -308,7 +321,8 @@ namespace CheckersCliente
             {
                 currentPlayer.Text = "Player 2 Turn";
 
-                if (boardMatrix[rowNumber, columnNumber] == Checker.player2Checker || boardMatrix[rowNumber, columnNumber] == Checker.player2King)
+                if (boardMatrix[rowNumber, columnNumber] == Checker.player2Checker ||
+                    boardMatrix[rowNumber, columnNumber] == Checker.player2King)
                 {
                     previousButton = button;
                     checkPlayerSecondClick = true;
@@ -319,7 +333,8 @@ namespace CheckersCliente
 
         private void PlayerTwoFirstMovementCheck(Button button)
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 1) && (columnNumber - previousColumn == -1 || columnNumber - previousColumn == 1))
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 1) &&
+                (columnNumber - previousColumn == -1 || columnNumber - previousColumn == 1))
             {
                 if (!IsKingChecker())
                 {
@@ -344,9 +359,11 @@ namespace CheckersCliente
 
         private void PlayerTwoSecondMovementCheck(Button button)
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 2) && columnNumber - previousColumn == -2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 2) &&
+                columnNumber - previousColumn == -2)
             {
-                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King)
+                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || 
+                    boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King)
                 {
                     player1CheckerCount--;
 
@@ -386,7 +403,8 @@ namespace CheckersCliente
 
         private void PlayerTwoThirdMovementCheck(Button button)
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 2) && columnNumber - previousColumn == 2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 2) &&
+                columnNumber - previousColumn == 2)
             {
                 player1CheckerCount--;
 
@@ -571,6 +589,10 @@ namespace CheckersCliente
             buttonSelected.BorderBrush = Brushes.SlateGray;
         }
 
+        /// <summary>
+        /// Actualiza la posicion de las fichas de checkers despues de un turno durante una partida de juego checkers
+        /// </summary>
+        /// <param name="boardMatrixUpdate"></param>
         public void UpdateCheckersGuiPosition(Checker[,] boardMatrixUpdate)
         {
             boardMatrix = boardMatrixUpdate;
@@ -630,15 +652,19 @@ namespace CheckersCliente
 
         private bool Player1MoreJumpCheck()
         {
-            if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && boardMatrix[rowNumber - 2, columnNumber - 2] == Checker.freeSpace &&
-                (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2King))
+            if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && 
+                boardMatrix[rowNumber - 2, columnNumber - 2] == Checker.freeSpace &&
+                (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2Checker ||
+                boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2King))
             {
                 return true;
             }
             else
             {
-                if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
-                    (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King))
+                if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && 
+                    boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker ||
+                    boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King))
                 {
                     return true;
                 }
@@ -652,15 +678,19 @@ namespace CheckersCliente
         private bool Player2MoreJumpCheck()
         {
 
-            if (rowNumber + 2 <= 7 && columnNumber + 2 <= 7 && boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
-                (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King))
+            if (rowNumber + 2 <= 7 && columnNumber + 2 <= 7 && 
+                boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
+                (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker ||
+                boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King))
             {
                 return true;
             }
             else
             {
-                if (rowNumber + 2 <= 7 && columnNumber - 2 >= 0 && boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
-                (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King))
+                if (rowNumber + 2 <= 7 && columnNumber - 2 >= 0 && 
+                    boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || 
+                    boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King))
                 {
                     return true;
                 }
@@ -675,8 +705,10 @@ namespace CheckersCliente
         {
             if (player1Turn)
             {
-                if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && boardMatrix[rowNumber - 2, columnNumber - 2] == Checker.freeSpace &&
-                    (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2King))
+                if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && 
+                    boardMatrix[rowNumber - 2, columnNumber - 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2Checker || 
+                    boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2King))
                 {
                     return true;
                 }
@@ -694,15 +726,19 @@ namespace CheckersCliente
 
         private bool KingSecondCheckJump()
         {
-            if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
-                        (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King))
+            if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && 
+                boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
+                        (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker ||
+                        boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King))
             {
                 return true;
             }
             else
             {
-                if (rowNumber + 2 <= 7 && columnNumber - 2 >= 0 && boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
-                    (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King))
+                if (rowNumber + 2 <= 7 && columnNumber - 2 >= 0 && 
+                    boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || 
+                    boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King))
                 {
                     return true;
                 }
@@ -715,8 +751,10 @@ namespace CheckersCliente
 
         private bool KingThirdCheckJump()
         {
-            if (rowNumber + 2 <= 7 && columnNumber + 2 <= 7 && boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
-                               (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2King))
+            if (rowNumber + 2 <= 7 && columnNumber + 2 <= 7 &&
+                boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
+                               (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker ||
+                               boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2King))
             {
                 return true;
             }
@@ -728,16 +766,20 @@ namespace CheckersCliente
 
         private bool KingFourthCheckJump()
         {
-            if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && boardMatrix[rowNumber - 2, columnNumber - 2] == Checker.freeSpace &&
-                    (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1King))
+            if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 &&
+                boardMatrix[rowNumber - 2, columnNumber - 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1Checker ||
+                    boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1King))
             {
                 return true;
 
             }
             else
             {
-                if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
-                    (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King))
+                if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && 
+                    boardMatrix[rowNumber - 2, columnNumber + 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || 
+                    boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King))
                 {
                     return true;
                 }
@@ -750,16 +792,20 @@ namespace CheckersCliente
 
         private bool KingFifthCheckJump()
         {
-            if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 && boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
-                        (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King))
+            if (rowNumber - 2 >= 0 && columnNumber - 2 >= 0 &&
+                boardMatrix[rowNumber + 2, columnNumber - 2] == Checker.freeSpace &&
+                        (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || 
+                        boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King))
             {
                 return true;
 
             }
             else
             {
-                if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 && boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
-                    (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King))
+                if (rowNumber - 2 >= 0 && columnNumber + 2 <= 7 &&
+                    boardMatrix[rowNumber + 2, columnNumber + 2] == Checker.freeSpace &&
+                    (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker ||
+                    boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King))
                 {
                     return true;
                 }
@@ -801,8 +847,9 @@ namespace CheckersCliente
 
         private bool KingMove()
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && (rowNumber - previousRow == 1 || rowNumber - previousRow == -1)
-                && (columnNumber - previousColumn == 1 || columnNumber - previousColumn == -1))
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && 
+                (rowNumber - previousRow == 1 || rowNumber - previousRow == -1) &&
+                (columnNumber - previousColumn == 1 || columnNumber - previousColumn == -1))
             {
                 boardMatrix[rowNumber, columnNumber] = boardMatrix[previousRow, previousColumn];
                 boardMatrix[previousRow, previousColumn] = Checker.freeSpace;
@@ -819,9 +866,11 @@ namespace CheckersCliente
         {
             if (player1Turn)
             {
-                if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == 2)
+                if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && 
+                    rowNumber - previousRow == 2 && columnNumber - previousColumn == 2)
                 {
-                    if (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2King)
+                    if (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2Checker || 
+                        boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player2King)
                     {
                         return true;
                     }
@@ -845,9 +894,11 @@ namespace CheckersCliente
 
         private bool SecondValidateKingJump()
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == -2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && 
+                rowNumber - previousRow == 2 && columnNumber - previousColumn == -2)
             {
-                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King)
+                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2Checker ||
+                    boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player2King)
                 {
                     return true;
                 }
@@ -866,9 +917,11 @@ namespace CheckersCliente
 
         private bool ThirdValidateKingJump()
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == 2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && 
+                rowNumber - previousRow == -2 && columnNumber - previousColumn == 2)
             {
-                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King)
+                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2Checker || 
+                    boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player2King)
                 {
                     return true;
                 }
@@ -886,7 +939,8 @@ namespace CheckersCliente
 
         private bool FourthValidateKingJump()
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == -2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && 
+                rowNumber - previousRow == -2 && columnNumber - previousColumn == -2)
             {
                 if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player2Checker)
                 {
@@ -905,9 +959,11 @@ namespace CheckersCliente
 
         private bool ValidateSecondPlayerKingJump()
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == 2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && 
+                rowNumber - previousRow == 2 && columnNumber - previousColumn == 2)
             {
-                if (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1King)
+                if (boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1Checker ||
+                    boardMatrix[rowNumber - 1, columnNumber - 1] == Checker.player1King)
                 {
                     return true;
                 }
@@ -926,9 +982,11 @@ namespace CheckersCliente
         private bool SecondValidateSecondPlayerKing()
         {
 
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == 2 && columnNumber - previousColumn == -2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && 
+                rowNumber - previousRow == 2 && columnNumber - previousColumn == -2)
             {
-                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King)
+                if (boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1Checker || 
+                    boardMatrix[rowNumber - 1, columnNumber + 1] == Checker.player1King)
                 {
                     return true;
                 }
@@ -947,9 +1005,11 @@ namespace CheckersCliente
 
         private bool ThirdValidateSecondPlayerKing()
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == 2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace &&
+                rowNumber - previousRow == -2 && columnNumber - previousColumn == 2)
             {
-                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King)
+                if (boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1Checker ||
+                    boardMatrix[rowNumber + 1, columnNumber - 1] == Checker.player1King)
                 {
                     return true;
                 }
@@ -967,9 +1027,11 @@ namespace CheckersCliente
 
         private bool FourthValidateSecondPlayerKing()
         {
-            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && rowNumber - previousRow == -2 && columnNumber - previousColumn == -2)
+            if (boardMatrix[rowNumber, columnNumber] == Checker.freeSpace && 
+                rowNumber - previousRow == -2 && columnNumber - previousColumn == -2)
             {
-                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker || boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King)
+                if (boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1Checker || 
+                    boardMatrix[rowNumber + 1, columnNumber + 1] == Checker.player1King)
                 {
                     return true;
                 }
@@ -988,7 +1050,8 @@ namespace CheckersCliente
         {
             if (player2CheckerCount == 0 || player1CheckerCount == 0)
             {
-                GameManager.EndPlayerGame(actualMatch.matchActiveNumber, localPlayerNumber, player2CheckerCount, player1CheckerCount);
+                GameManager.EndPlayerGame(actualMatch.matchActiveNumber, localPlayerNumber, 
+                                          player2CheckerCount, player1CheckerCount);
                 FinishGame(player2CheckerCount, player1CheckerCount);
             }
             else
@@ -1003,18 +1066,23 @@ namespace CheckersCliente
                 if (player1Turn)
                 {
                     currentPlayer.Text = "Player 2 Turn";
-                    GameManager.Player1TurnResult(boardMatrix, actualMatch.matchActiveNumber, player2CheckerCount, player1CheckerCount);
+                    GameManager.Player1TurnResult(boardMatrix, actualMatch.matchActiveNumber,
+                                                  player2CheckerCount, player1CheckerCount);
                 }
                 else
                 {
 
                     currentPlayer.Text = "Player 1 Turn";
-                    GameManager.Player2TurnResult(boardMatrix, actualMatch.matchActiveNumber, player2CheckerCount, player1CheckerCount);
+                    GameManager.Player2TurnResult(boardMatrix, actualMatch.matchActiveNumber,
+                                                  player2CheckerCount, player1CheckerCount);
                 }
                 player1Turn = !player1Turn;
             }
         }
 
+        /// <summary>
+        /// Finaliza el turno de jugador 2
+        /// </summary>
         public void EndSecondPlayerTurn()
         {
             if (player1Turn)
@@ -1041,6 +1109,12 @@ namespace CheckersCliente
             DismissButtonClick(previousButton);
         }
 
+        /// <summary>
+        /// Finaliza de manera exitosa el juego cuando uno de los jugadores gana la partida y 
+        /// elimina todas las fichas del oponente
+        /// </summary>
+        /// <param name="playerTwoCheckers"></param>
+        /// <param name="playerOneCheckers"></param>
         public void FinishGame(int playerTwoCheckers, int playerOneCheckers)
         {
             if (playerOneCheckers == 0)
@@ -1061,6 +1135,11 @@ namespace CheckersCliente
             game.Close();
         }
 
+        /// <summary>
+        /// Actualiza el conteo de fichas activas de los jugadores cuando un jugador captura fichas
+        /// </summary>
+        /// <param name="playerTwoCheckers"></param>
+        /// <param name="playerOneCheckers"></param>
         public void UpdateCheckersCount(int playerTwoCheckers, int playerOneCheckers)
         {
             this.player2CheckerCount = playerTwoCheckers;
@@ -1068,11 +1147,20 @@ namespace CheckersCliente
 
         }
 
+        /// <summary>
+        /// Actualiza la identificacion de la partida actual de juego de checkers
+        /// </summary>
+        /// <param name="newActiveNumber"></param>
         public void UpdateMatchNumber(int newActiveNumber)
         {
             actualMatch.matchActiveNumber = newActiveNumber;
         }
 
+        /// <summary>
+        /// Envia un mensaje del jugador local al oponente por medio del servidor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void SendMessage(object sender, RoutedEventArgs e)
         {
             GameManager.SendMessage(actualMatch.matchActiveNumber, localPlayerNumber, message.Text);
@@ -1081,6 +1169,11 @@ namespace CheckersCliente
             messageButton.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Recibe un menaje el jugador local del oponente por medio del servidor
+        /// </summary>
+        /// <param name="newMesage"></param>
+        /// <param name="playerSource"></param>
         public void RecieveMessage(string newMesage, string playerSource)
         {
             messagesList.Add(playerSource + newMesage);
@@ -1104,6 +1197,9 @@ namespace CheckersCliente
             }
         }
 
+        /// <summary>
+        /// Cierra la ventana <c>ReportWindow</c>
+        /// </summary>
         public void CloseReportWindow()
         {
             reportButton.IsEnabled = false;
@@ -1122,6 +1218,10 @@ namespace CheckersCliente
             }
         }
 
+        /// <summary>
+        /// Cierra la ventana <c>Game</c> cuando un jugador sale de la partida antes de terminar el juego de checkers
+        /// y aun tiene fichas activas los dos jugadores
+        /// </summary>
         public void AbandonedGame()
         {
             matchEnd = true;

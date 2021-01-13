@@ -1,25 +1,37 @@
 ﻿/*
     Date: 23/11/2020
-    Author(s): César Sergio Martinez Palacios
+    Author(s): César Sergio Martinez Palacios y Ricardo Moguel Sanchez
 */
 
+using CheckersCliente.Properties;
 using System.Windows;
 
 namespace CheckersCliente.Windows
 {
+    /// <summary>
+    /// Crea ventanillas de dialogo en el caso de error, confirmacion y exito de acciones
+    /// </summary>
     public static class DialogWindowManager
     {
-
+        /// <summary>
+        /// Crea una ventanilla de error con un botón "OK"
+        /// </summary>
+        /// <param name="errorMessage"></param>
         public static void ShowErrorWindow(string errorMessage)
         {
-            MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(errorMessage, Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        /// <summary>
+        /// Crea una ventanilla de confirmación con un decision de "Si" y "No"
+        /// </summary>
+        /// <param name="confirmMessage"></param>
+        /// <returns></returns>
         public static bool ShowConfirmationWindow(string confirmMessage)
         {
             bool confirmation = false;
 
-            MessageBoxResult userAnswer = MessageBox.Show(confirmMessage, "Confirmación",
+            MessageBoxResult userAnswer = MessageBox.Show(confirmMessage, Resources.Confirmation,
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (userAnswer == MessageBoxResult.Yes)
@@ -30,40 +42,50 @@ namespace CheckersCliente.Windows
             return confirmation;
         }
 
+        /// <summary>
+        /// Crea una ventanilla de éxito con un botón "OK"
+        /// </summary>
+        /// <param name="successMessage"></param>
         public static void ShowSuccessWindow(string successMessage)
         {
-            MessageBox.Show(successMessage, "Éxito",
+            MessageBox.Show(successMessage, Resources.Success,
                         MessageBoxButton.OK, MessageBoxImage.Exclamation);
         }
 
+        /// <summary>
+        /// Crea una ventanilla de error con un botón "OK" cuando campos ingresados estan vacios
+        /// </summary>
         public static void ShowEmptyFieldsErrorWindow()
         {
-            MessageBox.Show("Uno o varios campos están vacíos. Por favor ingresa los datos necesarios.", "Error",
+            MessageBox.Show(Resources.EmptyFieldsError, Resources.Error,
                 MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        /// <summary>
+        /// Crea una ventanilla de error con un botón "OK" cuando campos ingresados son invalidos
+        /// </summary>
         public static void ShowWrongFieldsErrorWindow()
         {
-            MessageBox.Show("La información en uno o varios campos es incorrecta. Por favor verifica la información.",
-                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(Resources.WrongFieldsError,
+                Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
-        public static void ShowNoEnoughProjectSpaceWindow()
-        {
-            MessageBox.Show("El proyecto ya no tiene cupo para asignar a otro Practicante.",
-                "No hay espacio disponible", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
+        
+        /// <summary>
+        /// Crea una ventanilla de error con un botón "OK" cuando una lista no contiene información
+        /// </summary>
         public static void ShowEmptyListErrorWindow()
         {
-            MessageBox.Show("No se encuentra ninguna entrada registrada.",
-                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(Resources.NoInfoMessage,
+                Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        /// <summary>
+        /// Crea una ventanilla de error con un botón "OK" cuando no se puede conectar al servidor
+        /// </summary>
         public static void ShowConnectionErrorWindow()
         {
-            MessageBox.Show("Ocurrió un fallo al intentar conectarse a la base de datos. Intente de nuevo más tarde.",
-                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(Resources.NoConnectionMessage,
+                Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
     }

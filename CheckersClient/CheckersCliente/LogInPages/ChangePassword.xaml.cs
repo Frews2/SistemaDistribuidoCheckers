@@ -1,4 +1,8 @@
-﻿using CheckersCliente.MainService;
+﻿/*
+    Date: 08/12/2020
+    Author(s): César Sergio Martinez Palacios
+*/
+using CheckersCliente.MainService;
 using System;
 using System.Linq;
 using System.Windows;
@@ -11,9 +15,17 @@ namespace CheckersCliente.LogInPages
     /// </summary>
     public partial class ChangePassword : Page
     {
+        /// <summary>
+        /// Valor constante para el tamaño minimo de un campo de texto
+        /// </summary>
         public const int MINIMUN_LENGHT = 8;
         private readonly string playerNick;
 
+        /// <summary>
+        /// Constructor para la pagina <c>ChangePassword</c> con la funcionalidad
+        /// para actualizar la contraseña de la cuenta de un jugador
+        /// </summary>
+        /// <param name="playerNickname"></param>
         public ChangePassword(string playerNickname)
         {
             InitializeComponent();
@@ -23,7 +35,7 @@ namespace CheckersCliente.LogInPages
         private void ChangePlayerPassword(object sender, RoutedEventArgs e)
         {
             RegisterButton.IsEnabled = false;
-            JugadorManager.ChangePassword(new Jugador
+            PlayerManager.ChangePassword(new Jugador
             {
                 Apodo = playerNick,
                 Contrasenia = PasswordTextBox.Password

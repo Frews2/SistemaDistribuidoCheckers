@@ -18,25 +18,35 @@
         <Label Content="{x:Static p:Resources.Language}" HorizontalAlignment="Left" Margin="48,322,0,0" VerticalAlignment="Top" Height="30" 
                Width="176" FontWeight="ExtraBold" FontSize="14" Foreground="White" FontFamily="Bookman Old Style" Background="#FFC82913"/>
 
-        <ComboBox HorizontalAlignment="Left" Margin="137,326,0,0" VerticalAlignment="Top" Width="83" Height="23" x:Name="LanguageBox" SelectionChanged="LanguageSelect">
+        <ComboBox HorizontalAlignment="Left" Margin="137,326,0,0" VerticalAlignment="Top" Width="83" Height="23" 
+                  x:Name="LanguageBox" SelectionChanged="LanguageSelect">
             <ComboBoxItem Content="English"/>
             <ComboBoxItem Content="Español"/>
             <ComboBoxItem Content="Italiano"/>
         </ComboBox>
 
-        <Label Content="{x:Static p:Resources.Nickname}" HorizontalAlignment="Left" Margin="278,354,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" Width="257"/>
-        <Label Content="{x:Static p:Resources.Password}" Margin="278,460,259,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28" />
+        <Label Content="{x:Static p:Resources.Nickname}" HorizontalAlignment="Left" Margin="278,354,0,0" VerticalAlignment="Top"
+               FontWeight="Bold" FontSize="28" Width="257"/>
+        <Label Content="{x:Static p:Resources.Password}" Margin="278,460,259,0" VerticalAlignment="Top" FontWeight="Bold" 
+               FontSize="28" />
         <Label Content="{x:Static p:Resources.LogIn}" HorizontalAlignment="Left" Margin="278,286,0,0" 
          VerticalAlignment="Top" Height="63" Width="257" FontWeight="Bold" FontSize="36" Foreground="White" FontFamily="Bookman Old Style"/>
 
-        <TextBox x:Name="NicknameTextBox" HorizontalAlignment="Left" Height="35" Margin="278,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" MaxLength="20" FontSize="18" TextChanged="EnableLoginButton"/>
-        <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="35" Margin="278,509,0,0"  VerticalAlignment="Top" Width="257" PasswordChar="*" PasswordChanged="EnableLoginButton" MaxLength="20" FontSize="26" FontWeight="Bold"/>
+        <TextBox x:Name="NicknameTextBox" HorizontalAlignment="Left" Height="35" Margin="278,403,0,0" TextWrapping="Wrap"
+                 VerticalAlignment="Top" Width="257" MaxLength="20" FontSize="18" TextChanged="EnableLoginButton"/>
+        <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Height="35" Margin="278,509,0,0"  VerticalAlignment="Top"
+                     Width="257" PasswordChar="*" PasswordChanged="EnableLoginButton" MaxLength="20" FontSize="26" FontWeight="Bold"/>
 
         <Button x:Name="LogInButton" Content="{x:Static p:Resources.LogIn}" HorizontalAlignment="Left" Margin="328,562,0,0" 
-         VerticalAlignment="Top" Width="151" Height="30" BorderBrush="#FF230101" Foreground="Black" FontWeight="Bold" Background="#FFFAFAFA" FontStyle="Italic" FontSize="16" Click="LogInClick" IsEnabled="False"/>
+         VerticalAlignment="Top" Width="151" Height="30" BorderBrush="#FF230101" Foreground="Black" FontWeight="Bold"
+                Background="#FFFAFAFA" FontStyle="Italic" FontSize="16" Click="LogInClick" IsEnabled="False"/>
 
-        <TextBlock HorizontalAlignment="Left" Margin="278,597,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.ForgotPassword}" VerticalAlignment="Top" Width="257" Foreground="#FF53A0F4" TextDecorations="Underline" TextAlignment="Center" MouseLeftButtonDown="GetPassword"/>
-        <TextBlock HorizontalAlignment="Left" Margin="316,618,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Register}" VerticalAlignment="Top" Width="181" Foreground="#FF53A0F4" TextDecorations="Underline" TextAlignment="Center" MouseLeftButtonDown="RegisterAccount"/>
+        <TextBlock HorizontalAlignment="Left" Margin="278,597,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.ForgotPassword}"
+                   VerticalAlignment="Top" Width="257" Foreground="#FF53A0F4" TextDecorations="Underline" TextAlignment="Center"
+                   MouseLeftButtonDown="GetPassword"/>
+        <TextBlock HorizontalAlignment="Left" Margin="316,618,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Register}" 
+                   VerticalAlignment="Top" Width="181" Foreground="#FF53A0F4" TextDecorations="Underline" TextAlignment="Center"
+                   MouseLeftButtonDown="RegisterAccount"/>
 
     </Grid>
 

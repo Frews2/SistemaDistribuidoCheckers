@@ -15,6 +15,12 @@ namespace CheckersCliente.MenuPages
     public partial class PrincipalMenu : Page
     {
         Jugador actualPlayer;
+
+        /// <summary>
+        /// Constructor para la pagina <c>PrincipalMenu</c> con la funcionalidad
+        /// mostrar servicios disponibles a un jugador durante una sesión abierta en el sistema
+        /// </summary>
+        /// <param name="player"></param>
         public PrincipalMenu(Jugador player)
         {
             InitializeComponent();
@@ -26,7 +32,7 @@ namespace CheckersCliente.MenuPages
         {
             Menu actualMenu = App.Current.Windows.OfType<Menu>().FirstOrDefault();
             actualMenu.EnableNavigation();
-            JugadorManager.GetActualPlayer(DataContext as Jugador);
+            PlayerManager.GetActualPlayer(DataContext as Jugador);
         }
 
         private void DisplayRanking(object sender, RoutedEventArgs e)

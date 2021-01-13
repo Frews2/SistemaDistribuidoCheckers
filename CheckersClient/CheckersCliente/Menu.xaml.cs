@@ -19,6 +19,10 @@ namespace CheckersCliente
         private bool changeLanguage = false;
         private bool navigate = false;
 
+        /// <summary>
+        /// Constructor para la ventana <c>Menu</c> que contiene la funcionalidad asociada al Jugador
+        /// </summary>
+        /// <param name="player"></param>
         public Menu(Jugador player)
         {
             InitializeComponent();
@@ -45,6 +49,10 @@ namespace CheckersCliente
                     break;
             }
         }
+
+        /// <summary>
+        /// Cambia la variable booleana de cambio de lenguaje a verdadero indicando que se debe cambiar el archivo .resx
+        /// </summary>
         public void ChangeLanguage()
         {
             changeLanguage = true;
@@ -62,7 +70,7 @@ namespace CheckersCliente
                 if (close)
                 {
                     e.Cancel = false;
-                    JugadorManager.EndSession(playerNickname);
+                    PlayerManager.EndSession(playerNickname);
                 }
                 else
                 {
@@ -71,6 +79,9 @@ namespace CheckersCliente
             }
         }
 
+        /// <summary>
+        /// Habilita la navegacion entre las paginas de la ventana
+        /// </summary>
         public void EnableNavigation()
         {
             navigate = true;

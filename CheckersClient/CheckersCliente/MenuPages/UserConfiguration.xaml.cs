@@ -15,6 +15,10 @@ namespace CheckersCliente.MenuPages
     /// </summary>
     public partial class UserConfiguration : Page
     {
+        /// <summary>
+        /// Constructor para la pagina <c>UserConfiguration</c> que muestra los datos del jugador que incio sesión
+        /// </summary>
+        /// <param name="actualPlayer"></param>
         public UserConfiguration(Jugador actualPlayer)
         {
             InitializeComponent();
